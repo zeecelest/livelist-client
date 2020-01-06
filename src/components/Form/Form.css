@@ -1,0 +1,23 @@
+Form {
+  font-size: 1.8rem;
+  padding: 0.7rem;
+  align-content: center;
+  margin: 0 auto;
+  border-radius: 1rem;
+}
+
+Input {
+  font-size: 1.5rem;
+  margin: 2%;
+  text-align: left;
+}
+
+Label {
+  margin: 2%;
+}
+
+@media screen and (min-width: 1025px) {
+  Form {
+    max-width: 50rem;
+  }
+}
