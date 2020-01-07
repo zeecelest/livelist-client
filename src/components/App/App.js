@@ -27,10 +27,10 @@ export default class App extends Component {
             <p>There was an error! Oh no!</p>
           )}
           <Switch>
-            <PrivateRoute
-              path={'/'}
+          <PrivateRoute
+              path={'/landing'}
               component={LandingPage}
-              />
+            />
           <PublicOnlyRoute
               path={'/register'}
               component={RegistrationRoute}

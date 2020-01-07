@@ -14,27 +14,100 @@ class RegistrationForm extends Component {
 
   firstInput = React.createRef();
 
+  renderOptions = () => {
+    let stateAbr = [
+      "AL",
+      "AK",
+      "AS",
+      "AZ",
+      "AR",
+      "CA",
+      "CO",
+      "CT",
+      "DE",
+      "DC",
+      "FM",
+      "FL",
+      "GA",
+      "GU",
+      "HI",
+      "ID",
+      "IL",
+      "IN",
+      "IA",
+      "KS",
+      "KY",
+      "LA",
+      "ME",
+      "MH",
+      "MD",
+      "MA",
+      "MI",
+      "MN",
+      "MS",
+      "MO",
+      "MT",
+      "NE",
+      "NV",
+      "NH",
+      "NJ",
+      "NM",
+      "NY",
+      "NC",
+      "ND",
+      "MP",
+      "OH",
+      "OK",
+      "OR",
+      "PW",
+      "PA",
+      "PR",
+      "RI",
+      "SC",
+      "SD",
+      "TN",
+      "TX",
+      "UT",
+      "VT",
+      "VI",
+      "VA",
+      "WA",
+      "WV",
+      "WI",
+      "WY"
+    ];
+
+    return stateAbr.map(state => {
+      return (
+        <option key={state} value={state}>
+          {state}
+        </option>
+      );
+    });
+  };
+
   handleSubmit = ev => {
     ev.preventDefault();
-    const { name, username, location, password } = ev.target;
-    console.log("name", name.value, typeof name.value);
-    console.log("username", username.value, typeof username.value);
-    console.log("location", location.value, typeof location.value);
-    console.log("password", password.value, typeof password.value);
-    // AuthApiService.postUser({
-    //   name: name.value,
-    //   username: username.value,
-    //   password: password.value,
-    // })
-    //   .then(user => {
-    //     name.value = ''
-    //     username.value = ''
-    //     password.value = ''
-    //     this.props.onRegistrationSuccess()
-    //   })
-    //   .catch(res => {
-    //     this.setState({ error: res.error })
-    //   })
+    const { name, username, locationCity, locationState, password } = ev.target;
+
+    AuthApiService.postUser({
+      name: name.value,
+      username: username.value,
+      city: locationCity.value,
+      state: locationState.value,
+      password: password.value
+    })
+      .then(user => {
+        name.value = "";
+        username.value = "";
+        locationCity.value = "";
+        locationState.value = "";
+        password.value = "";
+        this.props.onRegistrationSuccess();
+      })
+      .catch(res => {
+        this.setState({ error: res.error });
+      });
   };
 
   componentDidMount() {
@@ -66,11 +139,24 @@ class RegistrationForm extends Component {
           <Input id="registration-username-input" name="username" required />
         </div>
         <div>
-          <Label htmlFor="registration-location-input">
-            Location(City, State)
+          <Label htmlFor="registration-locationCity-input">
+            City
             <Required />
           </Label>
-          <Input id="registration-location-input" name="location" required />
+          <Input
+            id="registration-locationCity-input"
+            name="locationCity"
+            required
+          />
+        </div>
+        <div>
+          <Label htmlFor="registration-locationState-input">
+            State
+            <Required />
+          </Label>
+          <select className="locationState" name="locationState">
+            {this.renderOptions()}
+          </select>
         </div>
         <div>
           <Label htmlFor="registration-password-input">

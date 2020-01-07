@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-class LoginPage extends React.Component {
+class LandingPage extends React.Component {
     render() {
         return (
             <>
@@ -27,4 +27,4 @@ class LoginPage extends React.Component {
     }
 }
 
-export default LoginPage;
+export default LandingPage;

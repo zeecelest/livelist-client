@@ -35,7 +35,7 @@ export class UserProvider extends Component {
 
   componentDidMount() {
     if (TokenService.hasAuthToken()) {
-      IdleService.registerIdleTimerResets()
+      IdleService.registerIdleTimerResets();
       TokenService.queueCallbackBeforeExpiry(() => {
         this.fetchRefreshToken();
       });
