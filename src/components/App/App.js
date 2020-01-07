@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-
-// import PrivateRoute from '../PrivateRoute/PrivateRoute'
+import LandingPage from '../LandingPage/LandingPage'
+import PrivateRoute from '../PrivateRoute/PrivateRoute'
 import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute'
 import RegistrationRoute from '../../routes/RegistrationRoute/RegistrationRoute'
 import LoginRoute from '../../routes/LoginRoute/LoginRoute'
@@ -27,6 +27,10 @@ export default class App extends Component {
             <p>There was an error! Oh no!</p>
           )}
           <Switch>
+            <PrivateRoute
+              path={'/'}
+              component={LandingPage}
+              />
           <PublicOnlyRoute
               path={'/register'}
               component={RegistrationRoute}
