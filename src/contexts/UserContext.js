@@ -35,7 +35,11 @@ export class UserProvider extends Component {
 
   componentDidMount() {
     if (TokenService.hasAuthToken()) {
+<<<<<<< HEAD
       IdleService.regiserIdleTimerResets();
+=======
+      IdleService.registerIdleTimerResets()
+>>>>>>> wesley
       TokenService.queueCallbackBeforeExpiry(() => {
         this.fetchRefreshToken();
       });
@@ -66,9 +70,15 @@ export class UserProvider extends Component {
     this.setUser({
       id: jwtPayload.user_id,
       name: jwtPayload.name,
+<<<<<<< HEAD
       username: jwtPayload.sub
     });
     IdleService.regiserIdleTimerResets();
+=======
+      username: jwtPayload.sub,
+    })
+    IdleService.registerIdleTimerResets()
+>>>>>>> wesley
     TokenService.queueCallbackBeforeExpiry(() => {
       this.fetchRefreshToken();
     });

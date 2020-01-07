@@ -16,21 +16,25 @@ class RegistrationForm extends Component {
 
   handleSubmit = ev => {
     ev.preventDefault();
-    const { name, username, password } = ev.target;
-    AuthApiService.postUser({
-      name: name.value,
-      username: username.value,
-      password: password.value
-    })
-      .then(user => {
-        name.value = "";
-        username.value = "";
-        password.value = "";
-        this.props.onRegistrationSuccess();
-      })
-      .catch(res => {
-        this.setState({ error: res.error });
-      });
+    const { name, username, location, password } = ev.target;
+    console.log("name", name.value, typeof name.value);
+    console.log("username", username.value, typeof username.value);
+    console.log("location", location.value, typeof location.value);
+    console.log("password", password.value, typeof password.value);
+    // AuthApiService.postUser({
+    //   name: name.value,
+    //   username: username.value,
+    //   password: password.value,
+    // })
+    //   .then(user => {
+    //     name.value = ''
+    //     username.value = ''
+    //     password.value = ''
+    //     this.props.onRegistrationSuccess()
+    //   })
+    //   .catch(res => {
+    //     this.setState({ error: res.error })
+    //   })
   };
 
   componentDidMount() {
@@ -60,6 +64,13 @@ class RegistrationForm extends Component {
             <Required />
           </Label>
           <Input id="registration-username-input" name="username" required />
+        </div>
+        <div>
+          <Label htmlFor="registration-location-input">
+            Location(City, State)
+            <Required />
+          </Label>
+          <Input id="registration-location-input" name="location" required />
         </div>
         <div>
           <Label htmlFor="registration-password-input">
