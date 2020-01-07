@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import LandingPage from '../LandingPage/LandingPage'
-import PrivateRoute from '../PrivateRoute/PrivateRoute'
+// import PrivateRoute from '../PrivateRoute/PrivateRoute'
 import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute'
 import RegistrationRoute from '../../routes/RegistrationRoute/RegistrationRoute'
 import LoginRoute from '../../routes/LoginRoute/LoginRoute'
@@ -21,16 +21,17 @@ export default class App extends Component {
     const { hasError } = this.state
     return (
       <div className="App">
-        <h1>The Social Playlist</h1>
+        <h1>SP Logo</h1>
         <main>
           {hasError && (
             <p>There was an error! Oh no!</p>
           )}
           <Switch>
-          <PrivateRoute
-              path={'/landing'}
+          <Route
+              exact
+              path='/'
               component={LandingPage}
-            />
+          />
           <PublicOnlyRoute
               path={'/register'}
               component={RegistrationRoute}
