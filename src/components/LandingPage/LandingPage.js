@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { Component } from "react";
+import './LandingPage.css'
 
-
-class LandingPage extends React.Component {
+class LandingPage extends Component {
     render() {
         return (
             <>
             <nav role='navigation'>
                 <ul className='nav-link'>
-                    <li><a href='/login' className='nav-login'>Login</a></li>
-                    <li><a href='/signup' className='nav-signup'>Sign Up</a></li>
+                    <li><a href='/login' className='nav-login'>Log in</a></li>
+                    <li><a href='/register' className='nav-signup'>Sign up</a></li>
                 </ul>
             </nav>
             <div className='title'>
