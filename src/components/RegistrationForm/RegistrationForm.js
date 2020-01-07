@@ -89,7 +89,11 @@ class RegistrationForm extends Component {
   handleSubmit = ev => {
     ev.preventDefault();
     const { name, username, locationCity, locationState, password } = ev.target;
-
+    if(locationState.value === ''){
+      return this.setState(
+        {error: 'Please select a state.'}
+      ) 
+    } 
     AuthApiService.postUser({
       name: name.value,
       username: username.value,
@@ -155,6 +159,7 @@ class RegistrationForm extends Component {
             <Required />
           </Label>
           <select className="locationState" name="locationState">
+          <option key='none' defaultValue=''></option>
             {this.renderOptions()}
           </select>
         </div>
