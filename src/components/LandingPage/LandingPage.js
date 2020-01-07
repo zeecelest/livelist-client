@@ -7,7 +7,7 @@ class LandingPage extends Component {
             <>
             <nav role='navigation'>
                 <ul className='nav-link'>
-                    <li><a href='/login' className='nav-login'>Log in</a></li>
+                    {/* <li><a href='/login' className='nav-login'>Log in</a></li> */}
                     <li><a href='/register' className='nav-signup'>Sign up</a></li>
                 </ul>
             </nav>
@@ -15,17 +15,15 @@ class LandingPage extends Component {
                 <h1>Social Playlist</h1>
             </div>
            <section>
-               <p>Social Playlist makes it easy for you to find the perfect outing. 
-                   Whether a nite on the town with friends, date night with your love,
-                   or a day with the family!  Social Playlist solves the problem of not 
-                   knowing what to do with providing customized playlists created for users 
-                   by users.
+               <p>Social Playlist solves the problem of not knowing what to do when you want 
+                   to go out.  Whether a nite on the town with friends, date night with your love,
+                   or a day with the family!   See what social events people enjoy in their areas.  
+                   Follow users with your favorite playlists.  Like items from users playlist. 
+                   Create your own playlist and share with your followers.  
                </p>
-               <p>See what social events people enjoy in their areas.  You can like other
-                   users playlist.  You can also follow the user with your favorite playlists.
-                   Develop your own playlist and share with your follows.  
-               </p>
-               <p>placeholder for playlist example</p>
+               {/* <h2>Date Night Playlist</h2>
+               <h4>Atlanta, GA</h4> */}
+               
            </section>
             </>
         )
