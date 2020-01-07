@@ -21,4 +21,4 @@ const spots = [
   },
 ]
 
-export default spots;
+export default spots
