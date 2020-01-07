@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import './LandingPage.css'
+import LoginForm from '../../components/LoginForm/LoginForm'
 
 class LandingPage extends Component {
     render() {
@@ -7,7 +8,7 @@ class LandingPage extends Component {
             <>
             <nav role='navigation'>
                 <ul className='nav-link'>
-                    {/* <li><a href='/login' className='nav-login'>Log in</a></li> */}
+                    <li><a href='/login' className='nav-login'>Log in</a>></li> 
                     <li><a href='/register' className='nav-signup'>Sign up</a></li>
                 </ul>
             </nav>
@@ -21,8 +22,7 @@ class LandingPage extends Component {
                    Follow users with your favorite playlists.  Like items from users playlist. 
                    Create your own playlist and share with your followers.  
                </p>
-               {/* <h2>Date Night Playlist</h2>
-               <h4>Atlanta, GA</h4> */}
+              <p>placeholder for screenshots of app</p>
                
            </section>
             </>
