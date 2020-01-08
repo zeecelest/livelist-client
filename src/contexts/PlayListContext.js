@@ -3,7 +3,7 @@ import React, { Component } from "react";
 
 const PlayListContext = React.createContext({
   playlist: {},
-  spots:{},
+  spots:[],
   setPlaylist: () => {},
   setSpots: () => {}
 });
@@ -14,7 +14,7 @@ export class PlayListProvider extends Component {
 
   constructor(props) {
     super(props);
-    const state = { playlist: {}, spots: {} };
+    const state = { playlist: {}, spots: [] };
     this.state = state;
   }
 
@@ -24,7 +24,7 @@ export class PlayListProvider extends Component {
   };
 
   setSpots = spots => {
-    this.setState({ spots });
+    this.setState( {spots} );
   };
 
   render() {

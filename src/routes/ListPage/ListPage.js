@@ -44,12 +44,21 @@ spotsFromServer = {
       lat: 12.091823,
       lng: 31.31525
     },
+    {
+      id: 1,
+      name: 'home',
+      tags: '#bestdrinks #goodmusic',
+      address: '361 fake st.',
+      city: 'city name',
+      state: 'ST',
+      lat: 34.001522, 
+      lng: -118.437215
+    },
   ]
 }
 
 spots = this.spotsFromServer.spots
 renderSpot=(spots)=>{
-  console.log(spots)
   return spots.map(spot => 
   <Spot 
     key={Math.random()}
@@ -65,6 +74,7 @@ renderSpot=(spots)=>{
 
 componentDidMount(){
     let id = this.props.match.params.id;
+    this.context.setSpots(this.spotsFromServer.spots)
     // ListsApiService.getSpotsById(id)
     // .then(spots => {
     //   console.log(spots)
@@ -77,7 +87,9 @@ componentDidMount(){
     return (
       <div>
         <h1>My List</h1>
-        <Map />
+        <Map
+          spots={this.spots}
+        />
         {this.renderSpot(this.spots)}
       </div>
     );
