@@ -7,7 +7,7 @@ import { PlayListProvider } from "./contexts/PlayListContext";
 
 ReactDOM.render(
   <BrowserRouter>
-    <PlayListProvider>
+    <PlayListProvider >
       <App />
     </PlayListProvider>
   </BrowserRouter>,

@@ -1,29 +1,43 @@
 import React, { Component } from "react";
 
 
-
 const PlayListContext = React.createContext({
-  user: {},
-  error: null,
-  setError: () => {},
-  clearError: () => {},
-  setUser: () => {},
-  processLogin: () => {},
-  processLogout: () => {}
+  playlist: {},
+  spots:{},
+  setPlaylist: () => {},
+  setSpots: () => {}
 });
 
 export default PlayListContext;
 
-
 export class PlayListProvider extends Component {
 
+  constructor(props) {
+    super(props);
+    const state = { playlist: {}, spots: {} };
+    this.state = state;
+  }
+
+
+  setPlaylist = playlist => {
+    this.setState({ playlist });
+  };
+
+  setSpots = spots => {
+    this.setState({ spots });
+  };
 
   render() {
-    const value = {};
+    const value = {
+      playlist: this.state.playlist,
+      spots: this.state.spots,
+      setPlaylist: this.setPlaylist,
+      setSpots: this.setSpots,
+    };
     return (
-      <PlayListProvider.Provider value={value}>
+      <PlayListContext.Provider value={value}>
         {this.props.children}
-      </PlayListProvider.Provider>
+      </PlayListContext.Provider>
     );
   }
 }
