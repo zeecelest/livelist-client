@@ -29,7 +29,7 @@ const ListsApiService = {
         )     
     },
     getSpotsById(id){
-        fetch(`${config.API_ENDPOINT}/lists/${id}`, {
+        return fetch(`${config.API_ENDPOINT}/lists/${id}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${TokenService.getAuthToken()}`,

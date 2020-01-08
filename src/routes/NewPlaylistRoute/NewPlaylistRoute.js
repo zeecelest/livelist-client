@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
+import NewPlaylistForm from "../../components/NewPlaylistForm/NewPlaylistForm";
 
 class RegistrationRoute extends Component {
   static defaultProps = {
@@ -8,17 +8,17 @@ class RegistrationRoute extends Component {
     }
   };
 
-  handleRegistrationSuccess = () => {
+  handlePlaylistCreation = () => {
     const { history } = this.props;
-    history.push("/login");
+    //TODO this needs to point to the user dashboard
+    history.push("/");
   };
 
   render() {
     return (
       <section>
-        <RegistrationForm
-          onRegistrationSuccess={this.handleRegistrationSuccess}
-        />
+        <h2>Sign up</h2>
+        <NewPlaylistForm onPlaylistCreation={this.handlePlaylistCreation} />
       </section>
     );
   }

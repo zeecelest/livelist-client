@@ -2,6 +2,9 @@ import config from "../config";
 import TokenService from "./token-service";
 
 const AuthApiService = {
+  postPlaylist(playlist) {
+    //This should almost mirror the post user route.
+  },
   postUser(user) {
     return fetch(`${config.API_ENDPOINT}/user`, {
       method: "POST",
