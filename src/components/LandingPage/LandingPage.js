@@ -1,34 +1,8 @@
 import React, { Component } from "react";
 import './LandingPage.css';
 import LoginForm from '../../components/LoginForm/LoginForm';
-import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
 class LandingPage extends Component {
-
-    renderLoginForm = () => {
-        //for mobile and tablet devices
-        if (isMobile) {
-            return 
-        }
-
-        if (isBrowser) {
-            return
-        }
-        // if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        //     <LoginForm />
-        // }
-        // var is_mobile = false; 
-        // if('.loginForm').css('display') == 'none') {
-        //     is_mobile = true;
-        // }
-
-        // if(is_mobile == true) {
-
-
-        
-       
-
-    }
     render() {
         return (
             <>
@@ -50,15 +24,14 @@ class LandingPage extends Component {
                </p>
               <p>placeholder for screenshots of app</p>
             
-                {this.renderLoginForm}
-             
+            <LoginForm />
               
            </section>
           
             </>
-        )
+            )
         }
+    
     }
-
 
 export default LandingPage;
