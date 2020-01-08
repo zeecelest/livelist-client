@@ -58,10 +58,9 @@ export class ListPage extends Component {
     ]
   };
 
-  spots = [];
 
-  renderSpot = spots => {
-    return spots.map(spot => (
+  renderSpot = () => {
+    return this.spotsFromServer.spots.map(spot => (
       <Spot
         key={Math.random()}
         name={spot.name}
@@ -75,19 +74,21 @@ export class ListPage extends Component {
 
   componentDidMount() {
     let id = this.props.match.params.id;
-    ListsApiService.getSpotsById(id)
-      .then(spotsServer => {
-        this.context.setSpots(spotsServer);
-      })
-      .catch(this.context.setError);
+    //TODO:Once Api call is set turn this back on
+    // ListsApiService.getSpotsById(id)
+    //   .then(spotsServer => {
+    //     this.context.setSpots(spotsServer);
+    //   })
+    //   .catch(this.context.setError);
   }
 
   render() {
     return (
       <div>
         <h1>My List</h1>
-        <Map spots={this.spots} />
-        {console.log('Spots in the context',this.context.spots)}
+        {/* After API is set change these to props or context */}
+        <Map spots={this.spotsFromServer.spots} />
+        {this.renderSpot(this.spotsFromServer)}
       </div>
     );
   }
