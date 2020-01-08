@@ -3,17 +3,15 @@ import { Link } from "react-router-dom";
 import { Input, Required, Label } from "../Form/Form";
 import AuthApiService from "../../services/auth-api-service";
 import Button from "../Button/Button";
-import "./RegistrationForm.css";
 
-class RegistrationForm extends Component {
+class NewPlaylistForm extends Component {
   static defaultProps = {
-    onRegistrationSuccess: () => {}
+    onPlaylistCreation: () => {}
   };
 
   state = { error: null };
 
   firstInput = React.createRef();
-
   renderOptions = () => {
     let stateAbr = [
       "AL",
@@ -88,24 +86,26 @@ class RegistrationForm extends Component {
 
   handleSubmit = ev => {
     ev.preventDefault();
-    const { name, username, locationCity, locationState, password } = ev.target;
-    if (locationState.value === "") {
+    const { name, state, city, tags, is_public } = ev.target;
+    if (state.value === "") {
       return this.setState({ error: "Please select a state." });
     }
-    AuthApiService.postUser({
+
+    // TODO needs to be converted to the API call for posting a new Playlist
+    AuthApiService.postPlaylist({
       name: name.value,
-      username: username.value,
-      city: locationCity.value,
-      state: locationState.value,
-      password: password.value
+      city: city.value,
+      state: state.value,
+      tags: tags.value,
+      is_public: is_public.value
     })
-      .then(user => {
+      .then(playlist => {
         name.value = "";
-        username.value = "";
-        locationCity.value = "";
-        locationState.value = "";
-        password.value = "";
-        this.props.onRegistrationSuccess();
+        state.value = "";
+        city.value = "";
+        tags.value = "";
+        is_public.value = "";
+        this.props.onPlaylistCreation();
       })
       .catch(res => {
         this.setState({ error: res.error });
@@ -119,68 +119,58 @@ class RegistrationForm extends Component {
   render() {
     const { error } = this.state;
     return (
-      <form onSubmit={this.handleSubmit} className="registerForm">
+      <form onSubmit={this.handleSubmit} className="newPlaylistForm">
         <div role="alert">{error && <p>{error}</p>}</div>
         <div>
-          <Label htmlFor="registration-name-input">
-            Enter your name
+          <Label htmlFor="newPlaylist-name-input">
+            Name your playlist
             <Required />
           </Label>
           <Input
             ref={this.firstInput}
-            id="registration-name-input"
+            id="newPlaylist-name-input"
             name="name"
             required
           />
         </div>
         <div>
-          <Label htmlFor="registration-username-input">
-            Choose a username
-            <Required />
-          </Label>
-          <Input id="registration-username-input" name="username" required />
-        </div>
-        <div>
-          <Label htmlFor="registration-locationCity-input">
+          <Label htmlFor="newPlaylist-locationCity-input">
             City
             <Required />
           </Label>
-          <Input
-            id="registration-locationCity-input"
-            name="locationCity"
-            required
-          />
+          <Input id="newPlaylist-city-input" name="city" required />
         </div>
         <div>
-          <Label htmlFor="registration-locationState-input">
+          <Label htmlFor="registration-state-input">
             State
             <Required />
           </Label>
-          <select className="locationState" name="locationState">
+          <select className="state" name="state">
             <option key="none" defaultValue=""></option>
             {this.renderOptions()}
           </select>
         </div>
         <div>
-          <Label htmlFor="registration-password-input">
-            Choose a password
+          <Label htmlFor="newPlaylist-tags-input">
+            Tags for your list
             <Required />
           </Label>
-          <Input
-            id="registration-password-input"
-            name="password"
-            type="password"
-            required
-          />
+          <Input id="newPlaylist-tags-input" name="tags" />
+        </div>
+        <div>
+          <Label htmlFor="newPlaylist-public-input">
+            Would you like allow others to see your playlist?
+            <Required />
+          </Label>
+          <input type="select" name="is_public"></input>
         </div>
 
         <footer className="signupBtnLink">
-          <Button type="submit">Sign up</Button> <br />{" "}
-          <Link to="/login">Already have an account?</Link>
+          <Button type="submit">Submit</Button> <br />{" "}
         </footer>
       </form>
     );
   }
 }
 
-export default RegistrationForm;
+export default NewPlaylistForm;
