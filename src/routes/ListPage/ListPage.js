@@ -87,7 +87,7 @@ export class ListPage extends Component {
       <div>
         <h1>My List</h1>
         {/* After API is set change these to props or context */}
-        <Map spots={this.spotsFromServer.spots} />
+        {/* <Map spots={this.spotsFromServer.spots} /> */}
         {this.renderSpot(this.spotsFromServer)}
       </div>
     );
