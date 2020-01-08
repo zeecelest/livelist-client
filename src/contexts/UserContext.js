@@ -66,9 +66,9 @@ export class UserProvider extends Component {
     this.setUser({
       id: jwtPayload.user_id,
       name: jwtPayload.name,
-      username: jwtPayload.sub,
-    })
-    IdleService.registerIdleTimerResets()
+      username: jwtPayload.sub
+    });
+    IdleService.registerIdleTimerResets();
     TokenService.queueCallbackBeforeExpiry(() => {
       this.fetchRefreshToken();
     });

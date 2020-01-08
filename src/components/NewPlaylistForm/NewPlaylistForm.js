@@ -4,7 +4,6 @@ import { Input, Required, Label } from "../Form/Form";
 import AuthApiService from "../../services/auth-api-service";
 import Button from "../Button/Button";
 
-
 class NewPlaylistForm extends Component {
   static defaultProps = {
     onPlaylistCreation: () => {}
@@ -88,31 +87,29 @@ class NewPlaylistForm extends Component {
   handleSubmit = ev => {
     ev.preventDefault();
     const { name, state, city, tags, is_public } = ev.target;
-    if(state.value === ''){
-        return this.setState(
-          {error: 'Please select a state.'}
-        ) 
-      } 
+    if (state.value === "") {
+      return this.setState({ error: "Please select a state." });
+    }
 
     // TODO needs to be converted to the API call for posting a new Playlist
-    // AuthApiService.postUser({
-    //   name: name.value,
-    //   username: username.value,
-    //   city: locationCity.value,
-    //   state: locationState.value,
-    //   password: password.value
-    // })
-    //   .then(user => {
-    //     name.value = "";
-    //     username.value = "";
-    //     locationCity.value = "";
-    //     locationState.value = "";
-    //     password.value = "";
-    //     this.props.onRegistrationSuccess();
-    //   })
-    //   .catch(res => {
-    //     this.setState({ error: res.error });
-    //   });
+    AuthApiService.postPlaylist({
+      name: name.value,
+      city: city.value,
+      state: state.value,
+      tags: tags.value,
+      is_public: is_public.value
+    })
+      .then(playlist => {
+        name.value = "";
+        state.value = "";
+        city.value = "";
+        tags.value = "";
+        is_public.value = "";
+        this.props.onPlaylistCreation();
+      })
+      .catch(res => {
+        this.setState({ error: res.error });
+      });
   };
 
   componentDidMount() {
@@ -141,19 +138,15 @@ class NewPlaylistForm extends Component {
             City
             <Required />
           </Label>
-          <Input
-            id="newPlaylist-city-input"
-            name="city"
-            required
-          />
+          <Input id="newPlaylist-city-input" name="city" required />
         </div>
         <div>
-        <Label htmlFor="registration-state-input">
+          <Label htmlFor="registration-state-input">
             State
             <Required />
           </Label>
           <select className="state" name="state">
-          <option key='none' defaultValue=''></option>
+            <option key="none" defaultValue=""></option>
             {this.renderOptions()}
           </select>
         </div>
@@ -162,17 +155,14 @@ class NewPlaylistForm extends Component {
             Tags for your list
             <Required />
           </Label>
-          <Input
-            id="newPlaylist-tags-input"
-            name="tags"
-          />
+          <Input id="newPlaylist-tags-input" name="tags" />
         </div>
         <div>
           <Label htmlFor="newPlaylist-public-input">
             Would you like allow others to see your playlist?
             <Required />
           </Label>
-          <input type='select' name='is_public'></input>
+          <input type="select" name="is_public"></input>
         </div>
 
         <footer className="signupBtnLink">
