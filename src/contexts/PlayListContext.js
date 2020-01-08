@@ -1,9 +1,22 @@
 import React, { Component } from "react";
 
+
+
+const PlayListContext = React.createContext({
+  user: {},
+  error: null,
+  setError: () => {},
+  clearError: () => {},
+  setUser: () => {},
+  processLogin: () => {},
+  processLogout: () => {}
+});
+
+export default PlayListContext;
+
+
 export class PlayListProvider extends Component {
-  constructor(props) {
-    super(props);
-  }
+
 
   render() {
     const value = {};
