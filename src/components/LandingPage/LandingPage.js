@@ -3,6 +3,13 @@ import './LandingPage.css'
 import LoginForm from '../../components/LoginForm/LoginForm'
 
 class LandingPage extends Component {
+
+    renderLoginForm() {
+        if (window.innerWidth < 600) {
+            <LoginForm />
+        }
+
+    }
     render() {
         return (
             <>
@@ -23,11 +30,12 @@ class LandingPage extends Component {
                    Create your own playlist and share with your followers.  
                </p>
               <p>placeholder for screenshots of app</p>
-               
+               {this.renderLoginForm}
            </section>
             </>
         )
+        }
     }
-}
+
 
 export default LandingPage;
