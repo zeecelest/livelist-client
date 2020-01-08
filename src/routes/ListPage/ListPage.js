@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ListsApiService from '../../services/lists-api-service';
 import PlayListContext from '../../contexts/PlayListContext';
 import Spot from '../../components/Spot/Spot';
-
+import Map from '../../components/Map/Map'
 
 export class ListPage extends Component {
     static contextType = PlayListContext;
@@ -77,6 +77,7 @@ componentDidMount(){
     return (
       <div>
         <h1>My List</h1>
+        <Map />
         {this.renderSpot(this.spots)}
       </div>
     );
