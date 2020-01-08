@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import LandingPage from "../LandingPage/LandingPage";
-// import PrivateRoute from '../PrivateRoute/PrivateRoute'
+import PrivateRoute from '../PrivateRoute/PrivateRoute'
 import PublicOnlyRoute from "../PublicOnlyRoute/PublicOnlyRoute";
 import RegistrationRoute from "../../routes/RegistrationRoute/RegistrationRoute";
 import LoginRoute from "../../routes/LoginRoute/LoginRoute";
 import NotFoundRoute from "../../routes/NotFoundRoute/NotFoundRoute";
-
+import ListPage from '../../routes/ListPage/ListPage';
 import "./App.css";
 
 export default class App extends Component {
@@ -28,6 +28,7 @@ export default class App extends Component {
             <Route exact path="/" component={LandingPage} />
             <PublicOnlyRoute path={"/register"} component={RegistrationRoute} />
             <PublicOnlyRoute path={"/login"} component={LoginRoute} />
+            <PrivateRoute path='/list/:id' component={ListPage} />
             <Route component={NotFoundRoute} />
           </Switch>
         </main>
