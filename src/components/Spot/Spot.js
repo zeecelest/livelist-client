@@ -5,10 +5,10 @@ export class Spot extends Component {
     return (
       <div className="spotItem">
         <h2>{this.props.name}</h2>
-          <p>{this.props.address}</p>
+          {/* <p>{this.props.address}</p>
           <p>{this.props.city}</p>
           <p>{this.props.state}</p>
-          <p>{this.props.tags}</p>
+          <p>{this.props.tags}</p> */}
       </div>
     );
   }

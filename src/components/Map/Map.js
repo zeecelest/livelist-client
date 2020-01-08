@@ -3,13 +3,8 @@ import "./Map.css";
 import GoogleMapReact from "google-map-react";
 import Marker from "./Marker/Marker";
 import MyLocation from "./MyLocation/MyLocation";
-import spots from "./fixtures.js";
 import PlayListContext from "../../contexts/PlayListContext";
-//const AnyReactComponent = ({text}) => (
-//  <div style={{height: '10px', width: '10px', border: '1px solid black'}}>
-//    {text}
-//  </div>
-//);
+
 
 class Map extends React.Component {
   static contextType = PlayListContext;
@@ -70,8 +65,6 @@ class Map extends React.Component {
     };
   
   render() {
-    console.log('Context spots',this.context.spots)
-    console.log('state',this.state)
     return (
       <div style={{ height: "50vh", width: "50%", margin: "25vh auto" }}>
         <GoogleMapReact
@@ -86,7 +79,7 @@ class Map extends React.Component {
           />
 
           {this.state.spots.map(x => {
-            return <Marker lat={x.lat} lng={x.lng} text={x.text} />;
+            return <Marker key={Math.random()}lat={x.lat} lng={x.lng} text={x.text} />;
           })}
         </GoogleMapReact>
         <button onClick={e => this.handleButton(e)}>Current</button>
