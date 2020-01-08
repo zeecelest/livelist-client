@@ -69,7 +69,7 @@ class Map extends React.Component {
       });
     };
   
-  render() {
+  render() { console.log(process.env.REACT_APP_API_KEY )
     console.log('Context spots',this.context.spots)
     console.log('state',this.state)
     return (
