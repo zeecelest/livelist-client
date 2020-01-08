@@ -1,13 +1,32 @@
 import React, { Component } from "react";
-import './LandingPage.css'
-import LoginForm from '../../components/LoginForm/LoginForm'
+import './LandingPage.css';
+import LoginForm from '../../components/LoginForm/LoginForm';
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
 class LandingPage extends Component {
 
-    renderLoginForm() {
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-            <LoginForm />
+    renderLoginForm = () => {
+        //for mobile and tablet devices
+        if (isMobile) {
+            return 
         }
+
+        if (isBrowser) {
+            return
+        }
+        // if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        //     <LoginForm />
+        // }
+        // var is_mobile = false; 
+        // if('.loginForm').css('display') == 'none') {
+        //     is_mobile = true;
+        // }
+
+        // if(is_mobile == true) {
+
+
+        
+       
 
     }
     render() {
@@ -15,7 +34,7 @@ class LandingPage extends Component {
             <>
             <nav role='navigation'>
                 <ul className='nav-link'>
-                    <li><a href='/login' className='nav-login'>Log in</a>></li> 
+                    <li><a href='/login' className='nav-login'>Log in</a></li> 
                     <li><a href='/register' className='nav-signup'>Sign up</a></li>
                 </ul>
             </nav>
@@ -30,8 +49,12 @@ class LandingPage extends Component {
                    Create your own playlist and share with your followers.  
                </p>
               <p>placeholder for screenshots of app</p>
-               {this.renderLoginForm}
+            
+                {this.renderLoginForm}
+             
+              
            </section>
+          
             </>
         )
         }
