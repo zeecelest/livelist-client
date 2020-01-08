@@ -4,7 +4,11 @@ export class Spot extends Component {
   render() {
     return (
       <div className="spotItem">
-        {/* Series of things like Spot name, address, phone, tags */}
+        <h2>{this.props.name}</h2>
+          <p>{this.props.address}</p>
+          <p>{this.props.city}</p>
+          <p>{this.props.state}</p>
+          <p>{this.props.tags}</p>
       </div>
     );
   }
