@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import './LandingPage.css';
-import { Redirect } from "react-router-dom";
-// import LoginForm from '../../components/LoginForm/LoginForm';
+import LoginForm from '../../components/LoginForm/LoginForm';
 
 class LandingPage extends Component {
     constructor() {
@@ -38,7 +37,7 @@ class LandingPage extends Component {
             )  
         } else {
             return (
-                <Redirect to={"/login"} />
+                <LoginForm />
             )
         }
     }
