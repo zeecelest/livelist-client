@@ -11,7 +11,7 @@ class LoginForm extends Component {
 
   static contextType = UserContext;
 
-  state = { error: null };
+  state = { error: null};
 
   firstInput = React.createRef();
 

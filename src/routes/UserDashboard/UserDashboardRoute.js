@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PlayListContext from "../../contexts/PlayListContext";
 import ListApiService from "../../services/lists-api-service";
+import UserApiService from "../../services/lists-api-service";
 import UserLists from "../../components/UserLists/userLists";
 import ListByTags from "../../components/ListByTags/ListByTags";
 
@@ -21,22 +22,31 @@ export class UserDashboardRoute extends Component {
 
   loadUserList() {
     console.log('for user list - api service call')
+
+    // UserApiService.getUsersListByUserId(1)
+    //   .then(data => {
+    //       console.log('userlist id ' + data.id)
+    //       // this.setState({
+    //       //   // userList: data
+    //       // })
+    //   })
+    //   .catch(res => this.setState({ error: res.error }));
   }
 
   loadAllList() {
-    console.log('for all list - api service call')
+    // console.log('for all list - api service call')
   }
 
   render() {
+    console.log('user list' + this.state.userList)
     const value = {
       playlist: this.state.playlist,
       spots: this.state.words,
       userList: this.state.userList
     };
-    console.log('user list' + this.state.userList);
     return (
       <PlayListContext.Provider value={value}>
-        <UserLists userList={this.state.UserList}/>
+        <UserLists userList={this.state.userList}/>
         <ListByTags lists={this.state.lists} />
       </PlayListContext.Provider>
     );

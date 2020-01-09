@@ -19,7 +19,7 @@ class Header extends Component {
             <nav>
               <Link
                 onClick={this.handleLogoutClick}
-                to='/login'>
+                to='/'>
                 Logout
               </Link>
             </nav>
@@ -46,9 +46,10 @@ class Header extends Component {
                 </Link>
             </h4>
 
-        {TokenService.hasAuthToken()
-          ? this.renderLogoutLink()
-          : this.renderLoginLink()}
+          {TokenService.hasAuthToken()
+            ? this.renderLogoutLink()
+            : this.renderLoginLink()
+            }
       </header>
     );
   };

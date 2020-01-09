@@ -24,9 +24,11 @@ export class UserLists extends Component {
 
     return (
       <div className="display-user">
-        {this.state.userList.map((item, idx) => 
-              <p key={idx}>'User List sample: '{item.name}</p>
-        )}
+        <ul>
+          {this.state.userList.map((item, idx) => 
+                <li key={idx}>'User List sample: '{item.name}</li>
+          )}
+        </ul>
       </div>
     );
   }
