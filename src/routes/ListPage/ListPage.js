@@ -34,7 +34,6 @@ export class ListPage extends Component {
     //TODO:Once Api call is set turn this back on
     ListsApiService.getSpotsById(id)
       .then(spotsServer => {
-        console.log(spotsServer)
         this.setState({
           spots: spotsServer.spots
         })

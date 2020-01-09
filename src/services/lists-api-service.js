@@ -55,7 +55,6 @@ const ListsApiService = {
         )     
     },
     postLists(list) {
-        console.log(list);
         return fetch(`${config.API_ENDPOINT}/lists`, {
             method: 'POST',
             headers: {

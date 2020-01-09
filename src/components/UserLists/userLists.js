@@ -21,20 +21,23 @@ export class UserLists extends Component {
   static contextType = PlayListContext;
 
   renderUserList(){
-
-    return (
-      <div className="display-user">
+    if(this.props.userList){
+      return(
+        <div className="display-user">
         <ul>
-          {this.state.userList.map((item, idx) => 
-                <li key={idx}>'User List sample: '{item.name}</li>
+          {this.props.userList.map((item, idx) => 
+                <li key={idx}>{item.name}</li>
           )}
         </ul>
       </div>
+      )
+    }
+    return (
+        <h2>welp</h2>
     );
   }
 
   render() {
-    console.log('user lists'+this.state.userList)
     return (
      <>
         <section className = 'userlist-section'>
