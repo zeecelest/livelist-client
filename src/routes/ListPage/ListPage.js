@@ -24,13 +24,16 @@ export class ListPage extends Component {
       />
     ));
   };
+  
+  renderMap = () => {
+    return (<Map spots={this.state.spots} />)
+  }
 
   componentDidMount() {
     let id = this.props.match.params.id;
     //TODO:Once Api call is set turn this back on
     ListsApiService.getSpotsById(id)
       .then(spotsServer => {
-        console.log(spotsServer)
         this.setState({
           spots: spotsServer.spots
         })
@@ -42,7 +45,7 @@ export class ListPage extends Component {
     return (
       <div>
         <h1>My List</h1>
-        <Map spots={this.state.spots} />
+        {this.renderMap()}
         {this.renderSpot(this.state.spots)}
       </div>
     );

@@ -6,35 +6,32 @@ import { Link } from 'react-router-dom'
 import Button from '../../components/Button/Button'
 import './userLists.css';
 
-const payload = {
-  id: 1,
-  name: "Chips Fries Hut",
-  tags: "#bestdrinks #goodmusic",
-  address: "1214 Idaho Ave",
-  city: "Santa Monica"
-}
+
 
 export class UserLists extends Component {
   state = {
-    userList: [payload]
+    userList: []
   }
   static contextType = PlayListContext;
 
   renderUserList(){
-
-    return (
-      <div className="display-user">
+    if(this.props.userList){
+      return(
+        <div className="display-user">
         <ul>
-          {this.state.userList.map((item, idx) => 
-                <li key={idx}>'User List sample: '{item.name}</li>
-          )}
+          {this.props.userList.map((item, idx) =>{
+               return <li key={idx}>{item.name}</li>
+          })}
         </ul>
       </div>
+      )
+    }
+    return (
+        <h2>welp</h2>
     );
   }
 
   render() {
-    console.log('user lists'+this.state.userList)
     return (
      <>
         <section className = 'userlist-section'>

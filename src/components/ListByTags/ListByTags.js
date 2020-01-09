@@ -1,22 +1,13 @@
 // is given access to ALL lists through props
 // Filters the array of lists to show those with matching filters
 import React, { Component } from "react";
-const payload = [
-  {
-    list_name: "cool santa monica hangouts",
-    list_id: 1,
-    tags: "#sick #closeToWes #123"
-  },
-  {
-    list_name: "Late Night Taco Bells",
-    list_id: 2,
-    tags: "#sick #cheapeats #911"
-  }
-];
+import PlayListContext from '../../contexts/PlayListContext';
 
 export class ListByTags extends Component {
+
+  static contextType = PlayListContext;
   state = {
-    lists: payload,
+    lists: [],
     filter: "",
     filteredList: []
   };
@@ -30,7 +21,7 @@ export class ListByTags extends Component {
     let newList = [];
     let mulFilters = filter.split(" ");
     if (mulFilters.length === 1) {
-      this.state.lists.forEach(x => {
+      this.props.lists.forEach(x => {
         let newTags = x.tags.split(" ");
         if (newTags.includes(filter)) {
           newList.push(x);
@@ -38,7 +29,7 @@ export class ListByTags extends Component {
       });
       ev.target.filter.value = '';
     } else if(mulFilters.length > 1){
-        this.state.lists.forEach(x => {
+        this.props.lists.forEach(x => {
             let newTags = x.tags.split(' ');
             for(let i=0; i<mulFilters.length; i++){
                 if(newTags.includes(mulFilters[i])){
@@ -56,10 +47,10 @@ export class ListByTags extends Component {
 
   renderFilteredList = () => {
     if(this.state.filteredList.length == 0) {
-        return this.state.lists.map(list => {
+        return this.props.lists.map(list => {
             return (
                 <div key={Math.random()}>
-                    <h4>{list.list_name}</h4>
+                    <h4>{list.name}</h4>
                     <p>{list.tags}</p>
                 </div>
             )
@@ -68,7 +59,7 @@ export class ListByTags extends Component {
         return this.state.filteredList.map(list => {
             return (
                 <div key={Math.random()}>
-                    <h4>{list.list_name}</h4>
+                    <h4>{list.name}</h4>
                     <p>{list.tags}</p>
                 </div>
             )
@@ -78,6 +69,7 @@ export class ListByTags extends Component {
 
 
   render() {
+    console.log('props in the ListBy Tags component',this.props)
     return (
       <div>
         <form onSubmit={this.handleFilter}>

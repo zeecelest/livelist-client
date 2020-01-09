@@ -10,15 +10,13 @@ class Map extends React.Component {
   static contextType = PlayListContext;
   constructor(props) {
     super(props);
-
     this.state = { 
       myLocation: { lat: '', lng: '', }, 
       center: { lat: 32.72, lng: -117.16, }, 
       zoom: 15, 
-      spots: [this.props.spots], 
+      spots: [], 
     };
   }
-
 
     findMyLocation = () => {
       setTimeout(() => {
@@ -77,8 +75,7 @@ class Map extends React.Component {
             lat={this.state.myLocation.lat}
             lng={this.state.myLocation.lng}
           />
-
-          {this.state.spots.map(x => {
+          {this.props.spots.map(x => {
             return <Marker key={Math.random()}lat={x.lat} lng={x.lng} text={x.text} />;
           })}
         </GoogleMapReact>
