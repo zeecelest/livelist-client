@@ -10,7 +10,8 @@ export class UserDashboardRoute extends Component {
   state = {
     error: null,
     playlist: {},
-    userList: []
+    userList: [],
+    lists: []
   };
 
   static contextType = PlayListContext;
@@ -24,13 +25,23 @@ export class UserDashboardRoute extends Component {
         })
     })
     .catch(this.context.setError);
+    
+    ListApiService.getLists()
+    .then(data => {
+      console.log('this data from getLists call', data)
+        this.setState({
+           lists: data
+        })
+    })
+    .catch(this.context.setError);
   }
 
   render() {
     const value = {
       playlist: this.state.playlist,
       spots: this.state.words,
-      userList: this.state.userList
+      userList: this.state.userList,
+      lists:this.state.lists
     };
     return (
       <PlayListContext.Provider value={value}>

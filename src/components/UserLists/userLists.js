@@ -6,17 +6,11 @@ import { Link } from 'react-router-dom'
 import Button from '../../components/Button/Button'
 import './userLists.css';
 
-const payload = {
-  id: 1,
-  name: "Chips Fries Hut",
-  tags: "#bestdrinks #goodmusic",
-  address: "1214 Idaho Ave",
-  city: "Santa Monica"
-}
+
 
 export class UserLists extends Component {
   state = {
-    userList: [payload]
+    userList: []
   }
   static contextType = PlayListContext;
 

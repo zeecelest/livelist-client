@@ -3,7 +3,7 @@ import TokenService from './token-service'
 
 const ListsApiService = {
     getLists(){
-        fetch(`${config.API_ENDPOINT}/lists`, {
+        return fetch(`${config.API_ENDPOINT}/lists`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${TokenService.getAuthToken()}`,
