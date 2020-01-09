@@ -11,7 +11,7 @@ class RegistrationRoute extends Component {
   handlePlaylistCreation = () => {
     const { history } = this.props;
     //TODO this needs to point to the user dashboard
-    history.push("/");
+    history.push("/dashboard");
   };
 
   render() {

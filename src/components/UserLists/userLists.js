@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-expressions */
 import React, { Component } from "react";
 import PlayListContext from '../../contexts/PlayListContext';
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Button from '../../components/Button/Button'
 import './userLists.css';
 
@@ -40,7 +40,9 @@ export class UserLists extends Component {
         <section className = 'userlist-section'>
                 <h2>My Lists</h2>
                 {this.renderUserList()}
-                <Button> New Play List </Button>
+                <Button>
+                  <Link to='/newList'>New Play List</Link>
+                </Button>
                   {/* <Link to = {'/userlist'} >
                     <Button>
                         Click Me
