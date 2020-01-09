@@ -10,6 +10,7 @@ import LoginRoute from "../../routes/LoginRoute/LoginRoute";
 import NotFoundRoute from "../../routes/NotFoundRoute/NotFoundRoute";
 import ListPage from '../../routes/ListPage/ListPage';
 import NewPlaylistRoute from '../../routes/NewPlaylistRoute/NewPlaylistRoute';
+import NewSpotRoute from '../../routes/NewSpotRoute/NewSpotRoute';
 import "./App.css";
 
 export default class App extends Component {
@@ -33,6 +34,7 @@ export default class App extends Component {
             <PublicOnlyRoute path={"/register"} component={RegistrationRoute} />
             <PrivateRoute exact path={'/newlist'} component ={NewPlaylistRoute} />
             <PublicOnlyRoute path={"/login"} component={LoginRoute} />
+            <PrivateRoute path='/spot' component={NewSpotRoute} />
             <PrivateRoute path='/list/:id' component={ListPage} />
             <Route component={NotFoundRoute} />
           </Switch>
