@@ -57,19 +57,17 @@ export class ListByTags extends Component {
   renderFilteredList = () => {
     if(this.state.filteredList.length == 0) {
         return this.state.lists.map(list => {
-            console.log('list',list)
             return (
-                <div>
+                <div key={Math.random()}>
                     <h4>{list.list_name}</h4>
                     <p>{list.tags}</p>
                 </div>
             )
         })
     } else if(this.state.filteredList.length > 0) {
-        console.log('this is the filtered list',this.state.filteredList)
         return this.state.filteredList.map(list => {
             return (
-                <div>
+                <div key={Math.random()}>
                     <h4>{list.list_name}</h4>
                     <p>{list.tags}</p>
                 </div>
@@ -82,7 +80,6 @@ export class ListByTags extends Component {
   render() {
     return (
       <div>
-        {console.log(this.state)}
         <form onSubmit={this.handleFilter}>
           <button type="submit">Filter</button>
           <input type="text" placeholder="#abc#123" name="filter"></input>

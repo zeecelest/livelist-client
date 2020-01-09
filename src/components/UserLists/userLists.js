@@ -17,7 +17,7 @@ export class UserLists extends Component {
                     Click Me
                 </Button>
             </Link>
-              {this.renderUserList}
+              {this.renderUserList()}
           </div>;
   }
 
