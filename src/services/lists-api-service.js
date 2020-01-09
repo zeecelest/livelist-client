@@ -15,6 +15,19 @@ const ListsApiService = {
               : res.json()
         )     
     },
+    getUsersLists(){
+     return fetch(`${config.API_ENDPOINT}/user/lists/1`, {
+          method: 'GET',
+          headers: {
+              'authorization': `Bearer ${TokenService.getAuthToken()}`,
+          }
+      })
+      .then(res =>
+          (!res.ok)
+            ? res.json().then(e => Promise.reject(e))
+            : res.json()
+      )     
+  },
     getListsByCity(city_name){
         fetch(`${config.API_ENDPOINT}/lists/${city_name}`, {
             method: 'GET',

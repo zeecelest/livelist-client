@@ -6,6 +6,7 @@ import UserLists from "../../components/UserLists/userLists";
 import ListByTags from "../../components/ListByTags/ListByTags";
 
 export class UserDashboardRoute extends Component {
+  static contextType = PlayListContext;
   state = {
     error: null,
     playlist: {},
@@ -16,25 +17,14 @@ export class UserDashboardRoute extends Component {
 
   //get all lists for a specific user
   componentDidMount() {
-      this.loadUserList();
-      this.loadAllList();
-  }
-
-  loadUserList() {
-    console.log('for user list - api service call')
-
-    // UserApiService.getUsersListByUserId(1)
-    //   .then(data => {
-    //       console.log('userlist id ' + data.id)
-    //       // this.setState({
-    //       //   // userList: data
-    //       // })
-    //   })
-    //   .catch(res => this.setState({ error: res.error }));
-  }
-
-  loadAllList() {
-    // console.log('for all list - api service call')
+    ListApiService.getUsersLists()
+    .then(data => {
+     console.log('data from the server call to return all lists by the user',data)
+        this.setState({
+           userList: data
+        })
+    })
+    .catch(this.context.setError);
   }
 
   render() {

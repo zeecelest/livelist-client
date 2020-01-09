@@ -24,6 +24,10 @@ export class ListPage extends Component {
       />
     ));
   };
+  
+  renderMap = () => {
+    return (<Map spots={this.state.spots} />)
+  }
 
   componentDidMount() {
     let id = this.props.match.params.id;
@@ -42,7 +46,7 @@ export class ListPage extends Component {
     return (
       <div>
         <h1>My List</h1>
-        <Map spots={this.state.spots} />
+        {this.renderMap()}
         {this.renderSpot(this.state.spots)}
       </div>
     );
