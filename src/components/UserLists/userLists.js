@@ -19,9 +19,9 @@ export class UserLists extends Component {
       return(
         <div className="display-user">
         <ul>
-          {this.props.userList.map((item, idx) => 
-                <li key={idx}>{item.name}</li>
-          )}
+          {this.props.userList.map((item, idx) =>{
+               return <li key={idx}>{item.name}</li>
+          })}
         </ul>
       </div>
       )
