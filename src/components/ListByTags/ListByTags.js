@@ -2,6 +2,7 @@
 // Filters the array of lists to show those with matching filters
 import React, { Component } from "react";
 import PlayListContext from '../../contexts/PlayListContext';
+import { Link } from 'react-router-dom'
 
 export class ListByTags extends Component {
 
@@ -50,8 +51,10 @@ export class ListByTags extends Component {
         return this.props.lists.map(list => {
             return (
                 <div key={Math.random()}>
-                    <h4>{list.name}</h4>
-                    <p>{list.tags}</p>
+                  <Link to={`/list/${this.props.lists[0].id}`}>
+                      <h4>{list.name}</h4>
+                      <p>{list.tags}</p>
+                  </Link>
                 </div>
             )
         })
@@ -59,8 +62,11 @@ export class ListByTags extends Component {
         return this.state.filteredList.map(list => {
             return (
                 <div key={Math.random()}>
+                  <Link to={`/list/${this.props.lists[0].id}`}>
                     <h4>{list.name}</h4>
                     <p>{list.tags}</p>
+                  </Link>
+                    
                 </div>
             )
         })

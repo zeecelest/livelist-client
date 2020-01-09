@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import PlayListContext from '../../contexts/PlayListContext';
 import { Link } from 'react-router-dom'
 import Button from '../../components/Button/Button'
+// import ListPage from '../../routes/ListPage/ListPage'
 import './userLists.css';
 
 
@@ -20,7 +21,7 @@ export class UserLists extends Component {
         <div className="display-user">
         <ul>
           {this.props.userList.map((item, idx) =>{
-               return <li key={idx}>{item.name}</li>
+               return <li key={idx}><Link to={`/list/${this.props.userList[0].id}`}>{item.name}</Link></li>
           })}
         </ul>
       </div>
