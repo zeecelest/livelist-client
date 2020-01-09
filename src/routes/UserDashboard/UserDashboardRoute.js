@@ -8,23 +8,35 @@ export class UserDashboardRoute extends Component {
   state = {
     error: null,
     playlist: {},
-    spots: {}
+    userList: []
   };
 
   static contextType = PlayListContext;
 
   //get all lists for a specific user
-  componentDidMount() {}
+  componentDidMount() {
+      this.loadUserList();
+      this.loadAllList();
+  }
+
+  loadUserList() {
+    console.log('for user list - api service call')
+  }
+
+  loadAllList() {
+    console.log('for all list - api service call')
+  }
 
   render() {
     const value = {
       playlist: this.state.playlist,
-      spots: this.state.words
+      spots: this.state.words,
+      userList: this.state.userList
     };
+    console.log('user list' + this.state.userList);
     return (
       <PlayListContext.Provider value={value}>
-        <h2>Users Dashboard</h2>
-        <UserLists />
+        <UserLists userList={this.state.UserList}/>
         <ListByTags lists={this.state.lists} />
       </PlayListContext.Provider>
     );
