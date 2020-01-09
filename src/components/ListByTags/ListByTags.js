@@ -47,6 +47,7 @@ export class ListByTags extends Component {
 
   renderFilteredList = () => {
     if(this.state.filteredList.length == 0) {
+      console.log(this.props)
         return this.props.lists.map(list => {
             return (
                 <div key={Math.random()}>
