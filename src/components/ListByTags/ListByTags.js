@@ -26,7 +26,7 @@ export class ListByTags extends Component {
   // setup a render to show the filtered lists and not show the all lists.
   handleFilter = ev => {
     ev.preventDefault();
-    const filter = ev.target.filter.value;
+    let filter = ev.target.filter.value;
     let newList = [];
     let mulFilters = filter.split(" ");
     if (mulFilters.length === 1) {
@@ -36,6 +36,7 @@ export class ListByTags extends Component {
           newList.push(x);
         }
       });
+      ev.target.filter.value = '';
     } else if(mulFilters.length > 1){
         this.state.lists.forEach(x => {
             let newTags = x.tags.split(' ');
@@ -44,6 +45,7 @@ export class ListByTags extends Component {
                     newList.push(x);
                 }
             }
+            ev.target.filter.value = '';
         })
     }
 
@@ -85,6 +87,7 @@ export class ListByTags extends Component {
           <button type="submit">Filter</button>
           <input type="text" placeholder="#abc#123" name="filter"></input>
         </form>
+        <h4>Browse Lists</h4>
         {this.renderFilteredList()}
       </div>
     );
