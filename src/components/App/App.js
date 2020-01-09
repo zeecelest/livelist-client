@@ -9,6 +9,7 @@ import RegistrationRoute from "../../routes/RegistrationRoute/RegistrationRoute"
 import LoginRoute from "../../routes/LoginRoute/LoginRoute";
 import NotFoundRoute from "../../routes/NotFoundRoute/NotFoundRoute";
 import ListPage from '../../routes/ListPage/ListPage';
+import NewPlaylistRoute from '../../routes/NewPlaylistRoute/NewPlaylistRoute';
 import "./App.css";
 
 export default class App extends Component {
@@ -30,6 +31,7 @@ export default class App extends Component {
           <PublicOnlyRoute exact path={'/'} component={LandingRoute} />
             <PrivateRoute exact path={'/dashboard'}component={UserDashboardRoute}/>
             <PublicOnlyRoute path={"/register"} component={RegistrationRoute} />
+            <PrivateRoute exact path={'/newlist'} component ={NewPlaylistRoute} />
             <PublicOnlyRoute path={"/login"} component={LoginRoute} />
             <PrivateRoute path='/list/:id' component={ListPage} />
             <Route component={NotFoundRoute} />
