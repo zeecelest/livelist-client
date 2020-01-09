@@ -96,6 +96,9 @@ class NewSpotForm  extends Component {
             return this.setState({ error: "Please select a state." });
         }
         console.log('posting' + name.value)
+        //Adds a spot to a list
+
+        //need to post as well the lists_id
         SpotsApiService.postSpots({
             name: name.value,
             tags: tags.value,
@@ -114,6 +117,8 @@ class NewSpotForm  extends Component {
         .catch(res => {
             this.setState({ error: res.error });
         });
+
+        //post in lists_spot table
     }
 
     handleChange = ev => {
