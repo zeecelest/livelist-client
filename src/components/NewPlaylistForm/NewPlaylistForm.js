@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Input, Required, Label } from "../Form/Form";
-import AuthApiService from "../../services/auth-api-service";
+import ListsApiService from "../../services/lists-api-service";
 import Button from "../Button/Button";
+
+// TODO - clean the input .toLowerCase and _ for spaces in the city
+// TODO - clean the tags, must have space between #
+// TODO - incorporate the API call to POST the new list
 
 class NewPlaylistForm extends Component {
   static defaultProps = {
@@ -91,40 +95,39 @@ class NewPlaylistForm extends Component {
 
   handleSubmit = ev => {
     ev.preventDefault();
-    const { name, state, city, tags, is_public } = ev.target;
+    const { name, state, city, tags } = ev.target;
+    let is_public = this.state.is_public
     if (state.value === "") {
       return this.setState({ error: "Please select a state." });
     }
-    console.log("name", name.value);
-    console.log("city", city.value);
-    console.log("state", state.value);
-    console.log("tags", tags.value);
-    console.log("is_public", this.state.is_public);
-    console.log(this.state);
+    // console.log("name", name.value);
+    // console.log("city", city.value);
+    // console.log("state", state.value);
+    // console.log("tags", tags.value);
+    // console.log("is_public", this.state.is_public);
     // TODO needs to be converted to the API call for posting a new Playlist
-    // AuthApiService.postPlaylist({
-    //   name: name.value,
-    //   city: city.value,
-    //   state: state.value,
-    //   tags: tags.value,
-    //   is_public: is_public.value
-    // })
-    //   .then(playlist => {
-    //     name.value = "";
-    //     state.value = "";
-    //     city.value = "";
-    //     tags.value = "";
-    //     is_public.value = "";
-    //     this.props.onPlaylistCreation();
-    //   })
-    //   .catch(res => {
-    //     this.setState({ error: res.error });
-    //   });
+    ListsApiService.postLists({
+      name: name.value,
+      city: city.value,
+      state: state.value,
+      tags: tags.value,
+      is_public
+    })
+      .then(playlist => {
+        name.value = "";
+        state.value = "";
+        city.value = "";
+        tags.value = "";
+        this.props.onPlaylistCreation();
+      })
+      .catch(res => {
+        this.setState({ error: res.error });
+      });
   };
 
   handleChange = ev => {
     const target = ev.target;
-    const value = (target.type === "checkbox" ? !target.checked : target.value);
+    const value = target.type === "checkbox" ? !target.checked : target.value;
     const name = target.name;
 
     this.setState({

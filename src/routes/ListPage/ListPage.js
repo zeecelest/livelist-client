@@ -6,61 +6,14 @@ import Map from "../../components/Map/Map";
 
 export class ListPage extends Component {
   static contextType = PlayListContext;
+  state = {
+    spots: []
+  }
 
-  spotsFromServer = {
-    list_name: "list name",
-    list_id: 1,
-    tags: "#sick #cheap",
-    created_by: "username",
-    liked: 10,
-    tried: 100,
-    spots: [
-      {
-        id: 1,
-        name: "spots name",
-        tags: "#bestdrinks #goodmusic",
-        address: "361 fake st.",
-        city: "city name",
-        state: "ST",
-        lat: 12.091823,
-        lng: 31.31525
-      },
-      {
-        id: 1,
-        name: "spots name",
-        tags: "#bestdrinks #goodmusic",
-        address: "361 fake st.",
-        city: "city name",
-        state: "ST",
-        lat: 12.091823,
-        lng: 31.31525
-      },
-      {
-        id: 1,
-        name: "spots name",
-        tags: "#bestdrinks #goodmusic",
-        address: "361 fake st.",
-        city: "city name",
-        state: "ST",
-        lat: 12.091823,
-        lng: 31.31525
-      },
-      {
-        id: 1,
-        name: "home",
-        tags: "#bestdrinks #goodmusic",
-        address: "361 fake st.",
-        city: "city name",
-        state: "ST",
-        lat: 34.001522,
-        lng: -118.437215
-      }
-    ]
-  };
 
 
   renderSpot = () => {
-    return this.spotsFromServer.spots.map(spot => (
+    return this.state.spots.map(spot => (
       <Spot
         key={Math.random()}
         name={spot.name}
@@ -75,20 +28,22 @@ export class ListPage extends Component {
   componentDidMount() {
     let id = this.props.match.params.id;
     //TODO:Once Api call is set turn this back on
-    // ListsApiService.getSpotsById(id)
-    //   .then(spotsServer => {
-    //     this.context.setSpots(spotsServer);
-    //   })
-    //   .catch(this.context.setError);
+    ListsApiService.getSpotsById(id)
+      .then(spotsServer => {
+        console.log(spotsServer)
+        this.setState({
+          spots: spotsServer.spots
+        })
+      })
+      .catch(this.context.setError);
   }
 
   render() {
     return (
       <div>
         <h1>My List</h1>
-        {/* After API is set change these to props or context */}
-        <Map spots={this.spotsFromServer.spots} />
-        {this.renderSpot(this.spotsFromServer)}
+        <Map spots={this.state.spots} />
+        {this.renderSpot(this.state.spots)}
       </div>
     );
   }
