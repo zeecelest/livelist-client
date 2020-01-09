@@ -24,7 +24,7 @@ export class UserDashboardRoute extends Component {
   }
 
   loadAllList() {
-    console.log('for all list - api service call')
+    
   }
 
   render() {
