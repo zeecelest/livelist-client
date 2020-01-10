@@ -96,6 +96,7 @@ class NewSpotForm  extends Component {
             return this.setState({ error: "Please select a state." });
         }
         console.log('posting' + name.value)
+        
         //Adds a spot to a list
 
         //need to post as well the lists_id
@@ -103,7 +104,7 @@ class NewSpotForm  extends Component {
             name: name.value,
             tags: tags.value,
             address: address.value,
-            city: city.value,
+            city: city.value.split(' ').join('_').trim(),
             state: state.value
         })
         .then(spot => {
@@ -117,15 +118,13 @@ class NewSpotForm  extends Component {
         .catch(res => {
             this.setState({ error: res.error });
         });
-
-        //post in lists_spot table
     }
 
     handleChange = ev => {
         const target = ev.target;
         const value = target.value;   
         const name = target.name;
-
+        console.log('city value' + target.value.split(' ').join('_').trim())
         this.setState({
         [name]: value
         });

@@ -58,8 +58,8 @@ export class ListByTags extends Component {
     } else if (this.state.filteredList.length > 0) {
       return this.state.filteredList.map(list => {
         return (
-          <div key={Math.random()}>
-            <Link to={`/list/${list.id}`} className="listItem filtered">
+          <div key={Math.random()} className="listItem filtered">
+            <Link to={`/list/${list.id}`} >
               <h4>{list.name}</h4>
             </Link>
             <p>{list.tags}</p>

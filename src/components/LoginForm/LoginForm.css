@@ -1,6 +1,6 @@
 .loginForm{
-    color: white;
-    background-color: grey;
+    color: #4267b2;
+    background-color: white;
     border-radius: 0;
 }
 .loginTitle{
@@ -8,9 +8,11 @@
 }
 #login-username-input{
     border-radius: 5px;
+    background-color: rgb(241, 241, 241);
 }
 #login-password-input{
     border-radius: 5px;
+    background-color: rgb(241, 241, 241);
 }
 .loginTitle{
     margin-top: 0;

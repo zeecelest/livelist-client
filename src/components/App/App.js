@@ -42,7 +42,7 @@ export default class App extends Component {
               component={NewPlaylistRoute}
             />
             <PublicOnlyRoute path={"/login"} component={LoginRoute} />
-            <PrivateRoute path="/newSpot" component={NewSpotRoute} />
+            <PrivateRoute exact path="/newSpot" component={NewSpotRoute} />
             <PrivateRoute path="/list/:id" component={ListPage} />
             <Route component={NotFoundRoute} />
           </Switch>

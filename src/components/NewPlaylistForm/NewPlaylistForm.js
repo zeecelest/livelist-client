@@ -108,7 +108,7 @@ class NewPlaylistForm extends Component {
     // TODO needs to be converted to the API call for posting a new Playlist
     ListsApiService.postLists({
       name: name.value,
-      city: city.value,
+      city: city.value.split(' ').join('_').trim(),
       state: state.value,
       tags: tags.value,
       is_public
@@ -130,6 +130,10 @@ class NewPlaylistForm extends Component {
     const value = target.type === "checkbox" ? !target.checked : target.value;
     const name = target.name;
 
+    //for testing only
+    const cityValue = target.value.split(' ').join('_')
+    console.log('city value' + cityValue)
+
     this.setState({
       [name]: value
     });
@@ -141,6 +145,7 @@ class NewPlaylistForm extends Component {
   }
 
   render() {
+     
     const { error } = this.state;
     return (
       <form onSubmit={this.handleSubmit} className="newPlaylistForm">

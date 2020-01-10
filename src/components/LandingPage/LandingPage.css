@@ -4,11 +4,11 @@ li {
 
 .nav-login{
     text-decoration: none;
-    color: white;
+    color: #4267b2;
     margin-top: 2%;
-    background-color: blue;
+    background-color:white;
     border-radius: 25px;
-    width: 40%;
+    width: 30%;
     line-height: 1.75rem;
     align-self: center;
 }
@@ -16,20 +16,21 @@ li {
     text-decoration: none;
     color:white;
     margin-top: 2%;
-    background-color: green;
+    background-color: #4CAF50;
     border-radius: 25px;
-    width: 40%;
+    width: 30%;
     line-height: 1.75rem;
     align-self: center;
 }
 #loginFormContainer{
     display:flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-evenly;
     width: 100%;
     margin-top: 10%;
 }
 .descBody{
+    color: white;
     margin-left: 10%;
     margin-right:10%;
     margin-top: 10%;
@@ -50,4 +51,8 @@ li {
     height: 200px;
     background-color: blue;
     border-radius: 10px;
+}
+.mobile-view{
+    display: flex;
+    flex-direction: row;
 }
