@@ -4,7 +4,7 @@
     align-self: flex-end;
 }
 .headerContainer{
-    background-color: blue;
+    background-color: rgba(52, 42, 232, 0.281);
     width:100%;
     position: absolute;
     top: 0;
