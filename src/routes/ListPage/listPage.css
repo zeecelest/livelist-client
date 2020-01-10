@@ -1,14 +1,15 @@
 .myListName{
-    color: green;
+    color: white;
     font-size: 2rem;
 }
 .spotName{
-    color: blue;
+    color: #4267b2;
 }
 .spotItem{
     display: flex;
     flex-direction: column;
     border: 1px solid black;
+    background-color: white;
     border-radius: 25px;
     width: 100%;
     margin-bottom: 10%;
