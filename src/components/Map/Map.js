@@ -64,7 +64,7 @@ class Map extends React.Component {
   
   render() {
     return (
-      <div style={{ height: "50vh", width: "50%", margin: "25vh auto" }}>
+      <div style={{ height: "20vh", width: "100%", margin: "10vh auto" }} className='map'>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_API_KEY }}
           defaultZoom={this.state.zoom}

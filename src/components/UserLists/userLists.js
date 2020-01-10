@@ -22,18 +22,55 @@ export class UserLists extends Component {
     if (this.props.userList) {
       return (
         <div className="display-user">
-          <ul>
             {this.props.userList.map((item, idx) => {
               // This will likely need to be
               return (
-                <li key={idx} onClick={this.handleClickList}>
+                <div className='listItem'>
+                <p key={idx} onClick={this.handleClickList}>
                   <Link to={`/list/${item.id}`}>
                     {item.name}
                   </Link>
-                </li>
+                </p>
+                </div>
               );
             })}
-          </ul>
+            {this.props.userList.map((item, idx) => {
+              // This will likely need to be
+              return (
+                <div className='listItem'>
+                <p key={idx} onClick={this.handleClickList}>
+                  <Link to={`/list/${item.id}`}>
+                    {item.name}
+                  </Link>
+                </p>
+                </div>
+              );
+            })}
+            {this.props.userList.map((item, idx) => {
+              // This will likely need to be
+              return (
+                <div className='listItem'>
+                <p key={idx} onClick={this.handleClickList}>
+                  <Link to={`/list/${item.id}`}>
+                    {item.name}
+                  </Link>
+                </p>
+                </div>
+              );
+            })}
+            {this.props.userList.map((item, idx) => {
+              // This will likely need to be
+              return (
+                <div className='listItem'>
+                <p key={idx} onClick={this.handleClickList}>
+                  <Link to={`/list/${item.id}`}>
+                    {item.name}
+                  </Link>
+                </p>
+                </div>
+              );
+            })}
+
         </div>
       );
     }
@@ -43,12 +80,12 @@ export class UserLists extends Component {
   render() {
     return (
       <>
-        <section className="userlist-section">
-          <h2>My Lists</h2>
+        <section className="userList-section">
+          <h2 className='myList-title'>My Lists</h2>
           {this.renderUserList()}
-          <Button>
+          <button id='newPlaylistButton'>
             <Link to="/newList">New Play List</Link>
-          </Button>
+          </button>
           {/* <Link to = {'/userlist'} >
                     <Button>
                         Click Me

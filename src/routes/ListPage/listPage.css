@@ -1,0 +1,17 @@
+.myListName{
+    color: green;
+    font-size: 2rem;
+}
+.spotName{
+    color: blue;
+}
+.spotItem{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 25px;
+    width: 100%;
+    margin-bottom: 10%;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
