@@ -12,11 +12,11 @@
     align-items: center;
 }
 #filterForm{
-    color: red;
+    color: white;
     margin-top: 5%;
 }
 .filterButton{
-    color: red;
+    color: #4267b2;
     order: 2;
     border-radius: 5px;
 }
@@ -28,6 +28,8 @@
     margin-bottom: 0;
 }
 .filterButtonContainer{
-
     display: flex;
+}
+.newPlaylistButtonText{
+    color:white;
 }
