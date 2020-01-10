@@ -1,0 +1,33 @@
+.filtered {
+    margin: 0;
+    margin-bottom: 5%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.filteredContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#filterForm{
+    color: red;
+    margin-top: 5%;
+}
+.filterButton{
+    color: red;
+    order: 2;
+    border-radius: 5px;
+}
+.filterField{
+    text-align: right;
+}
+.filterFormTitle{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.filterButtonContainer{
+
+    display: flex;
+}

@@ -3,14 +3,13 @@ import ListsApiService from "../../services/lists-api-service";
 import PlayListContext from "../../contexts/PlayListContext";
 import Spot from "../../components/Spot/Spot";
 import Map from "../../components/Map/Map";
+import "./listPage.css";
 
 export class ListPage extends Component {
   static contextType = PlayListContext;
   state = {
     spots: []
-  }
-
-
+  };
 
   renderSpot = () => {
     return this.state.spots.map(spot => (
@@ -24,10 +23,10 @@ export class ListPage extends Component {
       />
     ));
   };
-  
+
   renderMap = () => {
-    return (<Map spots={this.state.spots} />)
-  }
+    return <Map spots={this.state.spots} id='map'/>;
+  };
 
   componentDidMount() {
     let id = this.props.match.params.id;
@@ -36,7 +35,7 @@ export class ListPage extends Component {
       .then(spotsServer => {
         this.setState({
           spots: spotsServer.spots
-        })
+        });
       })
       .catch(this.context.setError);
   }
@@ -44,8 +43,8 @@ export class ListPage extends Component {
   render() {
     return (
       <div>
-        <h1>My List</h1>
         {this.renderMap()}
+        <h4 className='myListName'>List Name</h4>
         {this.renderSpot(this.state.spots)}
       </div>
     );

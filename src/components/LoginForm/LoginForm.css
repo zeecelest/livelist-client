@@ -1,0 +1,18 @@
+.loginForm{
+    color: white;
+    background-color: grey;
+    border-radius: 0;
+}
+.loginTitle{
+    color: white;
+}
+#login-username-input{
+    border-radius: 5px;
+}
+#login-password-input{
+    border-radius: 5px;
+}
+.loginTitle{
+    margin-top: 0;
+    margin-bottom: 5%;
+}
