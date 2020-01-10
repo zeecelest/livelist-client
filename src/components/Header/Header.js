@@ -12,16 +12,18 @@ class Header extends Component {
   };
 
   renderLogoutLink() {
-    return (
-      <div className="userLogin">
-        <span>Hello, {this.context.user.name}</span>
-        <nav>
-          <Link onClick={this.handleLogoutClick} to="/">
-            Logout
-          </Link>
-        </nav>
-      </div>
-    );
+    if(TokenService.hasAuthToken()) {
+      return (
+        <div className="userLogin">
+          <span>Welcome back, {this.context.user.name}</span>
+          <nav>
+            <Link onClick={this.handleLogoutClick} to="/">
+              Logout
+            </Link>
+          </nav>
+        </div>
+      );
+    }
   }
 
   // renderLoginLink() {
@@ -42,11 +44,11 @@ class Header extends Component {
             Social Playlist
           </Link>
         </h4>
-
-        {/* {TokenService.hasAuthToken()
+        
+        {TokenService.hasAuthToken()
             ? this.renderLogoutLink()
-            : this.renderLoginLink()
-            } */}
+            : ''
+            }
       </header>
     );
   }

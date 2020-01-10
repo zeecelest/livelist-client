@@ -11,7 +11,7 @@ class NewSpotRoute extends Component {
     handleSpotCreation = () => {
         const { history } = this.props;
         //don't know the correct route yet
-        history.push('/spot')
+        history.push('/newSpot')
     };
 
     render() {

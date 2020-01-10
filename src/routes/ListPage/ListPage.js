@@ -3,6 +3,8 @@ import ListsApiService from "../../services/lists-api-service";
 import PlayListContext from "../../contexts/PlayListContext";
 import Spot from "../../components/Spot/Spot";
 import Map from "../../components/Map/Map";
+import { Link } from "react-router-dom";
+import Button from "../../components/Button/Button";
 
 export class ListPage extends Component {
   static contextType = PlayListContext;
@@ -47,7 +49,11 @@ export class ListPage extends Component {
         <h1>My List</h1>
         {this.renderMap()}
         {this.renderSpot(this.state.spots)}
+        <Button>
+          <Link to="/newSpot">New Spot</Link>
+        </Button>
       </div>
+      
     );
   }
 }
