@@ -2,9 +2,6 @@ li {
     list-style: none;
 }
 
-@media only screen and (max-width: 500px) {
-    .loginForm { display: none; }
-}
 .nav-login{
     text-decoration: none;
     color: white;

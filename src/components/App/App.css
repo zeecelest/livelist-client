@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: blue;
+  background-color: white;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -19,4 +19,7 @@ body {
 .h1 {
   color: lightblue;
   font-size: 2rem;
+}
+a{
+  text-decoration: none;
 }
