@@ -2,26 +2,21 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 body {
-  background-color: #282c34;
+  background-color: blue;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 1rem;
+  color: black;
 }
 
 .App-link {
   color: #61dafb;
 }
-.h1{
+.h1 {
   color: lightblue;
   font-size: 2rem;
 }

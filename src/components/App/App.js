@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import LandingRoute from "../../routes/LandingRoute/LandingRoute";
-import UserDashboardRoute from '../../routes/UserDashboard/UserDashboardRoute';
-import Header from '../Header/Header';
-import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import UserDashboardRoute from "../../routes/UserDashboard/UserDashboardRoute";
+import Header from "../Header/Header";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import PublicOnlyRoute from "../PublicOnlyRoute/PublicOnlyRoute";
 import RegistrationRoute from "../../routes/RegistrationRoute/RegistrationRoute";
 import LoginRoute from "../../routes/LoginRoute/LoginRoute";
 import NotFoundRoute from "../../routes/NotFoundRoute/NotFoundRoute";
-import ListPage from '../../routes/ListPage/ListPage';
-import NewPlaylistRoute from '../../routes/NewPlaylistRoute/NewPlaylistRoute';
-import NewSpotRoute from '../../routes/NewSpotRoute/NewSpotRoute';
+import ListPage from "../../routes/ListPage/ListPage";
+import NewPlaylistRoute from "../../routes/NewPlaylistRoute/NewPlaylistRoute";
+import NewSpotRoute from "../../routes/NewSpotRoute/NewSpotRoute";
 import "./App.css";
 
 export default class App extends Component {
@@ -29,13 +29,21 @@ export default class App extends Component {
         <main>
           {hasError && <p>There was an error! Oh no!</p>}
           <Switch>
-          <PublicOnlyRoute exact path={'/'} component={LandingRoute} />
-            <PrivateRoute exact path={'/dashboard'}component={UserDashboardRoute}/>
+            <PublicOnlyRoute exact path={"/"} component={LandingRoute} />
+            <PrivateRoute
+              exact
+              path={"/dashboard"}
+              component={UserDashboardRoute}
+            />
             <PublicOnlyRoute path={"/register"} component={RegistrationRoute} />
-            <PrivateRoute exact path={'/newlist'} component ={NewPlaylistRoute} />
+            <PrivateRoute
+              exact
+              path={"/newlist"}
+              component={NewPlaylistRoute}
+            />
             <PublicOnlyRoute path={"/login"} component={LoginRoute} />
-            <PrivateRoute path='/spot' component={NewSpotRoute} />
-            <PrivateRoute path='/list/:id' component={ListPage} />
+            <PrivateRoute path="/spot" component={NewSpotRoute} />
+            <PrivateRoute path="/list/:id" component={ListPage} />
             <Route component={NotFoundRoute} />
           </Switch>
         </main>

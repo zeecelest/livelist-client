@@ -2,6 +2,55 @@ li {
     list-style: none;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 500px) {
     .loginForm { display: none; }
+}
+.nav-login{
+    text-decoration: none;
+    color: white;
+    margin-top: 2%;
+    background-color: blue;
+    border-radius: 25px;
+    width: 40%;
+    line-height: 1.75rem;
+    align-self: center;
+}
+.nav-signup{
+    text-decoration: none;
+    color:white;
+    margin-top: 2%;
+    background-color: green;
+    border-radius: 25px;
+    width: 40%;
+    line-height: 1.75rem;
+    align-self: center;
+}
+#loginFormContainer{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10%;
+}
+.descBody{
+    margin-left: 10%;
+    margin-right:10%;
+    margin-top: 10%;
+}
+.examplesContainer{
+    margin-top: -20%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.ex01{
+    width: 150px;
+    height: 200px;
+    background-color: red;
+    border-radius: 10px;
+}
+.ex02{
+    width: 150px;
+    height: 200px;
+    background-color: blue;
+    border-radius: 10px;
 }
