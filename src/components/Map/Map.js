@@ -61,10 +61,25 @@ class Map extends React.Component {
         }
       });
     };
-  
+  centerList = () => {
+    let lat = 0
+    let lng = 0
+    this.props.spots.forEach(place => {
+      lat += parseFloat(place.lat)
+      lng += parseFloat(place.lng)
+    })
+    lat = lat / this.props.spots.length
+    lng = lng / this.props.spots.length
+    this.setState({
+      center: {
+        lat,
+        lng
+      }
+    })
+  }
   render() {
     return (
-      <div style={{ height: "20vh", width: "100%", margin: "10vh auto" }} className='map'>
+      <div style={{ height: "500px", width: "500px", margin: "10vh auto" }} className='map'>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_API_KEY }}
           defaultZoom={this.state.zoom}
@@ -76,10 +91,11 @@ class Map extends React.Component {
             lng={this.state.myLocation.lng}
           />
           {this.props.spots.map(x => {
-            return <Marker key={Math.random()}lat={x.lat} lng={x.lng} text={x.text} />;
+            return <Marker key={Math.random()}lat={x.lat} lng={x.lng} text={x.name} />;
           })}
         </GoogleMapReact>
         <button onClick={e => this.handleButton(e)}>Current</button>
+        <button onClick={f => this.centerList(f)}>Center</button>
       </div>
     );
   }
