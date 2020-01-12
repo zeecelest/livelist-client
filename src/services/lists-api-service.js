@@ -16,7 +16,7 @@ const ListsApiService = {
         )     
     },
     getUsersLists(){
-     return fetch(`${config.API_ENDPOINT}/user/lists/${TokenService.getUserId()}`, {
+     return fetch(`${config.API_ENDPOINT}/lists/user`, {
           method: 'GET',
           headers: {
               'authorization': `Bearer ${TokenService.getAuthToken()}`,
