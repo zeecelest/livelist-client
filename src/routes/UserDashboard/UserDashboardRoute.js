@@ -20,6 +20,7 @@ export class UserDashboardRoute extends Component {
   componentDidMount() {
     ListApiService.getUsersLists()
     .then(data => {
+      console.log('data from the server on userList call', data)
         this.setState({
            userList: data
         })
@@ -37,6 +38,7 @@ export class UserDashboardRoute extends Component {
   }
 
   render() {
+    console.log('state in the UserDashboard',this.state)
     const value = {
       playlist: this.state.playlist,
       spots: this.state.words,
