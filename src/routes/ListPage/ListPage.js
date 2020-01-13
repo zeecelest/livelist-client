@@ -14,9 +14,11 @@ export class ListPage extends Component {
   };
 
   renderSpot = () => {
+    console.log('user_id listpage' + this.props.user_id)
     return this.state.spots.map(spot => (
-      <Spot
+        <Spot
         key={Math.random()}
+        id={spot.id}
         name={spot.name}
         address={spot.address}
         city={spot.city}
@@ -32,6 +34,7 @@ export class ListPage extends Component {
 
   componentDidMount() {
     let id = this.props.match.params.id;
+    console.log('id comdidmount' +id )
     //TODO:Once Api call is set turn this back on
     ListsApiService.getSpotsById(id)
       .then(spotsServer => {
@@ -46,6 +49,7 @@ export class ListPage extends Component {
     console.log(this.props)
     console.log(this.state)
     console.log(this.context)
+    console.log(this.props.user_id)
     return (
       <div>
         {this.renderMap()}

@@ -47,9 +47,18 @@ export class UserLists extends Component {
         <section className="userList-section">
           <h2 className='myList-title'>My Lists</h2>
           {this.renderUserList()}
-          <button id='newPlaylistButton'>
-            <Link to="/newList" className='newPlaylistButtonText'>New Play List</Link>
-          </button>
+          <div>
+            <button id='newPlaylistButton'>
+              <Link to="/newList" className='newPlaylistButtonText'>New Play List</Link>
+            </button>
+            <button id='editPlaylistButton'>
+              <Link to="/editList" className='editPlaylistButtonText'>Edit Play List</Link>
+            </button>
+            <button id='deletePlaylistButton'>
+              <Link to="/deleteList" className='deletePlaylistButtonText'>Delete Play List</Link>
+            </button>
+          </div>
+         
         </section>
       </>
     );
