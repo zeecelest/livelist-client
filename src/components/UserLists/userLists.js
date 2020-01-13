@@ -19,7 +19,10 @@ export class UserLists extends Component {
   };
 
   renderUserList() {
-    if (this.props.userList > 0) {
+    if(this.props.userList.length === 0){
+      return <h2>no lists</h2>;
+    }
+    if (this.props.userList.length > 0) {
       return (
         <div className="display-user">
             {this.props.userList.map((item, idx) => {
