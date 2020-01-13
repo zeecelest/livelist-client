@@ -9,13 +9,16 @@ class Map extends React.Component {
   static contextType = PlayListContext;
   constructor(props) {
     super(props);
+    this.myRef = React.createRef();
     this.state = {
       myLocation: { lat: "", lng: "" },
       center: { lat: 32.72, lng: -117.16 },
       zoom: 15,
-      spots: []
+      spots: [],
     };
   }
+ 
+
 
   findMyLocation = () => {
     setTimeout(() => {

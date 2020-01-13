@@ -15,19 +15,21 @@ export class ListPage extends Component {
 
   renderSpot = () => {
     return this.state.spots.map(spot => (
-      <Spot
-        key={Math.random()}
-        name={spot.name}
-        address={spot.address}
-        city={spot.city}
-        state={spot.state}
-        tags={spot.tags}
-      />
+      <div id={spot.name}>
+        <Spot
+          key={Math.random()}
+          name={spot.name}
+          address={spot.address}
+          city={spot.city}
+          state={spot.state}
+          tags={spot.tags}
+        />
+      </div>
     ));
   };
 
   renderMap = () => {
-    return <Map spots={this.state.spots} id='map'/>;
+    return <Map spots={this.state.spots} id="map" />;
   };
 
   componentDidMount() {
@@ -43,26 +45,27 @@ export class ListPage extends Component {
   }
 
   render() {
-    console.log(this.props)
-    console.log(this.state)
-    console.log(this.context)
+    console.log(this.props);
+    console.log(this.state);
+    console.log(this.context);
     return (
       <div>
         {this.renderMap()}
-        <h4 className='myListName'>List Name</h4>
+        <h4 className="myListName">List Name</h4>
         {this.renderSpot(this.state.spots)}
         <Button>
-          <Link 
+          <Link
             to={{
-              pathname: '/newSpot',
+              pathname: "/newSpot",
               props: {
                 list_id: this.props.match.params.id
               }
             }}
-          >New Spot</Link>
+          >
+            New Spot
+          </Link>
         </Button>
       </div>
-      
     );
   }
 }
