@@ -21,10 +21,14 @@
     background-color: white;
     margin-right: 5%;
     height: 100px;
+    padding: .5rem 1rem;
     border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+::-webkit-scrollbar{
+    background-color: transparent;
 }
 
 #newPlaylistButton{

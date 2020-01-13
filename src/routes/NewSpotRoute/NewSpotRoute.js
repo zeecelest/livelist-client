@@ -10,7 +10,7 @@ class NewSpotRoute extends Component {
 
   handleSpotCreation = () => {
     const {history} = this.props;
-    history.push('/newSpot');
+    history.push('/dashboard');
   };
 
   render() {

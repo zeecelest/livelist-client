@@ -100,12 +100,6 @@ class NewPlaylistForm extends Component {
     if (state.value === "") {
       return this.setState({ error: "Please select a state." });
     }
-    // console.log("name", name.value);
-    // console.log("city", city.value);
-    // console.log("state", state.value);
-    // console.log("tags", tags.value);
-    // console.log("is_public", this.state.is_public);
-    // TODO needs to be converted to the API call for posting a new Playlist
     ListsApiService.postLists({
       name: name.value,
       city: city.value.split(' ').join('_').trim(),
@@ -137,7 +131,6 @@ class NewPlaylistForm extends Component {
     this.setState({
       [name]: value
     });
-    console.log(this.state);
   };
 
   componentDidMount() {

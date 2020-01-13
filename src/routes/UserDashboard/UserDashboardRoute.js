@@ -14,7 +14,18 @@ export class UserDashboardRoute extends Component {
     lists: []
   };
 
-  static contextType = PlayListContext;
+  static defaultProps = {
+    location: {},
+    history: {
+      push: () => {}
+    }
+  };
+
+  handleNewPlaylistCreation = () => {
+    const { location, history } = this.props;
+    const destination = (location.state || {}).from || "/dashboard";
+    history.push(destination);
+  };
 
   //get all lists for a specific user
   componentDidMount() {
@@ -47,7 +58,7 @@ export class UserDashboardRoute extends Component {
     };
     return (
       <PlayListContext.Provider value={value}>
-        <UserLists userList={this.state.userList}/>
+        <UserLists userList={this.state.userList} />
         <ListByTags lists={this.state.lists} />
       </PlayListContext.Provider>
     );
