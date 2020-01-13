@@ -9,6 +9,7 @@
     "classnames": "^2.2.6",
     "cypress": "^3.8.2",
     "google-map-react": "^1.1.5",
+    "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
     "mobile-device-detect": "^0.3.3",
     "react": "^16.12.0",
