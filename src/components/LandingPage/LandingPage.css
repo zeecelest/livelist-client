@@ -1,58 +1,60 @@
-li {
-    list-style: none;
-}
-
-.nav-login{
+@media (max-width: 500) {
+  .nav-login {
     text-decoration: none;
     color: #4267b2;
     margin-top: 2%;
-    background-color:white;
+    background-color: white;
     border-radius: 25px;
     width: 30%;
     line-height: 1.75rem;
     align-self: center;
-}
-.nav-signup{
+  }
+  .nav-signup {
     text-decoration: none;
-    color:white;
+    color: white;
     margin-top: 2%;
-    background-color: #4CAF50;
+    background-color: #4caf50;
     border-radius: 25px;
     width: 30%;
     line-height: 1.75rem;
     align-self: center;
-}
-#loginFormContainer{
-    display:flex;
+  }
+  #loginFormContainer {
+    display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
     margin-top: 10%;
-}
-.descBody{
+  }
+  .descBody {
     color: white;
     margin-left: 10%;
-    margin-right:10%;
+    margin-right: 10%;
     margin-top: 10%;
-}
-.examplesContainer{
+  }
+  .examplesContainer {
     margin-top: -20%;
     display: flex;
     justify-content: space-evenly;
-}
-.ex01{
+  }
+  .ex01 {
     width: 150px;
     height: 200px;
     background-color: red;
     border-radius: 10px;
-}
-.ex02{
+  }
+  .ex02 {
     width: 150px;
     height: 200px;
     background-color: blue;
     border-radius: 10px;
-}
-.mobile-view{
+  }
+  .mobile-view {
     display: flex;
     flex-direction: row;
+  }
+}
+
+li {
+  list-style: none;
 }

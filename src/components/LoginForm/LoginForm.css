@@ -1,20 +1,22 @@
-.loginForm{
+@media (max-width: 500) {
+  .loginForm {
     color: #4267b2;
     background-color: white;
     border-radius: 0;
-}
-.loginTitle{
+  }
+  .loginTitle {
     color: white;
-}
-#login-username-input{
+  }
+  #login-username-input {
     border-radius: 5px;
     background-color: rgb(241, 241, 241);
-}
-#login-password-input{
+  }
+  #login-password-input {
     border-radius: 5px;
     background-color: rgb(241, 241, 241);
-}
-.loginTitle{
+  }
+  .loginTitle {
     margin-top: 0;
     margin-bottom: 5%;
+  }
 }
