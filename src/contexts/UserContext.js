@@ -60,9 +60,8 @@ export class UserProvider extends Component {
     this.setState({ user });
   };
 
-  processLogin = (authToken, user_id) => {
+  processLogin = (authToken) => {
     TokenService.saveAuthToken(authToken);
-    TokenService.saveUserId(user_id);
     const jwtPayload = TokenService.parseAuthToken();
     this.setUser({
       id: jwtPayload.user_id,
