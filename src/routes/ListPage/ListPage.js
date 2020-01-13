@@ -43,13 +43,23 @@ export class ListPage extends Component {
   }
 
   render() {
+    console.log(this.props)
+    console.log(this.state)
+    console.log(this.context)
     return (
       <div>
         {this.renderMap()}
         <h4 className='myListName'>List Name</h4>
         {this.renderSpot(this.state.spots)}
         <Button>
-          <Link to="/newSpot">New Spot</Link>
+          <Link 
+            to={{
+              pathname: '/newSpot',
+              props: {
+                list_id: this.props.match.params.id
+              }
+            }}
+          >New Spot</Link>
         </Button>
       </div>
       
