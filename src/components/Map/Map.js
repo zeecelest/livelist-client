@@ -61,6 +61,7 @@ class Map extends React.Component {
         }
       });
     };
+  /*This is a quick center,  better centerlist will be made later.*/
   centerList = () => {
     let lat = 0
     let lng = 0
