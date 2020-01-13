@@ -19,8 +19,10 @@ export class UserLists extends Component {
   };
 
   renderUserList() {
-    console.log('userList in props',this.props)
-    if (this.props.userList) {
+    if(this.props.userList.length === 0){
+      return <h2>no lists</h2>;
+    }
+    if (this.props.userList.length > 0) {
       return (
         <div className="display-user">
             {this.props.userList.map((item, idx) => {
@@ -38,7 +40,7 @@ export class UserLists extends Component {
         </div>
       );
     }
-    return <h2>welp</h2>;
+    return <h2>no lists</h2>;
   }
 
   render() {
