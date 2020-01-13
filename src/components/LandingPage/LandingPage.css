@@ -1,7 +1,60 @@
-li {
-    list-style: none;
+@media(max-width: 500px) {
+  .nav-login {
+    text-decoration: none;
+    color: #4267b2;
+    margin-top: 2%;
+    background-color: white;
+    border-radius: 25px;
+    width: 30%;
+    line-height: 1.75rem;
+    align-self: center;
+  }
+  .nav-signup {
+    text-decoration: none;
+    color: white;
+    margin-top: 2%;
+    background-color: #4caf50;
+    border-radius: 25px;
+    width: 30%;
+    line-height: 1.75rem;
+    align-self: center;
+  }
+  #loginFormContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 10%;
+  }
+  .descBody {
+    color: white;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10%;
+  }
+  .examplesContainer {
+    margin-top: -20%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .ex01 {
+    width: 150px;
+    height: 200px;
+    background-color: red;
+    border-radius: 10px;
+  }
+  .ex02 {
+    width: 150px;
+    height: 200px;
+    background-color: blue;
+    border-radius: 10px;
+  }
+  .mobile-view {
+    display: flex;
+    flex-direction: row;
+  }
 }
 
-@media only screen and (max-width: 600px) {
-    .loginForm { display: none; }
+li {
+  list-style: none;
 }

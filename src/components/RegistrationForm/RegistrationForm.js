@@ -151,12 +151,12 @@ class RegistrationForm extends Component {
             required
           />
         </div>
-        <div>
+        <div className='stateContainer'>
           <Label htmlFor="registration-locationState-input">
             State
-            <Required />
+            <Required />          
           </Label>
-          <select className="locationState" name="locationState">
+<select className="locationState" name="locationState">
             <option key="none" defaultValue=""></option>
             {this.renderOptions()}
           </select>

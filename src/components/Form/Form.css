@@ -1,4 +1,4 @@
-Form {
+form {
   font-size: 1.8rem;
   padding: 0.7rem;
   align-content: center;
@@ -6,18 +6,30 @@ Form {
   border-radius: 1rem;
 }
 
-Input {
+input {
   font-size: 1.5rem;
   margin: 2%;
   text-align: left;
 }
 
-Label {
+label {
   margin: 2%;
+}
+#registration-name-input {
+  border-radius: 5px;
+}
+#registration-username-input {
+  border-radius: 5px;
+}
+#registration-locationCity-input {
+  border-radius: 5px;
+}
+#registration-password-input {
+  border-radius: 5px;
 }
 
 @media screen and (min-width: 1025px) {
-  Form {
+  form {
     max-width: 50rem;
   }
 }

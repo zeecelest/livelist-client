@@ -2,12 +2,12 @@ import config from '../config'
 import TokenService from './token-service'
 
 const SpotsApiService = {
-    //need to double check
     postSpots(spot) {
         return fetch(`${config.API_ENDPOINT}/spots`, {
             method: 'POST',
             headers: {
               'content-type': 'application/json',
+              'authorization': `bearer ${TokenService.getAuthToken()}`,
             },
             body: JSON.stringify(spot),
         })

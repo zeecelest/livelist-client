@@ -1,3 +1,44 @@
-.userlist-section {
-    border: 2px solid blue;
+.userList-section{
+    margin-top: 20%;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+.display-user{
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    white-space: nowrap;
+}
+.myList-title{
+    color: white;
+    align-self: flex-start;
+}
+.listItem{
+    text-decoration: none;
+    flex: 1, 1, 30%;
+    background-color: white;
+    margin-right: 5%;
+    height: 100px;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+::-webkit-scrollbar{
+    background-color: transparent;
+}
+
+#newPlaylistButton{
+    width: 50%;
+    align-self: flex-end;
+    margin-top: 5%;
+    background-color: #4CAF50;
+    border-radius: 25px;
+    color: white;
+}
+.listItemName{
+    color: #4267b2;
 }

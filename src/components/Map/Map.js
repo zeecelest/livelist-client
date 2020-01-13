@@ -10,15 +10,13 @@ class Map extends React.Component {
   static contextType = PlayListContext;
   constructor(props) {
     super(props);
-
     this.state = { 
       myLocation: { lat: '', lng: '', }, 
       center: { lat: 32.72, lng: -117.16, }, 
       zoom: 15, 
-      spots: [this.props.spots], 
+      spots: [], 
     };
   }
-
 
     findMyLocation = () => {
       setTimeout(() => {
@@ -63,10 +61,26 @@ class Map extends React.Component {
         }
       });
     };
-  
+  /*This is a quick center,  better centerlist will be made later.*/
+  centerList = () => {
+    let lat = 0
+    let lng = 0
+    this.props.spots.forEach(place => {
+      lat += parseFloat(place.lat)
+      lng += parseFloat(place.lng)
+    })
+    lat = lat / this.props.spots.length
+    lng = lng / this.props.spots.length
+    this.setState({
+      center: {
+        lat,
+        lng
+      }
+    })
+  }
   render() {
     return (
-      <div style={{ height: "50vh", width: "50%", margin: "25vh auto" }}>
+      <div style={{ height: "500px", width: "500px", margin: "10vh auto" }} className='map'>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_API_KEY }}
           defaultZoom={this.state.zoom}
@@ -77,12 +91,12 @@ class Map extends React.Component {
             lat={this.state.myLocation.lat}
             lng={this.state.myLocation.lng}
           />
-
-          {this.state.spots.map(x => {
-            return <Marker key={Math.random()}lat={x.lat} lng={x.lng} text={x.text} />;
+          {this.props.spots.map(x => {
+            return <Marker key={Math.random()}lat={x.lat} lng={x.lng} text={x.name} />;
           })}
         </GoogleMapReact>
         <button onClick={e => this.handleButton(e)}>Current</button>
+        <button onClick={f => this.centerList(f)}>Center</button>
       </div>
     );
   }

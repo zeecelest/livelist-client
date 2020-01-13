@@ -3,7 +3,7 @@ import TokenService from './token-service'
 
 const ListsApiService = {
     getLists(){
-        fetch(`${config.API_ENDPOINT}/lists`, {
+        return fetch(`${config.API_ENDPOINT}/lists`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${TokenService.getAuthToken()}`,
@@ -15,8 +15,21 @@ const ListsApiService = {
               : res.json()
         )     
     },
+    getUsersLists(){
+     return fetch(`${config.API_ENDPOINT}/lists/user`, {
+          method: 'GET',
+          headers: {
+              'authorization': `Bearer ${TokenService.getAuthToken()}`,
+          }
+      })
+      .then(res =>
+          (!res.ok)
+            ? res.json().then(e => Promise.reject(e))
+            : res.json()
+      )     
+  },
     getListsByCity(city_name){
-        fetch(`${config.API_ENDPOINT}/lists/${city_name}`, {
+      return fetch(`${config.API_ENDPOINT}/lists/${city_name}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${TokenService.getAuthToken()}`,
@@ -45,6 +58,7 @@ const ListsApiService = {
         return fetch(`${config.API_ENDPOINT}/lists`, {
             method: 'POST',
             headers: {
+              'authorization': `Bearer ${TokenService.getAuthToken()}`,
               'content-type': 'application/json',
             },
             body: JSON.stringify(list),

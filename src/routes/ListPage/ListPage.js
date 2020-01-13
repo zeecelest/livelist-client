@@ -3,64 +3,18 @@ import ListsApiService from "../../services/lists-api-service";
 import PlayListContext from "../../contexts/PlayListContext";
 import Spot from "../../components/Spot/Spot";
 import Map from "../../components/Map/Map";
+import { Link } from "react-router-dom";
+import Button from "../../components/Button/Button";
+import "./listPage.css";
 
 export class ListPage extends Component {
   static contextType = PlayListContext;
-
-  spotsFromServer = {
-    list_name: "list name",
-    list_id: 1,
-    tags: "#sick #cheap",
-    created_by: "username",
-    liked: 10,
-    tried: 100,
-    spots: [
-      {
-        id: 1,
-        name: "spots name",
-        tags: "#bestdrinks #goodmusic",
-        address: "361 fake st.",
-        city: "city name",
-        state: "ST",
-        lat: 12.091823,
-        lng: 31.31525
-      },
-      {
-        id: 1,
-        name: "spots name",
-        tags: "#bestdrinks #goodmusic",
-        address: "361 fake st.",
-        city: "city name",
-        state: "ST",
-        lat: 12.091823,
-        lng: 31.31525
-      },
-      {
-        id: 1,
-        name: "spots name",
-        tags: "#bestdrinks #goodmusic",
-        address: "361 fake st.",
-        city: "city name",
-        state: "ST",
-        lat: 12.091823,
-        lng: 31.31525
-      },
-      {
-        id: 1,
-        name: "home",
-        tags: "#bestdrinks #goodmusic",
-        address: "361 fake st.",
-        city: "city name",
-        state: "ST",
-        lat: 34.001522,
-        lng: -118.437215
-      }
-    ]
+  state = {
+    spots: []
   };
 
-
   renderSpot = () => {
-    return this.spotsFromServer.spots.map(spot => (
+    return this.state.spots.map(spot => (
       <Spot
         key={Math.random()}
         name={spot.name}
@@ -72,24 +26,43 @@ export class ListPage extends Component {
     ));
   };
 
+  renderMap = () => {
+    return <Map spots={this.state.spots} id='map'/>;
+  };
+
   componentDidMount() {
     let id = this.props.match.params.id;
     //TODO:Once Api call is set turn this back on
-    // ListsApiService.getSpotsById(id)
-    //   .then(spotsServer => {
-    //     this.context.setSpots(spotsServer);
-    //   })
-    //   .catch(this.context.setError);
+    ListsApiService.getSpotsById(id)
+      .then(spotsServer => {
+        this.setState({
+          spots: spotsServer.spots
+        });
+      })
+      .catch(this.context.setError);
   }
 
   render() {
+    console.log(this.props)
+    console.log(this.state)
+    console.log(this.context)
     return (
       <div>
-        <h1>My List</h1>
-        {/* After API is set change these to props or context */}
-        <Map spots={this.spotsFromServer.spots} />
-        {this.renderSpot(this.spotsFromServer)}
+        {this.renderMap()}
+        <h4 className='myListName'>List Name</h4>
+        {this.renderSpot(this.state.spots)}
+        <Button>
+          <Link 
+            to={{
+              pathname: '/newSpot',
+              props: {
+                list_id: this.props.match.params.id
+              }
+            }}
+          >New Spot</Link>
+        </Button>
       </div>
+      
     );
   }
 }

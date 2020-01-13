@@ -16,6 +16,7 @@ class RegistrationRoute extends Component {
   render() {
     return (
       <section>
+        <h2>Welcome to windows 95</h2>
         <RegistrationForm
           onRegistrationSuccess={this.handleRegistrationSuccess}
         />
