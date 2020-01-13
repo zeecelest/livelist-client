@@ -110,6 +110,7 @@ class NewSpotForm extends Component {
         .trim(),
       state: state.value,
       /*ADDING THIS TO STOP CRASH ON RELOAD THIS IS JANKY AND SHOULD BE FIXED
+       * list_id is comming from the Link button using location params
       * -Daniel */
       list_id: this.props.location.props ? this.props.location.props.list_id : ''
     })

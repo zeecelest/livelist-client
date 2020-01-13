@@ -43,6 +43,9 @@ export class ListPage extends Component {
   }
 
   render() {
+    console.log(this.props)
+    console.log(this.state)
+    console.log(this.context)
     return (
       <div>
         {this.renderMap()}
