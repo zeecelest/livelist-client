@@ -1,14 +1,14 @@
-import React from 'react';
-import './Marker.css'
+import React from "react";
+import "./Marker.css";
+import markerImage from "../../Assets/mapMarker.png";
 
-function Marker({text}) {
+function Marker({ spotName }) {
   return (
-    <div>
-      <div className="marker">
-      </div>
-      <p>{text}</p>
+    <div className="markerContainer">
+      <img className="markerBackground" src={markerImage} alt="marker"></img>
+      <p className="markerText">{spotName}</p>
     </div>
-  )
+  );
 }
 
-export default Marker
+export default Marker;

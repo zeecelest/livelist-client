@@ -1,13 +1,13 @@
-import React from 'react';
-import './MyLocation.css'
+import React from "react";
+import "./MyLocation.css";
+import markerImage from "../../Assets/currentLocationAnimation.gif";
 
 function MyLocation() {
   return (
-    <div>
-      <div className="myLocation">
-      </div>
+    <div className="myLocation">
+      <img className="myLocationIcon" src={markerImage} alt="marker"></img>
     </div>
-  )
+  );
 }
 
-export default MyLocation
+export default MyLocation;
