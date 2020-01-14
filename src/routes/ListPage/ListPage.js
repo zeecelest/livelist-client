@@ -10,24 +10,36 @@ import "./listPage.css";
 export class ListPage extends Component {
   static contextType = PlayListContext;
   state = {
-    spots: []
+    spots: [],
+    listInfo: []
   };
 
   renderSpot = () => {
     return this.state.spots.map(spot => (
-      <Spot
-        key={Math.random()}
-        name={spot.name}
-        address={spot.address}
-        city={spot.city}
-        state={spot.state}
-        tags={spot.tags}
-      />
+      <div id={spot.name}>
+        <Spot
+          key={Math.random()}
+          name={spot.name}
+          address={spot.address}
+          city={spot.city}
+          state={spot.state}
+          tags={spot.tags}
+        />
+      </div>
     ));
   };
 
+  renderListName = () =>{
+    if(this.state.listInfo){
+    return (<h4 className="myListName">{this.state.listInfo.list_name}</h4>)
+    }
+    else {
+      return (<div> </div>)
+    }
+  }
+
   renderMap = () => {
-    return <Map spots={this.state.spots} id='map'/>;
+    return <Map spots={this.state.spots} id="map" />;
   };
 
   componentDidMount() {
@@ -36,33 +48,37 @@ export class ListPage extends Component {
     ListsApiService.getSpotsById(id)
       .then(spotsServer => {
         this.setState({
-          spots: spotsServer.spots
+          spots: spotsServer.spots,
+          listInfo: spotsServer
         });
       })
       .catch(this.context.setError);
   }
 
   render() {
-    console.log(this.props)
-    console.log(this.state)
-    console.log(this.context)
+
+    console.log('this is the state on the list page',this.state);
+
     return (
       <div>
         {this.renderMap()}
-        <h4 className='myListName'>List Name</h4>
+      
+        {this.renderListName()}
+
         {this.renderSpot(this.state.spots)}
         <Button>
-          <Link 
+          <Link
             to={{
-              pathname: '/newSpot',
+              pathname: "/newSpot",
               props: {
                 list_id: this.props.match.params.id
               }
             }}
-          >New Spot</Link>
+          >
+            New Spot
+          </Link>
         </Button>
       </div>
-      
     );
   }
 }

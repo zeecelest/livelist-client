@@ -1,6 +1,28 @@
-.marker {
-  background-image: url('../../Assets/mapMarker.png');
-  border-radius: 100%;
-  width: 5px;
-  height: 5px;
+.markerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  transition: all 0.3s ease-in-out;
+}
+.markerContainer:hover {
+  transform: scale(1.25);
+}
+.markerText {
+  visibility: hidden;
+}
+.markerContainer:hover .markerText {
+  visibility: visible;
+  background-color: rgba(0, 0, 0, 0.363);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.25rem 0.5rem;
+}
+
+.markerBackground {
+  width: 50px;
+  height: auto;
 }
