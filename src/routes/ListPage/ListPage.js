@@ -6,6 +6,7 @@ import Map from "../../components/Map/Map";
 import { Link } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import "./listPage.css";
+import ScrollContainer from 'react-indiana-drag-scroll';
 
 export class ListPage extends Component {
   static contextType = PlayListContext;
@@ -20,6 +21,7 @@ export class ListPage extends Component {
         <Spot
           key={Math.random()}
           name={spot.name}
+          id={spot.name}
           address={spot.address}
           city={spot.city}
           state={spot.state}
@@ -62,10 +64,10 @@ export class ListPage extends Component {
     return (
       <div>
         {this.renderMap()}
-      
         {this.renderListName()}
-
+      <div className='spotContainer'>
         {this.renderSpot(this.state.spots)}
+        </div>
         <Button>
           <Link
             to={{

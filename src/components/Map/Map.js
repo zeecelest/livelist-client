@@ -8,6 +8,7 @@ import PlayListContext from "../../contexts/PlayListContext";
 class Map extends React.Component {
   static contextType = PlayListContext;
   constructor(props) {
+    
     super(props);
     this.myRef = React.createRef();
     this.state = {
@@ -18,7 +19,6 @@ class Map extends React.Component {
     };
   }
  
-
 
   findMyLocation = () => {
     setTimeout(() => {
@@ -80,6 +80,11 @@ class Map extends React.Component {
       }
     });
   };
+
+
+
+
+
   render() {
     return (
       <div
@@ -102,6 +107,8 @@ class Map extends React.Component {
                 key={Math.random()}
                 lat={x.lat}
                 lng={x.lng}
+                reference={this.input}
+                handleClick={this.handleClick}
                 spotName={x.name}
               />
             );
