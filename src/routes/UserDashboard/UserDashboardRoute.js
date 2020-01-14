@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PlayListContext from "../../contexts/PlayListContext";
 import ListApiService from "../../services/lists-api-service";
-import UserApiService from "../../services/lists-api-service";
 import UserLists from "../../components/UserLists/userLists";
 import ListByTags from "../../components/ListByTags/ListByTags";
 
@@ -27,6 +26,20 @@ export class UserDashboardRoute extends Component {
     history.push(destination);
   };
 
+  handleDeletePlaylist = playId => {
+    // if(playid === this.state.lists)
+
+    ListApiService.deleteLists(playId)
+    .then( () => {
+     console.log(`Record '${playId}' deleted`)
+      const newUserList = this.state.userList.filter(userlist => userlist.id !== playId)
+      this.setState({
+        userList: newUserList
+      })
+    })
+    .catch(this.context.setError);
+  }
+
   //get all lists for a specific user
   componentDidMount() {
     ListApiService.getUsersLists()
@@ -49,17 +62,21 @@ export class UserDashboardRoute extends Component {
   }
 
   render() {
-    console.log('state in the UserDashboard',this.state)
+    // console.log('state in the UserDashboard',this.state)
+    console.log('userList userid'+ this.state.userList.users_id);
+    console.log('userList list_id'+ this.state.userList.list_id);
+
     const value = {
       playlist: this.state.playlist,
       spots: this.state.words,
       userList: this.state.userList,
-      lists:this.state.lists
+      lists:this.state.lists,
+      handleDeletePlaylist: this.handleDeletePlaylist
     };
     return (
       <PlayListContext.Provider value={value}>
-        <UserLists userList={this.state.userList} />
-        <ListByTags lists={this.state.lists} />
+        <UserLists userList={this.state.userList} handleDeletePlaylist ={this.handleDeletePlaylist} />
+        <ListByTags lists={this.state.lists} userList={this.state.userList}/>
       </PlayListContext.Provider>
     );
   }

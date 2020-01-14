@@ -29,6 +29,7 @@
 }
 .filterButtonContainer{
     display: flex;
+    justify-content: center;
 }
 .newPlaylistButtonText{
     color:white;
