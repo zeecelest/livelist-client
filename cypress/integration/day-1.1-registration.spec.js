@@ -12,11 +12,11 @@
 */
 describe(`User story: Register an account`, function() {
   it('on first load, directs me to the registration page', () => {
-    cy.visit('/');
+    cy.visit('/register');
     cy.url().should('eq', `${Cypress.config().baseUrl}/register`);
 
     cy.get('main section').within(($section) => {
-      cy.get('h2').should('have.text', 'Sign up');
+      cy.get('h2').should('have.text', 'Sign Up');
     });
   });
 
@@ -53,10 +53,10 @@ describe(`User story: Register an account`, function() {
         'City'
       );
       cy.get('input#registration-location-city-input')
-        .should('have.attr', 'type', 'password')
+        .should('have.attr', 'type', 'text')
         .and('have.attr', 'required', 'required');
 
-      cy.get('label[for=registration-location-state-input]').should(
+      cy.get('label[for=registration-location-state-select]').should(
         'have.text',
         'State'
       );
@@ -64,7 +64,6 @@ describe(`User story: Register an account`, function() {
         'have.attr',
         'required'
       );
-
       cy.get('button[type=submit]').should('have.text', 'Sign up');
     });
   });
@@ -99,9 +98,9 @@ describe(`User story: Register an account`, function() {
       cy.get('main form').within(($form) => {
         cy.get('#registration-name-input').type(newUser.name);
         cy.get('#registration-username-input').type(newUser.username);
+        cy.get('#registration-location-city-input').type(newUser.city);
+        cy.get('#registration-location-state-select').type(newUser.state);
         cy.get('#registration-password-input').type(newUser.password);
-        cy.get('#registration-locationState-input').type(newUser.state);
-        cy.get('#registration-locationCity-input').type(newUser.city);
         cy.root().submit();
 
         cy.wait('@postRegister')
@@ -120,9 +119,7 @@ describe(`User story: Register an account`, function() {
           // server determines the information is correct
           status: 200,
           response: {
-            id: 123,
-            name: 'test name',
-            username: 'test username'
+            'not sure': 'what goes here'
           }
         })
         .as('postRegister');
@@ -141,9 +138,9 @@ describe(`User story: Register an account`, function() {
       cy.get('section form').within(($form) => {
         cy.get('#registration-name-input').type(newUser.name);
         cy.get('#registration-username-input').type(newUser.username);
+        cy.get('#registration-location-city-input').type(newUser.city);
+        cy.get('#registration-location-state-select').select(newUser.state);
         cy.get('#registration-password-input').type(newUser.password);
-        cy.get('#registration-locationState-select').type(newUser.state);
-        cy.get('#registration-locationCity-input').type(newUser.city);
         cy.root().submit();
         cy.wait('@postRegister')
           .url()

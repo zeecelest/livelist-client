@@ -123,7 +123,7 @@ class RegistrationForm extends Component {
         <div role="alert">{error && <p>{error}</p>}</div>
         <div>
           <Label htmlFor="registration-name-input">
-            Enter your name
+            Enter your name*
             <Required />
           </Label>
           <Input
@@ -135,16 +135,13 @@ class RegistrationForm extends Component {
         </div>
         <div>
           <Label htmlFor="registration-username-input">
-            Choose a username
+            Choose a username*
             <Required />
           </Label>
           <Input id="registration-username-input" name="username" required />
         </div>
         <div>
-          <Label htmlFor="registration-location-city-input">
-            City
-            <Required />
-          </Label>
+          <Label htmlFor="registration-location-city-input">City</Label>
           <Input
             id="registration-location-city-input"
             name="locationCity"
@@ -152,14 +149,11 @@ class RegistrationForm extends Component {
           />
         </div>
         <div className="state-container">
-          <Label htmlFor="registration-location-state-select">
-            State
-            <Required />
-          </Label>
+          <Label htmlFor="registration-location-state-select">State</Label>
           <select
             className="location-state"
             name="locationState"
-            id="#registration-location-state-select"
+            id="registration-location-state-select"
             required>
             <option key="none" defaultValue=""></option>
             {this.renderOptions()}
@@ -167,7 +161,7 @@ class RegistrationForm extends Component {
         </div>
         <div>
           <Label htmlFor="registration-password-input">
-            Choose a password
+            Choose a password*
             <Required />
           </Label>
           <Input

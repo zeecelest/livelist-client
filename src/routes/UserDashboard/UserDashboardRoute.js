@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import PlayListContext from "../../contexts/PlayListContext";
-import ListApiService from "../../services/lists-api-service";
-import UserApiService from "../../services/lists-api-service";
-import UserLists from "../../components/UserLists/userLists";
-import ListByTags from "../../components/ListByTags/ListByTags";
+import React, { Component } from 'react';
+import PlayListContext from '../../contexts/PlayListContext';
+import ListApiService from '../../services/lists-api-service';
+//import UserApiService from '../../services/lists-api-service';
+import UserLists from '../../components/UserLists/userLists';
+import ListByTags from '../../components/ListByTags/ListByTags';
 
 export class UserDashboardRoute extends Component {
   static contextType = PlayListContext;
@@ -23,38 +23,38 @@ export class UserDashboardRoute extends Component {
 
   handleNewPlaylistCreation = () => {
     const { location, history } = this.props;
-    const destination = (location.state || {}).from || "/dashboard";
+    const destination = (location.state || {}).from || '/dashboard';
     history.push(destination);
   };
 
   //get all lists for a specific user
   componentDidMount() {
     ListApiService.getUsersLists()
-    .then(data => {
-      console.log('data from the server on userList call', data)
+      .then((data) => {
+        console.log('data from the server on userList call', data);
         this.setState({
-           userList: data
-        })
-    })
-    .catch(this.context.setError);
-    
+          userList: data
+        });
+      })
+      .catch(this.context.setError);
+
     ListApiService.getLists()
-    .then(data => {
-      console.log('this data from getLists call', data)
+      .then((data) => {
+        console.log('this data from getLists call', data);
         this.setState({
-           lists: data
-        })
-    })
-    .catch(this.context.setError);
+          lists: data
+        });
+      })
+      .catch(this.context.setError);
   }
 
   render() {
-    console.log('state in the UserDashboard',this.state)
+    console.log('state in the UserDashboard', this.state);
     const value = {
       playlist: this.state.playlist,
       spots: this.state.words,
       userList: this.state.userList,
-      lists:this.state.lists
+      lists: this.state.lists
     };
     return (
       <PlayListContext.Provider value={value}>

@@ -35,11 +35,11 @@ class Header extends Component {
   render() {
     return (
       <header className="headerContainer">
-        <h4>
+        <h1>
           <Link to="/" className="titleLink">
             Social Playlist
           </Link>
-        </h4>
+        </h1>
         <nav>
           {TokenService.hasAuthToken() ? (
             this.renderLogoutLink()
