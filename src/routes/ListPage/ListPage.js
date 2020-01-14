@@ -10,7 +10,8 @@ import "./listPage.css";
 export class ListPage extends Component {
   static contextType = PlayListContext;
   state = {
-    spots: []
+    spots: [],
+    listInfo: []
   };
 
   renderSpot = () => {
@@ -28,6 +29,15 @@ export class ListPage extends Component {
     ));
   };
 
+  renderListName = () =>{
+    if(this.state.listInfo){
+    return (<h4 className="myListName">{this.state.listInfo.list_name}</h4>)
+    }
+    else {
+      return (<div> </div>)
+    }
+  }
+
   renderMap = () => {
     return <Map spots={this.state.spots} id="map" />;
   };
@@ -38,20 +48,23 @@ export class ListPage extends Component {
     ListsApiService.getSpotsById(id)
       .then(spotsServer => {
         this.setState({
-          spots: spotsServer.spots
+          spots: spotsServer.spots,
+          listInfo: spotsServer
         });
       })
       .catch(this.context.setError);
   }
 
   render() {
-    console.log(this.props);
-    console.log(this.state);
-    console.log(this.context);
+
+    console.log('this is the state on the list page',this.state);
+
     return (
       <div>
         {this.renderMap()}
-        <h4 className="myListName">List Name</h4>
+      
+        {this.renderListName()}
+
         {this.renderSpot(this.state.spots)}
         <Button>
           <Link

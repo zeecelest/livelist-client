@@ -18,6 +18,7 @@
 .listItem{
     text-decoration: none;
     flex: 1, 1, 30%;
+    max-width: 400px;
     background-color: white;
     margin-right: 5%;
     height: 100px;
@@ -33,6 +34,8 @@
 
 #newPlaylistButton{
     width: 50%;
+    max-width: 150px;
+    padding: .25rem .5rem;
     align-self: flex-end;
     margin-top: 5%;
     background-color: #4CAF50;
