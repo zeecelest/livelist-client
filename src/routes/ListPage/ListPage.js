@@ -14,23 +14,35 @@ export class ListPage extends Component {
   state = {
     spots: [],
     listInfo: [],
+    userLists:[],
     loading: false
   };
 
   renderSpot = () => {
-    return this.state.spots.map(spot => (
-      <div id={spot.name}>
-        <Spot
-          key={Math.random()}
-          name={spot.name}
-          id={spot.name}
-          address={spot.address}
-          city={spot.city}
-          state={spot.state}
-          tags={spot.tags}
-        />
-      </div>
-    ));
+    console.log('state of userList in spots',this.state.userLists)
+    let usersListsIds = [];
+    if(this.state.userLists.length > 0){
+      this.state.userLists.map(lists =>{
+        console.log('another thing',lists.list_id)
+        usersListsIds.push(lists.list_id)
+      })
+      console.log('updatedList with only ids', usersListsIds)
+      return this.state.spots.map(spot => (
+        <div id={spot.name}>
+          <Spot
+            key={Math.random()}
+            name={spot.name}
+            id={spot.name}
+            usersListIds={usersListsIds}
+            address={spot.address}
+            city={spot.city}
+            state={spot.state}
+            tags={spot.tags}
+          />
+        </div>
+      ));
+    }
+
   };
 
   renderListName = () => {
@@ -51,6 +63,15 @@ export class ListPage extends Component {
     this.setState({
       loading: true
     });
+    ListsApiService
+      .getUsersLists()
+      .then(list =>{
+        this.setState({
+          userLists: list
+        })
+      })
+      .catch(this.context.setError)
+
     ListsApiService.getSpotsById(id)
       .then(spotsServer => {
         this.setState({

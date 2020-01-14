@@ -14,10 +14,6 @@ export class UserLists extends Component {
   };
   static contextType = PlayListContext;
 
-  handleClickList = ev => {
-    ev.preventDefault();
-    console.log()
-  };
 
   renderUserList() {
     if(this.props.userList.length === 0){
@@ -27,7 +23,6 @@ export class UserLists extends Component {
       return (
 
         <div className="display-user">
-
             {this.props.userList.map((item, idx) => {
               // This will likely need to be
               return (
@@ -40,7 +35,6 @@ export class UserLists extends Component {
                 </div>
               );
             })}
-
         </div>
 
       );
