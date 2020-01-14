@@ -19,12 +19,24 @@
   padding: 1rem 2rem;
   line-height: 0.5rem;
 }
-.spotContainer{
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: center;
-    height: 50vh;
-    overflow: scroll;
-    padding-top: 100px;
+.spotContainer {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  height: 50vh;
+  overflow: scroll;
+  padding-top: 100px;
+}
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.loadingAnimation {
+  width: 75px;
+  height: auto;
+}
+.loadingText {
+  color: white;
 }
