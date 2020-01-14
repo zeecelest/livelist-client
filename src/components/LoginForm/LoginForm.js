@@ -22,6 +22,7 @@ class LoginForm extends Component {
     const { username, password } = ev.target;
 
     this.setState({ error: null });
+
     AuthApiService.postLogin({
       username: username.value,
       password: password.value
