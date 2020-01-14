@@ -48,6 +48,23 @@ describe(`User story: Register an account`, function() {
         .should('have.attr', 'type', 'password')
         .and('have.attr', 'required', 'required');
 
+      cy.get('label[for=registration-location-city-input]').should(
+        'have.text',
+        'City'
+      );
+      cy.get('input#registration-location-city-input')
+        .should('have.attr', 'type', 'password')
+        .and('have.attr', 'required', 'required');
+
+      cy.get('label[for=registration-location-state-input]').should(
+        'have.text',
+        'State'
+      );
+      cy.get('select#registration-location-state-select').and(
+        'have.attr',
+        'required'
+      );
+
       cy.get('button[type=submit]').should('have.text', 'Sign up');
     });
   });
@@ -115,7 +132,9 @@ describe(`User story: Register an account`, function() {
       const newUser = {
         name: 'Test name',
         username: 'test-username',
-        password: 'test-password'
+        password: 'test-password',
+        city: 'Los Angeles',
+        state: 'CA'
       };
       cy.visit('/register');
 
@@ -123,7 +142,7 @@ describe(`User story: Register an account`, function() {
         cy.get('#registration-name-input').type(newUser.name);
         cy.get('#registration-username-input').type(newUser.username);
         cy.get('#registration-password-input').type(newUser.password);
-        cy.get('#registration-locationState-input').type(newUser.state);
+        cy.get('#registration-locationState-select').type(newUser.state);
         cy.get('#registration-locationCity-input').type(newUser.city);
         cy.root().submit();
         cy.wait('@postRegister')

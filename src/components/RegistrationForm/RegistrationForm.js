@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Input, Required, Label } from "../Form/Form";
-import AuthApiService from "../../services/auth-api-service";
-import Button from "../Button/Button";
-import "./RegistrationForm.css";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Input, Required, Label } from '../Form/Form';
+import AuthApiService from '../../services/auth-api-service';
+import Button from '../Button/Button';
+import './RegistrationForm.css';
 
 class RegistrationForm extends Component {
   static defaultProps = {
@@ -16,68 +16,68 @@ class RegistrationForm extends Component {
 
   renderOptions = () => {
     let stateAbr = [
-      "AL",
-      "AK",
-      "AS",
-      "AZ",
-      "AR",
-      "CA",
-      "CO",
-      "CT",
-      "DE",
-      "DC",
-      "FM",
-      "FL",
-      "GA",
-      "GU",
-      "HI",
-      "ID",
-      "IL",
-      "IN",
-      "IA",
-      "KS",
-      "KY",
-      "LA",
-      "ME",
-      "MH",
-      "MD",
-      "MA",
-      "MI",
-      "MN",
-      "MS",
-      "MO",
-      "MT",
-      "NE",
-      "NV",
-      "NH",
-      "NJ",
-      "NM",
-      "NY",
-      "NC",
-      "ND",
-      "MP",
-      "OH",
-      "OK",
-      "OR",
-      "PW",
-      "PA",
-      "PR",
-      "RI",
-      "SC",
-      "SD",
-      "TN",
-      "TX",
-      "UT",
-      "VT",
-      "VI",
-      "VA",
-      "WA",
-      "WV",
-      "WI",
-      "WY"
+      'AL',
+      'AK',
+      'AS',
+      'AZ',
+      'AR',
+      'CA',
+      'CO',
+      'CT',
+      'DE',
+      'DC',
+      'FM',
+      'FL',
+      'GA',
+      'GU',
+      'HI',
+      'ID',
+      'IL',
+      'IN',
+      'IA',
+      'KS',
+      'KY',
+      'LA',
+      'ME',
+      'MH',
+      'MD',
+      'MA',
+      'MI',
+      'MN',
+      'MS',
+      'MO',
+      'MT',
+      'NE',
+      'NV',
+      'NH',
+      'NJ',
+      'NM',
+      'NY',
+      'NC',
+      'ND',
+      'MP',
+      'OH',
+      'OK',
+      'OR',
+      'PW',
+      'PA',
+      'PR',
+      'RI',
+      'SC',
+      'SD',
+      'TN',
+      'TX',
+      'UT',
+      'VT',
+      'VI',
+      'VA',
+      'WA',
+      'WV',
+      'WI',
+      'WY'
     ];
 
-    return stateAbr.map(state => {
+    return stateAbr.map((state) => {
       return (
         <option key={state} value={state}>
           {state}
@@ -86,11 +86,11 @@ class RegistrationForm extends Component {
     });
   };
 
-  handleSubmit = ev => {
+  handleSubmit = (ev) => {
     ev.preventDefault();
     const { name, username, locationCity, locationState, password } = ev.target;
-    if (locationState.value === "") {
-      return this.setState({ error: "Please select a state." });
+    if (locationState.value === '') {
+      return this.setState({ error: 'Please select a state.' });
     }
     AuthApiService.postUser({
       name: name.value,
@@ -99,15 +99,15 @@ class RegistrationForm extends Component {
       state: locationState.value,
       password: password.value
     })
-      .then(user => {
-        name.value = "";
-        username.value = "";
-        locationCity.value = "";
-        locationState.value = "";
-        password.value = "";
+      .then((user) => {
+        name.value = '';
+        username.value = '';
+        locationCity.value = '';
+        locationState.value = '';
+        password.value = '';
         this.props.onRegistrationSuccess();
       })
-      .catch(res => {
+      .catch((res) => {
         this.setState({ error: res.error });
       });
   };
@@ -141,22 +141,26 @@ class RegistrationForm extends Component {
           <Input id="registration-username-input" name="username" required />
         </div>
         <div>
-          <Label htmlFor="registration-locationCity-input">
+          <Label htmlFor="registration-location-city-input">
             City
             <Required />
           </Label>
           <Input
-            id="registration-locationCity-input"
+            id="registration-location-city-input"
             name="locationCity"
             required
           />
         </div>
-        <div className='stateContainer'>
-          <Label htmlFor="registration-locationState-input">
+        <div className="state-container">
+          <Label htmlFor="registration-location-state-select">
             State
-            <Required />          
+            <Required />
           </Label>
-<select className="locationState" name="locationState">
+          <select
+            className="location-state"
+            name="locationState"
+            id="#registration-location-state-select"
+            required>
             <option key="none" defaultValue=""></option>
             {this.renderOptions()}
           </select>
@@ -175,7 +179,7 @@ class RegistrationForm extends Component {
         </div>
 
         <footer className="signupBtnLink">
-          <Button type="submit">Sign up</Button> <br />{" "}
+          <Button type="submit">Sign up</Button> <br />{' '}
           <Link to="/login">Already have an account?</Link>
         </footer>
       </form>

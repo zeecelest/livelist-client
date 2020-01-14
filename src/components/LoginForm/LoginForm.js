@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import { Input, Label } from "../Form/Form";
-import AuthApiService from "../../services/auth-api-service";
-import UserContext from "../../contexts/UserContext";
-import Button from "../Button/Button";
+import React, { Component } from 'react';
+import { Input, Label } from '../Form/Form';
+import AuthApiService from '../../services/auth-api-service';
+import UserContext from '../../contexts/UserContext';
+import Button from '../Button/Button';
+import { Link } from 'react-router-dom';
 import './LoginForm.css';
 
 class LoginForm extends Component {
@@ -12,11 +13,11 @@ class LoginForm extends Component {
 
   static contextType = UserContext;
 
-  state = { error: null};
+  state = { error: null };
 
   firstInput = React.createRef();
 
-  handleSubmit = ev => {
+  handleSubmit = (ev) => {
     ev.preventDefault();
     const { username, password } = ev.target;
 
@@ -25,13 +26,13 @@ class LoginForm extends Component {
       username: username.value,
       password: password.value
     })
-      .then(res => {
-        username.value = "";
-        password.value = "";
+      .then((res) => {
+        username.value = '';
+        password.value = '';
         this.context.processLogin(res.authToken);
         this.props.onLoginSuccess();
       })
-      .catch(res => {
+      .catch((res) => {
         this.setState({ error: res.error });
       });
   };
@@ -45,7 +46,7 @@ class LoginForm extends Component {
     return (
       <form onSubmit={this.handleSubmit} className="loginForm">
         <div role="alert">{error && <p>{error}</p>}</div>
-        <h4 className='loginTitle'>Log in</h4>
+        <h4 className="loginTitle">Log in</h4>
         <div>
           <Label htmlFor="login-username-input">Username</Label>
           <Input
@@ -64,6 +65,7 @@ class LoginForm extends Component {
             required
           />
         </div>
+        <Link to="/register">Sign up</Link>
         <Button type="submit">Login</Button>
       </form>
     );
