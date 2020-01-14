@@ -1,9 +1,16 @@
+:root{
+  --color-background: #4267b2;
+}
+
+
+
+
 .App {
   text-align: center;
 }
 
 body {
-  background-color: #4267b2;
+  background-color: var(--color-background);
   min-height: 100vh;
   display: flex;
   flex-direction: column;

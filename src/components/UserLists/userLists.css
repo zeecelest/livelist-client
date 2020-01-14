@@ -1,10 +1,17 @@
+.userListContainer{
+    overflow: scroll;
+}
 .userList-section{
     margin-top: 20%;
+    margin-left: auto;
+    margin-right:auto;
     display: flex;
-    width: 100%;
+    width: 75%;
+    max-width: 75vw;
     flex-direction: column;
-    justify-content: center;
+   padding: .5rem 1rem;
 }
+
 .display-user{
     display: flex;
     flex-direction: row;
@@ -18,10 +25,10 @@
 .listItem{
     text-decoration: none;
     flex: 1, 1, 30%;
-    max-width: 400px;
-    background-color: white;
+    background-color:white;
     margin-right: 5%;
     height: 100px;
+    max-width: 75vw;
     padding: .5rem 1rem;
     border-radius: 5px;
     display: flex;
@@ -30,6 +37,9 @@
 }
 ::-webkit-scrollbar{
     background-color: transparent;
+}
+.userListItem{
+    max-width: 100px;
 }
 
 #newPlaylistButton{
