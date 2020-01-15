@@ -7,11 +7,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(204, 204, 204);
   border-radius: 0px;
 }
 .location-state {
-  background: lightgrey;
+  background-color: var(--color-background);
   width: 20%;
   height: 20px;
   align-self: center;
@@ -23,6 +22,11 @@
   justify-content: center;
   align-items: center;
 }
-h2 {
-  color: white;
+.signUpTitle {
+  color: var(--color-highlight);
+  margin-top: 25%;
+  margin-bottom: 0;
+}
+#registration-password-input, #registration-location-state-select, #registration-location-city-input, #registration-username-input, #registration-name-input {
+  background-color: var(--color-background);
 }

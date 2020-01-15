@@ -72,7 +72,7 @@ class LoginForm extends Component {
             }}
           />
         </div>
-        <Link to="/register">Sign up</Link>
+       <Button> <Link to="/register">Sign up</Link></Button>
         <Button type="submit">Login</Button>
       </form>
     );

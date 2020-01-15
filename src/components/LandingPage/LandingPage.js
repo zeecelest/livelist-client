@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./LandingPage.css";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import exampleImg from '../Assets/iconBackground.png';
+import Button from '../Button/Button';
 
 class LandingPage extends Component {
   constructor() {
