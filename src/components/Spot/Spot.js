@@ -19,8 +19,8 @@ export class Spot extends Component {
           // console.log('list thing match',lists)
           return (
             <div className ='spot-buttons'>
-                <Button onClick={ () => this.props.handleDeleteSpot(this.props.sid)}>Delete</Button>
-                <Button>Edit</Button>
+                <Button className='spotDelete' onClick={ () => this.props.handleDeleteSpot(this.props.sid)}>Delete</Button>
+                <Button className='spotDelete' >Edit</Button>
             </div>
           );
         } 
@@ -36,14 +36,12 @@ export class Spot extends Component {
     return (
       
       <div className="spotItem">
-
-          {this.renderUserListId()}
-
           <h2 className='spotName'>{this.props.name}</h2>
-          <p>{this.props.address}</p>
-          <p>{this.props.city}</p>
-          <p>{this.props.state}</p>
-          <p>{this.props.tags}</p>
+          <p className='spotInfo'>{this.props.address}</p>
+          <p className='spotInfo'>{this.props.city}</p>
+          <p className='spotInfo'>{this.props.state}</p>
+          <p className='spotTags'>{this.props.tags}</p>
+          {this.renderUserListId()}
       </div>
     );
   }
