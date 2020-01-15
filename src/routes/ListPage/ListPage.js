@@ -20,7 +20,7 @@ export class ListPage extends Component {
   };
 
   handleDeleteSpot = spotId => {
-    // console.log('handle delete for spot in user dashboard')
+    console.log('handle delete for spot in user dashboard')
     SpotsApiService.deleteSpots(spotId)
     .then( () => {
       console.log(`Record '${spotId}' deleted`)
@@ -33,31 +33,10 @@ export class ListPage extends Component {
   }
 
   renderSpot = () => {
-<<<<<<< HEAD
-    console.log('user_id listpage' + this.props.user_id)
-    return this.state.spots.map(spot => (
-
-      <div id={spot.name} key={spot.id}>
-        <Spot
-          // userlistId = {this.state.listInfo.list_id}
-          usersid = {this.state.listInfo.name}
-          lid = {this.props.match.params.id}
-          sid = {spot.id}
-          key={Math.random()}
-          name={spot.name}
-          address={spot.address}
-          city={spot.city}
-          state={spot.state}
-          tags={spot.tags}
-          handleDeleteSpot = {this.handleDeleteSpot}
-        />
-      </div>
-    ));
-=======
     console.log('state of userList in spots',this.state.userLists)
     let usersListsIds = [];
     if(this.state.userLists.length > 0){
-      this.state.userLists.map(lists =>{
+      this.state.userLists.map(lists => {
         console.log('another thing',lists.list_id)
         usersListsIds.push(lists.list_id)
       })
@@ -68,17 +47,19 @@ export class ListPage extends Component {
             key={Math.random()}
             name={spot.name}
             id={spot.name}
+            lid ={this.props.match.params.id}
+            sid={spot.id}
             usersListIds={usersListsIds}
             address={spot.address}
             city={spot.city}
             state={spot.state}
             tags={spot.tags}
+            handleDeleteSpot = {this.handleDeleteSpot}
           />
         </div>
       ));
     }
 
->>>>>>> 2878983ac1e48b058d1726562c2f8c53c689872c
   };
 
   renderListName = () => {
@@ -123,35 +104,8 @@ export class ListPage extends Component {
         }, 1000);
       })
       .catch(this.context.setError);
-
-      // ListsApiService.getUsersLists()
-      // .then(data => {
-      //   console.log('data from the server on userList call', data)
-      //     this.setState({
-      //        userList: data
-      //     })
-      // })
-      // .catch(this.context.setError);
-    
-      // const userListId = this.state.userList.map(list => list.list_id == this.props.match.params.id)
-      // console.log('user list id ' , userListId)
   }
 
-<<<<<<< HEAD
-  render() {
-    // console.log('this is the state on the list page',this.state);
-    // console.log('list page cnt' + this.state.spots.length ? this.state.spots.length : 0);
-    console.log('list info' + this.state.listInfo)
-    // const lid = this.listInfo.find(x => x.list_id === '34')
-    // console.log('lid ', lid)
-    // console.log('list info list=> ' + this.state.listInfo.map(list => list.list_id === this.props.match.params.id))
-    return (
-      <div>
-
-        {this.renderMap()}
-      
-        {this.renderListName()}
-=======
   renderForLoading = () => {
     if (this.state.loading) {
       return (
@@ -188,7 +142,6 @@ export class ListPage extends Component {
       );
     }
   };
->>>>>>> 2878983ac1e48b058d1726562c2f8c53c689872c
 
   render() {
     return <div>{this.renderForLoading()}</div>;

@@ -17,22 +17,27 @@ export class UserLists extends Component {
   static contextType = PlayListContext;
 
 
+
   renderUserList() { 
     if(this.props.userList.length === 0){
       return <h2>no lists</h2>;
     }
     if (this.props.userList.length > 0) {
+
       return (
 
         <div className="display-user">
+           
             {this.props.userList.map((item, idx) => {
               // This will likely need to be
+              
               return (
                 <div key={idx} className='listItem'>
-                  
-                <button className = "btn-list" onClick = { () => this.props.handleDeletePlaylist(item.id)} >Delete</button>
-                  
-                <p key={idx} onClick={this.handleClickList}>
+                  { this.props.checkLength === 0 && item.id
+                    ? <button className = "btn-list" onClick = { () => this.props.handleDeletePlaylist(item.id)}>Delete</button>
+                    : <button className = "btn-list" disabled={true}>Delete</button>
+                  }
+                <p onClick={this.handleClickList}>
                   <Link to={`/list/${item.id}`} >
                     {/* item.id is for checking only */}
                     {item.id}
@@ -50,8 +55,8 @@ export class UserLists extends Component {
   }
 
   render() {
-  // console.log('list id from list page =>' +this.props.list_id)
-  // console.log('spots length =>' +this.state.spots.length)
+  console.log('spots =>' +this.props.spots.length)
+  console.log('spots length =>' +this.state.spots.length)
   // console.log('props user id =>' + this.props.userid)
     return (
       <>
