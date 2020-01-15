@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
+import React, { Component } from 'react';
+import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
 
 class RegistrationRoute extends Component {
   static defaultProps = {
@@ -10,13 +10,13 @@ class RegistrationRoute extends Component {
 
   handleRegistrationSuccess = () => {
     const { history } = this.props;
-    history.push("/login");
+    history.push('/login');
   };
 
   render() {
     return (
       <section>
-        <h2>Welcome to windows 95</h2>
+        <h2>Sign Up</h2>
         <RegistrationForm
           onRegistrationSuccess={this.handleRegistrationSuccess}
         />
