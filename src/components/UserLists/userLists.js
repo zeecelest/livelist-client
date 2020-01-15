@@ -2,33 +2,45 @@
 /* eslint-disable no-unused-expressions */
 import React, { Component } from "react";
 import PlayListContext from "../../contexts/PlayListContext";
+
 import { Link } from "react-router-dom";
-import Button from "../../components/Button/Button";
+// import Button from "../../components/Button/Button";
 // import ListPage from '../../routes/ListPage/ListPage'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import "./userLists.css";
 
 export class UserLists extends Component {
   state = {
-    userList: []
+    userList: [],
+    spots: []
   };
   static contextType = PlayListContext;
 
 
-  renderUserList() {
+
+  renderUserList() { 
     if(this.props.userList.length === 0){
       return <h2>no lists</h2>;
     }
     if (this.props.userList.length > 0) {
+
       return (
 
         <div className="display-user">
+           
             {this.props.userList.map((item, idx) => {
               // This will likely need to be
+              
               return (
-                <div className='listItem'>
-                <p key={idx} onClick={this.handleClickList}>
-                  <Link to={`/list/${item.id}`}>
+                <div key={idx} className='listItem'>
+                  { this.props.checkLength === 0 && item.id
+                    ? <button className = "btn-list" onClick = { () => this.props.handleDeletePlaylist(item.id)}>Delete</button>
+                    : <button className = "btn-list" disabled={true}>Delete</button>
+                  }
+                <p onClick={this.handleClickList}>
+                  <Link to={`/list/${item.id}`} >
+                    {/* item.id is for checking only */}
+                    {item.id}
                     {item.name}
                   </Link>
                 </p>
@@ -43,6 +55,9 @@ export class UserLists extends Component {
   }
 
   render() {
+  console.log('spots =>' +this.props.spots.length)
+  console.log('spots length =>' +this.state.spots.length)
+  // console.log('props user id =>' + this.props.userid)
     return (
       <>
         <section className="userList-section">
@@ -54,10 +69,13 @@ export class UserLists extends Component {
             nativeMobileScroll={true}
           >
           {this.renderUserList()}
+          <div>
+            <button id='newPlaylistButton'>
+              <Link to="/newList" className='newPlaylistButtonText'>New Play List</Link>
+            </button>
+          </div>
+         
           </ScrollContainer>
-          <button id='newPlaylistButton'>
-            <Link to="/newList" className='newPlaylistButtonText'>New Play List</Link>
-          </button>
         </section>
       </>
     );

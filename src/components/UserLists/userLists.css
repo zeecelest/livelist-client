@@ -55,3 +55,11 @@
 .listItemName{
     color: #4267b2;
 }
+
+.btn-list {
+    padding: .5rem;
+    background-clip: lightgray;
+    color: blue;
+    border: 1px solid black;
+    cursor: pointer;
+}

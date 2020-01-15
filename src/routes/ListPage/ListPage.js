@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ListsApiService from "../../services/lists-api-service";
+import SpotsApiService from "../../services/spots-api-service";
 import PlayListContext from "../../contexts/PlayListContext";
 import Spot from "../../components/Spot/Spot";
 import Map from "../../components/Map/Map";
@@ -18,11 +19,24 @@ export class ListPage extends Component {
     loading: false
   };
 
+  handleDeleteSpot = spotId => {
+    console.log('handle delete for spot in user dashboard')
+    SpotsApiService.deleteSpots(spotId)
+    .then( () => {
+      console.log(`Record '${spotId}' deleted`)
+      const newSpot = this.state.spots.filter(spot => spot.id !== spotId)
+      this.setState({
+        spots: newSpot
+      })
+    })
+    .catch(this.context.setError);
+  }
+
   renderSpot = () => {
     console.log('state of userList in spots',this.state.userLists)
     let usersListsIds = [];
     if(this.state.userLists.length > 0){
-      this.state.userLists.map(lists =>{
+      this.state.userLists.map(lists => {
         console.log('another thing',lists.list_id)
         usersListsIds.push(lists.list_id)
       })
@@ -33,11 +47,14 @@ export class ListPage extends Component {
             key={Math.random()}
             name={spot.name}
             id={spot.name}
+            lid ={this.props.match.params.id}
+            sid={spot.id}
             usersListIds={usersListsIds}
             address={spot.address}
             city={spot.city}
             state={spot.state}
             tags={spot.tags}
+            handleDeleteSpot = {this.handleDeleteSpot}
           />
         </div>
       ));
@@ -57,8 +74,10 @@ export class ListPage extends Component {
     return <Map spots={this.state.spots} id="map" />;
   };
 
+
   componentDidMount() {
     let id = this.props.match.params.id;
+    // console.log('id comdidmount' +id )
     //TODO:Once Api call is set turn this back on
     this.setState({
       loading: true
