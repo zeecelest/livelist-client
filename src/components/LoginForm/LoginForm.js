@@ -20,7 +20,8 @@ class LoginForm extends Component {
 
   handleSubmit = (ev) => {
     ev.preventDefault();
-    const { username, password } = ev.target;
+    let username = document.getElementsByName('username')[0];
+    let password = document.getElementsByName('password')[0];
 
     this.setState({ error: null });
 
@@ -55,7 +56,8 @@ class LoginForm extends Component {
             attr={{
               id: 'login-username-input',
               name: 'username',
-              required: true
+              required: true,
+              type: 'text'
             }}
           />
         </div>
@@ -72,8 +74,9 @@ class LoginForm extends Component {
             label="Password"
             attr={{
               id: 'login-password-input',
-              name: 'username',
-              required: true
+              name: 'password',
+              required: true,
+              type: 'password'
             }}
           />
           {/* <Label htmlFor="login-password-input">Password</Label>
