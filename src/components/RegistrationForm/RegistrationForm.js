@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Input, Required, Label } from '../Form/Form';
+import { Label } from '../Form/Form';
+import TextInput from '../Form/TextInput';
+import Select from '../Form/Select';
 import AuthApiService from '../../services/auth-api-service';
 import Button from '../Button/Button';
 import './RegistrationForm.css';
@@ -12,7 +14,7 @@ class RegistrationForm extends Component {
 
   state = { error: null };
 
-  firstInput = React.createRef();
+  //firstInput = React.createRef();
 
   renderOptions = () => {
     let stateAbr = [
@@ -112,9 +114,9 @@ class RegistrationForm extends Component {
       });
   };
 
-  componentDidMount() {
-    this.firstInput.current.focus();
-  }
+  // componentDidMount() {
+  //   this.firstInput.current.focus();
+  // }
 
   render() {
     const { error } = this.state;
@@ -122,53 +124,55 @@ class RegistrationForm extends Component {
       <form onSubmit={this.handleSubmit} className="registerForm">
         <div role="alert">{error && <p>{error}</p>}</div>
         <div>
-          <Label htmlFor="registration-name-input">
-            Enter your name*
-            <Required />
-          </Label>
-          <Input
-            ref={this.firstInput}
-            id="registration-name-input"
-            name="name"
-            required
+          <TextInput
+            label="Enter your name"
+            attr={{
+              id: 'registration-name-input',
+              name: 'name',
+              required: true,
+              type: 'text'
+            }}
           />
         </div>
         <div>
-          <Label htmlFor="registration-username-input">
-            Choose a username*
-            <Required />
-          </Label>
-          <Input id="registration-username-input" name="username" required />
+          <TextInput
+            label="Choose a username"
+            attr={{
+              id: 'registration-username-input',
+              name: 'username',
+              required: true,
+              type: 'text'
+            }}
+          />
         </div>
         <div>
-          <Label htmlFor="registration-location-city-input">City</Label>
-          <Input
-            id="registration-location-city-input"
-            name="locationCity"
-            required
+          <TextInput
+            label="City"
+            attr={{
+              id: 'registration-location-city-input',
+              name: 'locationCity',
+              required: true,
+              type: 'text'
+            }}
           />
         </div>
         <div className="state-container">
-          <Label htmlFor="registration-location-state-select">State</Label>
-          <select
+          <Select
+            helperText="Please Choose a State"
             className="location-state"
             name="locationState"
             id="registration-location-state-select"
-            required>
-            <option key="none" defaultValue=""></option>
-            {this.renderOptions()}
-          </select>
+          />
         </div>
         <div>
-          <Label htmlFor="registration-password-input">
-            Choose a password*
-            <Required />
-          </Label>
-          <Input
-            id="registration-password-input"
-            name="password"
-            type="password"
-            required
+          <TextInput
+            label="Choose a password"
+            attr={{
+              id: 'registration-password-input',
+              name: 'password',
+              required: true,
+              type: 'password'
+            }}
           />
         </div>
 
