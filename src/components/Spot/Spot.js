@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 export class Spot extends Component {
   render() {
+    console.log('spot props ',this.props)
     return (
       <div className="spotItem">
         <h2 className='spotName'>{this.props.name}</h2>

@@ -25,7 +25,7 @@
 .listItem{
     text-decoration: none;
     flex: 1, 1, 30%;
-    background-color: white;
+    background-color:white;
     margin-right: 5%;
     height: 100px;
     max-width: 75vw;
