@@ -17,7 +17,7 @@ class RegistrationRoute extends Component {
   render() {
     return (
       <section>
-        <h2>Sign up</h2>
+        <h2 className='signUpFormTitle'>Sign up</h2>
         <NewPlaylistForm onPlaylistCreation={this.handlePlaylistCreation} />
       </section>
     );

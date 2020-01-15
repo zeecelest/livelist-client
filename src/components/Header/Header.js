@@ -29,7 +29,7 @@ class Header extends Component {
       <nav className="signUp-login">
         <Link to='/login'>Login</Link>
         {' '}
-        <Link to='/register'>Sign up</Link>
+        <Link className="signUp-login" to='/register'>Sign up</Link>
       </nav>
     )
   };

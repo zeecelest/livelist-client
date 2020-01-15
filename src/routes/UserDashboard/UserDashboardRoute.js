@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import PlayListContext from "../../contexts/PlayListContext";
 import ListApiService from "../../services/lists-api-service";
-import UserApiService from "../../services/lists-api-service";
 import UserLists from "../../components/UserLists/userLists";
 import ListByTags from "../../components/ListByTags/ListByTags";
 import loadingAnimation from '../../components/Assets/loadingAnimation.gif';
 import './UserDashboard.css';
+import ListsApiService from "../../services/lists-api-service";
 
 export class UserDashboardRoute extends Component {
   static contextType = PlayListContext;
@@ -14,7 +14,9 @@ export class UserDashboardRoute extends Component {
     playlist: {},
     userList: [],
     lists: [],
-    loading: false
+    spots: [],
+    loading: false,
+    checkLength: 0
   };
 
   static defaultProps = {
@@ -29,6 +31,32 @@ export class UserDashboardRoute extends Component {
     const destination = (location.state || {}).from || "/dashboard";
     history.push(destination);
   };
+
+  handleDeletePlaylist = playId => {
+    // console.log('handle playlistdelete playId' , playId)
+    ListsApiService.getSpotsById(playId)
+    .then( data => {
+      // console.log('handle delete inside spot', data)
+      //  console.log(data.spots.length)
+        if(data.spots.length === 0) {
+          // console.log('can be deleted')
+          ListApiService.deleteLists(playId)
+            .then( () => {
+              console.log(`Record '${playId}' deleted`)
+              const newUserList = this.state.userList.filter(userlist => userlist.id !== playId)
+              // console.log('newUserList', newUserList)
+              this.setState({
+                userList: newUserList,
+                checkLength: data.spots.length
+              })   
+            })
+        }else {
+          console.log('list cannot be deleted')
+          return this.setState({checkLength: data.spots.length})
+        }
+    })
+    .catch(this.context.setError);
+  }
 
   //get all lists for a specific user
   componentDidMount() {
@@ -62,9 +90,11 @@ export class UserDashboardRoute extends Component {
   renderWithLoading = () =>{
     const value = {
       playlist: this.state.playlist,
-      spots: this.state.words,
+      spots: this.state.spots,
       userList: this.state.userList,
-      lists:this.state.lists
+      lists:this.state.lists,
+      handleDeletePlaylist: this.handleDeletePlaylist,
+      checkLength: this.state.checkLength
     };
     if (this.state.loading) {
       return (
@@ -81,8 +111,8 @@ export class UserDashboardRoute extends Component {
      return (
      <div>
       <PlayListContext.Provider value={value}>
-        <UserLists userList={this.state.userList} />
-        <ListByTags lists={this.state.lists} />
+        <UserLists userList={this.state.userList} handleDeletePlaylist ={this.handleDeletePlaylist} spots={this.state.spots} checkLength={this.state.checkLength}/>
+        <ListByTags lists={this.state.lists}/>
       </PlayListContext.Provider>
       </div>)
     }
@@ -90,6 +120,7 @@ export class UserDashboardRoute extends Component {
 
 
   render() {
+    console.log('check length', this.state.checkLength)
     return (
       <div>
         {this.renderWithLoading()}

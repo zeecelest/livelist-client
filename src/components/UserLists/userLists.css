@@ -19,7 +19,7 @@
     white-space: nowrap;
 }
 .myList-title{
-    color: white;
+    color: var(--color-highlight);
     align-self: flex-start;
 }
 .listItem{
@@ -32,6 +32,7 @@
     padding: .5rem 1rem;
     border-radius: 5px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -51,4 +52,23 @@
 }
 .listItemName{
     color: #4267b2;
+}
+.userListTitle{
+    color: var(--color-body);
+    cursor: pointer;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+.userListTitle::visited{
+    color: var(--color-body);
+}
+
+.btn-list {
+    padding: .5rem;
+    background-color:var(--color-midColor);
+    color: var(--color-darkMid);
+    border: 1px solid var(--color-darkMid);
+    border-radius: 15px;
+    margin-top: 15%;
+    cursor: pointer;
 }

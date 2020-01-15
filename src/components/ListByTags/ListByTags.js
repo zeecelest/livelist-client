@@ -49,6 +49,7 @@ export class ListByTags extends Component {
         return (
           <div key={Math.random()} className="listItem filtered">
             <Link to={`/list/${list.id}`}>
+
               <h4 className='filteredListName'>{list.name}</h4>
             </Link>
             <p className='filteredListTag'>{list.tags}</p>
