@@ -6,8 +6,8 @@
     margin-left: auto;
     margin-right:auto;
     display: flex;
-    width: 75%;
-    max-width: 75vw;
+    width: 90vw;
+    max-width: 90vw;
     flex-direction: column;
    padding: .5rem 1rem;
 }
@@ -34,9 +34,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-::-webkit-scrollbar{
-    background-color: transparent;
 }
 .userListItem{
     max-width: 100px;

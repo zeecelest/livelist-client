@@ -5,6 +5,7 @@ import UserApiService from "../../services/lists-api-service";
 import UserLists from "../../components/UserLists/userLists";
 import ListByTags from "../../components/ListByTags/ListByTags";
 import loadingAnimation from '../../components/Assets/loadingAnimation.gif';
+import './UserDashboard.css';
 
 export class UserDashboardRoute extends Component {
   static contextType = PlayListContext;

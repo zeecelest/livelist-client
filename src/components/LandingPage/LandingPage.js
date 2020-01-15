@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./LandingPage.css";
 import LoginForm from "../../components/LoginForm/LoginForm";
+import exampleImg from '../Assets/iconBackground.png';
 
 class LandingPage extends Component {
   constructor() {
@@ -48,8 +49,12 @@ class LandingPage extends Component {
     return (
       <>
         <div className="examplesContainer">
-          <div className="ex01"></div>
-          <div className="ex02"></div>
+          <div className="ex01">
+        <img src={exampleImg} alt='example background'  className='img01'/>
+          </div>
+          <div className="ex02">
+          <img src={exampleImg} alt='example background'  className='img02'/>
+          </div>
         </div>
         <section className="descContainer">
           <p className="descBody">
