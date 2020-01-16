@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Route, Switch} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import LandingRoute from '../../routes/LandingRoute/LandingRoute';
 import UserDashboardRoute from '../../routes/UserDashboard/UserDashboardRoute';
 import Header from '../Header/Header';
@@ -15,28 +15,28 @@ import UpdateSpotRoute from '../../components/UpdateSpot/UpdateSpot'
 import './App.css';
 
 export default class App extends Component {
-  state = {hasError: false};
+  state = { hasError: false };
 
   static getDerivedStateFromError(error) {
     console.error(error);
-    return {hasError: true};
+    return { hasError: true };
   }
 
   render() {
-    const {hasError} = this.state;
+    const { hasError } = this.state;
     return (
       <div className="App">
         <Header />
         <main>
           {hasError && <p>There was an error! Oh no!</p>}
           <Switch>
+            <PublicOnlyRoute path={'/register'} component={RegistrationRoute} />
             <PublicOnlyRoute exact path={'/'} component={LandingRoute} />
             <PrivateRoute
               exact
               path={'/dashboard'}
               component={UserDashboardRoute}
             />
-            <PublicOnlyRoute path={'/register'} component={RegistrationRoute} />
             <PrivateRoute
               exact
               path={'/newlist'}

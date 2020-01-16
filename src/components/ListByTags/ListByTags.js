@@ -49,12 +49,10 @@ export class ListByTags extends Component {
         return (
           <div key={Math.random()} className="listItem filtered">
             <Link to={`/list/${list.id}`}>
-               {/* id is for testing onlt*/}
-              <span>{list.id}</span>
 
-              <h4>{list.name}</h4>
+              <h4 className='filteredListName'>{list.name}</h4>
             </Link>
-            <p>{list.tags}</p>
+            <p className='filteredListTag'>{list.tags}</p>
           </div>
         );
       });
@@ -63,9 +61,7 @@ export class ListByTags extends Component {
         return (
           <div key={Math.random()} className="listItem filtered">
             <Link to={`/list/${list.id}`} >
-              {/* id is for testing onlt*/}
-              <span>{list.id}</span>
-              <h4>{list.name}</h4>
+              <h4 className='filteredListName'>{list.name}</h4>
             </Link>
             <p>{list.tags}</p>
           </div>

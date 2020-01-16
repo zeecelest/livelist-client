@@ -81,14 +81,10 @@ class Map extends React.Component {
     });
   };
 
-
-
-
-
   render() {
     return (
       <div
-        style={{ height: "500px", width: "500px", margin: "10vh auto" }}
+        style={{ height: "30vh", width: "100vw", margin: "10vh auto" }}
         className="map"
       >
         <GoogleMapReact
@@ -114,8 +110,8 @@ class Map extends React.Component {
             );
           })}
         </GoogleMapReact>
-        <button onClick={e => this.handleButton(e)}>Current</button>
-        <button onClick={f => this.centerList(f)}>Center</button>
+        <button onClick={e => this.handleButton(e)} className='mapButton'>Current</button>
+        <button className='mapButton' onClick={f => this.centerList(f)}>Center</button>
       </div>
     );
   }

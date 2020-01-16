@@ -36,14 +36,11 @@ export class ListPage extends Component {
   }
 
   renderSpot = () => {
-    console.log('state of userList in spots',this.state.userLists)
     let usersListsIds = [];
     if(this.state.userLists.length > 0){
       this.state.userLists.map(lists => {
-        console.log('another thing',lists.list_id)
         usersListsIds.push(lists.list_id)
       })
-      console.log('updatedList with only ids', usersListsIds)
       return this.state.spots.map(spot => (
         <div id={spot.name}>
           <Spot

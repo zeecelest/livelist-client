@@ -1,3 +1,4 @@
+@media(max-width: 400px){
 .filtered {
     margin: 0;
     margin-bottom: 5%;
@@ -15,20 +16,26 @@
     margin-right: auto;
 }
 #filterForm{
-    color: white;
+    color: var(--color-highlight);
     margin-top: 5%;
 }
 .filterButton{
-    color: #4267b2;
+    color: var(--color-body);
     order: 2;
     border-radius: 5px;
 }
 .filterField{
     text-align: right;
+    width: 50%;
 }
+
+.filterField::placeholder{
+    color: var(--color-midColor);
+}
+
 .filterFormTitle{
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 5%;
 }
 .filterButtonContainer{
     display: flex;
@@ -36,4 +43,16 @@
 }
 .newPlaylistButtonText{
     color:white;
+}
+.filteredListName{
+    color: var(--color-body);
+    cursor: pointer;
+    margin-bottom: 2%;
+}
+.filteredListTag{
+    color: var(--color-darkMid);
+    cursor: pointer;
+    margin-top: 0;
+}
+
 }
