@@ -11,13 +11,11 @@
   #newPlaylist-name-input, #newPlaylist-city-input, .state, #newPlaylist-tags-input {
     border-radius: 5px;
     background-color: var(--color-midColor);
-    margin-bottom: 5%;
   }
   .stateContainer{
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: 2px solid green;
     justify-content: center;
   }
   .loginTitle {
@@ -28,5 +26,11 @@
   .signUpFormTitle{
     color: var(--color-highlight);
     font-size: 2.5rem;
+    margin-top: 25%;
+    margin-bottom: 5%;
   }
+  .isPublicCheckbox{
+    border: 5px solid green;
+  }
+  
 }

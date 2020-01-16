@@ -103,21 +103,7 @@ class NewPlaylistForm extends Component {
     let state = document.getElementsByName('state')[0].value;
     let is_public = !document.getElementsByName('is_public')[0].checked;
     let tags = document.getElementsByName('tags')[0].value;
-    // console.log("This is the target at submit", ev.target);
-    // let { name, state, city, tags } = ev.target;
-    console.log("name", name);
-    console.log("state", state);
-    console.log("city", city);
-    city = city
-    .split(" ")
-    .join("_")
-    .trim();
-    console.log('city', city)
-    console.log("tags", tags);
-    console.log('is_public', is_public);
 
-  
-    // console.log("this is the city input", city);
     ListsApiService.postLists({
       name: name,
       city: city,
@@ -168,7 +154,7 @@ class NewPlaylistForm extends Component {
               name: "name",
               required: true,
               type: "text",
-              label: "name",
+              label: "Name",
               //value: this.state.value,
              // onChange: this.handleChange
             }}
@@ -182,7 +168,7 @@ class NewPlaylistForm extends Component {
               name: "city",
               required: true,
               type: "text",
-              label: "city",
+              label: "City",
               //value: this.state.value,
              // onChange: this.handleChange
             }}
@@ -195,7 +181,7 @@ class NewPlaylistForm extends Component {
             label="State"
             name="state"
             //onChange={this.handleChange}
-            options={["ab", "ca"]}
+            options={this.stateAbr}
             //value={this.state.value}
           ></Select>
         </div>
@@ -207,7 +193,7 @@ class NewPlaylistForm extends Component {
               name: "tags",
               required: true,
               type: "text",
-              label: "tags",
+              label: "Tags",
               //value: this.state.value,
               //onChange: this.handleChange
             }}
@@ -215,12 +201,15 @@ class NewPlaylistForm extends Component {
         </div>
         <div>
           <Label htmlFor="newPlaylist-public-input">
-            Would you like to make this list private?
+            Make this list private?
             <Required />
           </Label>
           <input
             type="checkbox"
             name="is_public"
+            className='isPublicCheckbox'
+            id='workDammit'
+            style={{transform: 'scale(1.5)'}}
             //value={this.state.value}
             //onChange={this.handleChange}
           ></input>
