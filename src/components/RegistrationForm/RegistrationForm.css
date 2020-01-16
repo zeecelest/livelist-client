@@ -2,27 +2,31 @@
   font-size: 1.2rem;
   color: red;
 }
-.registerForm{
+.registerForm {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(204, 204, 204);
   border-radius: 0px;
 }
-.locationState{
-  background: lightgrey;
+.location-state {
+  background-color: var(--color-background);
   width: 20%;
   height: 20px;
   align-self: center;
 }
-.stateContainer{
+.state-container {
   display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: center;
   align-items: center;
 }
-h2{
-  color: white;
+.signUpTitle {
+  color: var(--color-highlight);
+  margin-top: 25%;
+  margin-bottom: 0;
+}
+#registration-password-input, #registration-location-state-select, #registration-location-city-input, #registration-username-input, #registration-name-input {
+  background-color: var(--color-background);
 }

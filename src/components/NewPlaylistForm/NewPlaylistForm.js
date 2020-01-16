@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Input, Required, Label } from "../Form/Form";
 import ListsApiService from "../../services/lists-api-service";
 import Button from "../Button/Button";
+import './NewPlaylistForm.css';
 
 // TODO - clean the input .toLowerCase and _ for spaces in the city
 // TODO - clean the tags, must have space between #
@@ -170,7 +171,7 @@ class NewPlaylistForm extends Component {
             required
           />
         </div>
-        <div>
+        <div className='stateContainer'>
           <Label htmlFor="registration-state-input">
             State
             <Required />
