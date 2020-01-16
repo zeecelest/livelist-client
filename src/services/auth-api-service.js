@@ -6,7 +6,6 @@ const AuthApiService = {
     //This should almost mirror the post user route.
   },
   postUser(user) {
-    console.log(config)
     return fetch(`${config.API_ENDPOINT}/user`, {
       method: "POST",
       headers: {

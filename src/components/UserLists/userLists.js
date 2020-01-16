@@ -55,9 +55,6 @@ export class UserLists extends Component {
   }
 
   render() {
-    console.log("spots =>" + this.props.spots.length);
-    console.log("spots length =>" + this.state.spots.length);
-    // console.log('props user id =>' + this.props.userid)
     return (
       <>
         <section className="userList-section">

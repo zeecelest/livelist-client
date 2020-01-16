@@ -33,27 +33,25 @@ export class UserDashboardRoute extends Component {
   };
 
   handleDeletePlaylist = (playId) => {
-    // console.log('handle playlistdelete playId' , playId)
     ListsApiService.getSpotsById(playId)
       .then((data) => {
-        // console.log('handle delete inside spot', data)
-        //  console.log(data.spots.length)
         if (data.spots.length === 0) {
-          // console.log('can be deleted')
-          ListApiService.deleteLists(playId).then(() => {
-            console.log(`Record '${playId}' deleted`);
-            const newUserList = this.state.userList.filter(
-              (userlist) => userlist.id !== playId
-            );
-            // console.log('newUserList', newUserList)
-            this.setState({
-              userList: newUserList,
-              checkLength: data.spots.length
-            });
-          });
-        } else {
-          console.log('list cannot be deleted');
-          return this.setState({ checkLength: data.spots.length });
+          ListApiService.deleteLists(playId)
+            .then( () => {
+              console.log(`Record '${playId}' deleted`)
+              const newUserList = this.state.userList.filter(userlist => userlist.id !== playId)
+              
+              //added to update setPlaylist context
+              this.context.setPlaylist(newUserList)
+              
+              this.setState({
+                userList: newUserList,
+                checkLength: data.spots.length
+              })   
+            })
+        }else {
+          console.log('list cannot be deleted')
+          return this.setState({checkLength: data.spots.length})
         }
       })
       .catch(this.context.setError);
@@ -125,7 +123,7 @@ export class UserDashboardRoute extends Component {
   };
 
   render() {
-    console.log('check length', this.state.checkLength);
+
     return <div>{this.renderWithLoading()}</div>;
   }
 }

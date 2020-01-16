@@ -11,6 +11,7 @@ import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute';
 import ListPage from '../../routes/ListPage/ListPage';
 import NewPlaylistRoute from '../../routes/NewPlaylistRoute/NewPlaylistRoute';
 import NewSpotRoute from '../../routes/NewSpotRoute/NewSpotRoute';
+import UpdateSpotPage from '../../components/UpdateSpot/UpdateSpot'
 import './App.css';
 
 export default class App extends Component {
@@ -43,6 +44,7 @@ export default class App extends Component {
             />
             <PublicOnlyRoute path={'/login'} component={LoginRoute} />
             <PrivateRoute exact path="/newSpot" component={NewSpotRoute} />
+            <PrivateRoute exact path="/updateSpot/:id" component={UpdateSpotPage} />
             <PrivateRoute path="/list/:id" component={ListPage} />
             <Route component={NotFoundRoute} />
           </Switch>
