@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import PlayListContext from "../../contexts/PlayListContext";
 
 import { Link } from "react-router-dom";
-// import Button from "../../components/Button/Button";
+ import Button from "../../components/Button/Button";
 // import ListPage from '../../routes/ListPage/ListPage'
 import ScrollContainer from "react-indiana-drag-scroll";
 import "./userLists.css";
@@ -27,7 +27,7 @@ export class UserLists extends Component {
             // This will likely need to be
 
             return (
-              <div key={idx} className="listItem">
+              <div key={idx} className="listItem users" >
                 <p className='userListTitle' onClick={this.handleClickList}>
                   <Link to={`/list/${item.id}`} className='userListTitle'>
                     {item.name}
@@ -69,12 +69,12 @@ export class UserLists extends Component {
             nativeMobileScroll={true}
           >
             {this.renderUserList()}
-            <div>
-              <button id="newPlaylistButton">
+            <div className='newPlayListButtonContainer'>
+              <Button id="newPlaylistButton">
                 <Link to="/newList" className="newPlaylistButtonText">
                   New Play List
                 </Link>
-              </button>
+              </Button>
             </div>
           </ScrollContainer>
         </section>

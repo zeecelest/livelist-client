@@ -17,6 +17,8 @@
     flex-direction: row;
     overflow: auto;
     white-space: nowrap;
+    padding: 1.5rem 0;
+    
 }
 .myList-title{
     color: var(--color-highlight);
@@ -24,7 +26,7 @@
 }
 .listItem{
     text-decoration: none;
-    flex: 1, 1, 30%;
+    min-width: 200px;
     background-color:white;
     margin-right: 5%;
     height: 100px;
@@ -32,12 +34,16 @@
     padding: .5rem 1rem;
     border-radius: 5px;
     display: flex;
+    border: 1px solid grey;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 .userListItem{
     max-width: 100px;
+}
+.users{
+    padding-bottom: 5%;
 }
 
 #newPlaylistButton{
@@ -46,9 +52,13 @@
     padding: .25rem .5rem;
     align-self: flex-end;
     margin-top: 5%;
-    background-color: #4CAF50;
     border-radius: 25px;
     color: white;
+    font-size: 1rem;
+}
+.newPlayListButtonContainer{
+    display:flex;
+    justify-content: flex-end;
 }
 .listItemName{
     color: #4267b2;
@@ -56,7 +66,8 @@
 .userListTitle{
     color: var(--color-body);
     cursor: pointer;
-    margin-bottom: 5%;
+    font-weight: bold;
+    margin-bottom: 0;
     margin-top: 5%;
 }
 .userListTitle::visited{
@@ -69,6 +80,6 @@
     color: var(--color-darkMid);
     border: 1px solid var(--color-darkMid);
     border-radius: 15px;
-    margin-top: 15%;
+    margin-top: 5%;
     cursor: pointer;
 }
