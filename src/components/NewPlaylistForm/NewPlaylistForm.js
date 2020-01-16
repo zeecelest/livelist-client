@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { Input, Required, Label } from "../Form/Form";
 import ListsApiService from "../../services/lists-api-service";
 import Button from "../Button/Button";
-import './NewPlaylistForm.css';
+import "./NewPlaylistForm.css";
+import TextInput from "../Form/TextInput";
+import Select from "../Form/Select";
 
 // TODO - clean the input .toLowerCase and _ for spaces in the city
 // TODO - clean the tags, must have space between #
@@ -76,43 +78,54 @@ class NewPlaylistForm extends Component {
   ];
   state = {
     error: null,
-    name: "",
-    city: " ",
-    state: "",
-    tags: " ",
-    is_public: true
+    // name: "",
+    // city: " ",
+    // state: "",
+    // tags: " ",
+    // is_public: true
   };
 
-  firstInput = React.createRef();
-  renderOptions = () => {
-    return this.stateAbr.map(state => {
-      return (
-        <option key={state} value={state} onChange={this.handleChange}>
-          {state}
-        </option>
-      );
-    });
-  };
+  // firstInput = React.createRef();
+  // renderOptions = () => {
+  //   return this.stateAbr.map(state => {
+  //     return (
+  //       <option key={state} value={state} onChange={this.handleChange}>
+  //         {state}
+  //       </option>
+  //     );
+  //   });
+  // };
 
   handleSubmit = ev => {
     ev.preventDefault();
-    const { name, state, city, tags } = ev.target;
-    let is_public = this.state.is_public
-    if (state.value === "") {
-      return this.setState({ error: "Please select a state." });
-    }
+    let name = document.getElementsByName('name')[0].value;
+    let city = document.getElementsByName('city')[0].value;
+    let state = document.getElementsByName('state')[0].value;
+    let is_public = !document.getElementsByName('is_public')[0].checked;
+    let tags = document.getElementsByName('tags')[0].value;
+    // console.log("This is the target at submit", ev.target);
+    // let { name, state, city, tags } = ev.target;
+    console.log("name", name);
+    console.log("state", state);
+    console.log("city", city);
+    city = city
+    .split(" ")
+    .join("_")
+    .trim();
+    console.log('city', city)
+    console.log("tags", tags);
+    console.log('is_public', is_public);
+
+  
+    // console.log("this is the city input", city);
     ListsApiService.postLists({
-      name: name.value,
-      city: city.value.split(' ').join('_').trim(),
-      state: state.value,
-      tags: tags.value,
+      name: name,
+      city: city,
+      state: state,
+      tags: tags,
       is_public
     })
       .then(playlist => {
-        name.value = "";
-        state.value = "";
-        city.value = "";
-        tags.value = "";
         this.props.onPlaylistCreation();
       })
       .catch(res => {
@@ -120,25 +133,25 @@ class NewPlaylistForm extends Component {
       });
   };
 
-  handleChange = ev => {
-    const target = ev.target;
-    const value = target.type === "checkbox" ? !target.checked : target.value;
-    const name = target.name;
+  // handleChange = ev => {
+  //   const target = ev.target;
+  //   const value = target.type === "checkbox" ? !target.checked : target.value;
+  //   const name = target.name;
+  //   console.log("this is the target on Change", target);
+  //   //for testing only
+  //   const cityValue = target.value.split(" ").join("_");
 
-    //for testing only
-    const cityValue = target.value.split(' ').join('_')
+  //   this.setState({
+  //     [name]: value,
+  //     city: cityValue
+  //   });
+  // };
 
-    this.setState({
-      [name]: value
-    });
-  };
-
-  componentDidMount() {
-    this.firstInput.current.focus();
-  }
+  // componentDidMount() {
+  //   this.firstInput.current.focus();
+  // }
 
   render() {
-     
     const { error } = this.state;
     return (
       <form onSubmit={this.handleSubmit} className="newPlaylistForm">
@@ -148,49 +161,56 @@ class NewPlaylistForm extends Component {
             Name your playlist
             <Required />
           </Label>
-          <Input
-            ref={this.firstInput}
-            id="newPlaylist-name-input"
-            name="name"
-            value={this.state.value}
-            onChange={this.handleChange}
-            required
+          <TextInput
+            attr={{
+              id: "newPlaylist-name-input",
+              //ref: this.firstInput,
+              name: "name",
+              required: true,
+              type: "text",
+              label: "name",
+              //value: this.state.value,
+             // onChange: this.handleChange
+            }}
           />
         </div>
         <div>
-          <Label htmlFor="newPlaylist-locationCity-input">
-            City
-            <Required />
-          </Label>
-          <Input
-            id="newPlaylist-city-input"
-            name="city"
-            value={this.state.value}
-            onChange={this.handleChange}
-            required
+          <TextInput
+            attr={{
+              id: "newPlaylist-city-input",
+              //ref: this.firstInput,
+              name: "city",
+              required: true,
+              type: "text",
+              label: "city",
+              //value: this.state.value,
+             // onChange: this.handleChange
+            }}
           />
         </div>
-        <div className='stateContainer'>
-          <Label htmlFor="registration-state-input">
-            State
-            <Required />
-          </Label>
-          <select className="state" name="state" onChange={this.handleChange}>
-            <option key="none" defaultValue={this.state.value}></option>
-            {this.renderOptions()}
-          </select>
+        <div className="stateContainer">
+          <Select
+            id="newPlaylist-state-input"
+            //ref={this.firstInput}
+            label="State"
+            name="state"
+            //onChange={this.handleChange}
+            options={["ab", "ca"]}
+            //value={this.state.value}
+          ></Select>
         </div>
         <div>
-          <Label htmlFor="newPlaylist-tags-input">
-            Tags for your list
-            <Required />
-          </Label>
-          <Input
-            id="newPlaylist-tags-input"
-            name="tags"
-            value={this.state.value}
-            onChange={this.handleChange}
-            placeholder="#datenight #hotnewspots"
+          <TextInput
+            attr={{
+              id: "newPlaylist-tags-input",
+              //ref: this.firstInput,
+              name: "tags",
+              required: true,
+              type: "text",
+              label: "tags",
+              //value: this.state.value,
+              //onChange: this.handleChange
+            }}
           />
         </div>
         <div>
@@ -201,8 +221,8 @@ class NewPlaylistForm extends Component {
           <input
             type="checkbox"
             name="is_public"
-            value={this.state.value}
-            onChange={this.handleChange}
+            //value={this.state.value}
+            //onChange={this.handleChange}
           ></input>
         </div>
         <footer className="signupBtnLink">
