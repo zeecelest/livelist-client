@@ -123,7 +123,7 @@ export class UserDashboardRoute extends Component {
   };
 
   render() {
-    console.log('check length', this.state.checkLength);
+
     return <div>{this.renderWithLoading()}</div>;
   }
 }

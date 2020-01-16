@@ -50,13 +50,12 @@ export class Spot extends Component {
       
       <div className="spotItem"  onClick={this.handleSpotClick}>
 
-          {this.renderUserListId()}
-
           <h2 className='spotName'>{this.props.name}</h2>
           <p className='spotInfo'>{this.props.address}</p>
           <p className='spotInfo'>{this.props.city}</p>
           <p className='spotInfo'>{this.props.state}</p>
           <p className='spotTags'>{this.props.tags}</p>
+          
           {this.renderUserListId()}
       </div>
     );
