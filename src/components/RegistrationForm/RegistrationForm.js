@@ -15,7 +15,11 @@ class RegistrationForm extends Component {
     onRegistrationSuccess: () => {}
   };
 
-  state = { error: null, stateLocation: { value: null, selected: false } };
+  state = {
+    error: null,
+    stateLocation: { value: null, selected: false },
+    cities: []
+  };
 
   //firstInput = React.createRef();
 
@@ -23,94 +27,26 @@ class RegistrationForm extends Component {
     return states.map((item) => item.name);
   };
 
-  generateCityOptions = () => {
-    console.log(this.state.stateLocation.value);
-    console.log(possibleLocations);
-    return possibleLocations[this.state.stateLocation.value];
-  };
-
-  renderOptions = () => {
-    let stateAbr = [
-      'AL',
-      'AK',
-      'AS',
-      'AZ',
-      'AR',
-      'CA',
-      'CO',
-      'CT',
-      'DE',
-      'DC',
-      'FM',
-      'FL',
-      'GA',
-      'GU',
-      'HI',
-      'ID',
-      'IL',
-      'IN',
-      'IA',
-      'KS',
-      'KY',
-      'LA',
-      'ME',
-      'MH',
-      'MD',
-      'MA',
-      'MI',
-      'MN',
-      'MS',
-      'MO',
-      'MT',
-      'NE',
-      'NV',
-      'NH',
-      'NJ',
-      'NM',
-      'NY',
-      'NC',
-      'ND',
-      'MP',
-      'OH',
-      'OK',
-      'OR',
-      'PW',
-      'PA',
-      'PR',
-      'RI',
-      'SC',
-      'SD',
-      'TN',
-      'TX',
-      'UT',
-      'VT',
-      'VI',
-      'VA',
-      'WA',
-      'WV',
-      'WI',
-      'WY'
-    ];
-    return stateAbr;
-  };
-
-  onSelectStateChange = () => {
-    console.log(document.getElementsByName('locationState'));
-
+  onSelectStateChange = (ev) => {
+    let cities = possibleLocations[ev.target.value];
+    console.log(cities);
     this.setState({
       stateLocation: {
         selected: true,
-        value: document.getElementsByClassName('')
-      }
+        value: ev.target.value
+      },
+      cities
     });
   };
 
   handleSubmit = (ev) => {
     ev.preventDefault();
+    console.log(ev.target);
     const { name, username, locationCity, locationState, password } = ev.target;
-    if (locationState.value === '') {
-      return this.setState({ error: 'Please select a state.' });
-    }
+    console.log(name, username, locationCity, locationState, password);
+    // if (locationState.value === '') {
+    //   return this.setState({ error: 'Please select a state.' });
+    // }
     AuthApiService.postUser({
       name: name.value,
       username: username.value,
@@ -169,30 +105,21 @@ class RegistrationForm extends Component {
             className="location-state"
             name="locationState"
             onChange={this.onSelectStateChange}
+            value=""
             id="registration-location-state-select"
             options={this.generateStateOptions()}
           />
         </div>
         <div>
-          {/* <TextInput
-            label="City"
-            attr={{
-              id: 'registration-location-city-input',
-              name: 'locationCity',
-              required: true,
-              disabled: !this.state.stateLocation.selected,
-              type: 'text'
-            }}
-          /> */}
-          {/* <Select
+          <Select
             helperText="Please Choose a City"
             id="registration-location-city-input"
             name="locationCity"
             onChange={this.onSelectChange}
             disabled={!this.state.stateLocation.selected}
             type="text"
-            options={this.generateCityOptions()}
-          /> */}
+            options={this.state.cities}
+          />
         </div>
         <div>
           <TextInput

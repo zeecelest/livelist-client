@@ -7,19 +7,21 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: 200
+      width: 200,
+      paddingBottom: '20px'
     }
   }
 }));
 
 export default function MultilineTextFields(props) {
   const classes = useStyles();
-  let { id, label, helperText, className, options, onChange } = props;
+  let { id, label, helperText, className, options, onChange, disabled } = props;
   return (
-    <form className={classes.root} noValidate autoComplete="off">
+    <div className={classes.root} noValidate autoComplete="off">
       <TextField
         id={id}
         onChange={onChange}
+        disabled={disabled}
         className={className + ' ' + 'outlined-select-currency-native'}
         select
         label={label}
@@ -31,6 +33,6 @@ export default function MultilineTextFields(props) {
           </MenuItem>
         ))}
       </TextField>
-    </form>
+    </div>
   );
 }
