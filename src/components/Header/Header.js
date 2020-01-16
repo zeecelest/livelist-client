@@ -26,11 +26,13 @@ class Header extends Component {
 
   renderLoginLink() {
     return (
-      <div className="signUp-login">
-        <Link to="/login">Login</Link> <Link to="/register">Sign up</Link>
-      </div>
-    );
-  }
+      <nav className="signUp-login">
+        <Link to='/login'>Login</Link>
+        {' '}
+        <Link className="signUp-login" to='/register'>Sign up</Link>
+      </nav>
+    )
+  };
 
   render() {
     return (

@@ -5,14 +5,13 @@
   margin-top: 15%;
   transition-duration: 0.3s;
   cursor: pointer;
-  color: black;
-  background-color: white;
-  border: 0.3rem solid #b8d843;
+  color: var(--color-background);
+  background-color: var(--color-darkMid);
   padding: 0.6rem;
-  border-radius: 1rem;
+  border-radius: .5rem;
 }
 
 .Button:hover {
-  background-color: #306620;
+  background-color: var(--color-highlight);
   color: white;
 }

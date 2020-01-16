@@ -1,34 +1,32 @@
 :root{
-  --color-background: #4267b2;
+  --color-background: #EBEBEB;
+  --color-midColor: #D2D9D9;
+  --color-highlight:#1A3BEB;
+  --color-body:#21201f;
+  --color-newButton:#4caf50;
+  --color-darkMid:#817C7C;
 }
-
-
-
+*{
+  box-sizing: border-box;
+}
 
 .App {
   text-align: center;
 }
 
 body {
-  background-color: var(--color-background);
+  background-color: var(--color-midColor);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: 1rem;
-  color: black;
+  color: var(--color-midColor);
   padding-left: 5%;
   padding-right: 5%;
 }
-
-.App-link {
-  color: #61dafb;
-}
-.h1 {
-  color: lightblue;
-  font-size: 1.5rem;
-}
-a {
+a{
   text-decoration: none;
+  color: var(--color-background);
 }

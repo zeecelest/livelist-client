@@ -16,7 +16,7 @@ export default function MultilineTextFields(props) {
   const classes = useStyles();
   let { id, label, helperText, className, options, onChange } = props;
   return (
-    <dic className={classes.root} noValidate autoComplete="off">
+    <div className={classes.root} noValidate autoComplete="off">
       <TextField
         id={id}
         onChange={onChange}
@@ -31,6 +31,6 @@ export default function MultilineTextFields(props) {
           </MenuItem>
         ))}
       </TextField>
-    </dic>
+    </div>
   );
 }

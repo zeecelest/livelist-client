@@ -6,8 +6,8 @@
     margin-left: auto;
     margin-right:auto;
     display: flex;
-    width: 75%;
-    max-width: 75vw;
+    width: 90vw;
+    max-width: 90vw;
     flex-direction: column;
    padding: .5rem 1rem;
 }
@@ -17,14 +17,16 @@
     flex-direction: row;
     overflow: auto;
     white-space: nowrap;
+    padding: 1.5rem 0;
+    
 }
 .myList-title{
-    color: white;
+    color: var(--color-highlight);
     align-self: flex-start;
 }
 .listItem{
     text-decoration: none;
-    flex: 1, 1, 30%;
+    min-width: 200px;
     background-color:white;
     margin-right: 5%;
     height: 100px;
@@ -32,14 +34,16 @@
     padding: .5rem 1rem;
     border-radius: 5px;
     display: flex;
+    border: 1px solid grey;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-::-webkit-scrollbar{
-    background-color: transparent;
-}
 .userListItem{
     max-width: 100px;
+}
+.users{
+    padding-bottom: 5%;
 }
 
 #newPlaylistButton{
@@ -48,18 +52,34 @@
     padding: .25rem .5rem;
     align-self: flex-end;
     margin-top: 5%;
-    background-color: #4CAF50;
     border-radius: 25px;
     color: white;
+    font-size: 1rem;
+}
+.newPlayListButtonContainer{
+    display:flex;
+    justify-content: flex-end;
 }
 .listItemName{
     color: #4267b2;
 }
+.userListTitle{
+    color: var(--color-body);
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 5%;
+}
+.userListTitle::visited{
+    color: var(--color-body);
+}
 
 .btn-list {
     padding: .5rem;
-    background-clip: lightgray;
-    color: blue;
-    border: 1px solid black;
+    background-color:var(--color-midColor);
+    color: var(--color-darkMid);
+    border: 1px solid var(--color-darkMid);
+    border-radius: 15px;
+    margin-top: 5%;
     cursor: pointer;
 }
