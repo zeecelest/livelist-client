@@ -150,6 +150,7 @@ class NewSpotForm extends Component {
 
   render() {
     console.log('props', this.props)
+    console.log('context spot', this.context.spots)
     const {error} = this.state;
     return (
       <form onSubmit={this.handleSubmit} className="newSpotForm">

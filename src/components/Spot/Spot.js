@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 import Button from "../Button/Button";
 import PlayListContext from "../../contexts/PlayListContext"
+import { Link } from "react-router-dom";
 import './Spot.css';
 
 export class Spot extends Component {
@@ -20,7 +21,13 @@ export class Spot extends Component {
           return (
             <div className ='spot-buttons'>
                 <Button onClick={ () => this.props.handleDeleteSpot(this.props.sid)}>Delete</Button>
-                <Button>Edit</Button>
+                <Button >
+                  <Link
+                    to= {`/updateSpot/${this.props.lid}`}
+                  >
+                    Edit
+                  </Link>
+              </Button>
             </div>
           );
         } 
@@ -30,8 +37,8 @@ export class Spot extends Component {
   }
 
   render() {
-    // console.log('spot props sid ',this.props.sid)
-    // console.log(typeof(this.props.usersListIds))
+    console.log('spot props lid ',this.props.lid)
+    console.log('spot props sid', this.props.sid)
 
     return (
       

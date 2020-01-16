@@ -34,6 +34,23 @@ const SpotsApiService = {
                 : null
             )
     },
+    patchSpot(spot) {
+      return fetch(`${config.API_ENDPOINT}/spots/${spot}`,{
+        method: 'PATCH',
+        headers: {
+          'content-type': 'application/json',
+          'authorization': `bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify({
+        editSpot: spot
+      })
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+    }
 }
 
 export default SpotsApiService;

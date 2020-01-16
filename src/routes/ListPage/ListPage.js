@@ -20,7 +20,7 @@ export class ListPage extends Component {
   };
 
   handleDeleteSpot = spotId => {
-    console.log('handle delete for spot in user dashboard')
+    console.log('handle delete spot in List Page')
     SpotsApiService.deleteSpots(spotId)
     .then( () => {
       console.log(`Record '${spotId}' deleted`)
@@ -85,6 +85,9 @@ export class ListPage extends Component {
     ListsApiService
       .getUsersLists()
       .then(list =>{
+        //this.context.setSpots(list) - for checking to get all the list
+        this.context.setSpots(list)
+
         this.setState({
           userLists: list
         })
@@ -144,6 +147,7 @@ export class ListPage extends Component {
   };
 
   render() {
+    console.log('this.context in ListPage', this.context.spots)
     return <div>{this.renderForLoading()}</div>;
   }
 }
