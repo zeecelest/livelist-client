@@ -127,7 +127,6 @@ class NewPlaylistForm extends Component {
 
     //for testing only
     const cityValue = target.value.split(' ').join('_')
-    console.log('city value' + cityValue)
 
     this.setState({
       [name]: value
