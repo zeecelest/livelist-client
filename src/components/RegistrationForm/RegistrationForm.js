@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 import { Label } from '../Form/Form';
 import TextInput from '../Form/TextInput';
 import Select from '../Form/Select';
+import possibleLocations from '../Assets/possibleLocations';
+import states from '../Assets/states';
 import AuthApiService from '../../services/auth-api-service';
+
 import Button from '../Button/Button';
 import './RegistrationForm.css';
 
@@ -12,9 +15,19 @@ class RegistrationForm extends Component {
     onRegistrationSuccess: () => {}
   };
 
-  state = { error: null };
+  state = { error: null, stateLocation: { value: null, selected: false } };
 
   //firstInput = React.createRef();
+
+  generateStateOptions = () => {
+    return states.map((item) => item.name);
+  };
+
+  generateCityOptions = () => {
+    console.log(this.state.stateLocation.value);
+    console.log(possibleLocations);
+    return possibleLocations[this.state.stateLocation.value];
+  };
 
   renderOptions = () => {
     let stateAbr = [
@@ -81,6 +94,17 @@ class RegistrationForm extends Component {
     return stateAbr;
   };
 
+  onSelectStateChange = () => {
+    console.log(document.getElementsByName('locationState'));
+
+    this.setState({
+      stateLocation: {
+        selected: true,
+        value: document.getElementsByClassName('')
+      }
+    });
+  };
+
   handleSubmit = (ev) => {
     ev.preventDefault();
     const { name, username, locationCity, locationState, password } = ev.target;
@@ -112,6 +136,7 @@ class RegistrationForm extends Component {
   // }
 
   render() {
+    console.log(this.state);
     const { error } = this.state;
     return (
       <form onSubmit={this.handleSubmit} className="registerForm">
@@ -143,20 +168,31 @@ class RegistrationForm extends Component {
             helperText="Please Choose a State"
             className="location-state"
             name="locationState"
+            onChange={this.onSelectStateChange}
             id="registration-location-state-select"
-            options={this.renderOptions()}
+            options={this.generateStateOptions()}
           />
         </div>
         <div>
-          <TextInput
+          {/* <TextInput
             label="City"
             attr={{
               id: 'registration-location-city-input',
               name: 'locationCity',
               required: true,
+              disabled: !this.state.stateLocation.selected,
               type: 'text'
             }}
-          />
+          /> */}
+          {/* <Select
+            helperText="Please Choose a City"
+            id="registration-location-city-input"
+            name="locationCity"
+            onChange={this.onSelectChange}
+            disabled={!this.state.stateLocation.selected}
+            type="text"
+            options={this.generateCityOptions()}
+          /> */}
         </div>
         <div>
           <TextInput
