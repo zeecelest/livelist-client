@@ -155,8 +155,6 @@ class NewSpotForm extends Component {
   }
 
   render() {
-    // console.log('props', this.props)
-    // console.log('New Spot Form - context spot', this.context.spots)
 
     const {error} = this.state;
     return (

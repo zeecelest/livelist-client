@@ -3,7 +3,6 @@ import PlayListContext from '../../contexts/PlayListContext';
 import { Input, Required, Label } from "../Form/Form";
 import Button from "../../components/Button/Button";
 import { Link, Redirect } from "react-router-dom";
-
 import './UpdateSpot.css';
 
 class UpdateSpot extends Component {
@@ -194,14 +193,15 @@ class UpdateSpot extends Component {
       const sid = parseInt(this.props.match.params.id);
       const lid = this.context.listid;
       const { name, state, address, city, tags} = this.state;
+
       this.setState({ redirectToReferrer: true });
+
       let obj = {name: name.value,  tags: tags.value, address: address.value, city: city.value, state: state.value, id: sid , list_id: lid}
-      console.log('obj', obj)
+  
       this.context.handleUpdateSpot(
         obj
       )
     }
-
     
 render() {
     const {error} = this.state;
@@ -284,7 +284,6 @@ render() {
             required
           />
         }
-
         </div>
         <footer className="signupBtnLink">
           <Button><Link to={`/list/${this.context.listid}`}>Cancel</Link></Button>

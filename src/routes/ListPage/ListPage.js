@@ -85,9 +85,6 @@ export class ListPage extends Component {
     ListsApiService
       .getUsersLists()
       .then(list =>{
-        // //this.context.setSpots(list) - for checking to get all the list
-        // this.context.setSpots(list)
-
         this.setState({
           userLists: list
         })
@@ -96,9 +93,8 @@ export class ListPage extends Component {
 
     ListsApiService.getSpotsById(id)
       .then(spotsServer => {
-        //checking context
+        //passing spotsServer to setSpots context
         this.context.setSpots(spotsServer)
-        console.log('context spot' , this.context.spots)
 
         this.setState({
           spots: spotsServer.spots,
@@ -152,8 +148,6 @@ export class ListPage extends Component {
   };
 
   render() {
-    console.log('this.context in ListPage', this.context.spots)
-    console.log('this.props' , this.props)
     return <div>{this.renderForLoading()}</div>;
   }
 }

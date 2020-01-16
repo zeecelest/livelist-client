@@ -36,7 +36,6 @@ const SpotsApiService = {
             )
     },
     patchSpot(spot) {
-      console.log(spot.name, spot.tags,spot.address,spot.city, spot.state, spot.list_id)
       return fetch(`${config.API_ENDPOINT}/spots/${spot.id}`,{
         method: 'PATCH',
         headers: {

@@ -33,20 +33,17 @@ export class UserDashboardRoute extends Component {
   };
 
   handleDeletePlaylist = (playId) => {
-    // console.log('handle playlistdelete playId' , playId)
     ListsApiService.getSpotsById(playId)
       .then((data) => {
-        // console.log('handle delete inside spot', data)
-        //  console.log(data.spots.length)
         if (data.spots.length === 0) {
-          // console.log('can be deleted')
           ListApiService.deleteLists(playId)
             .then( () => {
               console.log(`Record '${playId}' deleted`)
               const newUserList = this.state.userList.filter(userlist => userlist.id !== playId)
-              //added to update playlist context
+              
+              //added to update setPlaylist context
               this.context.setPlaylist(newUserList)
-              // console.log('newUserList', newUserList)
+              
               this.setState({
                 userList: newUserList,
                 checkLength: data.spots.length
