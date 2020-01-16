@@ -101,24 +101,20 @@ class UpdateSpot extends Component {
     }
 
     componentDidMount() {
-      const listId = this.props.match.params.id;
-      const spot = this.context.spots
-      console.log('list id', listId)
+      const lid = this.context.listid;
+      const spot = this.context.spots.spots
 
-      console.log('spot context', spot)
-      console.log(this.context)
-
-      let editSpot = spot.find( (s) => parseInt(s.id) === parseInt(listId))
-      console.log('spot.find' , this.context.spots.find( (s) => parseInt(s.id) === parseInt(listId)));
+      let editSpot = spot.find( (s) => parseInt(s.id) === parseInt(this.context.spotid))
 
       this.setState({
-        id: parseInt(listId),
         name: { value: editSpot.name, touched: false },
         address: { value: editSpot.address, touched: false },
         city: { value: editSpot.city, touched: false },
         state: { value: editSpot.state, touched: false },
-        tags: { value: editSpot.tags, touched: false }
+        tags: { value: editSpot.tags, touched: false },
+        list_id: parseInt(lid)
       });
+
     }
 
     stateAbr = [
@@ -195,49 +191,24 @@ class UpdateSpot extends Component {
 
     handleSubmit = ev => {
       ev.preventDefault();
-      const id = parseInt(this.props.match.params.id);
-      console.log(typeof(id));
+      const sid = parseInt(this.props.match.params.id);
+      const lid = this.context.listid;
       const { name, state, address, city, tags} = this.state;
       this.setState({ redirectToReferrer: true });
+      let obj = {name: name.value,  tags: tags.value, address: address.value, city: city.value, state: state.value, id: sid , list_id: lid}
+      console.log('obj', obj)
       this.context.handleUpdateSpot(
-        id,
-        name.value,
-        tags.value,
-        address.value,
-        city.value,
-        state.value,
-        
+        obj
       )
     }
 
-    // handleChange = ev => {
-    //   const target = ev.target;
-    //   const value = target.type === "checkbox" ? !target.checked : target.value;
-    //   const name = target.name;
-  
-    //    //for testing only
-    //   const cityValue = target.name === 'city' ? target.value.split(' ').join('_') : target.value;
-    //   console.log('city value' + cityValue)
-
-
-    //   this.setState({
-    //     [name]: value
-    //   });
-    // };
-  
     
 render() {
-  // let x = this.state.isEditable ? 'form here' : 'x'
-  // console.log('editable', this.state.isEditable)
-
-  console.log('state touched', this.state.state.touched )
-  console.log('redirectToReferrrer', this.state.redirectToReferrer)
-
     const {error} = this.state;
-    // if (this.state.redirectToReferrer) {
-    //   return (<Redirect to={`/list/${this.props.match.params.id}`} />)
-    // }
-    // else 
+    if (this.state.redirectToReferrer) {
+      return (<Redirect to={`/list/${this.context.listid}`} />)
+    }
+    else 
     return (
       <form onSubmit={this.handleSubmit} className="updateSpotForm">
         <div role="alert">{error && <p>{error}</p>}</div>
@@ -316,7 +287,7 @@ render() {
 
         </div>
         <footer className="signupBtnLink">
-          <Button><Link to={`/list/${this.props.match.params.id}`}>Cancel</Link></Button>
+          <Button><Link to={`/list/${this.context.listid}`}>Cancel</Link></Button>
           <Button type="submit">Save</Button> <br />{' '}
         </footer>
       </form>

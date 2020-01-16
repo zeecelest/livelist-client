@@ -43,6 +43,8 @@ export class UserDashboardRoute extends Component {
             .then( () => {
               console.log(`Record '${playId}' deleted`)
               const newUserList = this.state.userList.filter(userlist => userlist.id !== playId)
+              //added to update playlist context
+              this.context.setPlaylist(newUserList)
               // console.log('newUserList', newUserList)
               this.setState({
                 userList: newUserList,

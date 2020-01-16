@@ -1,5 +1,6 @@
 import config from '../config'
 import TokenService from './token-service'
+import { taggedTemplateExpression } from '@babel/types'
 
 const SpotsApiService = {
     postSpots(spot) {
@@ -35,14 +36,20 @@ const SpotsApiService = {
             )
     },
     patchSpot(spot) {
-      return fetch(`${config.API_ENDPOINT}/spots/${spot}`,{
+      console.log(spot.name, spot.tags,spot.address,spot.city, spot.state, spot.list_id)
+      return fetch(`${config.API_ENDPOINT}/spots/${spot.id}`,{
         method: 'PATCH',
         headers: {
           'content-type': 'application/json',
           'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify({
-        editSpot: spot
+        name: spot.name,
+        tags: spot.tags,
+        address: spot.address,
+        city: spot.city,
+        state: spot.state,
+        list_id: spot.list_id
       })
     })
       .then(res =>

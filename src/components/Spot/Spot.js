@@ -13,17 +13,28 @@ export class Spot extends Component {
     console.log('compdid=>' + this.context)
   }
 
+  static defaultProps = {
+    match: {
+      params: {}
+    }
+  }
+
+  handleSpotClick = () => {
+    console.log('clicked ')
+    this.context.setSpotId(this.props.sid)
+    this.context.setListId(this.props.lid)
+  }
   renderUserListId = () => {
     if(this.props.usersListIds.length > 0){
       return this.props.usersListIds.map(lists => {
         if(lists === parseInt(this.props.lid)) { 
-          // console.log('list thing match',lists)
+          console.log('list thing match',lists)
           return (
             <div className ='spot-buttons'>
                 <Button onClick={ () => this.props.handleDeleteSpot(this.props.sid)}>Delete</Button>
-                <Button >
-                  <Link
-                    to= {`/updateSpot/${this.props.lid}`}
+                <Button>
+                <Link
+                    to= {`/updateSpot/${this.props.sid}`}
                   >
                     Edit
                   </Link>
@@ -37,12 +48,19 @@ export class Spot extends Component {
   }
 
   render() {
-    console.log('spot props lid ',this.props.lid)
+    // console.log('spot context listid ',this.context.listid)
     console.log('spot props sid', this.props.sid)
+    console.log('spot id conttext', this.context.spotid)
 
+    const {sid} = this.context
+    console.log('sid', this.props.sid);
+
+    // this.context.setSpotId(this.props.sid)
+    // console.log('spotid context' , this.context.spotid)
+    
     return (
       
-      <div className="spotItem">
+      <div className="spotItem"  onClick={this.handleSpotClick}>
 
           {this.renderUserListId()}
 

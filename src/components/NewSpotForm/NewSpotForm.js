@@ -2,8 +2,11 @@ import React, {Component} from 'react';
 import {Input, Required, Label} from '../Form/Form';
 import Button from '../Button/Button';
 import SpotsApiService from '../../services/spots-api-service';
+import PlayListContext from '../../contexts/PlayListContext';
 
 class NewSpotForm extends Component {
+  static contextType = PlayListContext;
+
   static defaultProps = {
     onSpotCreation: () => {},
   };
@@ -115,6 +118,9 @@ class NewSpotForm extends Component {
       list_id: this.props.location.props ? this.props.location.props.list_id : ''
     })
       .then(spot => {
+        this.context.setSpotId(spot.id)
+        this.context.setSpots(spot)
+
         name.value = '';
         tags.value = '';
         address.value = '';
@@ -131,17 +137,17 @@ class NewSpotForm extends Component {
     const target = ev.target;
     const value = target.value;
     const name = target.name;
-    console.log(
-      'city value' +
-        target.value
-          .split(' ')
-          .join('_')
-          .trim(),
-    );
+    // console.log(
+    //   'city value' +
+    //     target.value
+    //       .split(' ')
+    //       .join('_')
+    //       .trim(),
+    // );
     this.setState({
       [name]: value,
     });
-    console.log('this', this.state);
+    // console.log('this', this.state);
   };
 
   componentDidMount() {
@@ -149,8 +155,9 @@ class NewSpotForm extends Component {
   }
 
   render() {
-    console.log('props', this.props)
-    console.log('context spot', this.context.spots)
+    // console.log('props', this.props)
+    // console.log('New Spot Form - context spot', this.context.spots)
+
     const {error} = this.state;
     return (
       <form onSubmit={this.handleSubmit} className="newSpotForm">

@@ -4,8 +4,11 @@ import SpotsApiService from '../services/spots-api-service';
 const PlayListContext = React.createContext({
   playlist: {},
   spots:[],
+  userLists:[],
   setPlaylist: () => {},
-  setSpots: () => {}
+  setSpots: () => {},
+  spotid: 0,
+  listid: 0,
 });
 
 export default PlayListContext;
@@ -24,22 +27,30 @@ export class PlayListProvider extends Component {
   };
 
   setSpots = spots => {
-    this.setState( {spots} );
+    this.setState( { spots } );
   };
 
+  setSpotId = id => {
+    this.setState({ spotid: id})
+  }
+
+  setListId = id => {
+    this.setState({ listid: id})
+  }
+
+  handleAddSpot = spot => {
+    this.setState({
+      spots: [...this.state.spots, spot]
+    })
+  }
+  
   handleUpdateSpot = (spot) => {
-    console.log('handle edit spot in PlayList Contextt', spot)
-    let spotJson = JSON.stringify(spot)
-    console.log('handle update PlayList Context', spotJson)
-    SpotsApiService.patchSpot(spotJson)
+    let currentSpot = this.state.spots.spots.find( s => s.id === spot.id)
+    SpotsApiService.patchSpot(spot)
     .then( data => {
-     console.log('patch' , data)
-    // })
-    // .then( () => {
-    //   console.log('current spot', currentSpot)
-    //   this.setState({
-    //     spots: currentSpot
-    //   })
+      this.setState({
+        spots: currentSpot
+      })
     })
     .catch(this.context.setError)
   }
@@ -50,7 +61,13 @@ export class PlayListProvider extends Component {
       spots: this.state.spots,
       setPlaylist: this.setPlaylist,
       setSpots: this.setSpots,
-      handleUpdateSpot: this.handleUpdateSpot
+      setUserList: this.setUserList,
+      handleAddSpot: this.handleAddSpot,
+      handleUpdateSpot: this.handleUpdateSpot,
+      spotid: this.state.spotid,
+      setSpotId: this.setSpotId,
+      listid: this.state.listid,
+      setListId: this.setListId
     };
     return (
       <PlayListContext.Provider value={value}>

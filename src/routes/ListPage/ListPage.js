@@ -25,6 +25,9 @@ export class ListPage extends Component {
     .then( () => {
       console.log(`Record '${spotId}' deleted`)
       const newSpot = this.state.spots.filter(spot => spot.id !== spotId)
+      //added to update context
+      this.context.setSpots(newSpot)
+
       this.setState({
         spots: newSpot
       })
@@ -85,8 +88,8 @@ export class ListPage extends Component {
     ListsApiService
       .getUsersLists()
       .then(list =>{
-        //this.context.setSpots(list) - for checking to get all the list
-        this.context.setSpots(list)
+        // //this.context.setSpots(list) - for checking to get all the list
+        // this.context.setSpots(list)
 
         this.setState({
           userLists: list
@@ -96,6 +99,10 @@ export class ListPage extends Component {
 
     ListsApiService.getSpotsById(id)
       .then(spotsServer => {
+        //checking context
+        this.context.setSpots(spotsServer)
+        console.log('context spot' , this.context.spots)
+
         this.setState({
           spots: spotsServer.spots,
           listInfo: spotsServer
@@ -134,7 +141,8 @@ export class ListPage extends Component {
               to={{
                 pathname: "/newSpot",
                 props: {
-                  list_id: this.props.match.params.id
+                  list_id: this.props.match.params.id,
+                  sid: this.props.sid
                 }
               }}
             >
@@ -148,6 +156,7 @@ export class ListPage extends Component {
 
   render() {
     console.log('this.context in ListPage', this.context.spots)
+    console.log('this.props' , this.props)
     return <div>{this.renderForLoading()}</div>;
   }
 }
