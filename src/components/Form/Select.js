@@ -14,11 +14,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MultilineTextFields(props) {
   const classes = useStyles();
-  let { id, label, helperText, className, options } = props;
+  let { id, label, helperText, className, options, onChange } = props;
   return (
     <dic className={classes.root} noValidate autoComplete="off">
       <TextField
         id={id}
+        onChange={onChange}
         className={(className, 'outlined-select-currency-native')}
         select
         label={label}
