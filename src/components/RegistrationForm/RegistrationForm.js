@@ -78,14 +78,7 @@ class RegistrationForm extends Component {
       'WI',
       'WY'
     ];
-
-    return stateAbr.map((state) => {
-      return (
-        <option key={state} value={state}>
-          {state}
-        </option>
-      );
-    });
+    return stateAbr;
   };
 
   handleSubmit = (ev) => {
@@ -145,6 +138,15 @@ class RegistrationForm extends Component {
             }}
           />
         </div>
+        <div className="state-container">
+          <Select
+            helperText="Please Choose a State"
+            className="location-state"
+            name="locationState"
+            id="registration-location-state-select"
+            options={this.renderOptions()}
+          />
+        </div>
         <div>
           <TextInput
             label="City"
@@ -154,14 +156,6 @@ class RegistrationForm extends Component {
               required: true,
               type: 'text'
             }}
-          />
-        </div>
-        <div className="state-container">
-          <Select
-            helperText="Please Choose a State"
-            className="location-state"
-            name="locationState"
-            id="registration-location-state-select"
           />
         </div>
         <div>
