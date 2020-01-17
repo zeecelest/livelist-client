@@ -29,7 +29,7 @@ const ListsApiService = {
       )     
   },
     getListsByCity(city_name){
-      return fetch(`${config.API_ENDPOINT}/lists/${city_name}`, {
+      return fetch(`${config.API_ENDPOINT}/cities/${city_name}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${TokenService.getAuthToken()}`,
@@ -69,6 +69,21 @@ const ListsApiService = {
             : res.json()
         )
     },
+    postListsByLike(list_id) {
+      return fetch(`${config.API_ENDPOINT}/lists/like/${list_id}`, {
+          method: 'POST',
+          headers: {
+            'authorization': `Bearer ${TokenService.getAuthToken()}`,
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify(list_id),
+      })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+  },
     deleteLists(id){
         return fetch(`${config.API_ENDPOINT}/lists/${id}`,{
             method: 'DELETE',
@@ -82,21 +97,27 @@ const ListsApiService = {
                 : null
             )
     },
-    updateLists(id){
-        return fetch(`${config.API_ENDPOINT}/lists/${id}`,{
+    patchLists(list){
+      console.log('api', list)
+        return fetch(`${config.API_ENDPOINT}/lists/${list.id}`,{
             method: 'PATCH',
             headers: {
               'content-type': 'application/json',
               'authorization': `bearer ${TokenService.getAuthToken()}`,
             },
             body: JSON.stringify({
-              id: id
+              name: list.name,
+              tags: list.tags,
+              city: list.city,
+              state: list.state,
+              description: list.description,
+              is_public: list.is_public
             })
           })
             .then(res =>
               (!res.ok)
                 ? res.json().then(e => Promise.reject(e))
-                : null
+                : res.json()
             )
     },
 

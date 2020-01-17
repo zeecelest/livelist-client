@@ -119,24 +119,6 @@ class NewPlaylistForm extends Component {
       });
   };
 
-  // handleChange = ev => {
-  //   const target = ev.target;
-  //   const value = target.type === "checkbox" ? !target.checked : target.value;
-  //   const name = target.name;
-  //   console.log("this is the target on Change", target);
-  //   //for testing only
-  //   const cityValue = target.value.split(" ").join("_");
-
-  //   this.setState({
-  //     [name]: value,
-  //     city: cityValue
-  //   });
-  // };
-
-  // componentDidMount() {
-  //   this.firstInput.current.focus();
-  // }
-
   render() {
     const { error } = this.state;
     return (

@@ -69,6 +69,7 @@
     font-weight: bold;
     margin-bottom: 0;
     margin-top: 5%;
+    padding-right: 1rem;
 }
 .userListTitle::visited{
     color: var(--color-body);
@@ -82,4 +83,59 @@
     border-radius: 15px;
     margin-top: 5%;
     cursor: pointer;
+}
+
+.userlist-btn {
+    font-size: 1rem;
+    background: transparent;
+    border: 0;
+    margin-top: .5rem;
+    padding-left: .2rem;
+    padding-right: .2rem;
+    visibility: hidden;
+}
+
+.userlist-btn .timesIcon:hover{
+    font-weight: 900;
+    color: blue;
+    cursor: pointer;
+}
+
+.userlist-btn .editIcon:hover{
+    font-weight: 900;
+    color: blue;
+    cursor: pointer;
+}
+
+.timesIcon {
+    font-size: 1.7rem;
+    border: transparent;
+    color: #ff5033;
+    margin-bottom: -3px;
+}
+
+.editIcon {
+    font-size: 1.5rem;
+    border: transparent;
+    color: black;
+}
+
+.listItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+
+.listItem:hover .userlist-btn {
+    visibility: visible;
+}
+
+/* 20em = 320px to 37.5em = 600px */
+@media only screen and (min-width: 20em) and (max-width:37.5em) {
+    .userlist-btn {
+        visibility: visible;
+        font-size: 1rem;
+    }
 }

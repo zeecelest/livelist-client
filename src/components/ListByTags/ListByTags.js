@@ -71,7 +71,6 @@ export class ListByTags extends Component {
   };
 
   render() {
-    console.log("props in the ListBy Tags component", this.props);
     return (
       <div>
         <form onSubmit={this.handleFilter} id="filterForm">

@@ -10,7 +10,7 @@ export class Spot extends Component {
   static contextType = PlayListContext;
 
   componentDidMount() {
-    console.log('compdid=>' + this.context)
+    // console.log('compdid=>' + this.context)
   }
 
   static defaultProps = {
