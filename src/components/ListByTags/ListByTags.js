@@ -70,6 +70,21 @@ export class ListByTags extends Component {
     }
   };
 
+  // filterInput() {
+  //   let input, filter, txtValue;
+  //   input = document.getElementById('tags');
+  //   filter = input.value.toUpperCase();
+
+  //   for(i = 0; i < tags.length; i++) {
+  //     a = tags[i].getElebmentsByTagName('a') [0];
+  //     txtValue = a.textContent || a.innerText;
+  //     if(txtValue.toUpperCase().indextOf(filter) > -1) {
+  //       tags[i].style.display = '';
+  //     } else {
+  //       tags[i].style.display = 'none';
+  //     }
+  //   }
+  // }
   
 
   render() {
@@ -83,6 +98,8 @@ export class ListByTags extends Component {
             </button>
             <input
               type="text"
+              id='tags'
+              // onkeyup='renderFilterList()'
               placeholder="#saturday"
               name="filter"
               className="filterField"
