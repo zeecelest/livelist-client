@@ -105,8 +105,8 @@ class RegistrationForm extends Component {
         </div>
         <div>
           <Select
-            label="Choose a State"
-            //helperText="Please Choose a State"
+            label="State"
+            helperText="Choose your State"
             className="location-state"
             name="locationState"
             onChange={this.onSelectStateChange}
@@ -117,8 +117,8 @@ class RegistrationForm extends Component {
         </div>
         <div>
           <Select
-            label="Choose a City"
-            //helperText="Please Choose a City"
+            label="City"
+            helperText="Choose your City"
             id="registration-location-city-input"
             className="location-city"
             name="locationCity"

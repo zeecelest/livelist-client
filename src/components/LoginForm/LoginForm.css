@@ -3,25 +3,23 @@ div[role='alert'] p {
   color: red;
 }
 
-@media (max-width: 500px) {
-  .loginForm {
-    color: var(--color-body);
-    background-color: var(--color-midColor);
-    border-radius: 0;
-  }
-  #login-username-input {
-    border-radius: 5px;
-    background-color: var(--color-background);
-  }
-  #login-password-input {
-    border-radius: 5px;
-    background-color: var(--color-background);
-  }
-  .loginTitle {
-    margin-top: 0;
-    margin-bottom: 10%;
-    color: var(--color-highlight);
-  }
+.loginForm {
+  color: var(--color-body);
+  background-color: var(--color-midColor);
+  border-radius: 0;
+}
+#login-username-input {
+  border-radius: 5px;
+  background-color: var(--color-background);
+}
+#login-password-input {
+  border-radius: 5px;
+  background-color: var(--color-background);
+}
+.loginTitle {
+  margin-top: 0;
+  margin-bottom: 10%;
+  color: var(--color-highlight);
 }
 
 .loginForm {
