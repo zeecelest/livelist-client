@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Label } from '../Form/Form';
 import TextInput from '../Form/TextInput';
 import Select from '../Form/Select';
 import possibleLocations from '../Assets/possibleLocations';
 import states from '../Assets/states';
 import AuthApiService from '../../services/auth-api-service';
-
 import Button from '../Button/Button';
 import './RegistrationForm.css';
 
@@ -18,10 +16,9 @@ class RegistrationForm extends Component {
   state = {
     error: null,
     stateLocation: { value: null, selected: false },
+    stateCity: '',
     cities: []
   };
-
-  //firstInput = React.createRef();
 
   generateStateOptions = () => {
     return states.map((item) => item.name);
@@ -29,7 +26,6 @@ class RegistrationForm extends Component {
 
   onSelectStateChange = (ev) => {
     let cities = possibleLocations[ev.target.value];
-    console.log(cities);
     this.setState({
       stateLocation: {
         selected: true,
@@ -39,27 +35,39 @@ class RegistrationForm extends Component {
     });
   };
 
+  onSelectCityChange = (ev) => {
+    this.setState({
+      cityLocation: {
+        selected: true,
+        value: ev.target.value
+      }
+    });
+  };
+
   handleSubmit = (ev) => {
     ev.preventDefault();
     console.log(ev.target);
-    const { name, username, locationCity, locationState, password } = ev.target;
-    console.log(name, username, locationCity, locationState, password);
-    // if (locationState.value === '') {
-    //   return this.setState({ error: 'Please select a state.' });
-    // }
+    let name = document.getElementsByName('name')[0];
+    let username = document.getElementsByName('username')[0];
+    let password = document.getElementsByName('password')[0];
+    let city = this.state.cityLocation.value;
+    let state = this.state.stateLocation.value;
+
     AuthApiService.postUser({
       name: name.value,
       username: username.value,
-      city: locationCity.value,
-      state: locationState.value,
+      city: city,
+      state: state,
       password: password.value
     })
       .then((user) => {
         name.value = '';
         username.value = '';
-        locationCity.value = '';
-        locationState.value = '';
         password.value = '';
+        this.setState({
+          city: { selected: false, value: '' },
+          state: { selected: false, value: '' }
+        });
         this.props.onRegistrationSuccess();
       })
       .catch((res) => {
@@ -115,7 +123,7 @@ class RegistrationForm extends Component {
             helperText="Please Choose a City"
             id="registration-location-city-input"
             name="locationCity"
-            onChange={this.onSelectChange}
+            onChange={this.onSelectCityChange}
             disabled={!this.state.stateLocation.selected}
             type="text"
             options={this.state.cities}

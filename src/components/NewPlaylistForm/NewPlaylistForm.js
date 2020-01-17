@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Input, Required, Label } from "../Form/Form";
-import ListsApiService from "../../services/lists-api-service";
-import Button from "../Button/Button";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Input, Required, Label } from '../Form/Form';
+import ListsApiService from '../../services/lists-api-service';
+import Button from '../Button/Button';
 
 // TODO - clean the input .toLowerCase and _ for spaces in the city
 // TODO - clean the tags, must have space between #
@@ -13,78 +13,78 @@ class NewPlaylistForm extends Component {
     onPlaylistCreation: () => {}
   };
   stateAbr = [
-    "AL",
-    "AK",
-    "AS",
-    "AZ",
-    "AR",
-    "CA",
-    "CO",
-    "CT",
-    "DE",
-    "DC",
-    "FM",
-    "FL",
-    "GA",
-    "GU",
-    "HI",
-    "ID",
-    "IL",
-    "IN",
-    "IA",
-    "KS",
-    "KY",
-    "LA",
-    "ME",
-    "MH",
-    "MD",
-    "MA",
-    "MI",
-    "MN",
-    "MS",
-    "MO",
-    "MT",
-    "NE",
-    "NV",
-    "NH",
-    "NJ",
-    "NM",
-    "NY",
-    "NC",
-    "ND",
-    "MP",
-    "OH",
-    "OK",
-    "OR",
-    "PW",
-    "PA",
-    "PR",
-    "RI",
-    "SC",
-    "SD",
-    "TN",
-    "TX",
-    "UT",
-    "VT",
-    "VI",
-    "VA",
-    "WA",
-    "WV",
-    "WI",
-    "WY"
+    'AL',
+    'AK',
+    'AS',
+    'AZ',
+    'AR',
+    'CA',
+    'CO',
+    'CT',
+    'DE',
+    'DC',
+    'FM',
+    'FL',
+    'GA',
+    'GU',
+    'HI',
+    'ID',
+    'IL',
+    'IN',
+    'IA',
+    'KS',
+    'KY',
+    'LA',
+    'ME',
+    'MH',
+    'MD',
+    'MA',
+    'MI',
+    'MN',
+    'MS',
+    'MO',
+    'MT',
+    'NE',
+    'NV',
+    'NH',
+    'NJ',
+    'NM',
+    'NY',
+    'NC',
+    'ND',
+    'MP',
+    'OH',
+    'OK',
+    'OR',
+    'PW',
+    'PA',
+    'PR',
+    'RI',
+    'SC',
+    'SD',
+    'TN',
+    'TX',
+    'UT',
+    'VT',
+    'VI',
+    'VA',
+    'WA',
+    'WV',
+    'WI',
+    'WY'
   ];
   state = {
     error: null,
-    name: "",
-    city: " ",
-    state: "",
-    tags: " ",
+    name: '',
+    city: ' ',
+    state: '',
+    tags: ' ',
     is_public: true
   };
 
   firstInput = React.createRef();
   renderOptions = () => {
-    return this.stateAbr.map(state => {
+    return this.stateAbr.map((state) => {
       return (
         <option key={state} value={state} onChange={this.handleChange}>
           {state}
@@ -93,40 +93,43 @@ class NewPlaylistForm extends Component {
     });
   };
 
-  handleSubmit = ev => {
+  handleSubmit = (ev) => {
     ev.preventDefault();
     const { name, state, city, tags } = ev.target;
-    let is_public = this.state.is_public
-    if (state.value === "") {
-      return this.setState({ error: "Please select a state." });
+    let is_public = this.state.is_public;
+    if (state.value === '') {
+      return this.setState({ error: 'Please select a state.' });
     }
     ListsApiService.postLists({
       name: name.value,
-      city: city.value.split(' ').join('_').trim(),
+      city: city.value
+        .split(' ')
+        .join('_')
+        .trim(),
       state: state.value,
       tags: tags.value,
       is_public
     })
-      .then(playlist => {
-        name.value = "";
-        state.value = "";
-        city.value = "";
-        tags.value = "";
+      .then((playlist) => {
+        name.value = '';
+        state.value = '';
+        city.value = '';
+        tags.value = '';
         this.props.onPlaylistCreation();
       })
-      .catch(res => {
+      .catch((res) => {
         this.setState({ error: res.error });
       });
   };
 
-  handleChange = ev => {
+  handleChange = (ev) => {
     const target = ev.target;
-    const value = target.type === "checkbox" ? !target.checked : target.value;
+    const value = target.type === 'checkbox' ? !target.checked : target.value;
     const name = target.name;
 
     //for testing only
-    const cityValue = target.value.split(' ').join('_')
-    console.log('city value' + cityValue)
+    const cityValue = target.value.split(' ').join('_');
+    console.log('city value' + cityValue);
 
     this.setState({
       [name]: value
@@ -138,7 +141,6 @@ class NewPlaylistForm extends Component {
   }
 
   render() {
-     
     const { error } = this.state;
     return (
       <form onSubmit={this.handleSubmit} className="newPlaylistForm">
@@ -202,11 +204,10 @@ class NewPlaylistForm extends Component {
             type="checkbox"
             name="is_public"
             value={this.state.value}
-            onChange={this.handleChange}
-          ></input>
+            onChange={this.handleChange}></input>
         </div>
         <footer className="signupBtnLink">
-          <Button type="submit">Submit</Button> <br />{" "}
+          <Button type="submit">Submit</Button> <br />{' '}
         </footer>
       </form>
     );
