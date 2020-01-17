@@ -75,7 +75,6 @@ export class ListByTags extends Component {
   render() {
     return (
       <div>
-        <div className='input'></div>
         <form onSubmit={this.handleFilter} id="filterForm">
           <h4 className="filterFormTitle">Browse All Lists</h4>
           <div className="filterButtonContainer">
@@ -86,7 +85,8 @@ export class ListByTags extends Component {
               type="text"
               placeholder="#saturday"
               name="filter"
-              className="filterField"></input>
+              className="filterField"
+              onChange={this.filterList}></input>
           </div>
         </form>
         <div className="filteredContainer">{this.renderFilteredList()}</div>

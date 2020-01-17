@@ -7,7 +7,6 @@ import Map from "../../components/Map/Map";
 import { Link } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import "./listPage.css";
-import ScrollContainer from "react-indiana-drag-scroll";
 import loadingAnimation from "../../components/Assets/loadingAnimation.gif";
 
 export class ListPage extends Component {

@@ -21,14 +21,14 @@ export class likeButton extends Component {
   }
 
   clickLike = () => {
-    if (this.state.liked == '1'){
+    if (this.state.liked === '1'){
       this.setState({
         liked: '0',
         likes: this.state.likes - 1
 
       })
     }
-    else if (this.state.liked == '0'){
+    else if (this.state.liked === '0'){
       this.setState({
         liked: '1',
         likes: this.state.likes + 1
@@ -37,7 +37,7 @@ export class likeButton extends Component {
   }
 
   renderButtons = () => {
-    if (this.state.liked == '1') {
+    if (this.state.liked === '1') {
       return (
         <div>
           <button  onClick={(ev) => {
@@ -54,7 +54,7 @@ export class likeButton extends Component {
           </button>
         </div>
       );
-    } else if(this.state.liked == '0') {
+    } else if(this.state.liked === '0') {
       return (
         <div>
           <button  onClick={(ev) => {
