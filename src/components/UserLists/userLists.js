@@ -1,13 +1,13 @@
 /* eslint-disable no-unreachable */
 /* eslint-disable no-unused-expressions */
-import React, { Component } from "react";
-import PlayListContext from "../../contexts/PlayListContext";
+import React, { Component } from 'react';
+import PlayListContext from '../../contexts/PlayListContext';
 
-import { Link } from "react-router-dom";
- import Button from "../../components/Button/Button";
+import { Link } from 'react-router-dom';
+import Button from '../../components/Button/Button';
 // import ListPage from '../../routes/ListPage/ListPage'
-import ScrollContainer from "react-indiana-drag-scroll";
-import "./userLists.css";
+import ScrollContainer from 'react-indiana-drag-scroll';
+import './userLists.css';
 
 export class UserLists extends Component {
   state = {
@@ -18,7 +18,7 @@ export class UserLists extends Component {
 
   renderUserList() {
     if (this.props.userList.length === 0) {
-      return <h2>no lists</h2>;
+      return <h2>No Lists</h2>;
     }
     if (this.props.userList.length > 0) {
       return (
@@ -27,17 +27,16 @@ export class UserLists extends Component {
             // This will likely need to be
 
             return (
-              <div key={idx} className="listItem users" >
-                <p className='userListTitle' onClick={this.handleClickList}>
-                  <Link to={`/list/${item.id}`} className='userListTitle'>
+              <div key={idx} className="listItem users">
+                <p className="userListTitle" onClick={this.handleClickList}>
+                  <Link to={`/list/${item.id}`} className="userListTitle">
                     {item.name}
                   </Link>
                 </p>
                 {this.props.checkLength === 0 && item.id ? (
                   <button
                     className="btn-list"
-                    onClick={() => this.props.handleDeletePlaylist(item.id)}
-                  >
+                    onClick={() => this.props.handleDeletePlaylist(item.id)}>
                     Delete
                   </button>
                 ) : (
@@ -51,7 +50,7 @@ export class UserLists extends Component {
         </div>
       );
     }
-    return <h2>no lists</h2>;
+    return <h2>No Lists</h2>;
   }
 
   render() {
@@ -63,13 +62,12 @@ export class UserLists extends Component {
             className="userListContainer"
             horizontal={true}
             activationDistance={1}
-            nativeMobileScroll={true}
-          >
+            nativeMobileScroll={true}>
             {this.renderUserList()}
-            <div className='newPlayListButtonContainer'>
+            <div className="newPlayListButtonContainer">
               <Button id="newPlaylistButton">
                 <Link to="/newList" className="newPlaylistButtonText">
-                  New Play List
+                  New Playlist
                 </Link>
               </Button>
             </div>
