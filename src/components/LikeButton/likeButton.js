@@ -5,12 +5,40 @@ import likedIcon from "../../components/Assets/likedIcon.png";
 import "./likeButton.css";
 
 export class likeButton extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      liked: '',
+    }
+  }
+
+  componentDidMount(){
+    this.setState({
+      liked: this.props.liked,
+    })
+  }
+
+  clickLike = () => {
+    if (this.state.liked == '1'){
+      this.setState({
+        liked: '0'
+      })
+    }
+    else if (this.state.liked == '0'){
+      this.setState({
+        liked: '1'
+      })
+    }
+  }
 
   renderButtons = () => {
-    if (this.props.liked == 1) {
+    if (this.state.liked == '1') {
       return (
         <div>
-          <button  onClick={(ev) => this.props.handleLikeButton(ev)}>
+          <button  onClick={(ev) => {
+            this.props.handleLikeButton(ev)
+            this.clickLike()
+          }}>
             <img
               id={this.props.id}
               src={likedIcon}
@@ -20,10 +48,13 @@ export class likeButton extends Component {
           </button>
         </div>
       );
-    } else {
+    } else if(this.state.liked == '0') {
       return (
         <div>
-          <button onClick={(ev) => this.props.handleLikeButton(ev)}>
+          <button  onClick={(ev) => {
+            this.clickLike()
+            this.props.handleLikeButton(ev)
+          }}>
             <img
               id={this.props.id}
               src={notLikedIcon}
