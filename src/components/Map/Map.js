@@ -92,13 +92,14 @@ class Map extends React.Component {
     navigator.geolocation.getCurrentPosition(x => {
       const glat = x.coords.latitude;
       const glng = x.coords.longitude;
-    });
+    }).then(
+      this.setState({
+        ...this.state,
+        myLocation: {lat: this.glat, lng: this.glng},
+        center: {lat, lng}
+      }) 
+    );
 
-    this.setState({
-      ...this.state,
-      myLocation: {lat: this.glat, lng: this.glng},
-      center: {lat, lng}
-    }) 
   }
 
   render() {
