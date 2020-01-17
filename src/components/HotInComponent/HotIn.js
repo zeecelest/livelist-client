@@ -2,17 +2,14 @@ import React, { Component } from "react";
 import ScrollContainer from "react-indiana-drag-scroll";
 import "./HotIn.css";
 import LikeButton from '../LikeButton/likeButton';
+import ListsApiService from "../../services/lists-api-service";
 
 export class HotIn extends Component {
-  // likes: "0"
-  // liked_by_user: "0"
-  // on_fire: "0"
-  // id: 6
-  // name: "Wesley Jacobs"
-  // tags: "#my times"
-  // city: "Los_Angeles"
-  // state: "CA"
-  // is_public: true
+state = {
+  list: this.props.allLists,
+  updated: false
+}
+
   merge = (left, right, array) => {
     let leftIndex = 0;
     let rightIndex = 0;
@@ -47,23 +44,51 @@ export class HotIn extends Component {
     return this.merge(left, right, array);
   };
 
+componentDidMount(){
+  this.setState({
+    list: this.mergeSort(this.props.allLists)
+  })
+}
+
+
+
+handleToggleLike = () =>{
+  this.setState(prevState => ({
+    list: { 
+        ...prevState.list,   
+        updated: !this.state.updated
+    }
+}))
+}
+
+
+handleLikeButton = ev => {
+  let id = ev.target.id;
+  ListsApiService.toggleLike(`${id}`)
+    .then(like => {
+      return this.setState({
+        updated: !this.state.updated
+      });
+    })
+    .catch(() => console.log("error"));
+    
+};
+
   renderHotLists = () => {
-    let sortedListByLikes = this.mergeSort(this.props.allLists);
-    if (this.props.allLists.length === 0) {
+    if (this.state.list === []) {
       return <h2>No Lists.</h2>;
     }
-
-    // TODO: determine which like button to render
-    if (this.props.allLists.length > 0) {
+    if (this.state.list.length > 0) {
       return (
         <div className="display-hotIn">
-          {sortedListByLikes.map((item, idx) => {
+          {this.state.list.map((item, idx) => {
             if (item.liked_by_user == 1) {
               return (
                 <div key={item.id} className="listItem hot">
                   <h5 className="hotListTitle">{item.name}</h5>
                 <LikeButton 
                   id={item.id}
+                  handleLikeButton={this.handleLikeButton}
                   liked={item.liked_by_user}
                 />
                   <p>{item.likes}</p>
@@ -75,6 +100,7 @@ export class HotIn extends Component {
                   <h5 className="hotListTitle">{item.name}</h5>
                   <LikeButton 
                   id={item.id}
+                  handleLikeButton={this.handleLikeButton}
                   liked={item.liked_by_user}
                 />
                   <p>{item.likes}</p>
@@ -85,9 +111,9 @@ export class HotIn extends Component {
         </div>
       );
     }
+
   };
-  //
-  //className={likedIcon}
+
   render() {
     return (
       <section className="hotListSection">
