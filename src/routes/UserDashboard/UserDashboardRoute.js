@@ -6,6 +6,7 @@ import ListByTags from '../../components/ListByTags/ListByTags';
 import loadingAnimation from '../../components/Assets/loadingAnimation.gif';
 import './UserDashboard.css';
 import ListsApiService from "../../services/lists-api-service";
+import HotIn from '../../components/HotInComponent/HotIn';
 
 export class UserDashboardRoute extends Component {
   static contextType = PlayListContext;
@@ -16,7 +17,8 @@ export class UserDashboardRoute extends Component {
     lists: [],
     spots: [],
     loading: false,
-    checkLength: 0
+    checkLength: 0,
+    likedChange: false
   };
 
   static defaultProps = {
@@ -31,6 +33,7 @@ export class UserDashboardRoute extends Component {
     const destination = (location.state || {}).from || '/dashboard';
     history.push(destination);
   };
+
 
   handleDeletePlaylist = (playId) => {
     ListsApiService.getSpotsById(playId)
@@ -59,6 +62,7 @@ export class UserDashboardRoute extends Component {
 
   //get all lists for a specific user
   componentDidMount() {
+    // TODO Add api call to return and set in the state the Lists in the city of the user.
     this.setState({
       loading: true
     });
@@ -114,8 +118,13 @@ export class UserDashboardRoute extends Component {
               handleDeletePlaylist={this.handleDeletePlaylist}
               spots={this.state.spots}
               checkLength={this.state.checkLength}
+            />            
+            <HotIn 
+              userList={this.state.userList}
+              allLists={this.state.lists}
             />
             <ListByTags lists={this.state.lists} />
+
           </PlayListContext.Provider>
         </div>
       );

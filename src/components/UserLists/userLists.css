@@ -1,6 +1,6 @@
-.userListContainer{
+/* .userListContainer{
     overflow: scroll;
-}
+} */
 .userList-section{
     margin-top: 20%;
     margin-left: auto;
@@ -17,8 +17,7 @@
     flex-direction: row;
     overflow: auto;
     white-space: nowrap;
-    padding: 1.5rem 0;
-    
+    padding: 1.5rem 0;   
 }
 .myList-title{
     color: var(--color-highlight);
