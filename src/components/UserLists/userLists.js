@@ -31,7 +31,7 @@ export class UserLists extends Component {
 
   renderUserList() {
     if (this.props.userList.length === 0) {
-      return <h2>no lists</h2>;
+      return <h2>No Lists</h2>;
     }
     if (this.props.userList.length > 0) {
       return (
@@ -81,7 +81,7 @@ export class UserLists extends Component {
         </div>
       );
     }
-    return <h2>no lists</h2>;
+    return <h2>No Lists</h2>;
   }
 
   render() {
@@ -93,13 +93,12 @@ export class UserLists extends Component {
             className="userListContainer"
             horizontal={true}
             activationDistance={1}
-            nativeMobileScroll={true}
-          >
+            nativeMobileScroll={true}>
             {this.renderUserList()}
-            <div className='newPlayListButtonContainer'>
+            <div className="newPlayListButtonContainer">
               <Button id="newPlaylistButton">
                 <Link to="/newList" className="newPlaylistButtonText">
-                  New Play List
+                  New Playlist
                 </Link>
               </Button>
             </div>

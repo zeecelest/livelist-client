@@ -1,0 +1,47 @@
+
+
+.display-hotIn{
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 1.5rem 0;
+  
+}
+.listItem{
+  text-decoration: none;
+  min-width: 200px;
+  background-color:white;
+  margin-right: 5%;
+  height: 100px;
+  max-width: 75vw;
+  padding: .5rem 1rem;
+  border-radius: 5px;
+  display: flex;
+  border: 1px solid grey;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hotListTitle{
+  color: var(--color-highlight);
+  align-self: flex-start;
+  margin-top:0;
+}
+.hotListSection{
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right:auto;
+  display: flex;
+  width: 90vw;
+  max-width: 90vw;
+  flex-direction: column;
+ padding: .5rem 1rem;
+}
+.hot{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}

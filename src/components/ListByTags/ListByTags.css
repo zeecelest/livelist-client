@@ -1,58 +1,55 @@
-@media(max-width: 400px){
 .filtered {
-    margin: 0;
-    margin-bottom: 5%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+  margin: 0;
+  margin-bottom: 5%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
-.filteredContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 400px;
-    margin-left:auto;
-    margin-right: auto;
+.filteredContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
-#filterForm{
-    color: var(--color-highlight);
-    margin-top: 5%;
+#filterForm {
+  color: var(--color-highlight);
+  margin-top: 5%;
 }
-.filterButton{
-    color: var(--color-body);
-    order: 2;
-    border-radius: 5px;
+.filterButton {
+  color: var(--color-body);
+  order: 2;
+  border-radius: 5px;
 }
-.filterField{
-    text-align: right;
-    width: 50%;
-}
-
-.filterField::placeholder{
-    color: var(--color-midColor);
+.filterField {
+  text-align: right;
+  width: 50%;
 }
 
-.filterFormTitle{
-    margin-top: 0;
-    margin-bottom: 5%;
-}
-.filterButtonContainer{
-    display: flex;
-    justify-content: center;
-}
-.newPlaylistButtonText{
-    color:white;
-}
-.filteredListName{
-    color: var(--color-body);
-    cursor: pointer;
-    margin-bottom: 2%;
-}
-.filteredListTag{
-    color: var(--color-darkMid);
-    cursor: pointer;
-    margin-top: 0;
+.filterField::placeholder {
+  color: var(--color-midColor);
 }
 
+.filterFormTitle {
+  margin-top: 0;
+  margin-bottom: 5%;
+}
+.filterButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+.newPlaylistButtonText {
+  color: white;
+}
+.filteredListName {
+  color: var(--color-body);
+  cursor: pointer;
+  margin-bottom: 2%;
+}
+.filteredListTag {
+  color: var(--color-darkMid);
+  cursor: pointer;
+  margin-top: 0;
 }

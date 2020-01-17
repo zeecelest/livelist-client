@@ -1,20 +1,47 @@
-@media (max-width: 500px) {
-  .loginForm {
-    color: var(--color-body);
-    background-color: var(--color-midColor);
-    border-radius: 0;
-  }
-  #login-username-input {
-    border-radius: 5px;
-    background-color: var(--color-background);
-  }
-  #login-password-input {
-    border-radius: 5px;
-    background-color: var(--color-background);
-  }
-  .loginTitle {
-    margin-top: 0;
-    margin-bottom: 10%;
-    color: var(--color-highlight)
+div[role='alert'] p {
+  font-size: 20px;
+  color: red;
+}
+
+.loginForm {
+  color: var(--color-body);
+  background-color: var(--color-midColor);
+  border-radius: 0;
+}
+#login-username-input {
+  border-radius: 5px;
+  background-color: var(--color-background);
+}
+#login-password-input {
+  border-radius: 5px;
+  background-color: var(--color-background);
+}
+.loginTitle {
+  margin-top: 0;
+  margin-bottom: 10%;
+  color: var(--color-highlight);
+}
+
+.loginForm {
+  color: var(--color-body);
+  background-color: var(--color-midColor);
+  border-radius: 0;
+}
+#login-username-input {
+  border-radius: 5px;
+  background-color: var(--color-background);
+}
+#login-password-input {
+  border-radius: 5px;
+  background-color: var(--color-background);
+}
+.loginTitle {
+  margin-top: 0;
+  color: var(--color-highlight);
+}
+/* IF YOU WANT TO EDIT THE INPUTS WIDTH => THERE IS A CLASS THAT SETS THE WIDTH IN THE TextInput.js FILE */
+@media (min-width: 500px) {
+  .loginForm button {
+    font-size: 18px;
   }
 }

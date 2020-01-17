@@ -9,12 +9,6 @@
   align-items: center;
   border-radius: 0px;
 }
-.location-state {
-  background-color: var(--color-background);
-  width: 20%;
-  height: 20px;
-  align-self: center;
-}
 .state-container {
   display: flex;
   flex-direction: row;
@@ -27,6 +21,14 @@
   margin-top: 25%;
   margin-bottom: 0;
 }
-#registration-password-input, #registration-location-state-select, #registration-location-city-input, #registration-username-input, #registration-name-input {
+#registration-password-input,
+#registration-location-state-select,
+#registration-location-city-input,
+#registration-username-input,
+#registration-name-input {
   background-color: var(--color-background);
+}
+.registerForm button,
+a {
+  font-size: 20px;
 }

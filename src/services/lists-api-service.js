@@ -120,6 +120,19 @@ const ListsApiService = {
                 : res.json()
             )
     },
+    toggleLike(id){
+      return fetch(`${config.API_ENDPOINT}/lists/like/${id}`,{
+          method: 'POST',
+          headers: {
+            'authorization': `bearer ${TokenService.getAuthToken()}`,
+          }
+        })
+          .then(res =>
+            (!res.ok)
+              ? res.json().then(e => Promise.reject(e))
+              : null
+          )
+  },
 
 }
 
