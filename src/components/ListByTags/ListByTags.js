@@ -39,12 +39,10 @@ export class ListByTags extends Component {
       });
     }
 
-    onChangeHandler => (e) => { 
-      this.setState({
+    this.setState({
       filteredList: [...newList],
-      input: e.target.value,
-    })
-  }
+    });
+  };
 
   renderFilteredList = () => {
     if (this.state.filteredList.length == 0) {
@@ -75,17 +73,9 @@ export class ListByTags extends Component {
   
 
   render() {
-    const list = this.state.users
-      .filter(d => this.state.input === '' || d.includes (this.state.input))
-      .map((d, index) => <li key={index}>{d}</li>);
-      
     return (
-        <div className='input'>
-          <input 
-            value={this.state.input} 
-            type='text' 
-            onChange={this.onChangeHandler.bind(this)}/>
-        </div>
+      <div>
+        <div className='input'></div>
         <form onSubmit={this.handleFilter} id="filterForm">
           <h4 className="filterFormTitle">Browse All Lists</h4>
           <div className="filterButtonContainer">
