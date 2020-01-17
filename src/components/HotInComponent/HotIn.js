@@ -90,8 +90,8 @@ handleLikeButton = ev => {
                   id={item.id}
                   handleLikeButton={this.handleLikeButton}
                   liked={item.liked_by_user}
+                  likes={item.likes}
                 />
-                  <p>{item.likes}</p>
                 </div>
               );
             } else {
@@ -102,8 +102,8 @@ handleLikeButton = ev => {
                   id={item.id}
                   handleLikeButton={this.handleLikeButton}
                   liked={item.liked_by_user}
+                  likes={item.likes}
                 />
-                  <p>{item.likes}</p>
                 </div>
               );
             }

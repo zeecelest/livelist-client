@@ -9,24 +9,29 @@ export class likeButton extends Component {
     super(props)
     this.state = {
       liked: '',
+      likes: ''
     }
   }
 
   componentDidMount(){
     this.setState({
       liked: this.props.liked,
+      likes: this.props.likes
     })
   }
 
   clickLike = () => {
     if (this.state.liked == '1'){
       this.setState({
-        liked: '0'
+        liked: '0',
+        likes: this.state.likes - 1
+
       })
     }
     else if (this.state.liked == '0'){
       this.setState({
-        liked: '1'
+        liked: '1',
+        likes: this.state.likes + 1
       })
     }
   }
@@ -45,6 +50,7 @@ export class likeButton extends Component {
               className={`likedIcon`}
               alt="icon white"
             ></img>
+    <p>{this.state.likes}</p>
           </button>
         </div>
       );
@@ -61,6 +67,7 @@ export class likeButton extends Component {
               className="notLikedIcon"
               alt="icon grey"
             ></img>
+            <p>{this.state.likes}</p>
           </button>
         </div>
       );
