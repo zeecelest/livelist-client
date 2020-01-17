@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Label } from '../Form/Form';
 import TextInput from '../Form/TextInput';
 import Select from '../Form/Select';
+import possibleLocations from '../Assets/possibleLocations';
+import states from '../Assets/states';
 import AuthApiService from '../../services/auth-api-service';
 import Button from '../Button/Button';
 import './RegistrationForm.css';
@@ -12,94 +13,61 @@ class RegistrationForm extends Component {
     onRegistrationSuccess: () => {}
   };
 
-  state = { error: null };
+  state = {
+    error: null,
+    stateLocation: { value: null, selected: false },
+    stateCity: '',
+    cities: []
+  };
 
-  //firstInput = React.createRef();
+  generateStateOptions = () => {
+    return states.map((item) => item.name);
+  };
 
-  renderOptions = () => {
-    let stateAbr = [
-      'AL',
-      'AK',
-      'AS',
-      'AZ',
-      'AR',
-      'CA',
-      'CO',
-      'CT',
-      'DE',
-      'DC',
-      'FM',
-      'FL',
-      'GA',
-      'GU',
-      'HI',
-      'ID',
-      'IL',
-      'IN',
-      'IA',
-      'KS',
-      'KY',
-      'LA',
-      'ME',
-      'MH',
-      'MD',
-      'MA',
-      'MI',
-      'MN',
-      'MS',
-      'MO',
-      'MT',
-      'NE',
-      'NV',
-      'NH',
-      'NJ',
-      'NM',
-      'NY',
-      'NC',
-      'ND',
-      'MP',
-      'OH',
-      'OK',
-      'OR',
-      'PW',
-      'PA',
-      'PR',
-      'RI',
-      'SC',
-      'SD',
-      'TN',
-      'TX',
-      'UT',
-      'VT',
-      'VI',
-      'VA',
-      'WA',
-      'WV',
-      'WI',
-      'WY'
-    ];
-    return stateAbr;
+  onSelectStateChange = (ev) => {
+    let cities = possibleLocations[ev.target.value];
+    this.setState({
+      stateLocation: {
+        selected: true,
+        value: ev.target.value
+      },
+      cities
+    });
+  };
+
+  onSelectCityChange = (ev) => {
+    this.setState({
+      cityLocation: {
+        selected: true,
+        value: ev.target.value
+      }
+    });
   };
 
   handleSubmit = (ev) => {
     ev.preventDefault();
-    const { name, username, locationCity, locationState, password } = ev.target;
-    if (locationState.value === '') {
-      return this.setState({ error: 'Please select a state.' });
-    }
+    console.log(ev.target);
+    let name = document.getElementsByName('name')[0];
+    let username = document.getElementsByName('username')[0];
+    let password = document.getElementsByName('password')[0];
+    let city = this.state.cityLocation.value;
+    let state = this.state.stateLocation.value;
+
     AuthApiService.postUser({
       name: name.value,
       username: username.value,
-      city: locationCity.value,
-      state: locationState.value,
+      city: city,
+      state: state,
       password: password.value
     })
       .then((user) => {
         name.value = '';
         username.value = '';
-        locationCity.value = '';
-        locationState.value = '';
         password.value = '';
+        this.setState({
+          city: { selected: false, value: '' },
+          state: { selected: false, value: '' }
+        });
         this.props.onRegistrationSuccess();
       })
       .catch((res) => {
@@ -112,6 +80,7 @@ class RegistrationForm extends Component {
   // }
 
   render() {
+    console.log(this.state);
     const { error } = this.state;
     return (
       <form onSubmit={this.handleSubmit} className="registerForm">
@@ -143,19 +112,21 @@ class RegistrationForm extends Component {
             helperText="Please Choose a State"
             className="location-state"
             name="locationState"
+            onChange={this.onSelectStateChange}
+            value=""
             id="registration-location-state-select"
-            options={this.renderOptions()}
+            options={this.generateStateOptions()}
           />
         </div>
         <div>
-          <TextInput
-            label="City"
-            attr={{
-              id: 'registration-location-city-input',
-              name: 'locationCity',
-              required: true,
-              type: 'text'
-            }}
+          <Select
+            helperText="Please Choose a City"
+            id="registration-location-city-input"
+            name="locationCity"
+            onChange={this.onSelectCityChange}
+            disabled={!this.state.stateLocation.selected}
+            type="text"
+            options={this.state.cities}
           />
         </div>
         <div>
