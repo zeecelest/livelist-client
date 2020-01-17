@@ -75,10 +75,6 @@ class RegistrationForm extends Component {
       });
   };
 
-  // componentDidMount() {
-  //   this.firstInput.current.focus();
-  // }
-
   render() {
     console.log(this.state);
     const { error } = this.state;
@@ -107,9 +103,10 @@ class RegistrationForm extends Component {
             }}
           />
         </div>
-        <div className="state-container">
+        <div>
           <Select
-            helperText="Please Choose a State"
+            label="Please Choose a State"
+            //helperText="Please Choose a State"
             className="location-state"
             name="locationState"
             onChange={this.onSelectStateChange}
@@ -120,8 +117,10 @@ class RegistrationForm extends Component {
         </div>
         <div>
           <Select
-            helperText="Please Choose a City"
+            label="Please Choose a City"
+            //helperText="Please Choose a City"
             id="registration-location-city-input"
+            className="location-city"
             name="locationCity"
             onChange={this.onSelectCityChange}
             disabled={!this.state.stateLocation.selected}

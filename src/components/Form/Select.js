@@ -7,8 +7,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: 200,
-      paddingBottom: '20px'
+      width: 200
     }
   }
 }));
@@ -22,7 +21,7 @@ export default function MultilineTextFields(props) {
         id={id}
         onChange={onChange}
         disabled={disabled}
-        className={className + ' ' + 'outlined-select-currency-native'}
+        className={className}
         select
         label={label}
         helperText={helperText}
