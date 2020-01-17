@@ -70,7 +70,6 @@ const ListsApiService = {
         )
     },
     deleteLists(id){
-      console.log('api', id)
         return fetch(`${config.API_ENDPOINT}/lists/${id}`,{
             method: 'DELETE',
             headers: {

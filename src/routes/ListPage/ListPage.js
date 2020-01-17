@@ -20,11 +20,14 @@ export class ListPage extends Component {
   };
 
   handleDeleteSpot = spotId => {
-    console.log('handle delete for spot in user dashboard')
+    console.log('handle delete spot in List Page')
     SpotsApiService.deleteSpots(spotId)
     .then( () => {
       console.log(`Record '${spotId}' deleted`)
       const newSpot = this.state.spots.filter(spot => spot.id !== spotId)
+      //added to update context
+      this.context.setSpots(newSpot)
+
       this.setState({
         spots: newSpot
       })
@@ -90,6 +93,9 @@ export class ListPage extends Component {
 
     ListsApiService.getSpotsById(id)
       .then(spotsServer => {
+        //passing spotsServer to setSpots context
+        this.context.setSpots(spotsServer)
+
         this.setState({
           spots: spotsServer.spots,
           listInfo: spotsServer
@@ -128,7 +134,8 @@ export class ListPage extends Component {
               to={{
                 pathname: "/newSpot",
                 props: {
-                  list_id: this.props.match.params.id
+                  list_id: this.props.match.params.id,
+                  sid: this.props.sid
                 }
               }}
             >

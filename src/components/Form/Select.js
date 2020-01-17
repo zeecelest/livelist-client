@@ -14,7 +14,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MultilineTextFields(props) {
   const classes = useStyles();
-  let { id, label, helperText, className, options, onChange, disabled } = props;
+  let {
+    id,
+    label,
+    helperText,
+    className,
+    options,
+    onChange,
+    disabled,
+    name
+  } = props;
   return (
     <div className={classes.root} noValidate autoComplete="off">
       <TextField
@@ -24,6 +33,7 @@ export default function MultilineTextFields(props) {
         className={className}
         select
         label={label}
+        name={name}
         helperText={helperText}
         variant="outlined">
         {options.map((option, index) => (
