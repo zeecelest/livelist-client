@@ -1,14 +1,33 @@
 import React, { Component } from "react";
-import Spot from "../Spot/Spot";
+import LikeButton from '../LikeButton/likeButton';
 
+//
 export class List extends Component {
   render() {
+    if(this.props.liked){
+      console.log('pops in the List Component =>', this.props)
+      return(
+        <div  
+        id={this.props.id} 
+        className={`listItem `}>
+        <h5 className="list-name">{this.props.name}</h5>
+        <LikeButton 
+          id={this.props.id}
+          likes={this.props.likes}
+          liked={this.props.liked}
+          handleLikeButton={this.props.handleLikeButton}
+          />
+    </div>
+      )
+  } else {
     return (
-      <div>
-        <h4>Name of Spot</h4>
-        <Spot />
-      </div>
+      <div  
+        id={this.props.id} 
+        className={`listItem ${this.props.addClass}`}>
+        <h5 className="list-name">{this.props.name}</h5>
+    </div>
     );
+  }
   }
 }
 

@@ -3,6 +3,7 @@ import ScrollContainer from "react-indiana-drag-scroll";
 import "./HotIn.css";
 import LikeButton from '../LikeButton/likeButton';
 import ListsApiService from "../../services/lists-api-service";
+import List from '../List/List'
 
 export class HotIn extends Component {
 state = {
@@ -82,9 +83,16 @@ handleLikeButton = ev => {
       return (
         <div className="display-hotIn">
           {this.state.list.map((item, idx) => {
-            if (item.liked_by_user == 1) {
               return (
-                <div key={item.id} className="listItem hot">
+                <List 
+                  className={'button'}
+                  name={item.name} 
+                  id={item.id} 
+                  liked={item.liked_by_user}
+                  likes={item.likes}
+                  handleLikeButton={this.handleLikeButton}
+                  >
+                {/* <div key={item.id} className="listItem hot">
                   <h5 className="hotListTitle">{item.name}</h5>
                 <LikeButton 
                   id={item.id}
@@ -92,21 +100,23 @@ handleLikeButton = ev => {
                   liked={item.liked_by_user}
                   likes={item.likes}
                 />
-                </div>
+                </div> */}
+                </List>
               );
-            } else {
-              return (
-                <div key={idx} className="listItem hot">
-                  <h5 className="hotListTitle">{item.name}</h5>
-                  <LikeButton 
-                  id={item.id}
-                  handleLikeButton={this.handleLikeButton}
-                  liked={item.liked_by_user}
-                  likes={item.likes}
-                />
-                </div>
-              );
-            }
+            
+            // else {
+            //   return (
+            //     <div key={idx} className="listItem hot">
+            //       <h5 className="hotListTitle">{item.name}</h5>
+            //       <LikeButton 
+            //       id={item.id}
+            //       handleLikeButton={this.handleLikeButton}
+            //       liked={item.liked_by_user}
+            //       likes={item.likes}
+            //     />
+            //     </div>
+            //   );
+            // }
           })}
         </div>
       );
