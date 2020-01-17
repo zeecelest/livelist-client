@@ -94,7 +94,7 @@ class RegistrationForm extends Component {
         </div>
         <div>
           <TextInput
-            label="Choose a username"
+            label="Enter a username"
             attr={{
               id: 'registration-username-input',
               name: 'username',
@@ -105,7 +105,7 @@ class RegistrationForm extends Component {
         </div>
         <div>
           <Select
-            label="Please Choose a State"
+            label="Choose a State"
             //helperText="Please Choose a State"
             className="location-state"
             name="locationState"
@@ -117,7 +117,7 @@ class RegistrationForm extends Component {
         </div>
         <div>
           <Select
-            label="Please Choose a City"
+            label="Choose a City"
             //helperText="Please Choose a City"
             id="registration-location-city-input"
             className="location-city"
@@ -130,7 +130,7 @@ class RegistrationForm extends Component {
         </div>
         <div>
           <TextInput
-            label="Choose a password"
+            label="Enter a password"
             attr={{
               id: 'registration-password-input',
               name: 'password',
