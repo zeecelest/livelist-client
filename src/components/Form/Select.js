@@ -35,6 +35,7 @@ export default function MultilineTextFields(props) {
         label={label}
         name={name}
         helperText={helperText}
+        required
         variant="outlined">
         {options.map((option, index) => (
           <MenuItem key={index} value={option}>
