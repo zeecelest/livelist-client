@@ -36,13 +36,16 @@ class Map extends React.Component {
 
   handleButton = e => {
     e.preventDefault();
-    this.findMyLocation()
     navigator.geolocation.getCurrentPosition(x => {
       const lat = x.coords.latitude;
       const lng = x.coords.longitude;
       this.setState({
         ...this.state,
         center: {
+          lat,
+          lng
+        },
+        myLocation:{
           lat,
           lng
         }
