@@ -1,85 +1,101 @@
-.userListContainer{
-    overflow: scroll;
+.userListContainer {
+  overflow: scroll;
 }
-.userList-section{
-    margin-top: 20%;
-    margin-left: auto;
-    margin-right:auto;
-    display: flex;
-    width: 90vw;
-    max-width: 90vw;
-    flex-direction: column;
-   padding: .5rem 1rem;
-}
-
-.display-user{
-    display: flex;
-    flex-direction: row;
-    overflow: auto;
-    white-space: nowrap;
-    padding: 1.5rem 0;
-    
-}
-.myList-title{
-    color: var(--color-highlight);
-    align-self: flex-start;
-}
-.listItem{
-    text-decoration: none;
-    min-width: 200px;
-    background-color:white;
-    margin-right: 5%;
-    height: 100px;
-    max-width: 75vw;
-    padding: .5rem 1rem;
-    border-radius: 5px;
-    display: flex;
-    border: 1px solid grey;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.userListItem{
-    max-width: 100px;
-}
-.users{
-    padding-bottom: 5%;
+.userList-section {
+  margin-top: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  width: 90vw;
+  max-width: 90vw;
+  flex-direction: column;
+  padding: 0.5rem 1rem;
 }
 
-#newPlaylistButton{
-    width: 50%;
-    max-width: 150px;
-    padding: .25rem .5rem;
-    align-self: flex-end;
-    margin-top: 5%;
-    border-radius: 25px;
-    color: white;
-    font-size: 1rem;
+.display-user {
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 1.5rem 0;
 }
-.newPlayListButtonContainer{
-    display:flex;
-    justify-content: flex-end;
+.myList-title {
+  color: var(--color-highlight);
+  align-self: flex-start;
 }
-.listItemName{
-    color: #4267b2;
+.listItem {
+  text-decoration: none;
+  min-width: 200px;
+  background-color: white;
+  margin-right: 5%;
+  height: 100px;
+  max-width: 75vw;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  display: flex;
+  border: 1px solid grey;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.userListTitle{
-    color: var(--color-body);
-    cursor: pointer;
-    font-weight: bold;
-    margin-bottom: 0;
-    margin-top: 5%;
+.userListItem {
+  max-width: 100px;
 }
-.userListTitle::visited{
-    color: var(--color-body);
+.users {
+  padding-bottom: 5%;
+}
+
+#newPlaylistButton {
+  width: 50%;
+  max-width: 150px;
+  padding: 0.25rem 0.5rem;
+  align-self: flex-end;
+  margin-top: 5%;
+  border-radius: 25px;
+  color: white;
+  font-size: 1rem;
+}
+.newPlayListButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+.listItemName {
+  color: #4267b2;
+}
+.userListTitle {
+  color: var(--color-body);
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-top: 5%;
+}
+.userListTitle::visited {
+  color: var(--color-body);
 }
 
 .btn-list {
-    padding: .5rem;
-    background-color:var(--color-midColor);
-    color: var(--color-darkMid);
-    border: 1px solid var(--color-darkMid);
-    border-radius: 15px;
-    margin-top: 5%;
-    cursor: pointer;
+  padding: 0.5rem;
+  background-color: var(--color-midColor);
+  color: var(--color-darkMid);
+  border: 1px solid var(--color-darkMid);
+  border-radius: 15px;
+  margin-top: 5%;
+  cursor: pointer;
+}
+@media only screen and (min-width: 500px) {
+  /* For desktop: */
+  .userList-section {
+    margin-top: 10%;
+    padding: 0.4rem 0.8rem;
+  }
+  #newPlaylistButton {
+    width: 50%;
+    max-width: 150px;
+    padding: 0.25rem 0.5rem;
+    align-self: flex-end;
+    margin-top: 0;
+    border-radius: 25px;
+    color: white;
+    font-size: 1rem;
+  }
 }
