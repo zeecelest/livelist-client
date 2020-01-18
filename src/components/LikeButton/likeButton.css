@@ -1,8 +1,16 @@
+.likeButtonContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+}
 .notLikedIcon{
   width: 30px;
   height: auto;
 }
 .likedIcon{
+  float: right;
   width: 30px;
   height: auto;
   background-color: rgba(0, 0, 0, 0.733);

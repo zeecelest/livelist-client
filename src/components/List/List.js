@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import LikeButton from '../LikeButton/likeButton';
+import './List.css'
 
-//
+
 export class List extends Component {
   render() {
     if(this.props.liked){
-      console.log('pops in the List Component =>', this.props)
       return(
         <div  
         id={this.props.id} 
-        className={`listItem `}>
+        className={this.props.className}>
         <h5 className="list-name">{this.props.name}</h5>
         <LikeButton 
           id={this.props.id}

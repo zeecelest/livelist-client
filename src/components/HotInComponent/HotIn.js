@@ -5,6 +5,7 @@ import LikeButton from '../LikeButton/likeButton';
 import ListsApiService from "../../services/lists-api-service";
 import List from '../List/List'
 
+
 export class HotIn extends Component {
 state = {
   list: this.props.allLists,
@@ -64,11 +65,14 @@ handleToggleLike = () =>{
 
 
 handleLikeButton = ev => {
+  ev.preventDefault();
   let id = ev.target.id;
-  ListsApiService.toggleLike(`${id}`)
+  console.log('id in handleLikeButton',typeof id, id)
+  ListsApiService.toggleLike(id)
     .then(like => {
+      console.log('response from server on the toggle',like)
       return this.setState({
-        updated: !this.state.updated
+        state: !this.state.updated
       });
     })
     .catch(() => console.log("error"));
@@ -84,39 +88,18 @@ handleLikeButton = ev => {
         <div className="display-hotIn">
           {this.state.list.map((item, idx) => {
               return (
-                <List 
-                  className={'button'}
+                <List
+                  key={item.id} 
+                  className={'listItem hot'}
                   name={item.name} 
                   id={item.id} 
                   liked={item.liked_by_user}
                   likes={item.likes}
                   handleLikeButton={this.handleLikeButton}
                   >
-                {/* <div key={item.id} className="listItem hot">
-                  <h5 className="hotListTitle">{item.name}</h5>
-                <LikeButton 
-                  id={item.id}
-                  handleLikeButton={this.handleLikeButton}
-                  liked={item.liked_by_user}
-                  likes={item.likes}
-                />
-                </div> */}
                 </List>
               );
-            
-            // else {
-            //   return (
-            //     <div key={idx} className="listItem hot">
-            //       <h5 className="hotListTitle">{item.name}</h5>
-            //       <LikeButton 
-            //       id={item.id}
-            //       handleLikeButton={this.handleLikeButton}
-            //       liked={item.liked_by_user}
-            //       likes={item.likes}
-            //     />
-            //     </div>
-            //   );
-            // }
+
           })}
         </div>
       );

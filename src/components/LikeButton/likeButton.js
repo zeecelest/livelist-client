@@ -37,40 +37,34 @@ export class LikeButton extends Component {
   renderButtons = () => {
     if (this.state.liked == "1") {
       return (
-        <div>
-          <button
+        <div className='likeButtonContainer'>
+            <img
             onClick={ev => {
               this.props.handleLikeButton(ev);
               this.clickLike();
             }}
-          >
-            <img
               id={this.props.id}
               src={likedIcon}
               className={`likedIcon`}
               alt="icon white"
             ></img>
-            <p>{this.state.likes}</p>
-          </button>
+          <p>{this.state.likes}</p>
         </div>
       );
     } else if (this.state.liked == "0") {
       return (
-        <div>
-          <button
+        <div className='likeButtonContainer'>
+            <img
             onClick={ev => {
               this.clickLike();
               this.props.handleLikeButton(ev);
             }}
-          >
-            <img
               id={this.props.id}
               src={notLikedIcon}
               className="notLikedIcon"
               alt="icon grey"
             ></img>
-            <p>{this.state.likes}</p>
-          </button>
+          <p>{this.state.likes}</p>
         </div>
       );
     }

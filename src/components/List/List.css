@@ -1,0 +1,8 @@
+.list-name{
+  color: var(--color-highlight);
+  align-self: flex-start;
+}
+.hot{
+  display: flex;
+  flex-direction: column;
+}
