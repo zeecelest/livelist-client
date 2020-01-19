@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import PlayListContext from '../../contexts/PlayListContext';
 import { Link } from 'react-router-dom';
 import './ListByTags.css';
+import AutoComplete from '../components/AutoComplete'
 
 export class ListByTags extends Component {
   static contextType = PlayListContext;
@@ -96,6 +97,7 @@ export class ListByTags extends Component {
             <button type="submit" className="filterButton">
               Filter
             </button>
+            <AutoComplete />
             <input
               type="text"
               id='tags'
