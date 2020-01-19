@@ -14,14 +14,13 @@ class Map extends React.Component {
     this.state = {
       myLocation: { lat: "", lng: "" },
       center: { lat: 32.72, lng: -117.16 },
-      zoom: 15,
+      zoom: 10,
       spots: [],
     };
   }
  
 
   findMyLocation = () => {
-    setTimeout(() => {
       navigator.geolocation.getCurrentPosition(x => {
         const lat = x.coords.latitude;
         const lng = x.coords.longitude;
@@ -33,18 +32,20 @@ class Map extends React.Component {
           }
         });
       });
-    }, 5000);
   };
 
   handleButton = e => {
     e.preventDefault();
-    this.findMyLocation();
     navigator.geolocation.getCurrentPosition(x => {
       const lat = x.coords.latitude;
       const lng = x.coords.longitude;
       this.setState({
         ...this.state,
         center: {
+          lat,
+          lng
+        },
+        myLocation:{
           lat,
           lng
         }
@@ -81,6 +82,31 @@ class Map extends React.Component {
     });
   };
 
+  handleApiLoaded = async (map, maps) => {
+    let lat = 0;
+    let lng = 0;
+    let glat = 0;
+    let glng = 0;
+
+    this.props.spots.forEach(place => {
+      lat += parseFloat(place.lat);
+      lng += parseFloat(place.lng);
+    });
+    lat = lat / this.props.spots.length;
+    lng = lng / this.props.spots.length;
+
+    navigator.geolocation.getCurrentPosition(x => {
+      glat = x.coords.latitude;
+      glng = x.coords.longitude;
+    });
+      this.setState({
+        ...this.state,
+        myLocation: {lat: glat, lng: glng},
+        center: {lat, lng}
+      }) 
+
+  }
+
   render() {
     return (
       <div
@@ -92,6 +118,8 @@ class Map extends React.Component {
           defaultZoom={this.state.zoom}
           center={this.state.center}
           onChange={x => this.handleMapDrag(x)}
+          yesIWantToUseGoogleMapApiInternals
+          onGoogleApiLoaded={({map, maps}) => this.handleApiLoaded(map, maps)}
         >
           <MyLocation
             lat={this.state.myLocation.lat}
