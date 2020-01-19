@@ -99,11 +99,10 @@ export class ListByTags extends Component {
             <input
               type="text"
               id='tags'
-              // onkeyup='renderFilterList()'
               placeholder="#saturday"
               name="filter"
               className="filterField"
-              onChange={this.filterList}></input>
+            ></input>
           </div>
         </form>
         <div className="filteredContainer">{this.renderFilteredList()}</div>
