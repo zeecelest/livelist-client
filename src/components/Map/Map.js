@@ -21,7 +21,6 @@ class Map extends React.Component {
  
 
   findMyLocation = () => {
-    console.log(this.state)
       navigator.geolocation.getCurrentPosition(x => {
         const lat = x.coords.latitude;
         const lng = x.coords.longitude;
@@ -43,6 +42,10 @@ class Map extends React.Component {
       this.setState({
         ...this.state,
         center: {
+          lat,
+          lng
+        },
+        myLocation:{
           lat,
           lng
         }
@@ -79,9 +82,12 @@ class Map extends React.Component {
     });
   };
 
-  handleApiLoaded = (map, maps) => {
+  handleApiLoaded = async (map, maps) => {
     let lat = 0;
     let lng = 0;
+    let glat = 0;
+    let glng = 0;
+
     this.props.spots.forEach(place => {
       lat += parseFloat(place.lat);
       lng += parseFloat(place.lng);
@@ -90,15 +96,15 @@ class Map extends React.Component {
     lng = lng / this.props.spots.length;
 
     navigator.geolocation.getCurrentPosition(x => {
-      const glat = x.coords.latitude;
-      const glng = x.coords.longitude;
+      glat = x.coords.latitude;
+      glng = x.coords.longitude;
     });
+      this.setState({
+        ...this.state,
+        myLocation: {lat: glat, lng: glng},
+        center: {lat, lng}
+      }) 
 
-    this.setState({
-      ...this.state,
-      myLocation: {lat: this.glat, lng: this.glng},
-      center: {lat, lng}
-    }) 
   }
 
   render() {

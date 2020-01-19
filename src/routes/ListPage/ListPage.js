@@ -19,10 +19,8 @@ export class ListPage extends Component {
   };
 
   handleDeleteSpot = spotId => {
-    console.log('handle delete spot in List Page')
     SpotsApiService.deleteSpots(spotId)
     .then( () => {
-      console.log(`Record '${spotId}' deleted`)
       const newSpot = this.state.spots.filter(spot => spot.id !== spotId)
       //added to update context
       this.context.setSpots(newSpot)
@@ -76,7 +74,7 @@ export class ListPage extends Component {
 
   componentDidMount() {
     let id = this.props.match.params.id;
-    // console.log('id comdidmount' +id )
+
     //TODO:Once Api call is set turn this back on
     this.setState({
       loading: true
@@ -84,6 +82,10 @@ export class ListPage extends Component {
     ListsApiService
       .getUsersLists()
       .then(list =>{
+
+          // //context to hold the playlist - note: we can use this if we move the edit?
+          // this.context.setPlaylist(list)
+        
         this.setState({
           userLists: list
         })
