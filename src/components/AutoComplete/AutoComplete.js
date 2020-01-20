@@ -51,7 +51,7 @@ export class AutoComplete extends Component {
         this.setState({
             activeOption: 0,
             showSuggestions: false,
-            userInput: filteredOptions [activeOption]
+            userInput: filteredOptions[activeOption]
         });
 //The up arrow is key number 38, which will select the upper option. Won't go above first.        
       } else if (e.keyCode === 38) {
@@ -75,7 +75,7 @@ export class AutoComplete extends Component {
             // onChange,
             onKeyDown,
             userInput,
-            state: { activeOption, filteredOptons, showOptions }} = this;
+            state: { activeOption, filteredOptions, showOptions }} = this;
 
         let optionList;
 
@@ -109,7 +109,7 @@ export class AutoComplete extends Component {
                     value = { userInput } 
                 />
                 <input type='submit' value='' className='filter-btn' />
-                { optionLists}
+                { optionList}
             </div>
         </React.Fragment>
         );
