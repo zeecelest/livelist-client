@@ -5,21 +5,6 @@
   white-space: nowrap;
   padding: 1.5rem 0;
 }
-.listItem {
-  text-decoration: none;
-  min-width: 200px;
-  background-color: white;
-  margin-right: 5%;
-  height: 100px;
-  max-width: 75vw;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  display: flex;
-  border: 1px solid grey;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
 .hotListTitle {
   color: var(--color-highlight);
@@ -38,7 +23,7 @@
 }
 .hot {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
 }

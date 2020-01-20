@@ -13,5 +13,9 @@
   float: right;
   width: 30px;
   height: auto;
-  background-color: rgba(0, 0, 0, 0.733);
+  border-radius: 100px;
+  background-color: green;
+}
+.likes{
+  color: green;
 }
