@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import PropTypes from 'prop-types';
 import './ListByTags.css';
+import Fragment from 'react-dot-fragment'
 
 
 export class AutoComplete extends Component {
@@ -75,10 +76,10 @@ export class AutoComplete extends Component {
             onKeyDown,
             userInput,
             state: { activeOption, filteredOptons, showOptions, userInput }
-        }
-    } = this;
+}
+        } = this;
 
-    let optionList;
+        let optionList;
         if(showOptions && userInput) {
             if(filteredOptions.length) {
                 optionList = (
