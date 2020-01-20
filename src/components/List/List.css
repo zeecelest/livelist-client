@@ -1,19 +1,19 @@
-.list-name{
+.list-name {
   color: var(--color-highlight);
   align-self: center;
   border: 1px solid white;
 }
-.listItem{
+.listItem {
   background-image: linear-gradient(white, var(--color-midColor));
-    text-decoration: none;
-    min-width: 200px;
-    background-color:white;
-    margin-right: 5%;
-    height: 100px;
-    padding: .5rem 1rem;
-    border-radius: 5px;
-    display: flex;
-    border: 1px solid grey;
-    justify-content: center;
-    align-items: center;
+  text-decoration: none;
+  min-width: 200px;
+  background-color: white;
+  margin-right: 5%;
+  height: 100px;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  display: flex;
+  border: 1px solid grey;
+  justify-content: center;
+  align-items: center;
 }
