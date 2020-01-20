@@ -5,7 +5,7 @@ import PlayListContext from '../../contexts/PlayListContext';
 import { Link } from 'react-router-dom';
 import TextInput from '../Form/TextInput';
 import './ListByTags.css';
-import AutoComplete from '../components/AutoComplete'
+import AutoComplete from '../../components/AutoComplete'
 
 export class ListByTags extends Component {
   static contextType = PlayListContext;
@@ -94,6 +94,7 @@ export class ListByTags extends Component {
         <form onChange={this.handleFilter} id="filterForm">
           <h2 className="filterFormTitle">Browse All Lists</h2>
           <div className="filterButtonContainer">
+          <AutoComplete />
             <TextInput
               label="Hashtag"
               attr={{
