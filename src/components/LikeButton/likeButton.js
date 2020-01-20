@@ -21,23 +21,12 @@ export class LikeButton extends Component {
   }
 
   clickLike = () => {
-<<<<<<< HEAD
-    if (this.state.liked === '1'){
-=======
     if (this.state.liked == "1") {
->>>>>>> 0d2f9146ba446be8978066bb4e5909d34cd3811e
       this.setState({
         liked: "0",
         likes: this.state.likes - 1
-<<<<<<< HEAD
-
-      })
-    }
-    else if (this.state.liked === '0'){
-=======
       });
     } else if (this.state.liked == "0") {
->>>>>>> 0d2f9146ba446be8978066bb4e5909d34cd3811e
       this.setState({
         liked: "1",
         likes: this.state.likes + 1
@@ -46,11 +35,7 @@ export class LikeButton extends Component {
   };
 
   renderButtons = () => {
-<<<<<<< HEAD
-    if (this.state.liked === '1') {
-=======
     if (this.state.liked == "1") {
->>>>>>> 0d2f9146ba446be8978066bb4e5909d34cd3811e
       return (
         <div className='likeButtonContainer'>
             <img
@@ -66,11 +51,7 @@ export class LikeButton extends Component {
           <p>{this.state.likes}</p>
         </div>
       );
-<<<<<<< HEAD
-    } else if(this.state.liked === '0') {
-=======
     } else if (this.state.liked == "0") {
->>>>>>> 0d2f9146ba446be8978066bb4e5909d34cd3811e
       return (
         <div className='likeButtonContainer'>
             <img
