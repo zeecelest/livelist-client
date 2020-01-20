@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import Autocomplete from './Autocomplete';
+import AutoComplete from '../../components/AutoComplete';
 import PropTypes from 'prop-types';
 import './ListByTags.css';
 
 
 export class AutoComplete extends Component {
     static propTypes = {
-        options: PropTypes.instanceOf(Array).isRequired;
+        options: PropTypes.instanceOf(Array).isRequired,
     };
 
     state = {
@@ -26,7 +26,7 @@ export class AutoComplete extends Component {
     option.toLowerCase().indexOf(userInput.toLowerCase()) > -1
         );
 
-    this.this.setState({
+    this.setState({
         activeOption: 0,
         filteredOptions,
         showOptions: true,
@@ -35,7 +35,7 @@ export class AutoComplete extends Component {
     };
 
     onClick = (e) => {
-        this.this.setState({
+        this.setState({
             activeOption: 0,
             filteredOption: [],
             showOptions: false,
@@ -78,6 +78,7 @@ export class AutoComplete extends Component {
             state: { activeOption, filteredOptons, showOptions, userInput }
         }
     } = this;
+    
 
     let optionList;
         if(showOptions && userInput) {
