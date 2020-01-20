@@ -84,20 +84,38 @@ export class AutoComplete extends Component {
                 optionList = (
                     <ul className='options'>
                         { filteredOptions.map((optionName, index) => {
-                            let className;
-                            if(index === activeOption) {
-                                className = 'option-active';
-                            }
+                            
                             return (
-                                <li className={className} key={optionName} onClick={onClick}>
+                                <li key={optionName} onClick={onClick}>
                                     {optionName}
                                 </li>
                             );
                         })}
                     </ul>
                 );
+            } else {
+                optionList = (
+                    <div className = 'no-option'>
+                        <em>No Options</em>
+                    </div>
+                );
             }
         }
+
+                            // let className;
+                            // if(index === activeOption) {
+                            //     className = 'option-active';
+                            // }
+                            // return (
+                            //     <li className={className} key={optionName} onClick={onClick}>
+                            //         {optionName}
+                            //     </li>
+        //                     );
+        //                 })}
+        //             </ul>
+        //         );
+        //     }
+        // }
     return (
          <React.Fragment>
             <div className='filterByTag'>
@@ -116,3 +134,5 @@ export class AutoComplete extends Component {
     }
 
 }
+
+export default AutoComplete;
