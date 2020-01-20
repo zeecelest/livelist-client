@@ -15,8 +15,6 @@ class LoginForm extends Component {
 
   state = { error: null };
 
-  //firstInput = React.createRef();
-
   handleSubmit = (ev) => {
     ev.preventDefault();
     let username = document.getElementsByName('username')[0];
@@ -38,10 +36,6 @@ class LoginForm extends Component {
         this.setState({ error: res.error });
       });
   };
-
-  // componentDidMount() {
-  //   this.firstInput.current.focus();
-  // }
 
   render() {
     const { error } = this.state;
