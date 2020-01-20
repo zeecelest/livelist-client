@@ -30,21 +30,21 @@ export class UserProvider extends Component {
       };
 
     this.state = state;
-    IdleService.setIdleCallback(this.logoutBecauseIdle);
+    //    IdleService.setIdleCallback(this.logoutBecauseIdle);
   }
 
   componentDidMount() {
     if (TokenService.hasAuthToken()) {
-      IdleService.registerIdleTimerResets();
-      TokenService.queueCallbackBeforeExpiry(() => {
-        this.fetchRefreshToken();
-      });
+      //      IdleService.registerIdleTimerResets();
+      ///      TokenService.queueCallbackBeforeExpiry(() => {
+      //        this.fetchRefreshToken();
+      //      });
     }
   }
 
   componentWillUnmount() {
-    IdleService.unRegisterIdleResets();
-    TokenService.clearCallbackBeforeExpiry();
+    //    IdleService.unRegisterIdleResets();
+    //    TokenService.clearCallbackBeforeExpiry();
   }
 
   setError = error => {
@@ -68,7 +68,7 @@ export class UserProvider extends Component {
       name: jwtPayload.name,
       username: jwtPayload.sub
     });
-    IdleService.registerIdleTimerResets();
+    //    IdleService.registerIdleTimerResets();
     TokenService.queueCallbackBeforeExpiry(() => {
       this.fetchRefreshToken();
     });
@@ -77,16 +77,16 @@ export class UserProvider extends Component {
   processLogout = () => {
     TokenService.clearAuthToken();
     TokenService.clearCallbackBeforeExpiry();
-    IdleService.unRegisterIdleResets();
+    //    IdleService.unRegisterIdleResets();
     this.setUser({});
   };
 
-  logoutBecauseIdle = () => {
-    TokenService.clearAuthToken();
-    TokenService.clearCallbackBeforeExpiry();
-    IdleService.unRegisterIdleResets();
-    this.setUser({ idle: true });
-  };
+  //  logoutBecauseIdle = () => {
+  //    TokenService.clearAuthToken();
+  //    TokenService.clearCallbackBeforeExpiry();
+  //    //    IdleService.unRegisterIdleResets();
+  //    this.setUser({ idle: true });
+  //  };
 
   fetchRefreshToken = () => {
     AuthApiService.refreshToken()

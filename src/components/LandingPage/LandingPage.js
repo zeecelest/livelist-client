@@ -3,6 +3,7 @@ import "./LandingPage.css";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import exampleImg from '../Assets/iconBackground.png';
 import Button from '../Button/Button';
+import config from '../../config'
 
 class LandingPage extends Component {
   constructor() {
@@ -21,7 +22,9 @@ class LandingPage extends Component {
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleWindowSizeChange);
   }
-
+  componentDidMount(){
+    fetch(`${config.API_ENDPOINT}`).then(x => x.json()).then(res => console.log(res))
+  }
   handleWindowSizeChange = () => {
     this.setState({ width: window.innerWidth });
   };
