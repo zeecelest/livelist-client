@@ -1,7 +1,6 @@
 .list-name{
-  color: var(--color-highlight);
+  color: var(--color-body);
   align-self: center;
-  border: 1px solid white;
 }
 .listItem{
   background-image: linear-gradient(white, var(--color-midColor));
@@ -16,4 +15,8 @@
     border: 1px solid grey;
     justify-content: center;
     align-items: center;
+    
+}
+.listItem:hover{
+  box-shadow: 0px 0px 20px rgb(189, 189, 189);
 }

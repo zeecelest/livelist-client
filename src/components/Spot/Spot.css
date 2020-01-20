@@ -7,8 +7,9 @@
     border: 1px solid black;
     background-image: var(--gradient-background);
     border-radius: 25px;
-    width: 75%;
+    width: 50vw;
     min-width: 300px;
+    max-width: 500px;
     margin-bottom: 10%;
     justify-content: flex-start;
     align-items: flex-start;
@@ -26,9 +27,11 @@
   .spot-buttons{
     width: 100%;
     margin-right: 5%;
+    margin-top: -10%;
   }
   .spotInfo{
       color: var(--color-body);
+      font-size: 1.5rem;
   }
   .spotTags{
     color: var(--color-highlight);
