@@ -1,4 +1,4 @@
-@media (max-width: 500px) {
+
   .newPlaylistForm {
     color: var(--color-body);
     background-color: var(--color-background);
@@ -33,4 +33,3 @@
     border: 5px solid green;
   }
   
-}

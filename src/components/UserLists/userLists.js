@@ -5,9 +5,10 @@ import PlayListContext from "../../contexts/PlayListContext";
 import { Link } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import ScrollContainer from "react-indiana-drag-scroll";
-import { Icon } from '@iconify/react';
-import timesCircle from '@iconify/icons-fa-regular/times-circle';
-import editIcon from '@iconify/icons-fa-regular/edit';
+import { Icon } from "@iconify/react";
+import timesCircle from "@iconify/icons-fa-regular/times-circle";
+import editIcon from "@iconify/icons-fa-regular/edit";
+import List from "../List/List";
 
 import "./userLists.css";
 
@@ -21,12 +22,12 @@ export class UserLists extends Component {
     match: {
       params: {}
     }
-  }
+  };
 
   static contextType = PlayListContext;
 
   componentDidMount() {
-    this.props.userList
+    this.props.userList;
   }
 
   renderUserList() {
@@ -40,42 +41,14 @@ export class UserLists extends Component {
             // This will likely need to be
 
             return (
-              <div key={idx} className="listItem users" >
-                <p className='userListTitle'>
-                  <Link to={`/list/${item.id}`} className='userListTitle'>
-                    {item.name}
-                  </Link>
-                </p>
-
-                <div className="userlist-buttons" >
-                  <button className="userlist-btn" >
-                      <Link
-                          to = {{ pathname: `/updateList/${item.id}`,
-                            props: {
-                              userList: this.state.userList
-                            }
-                          }}
-                        >
-                          <Icon icon={editIcon} className="editIcon"/>
-                        </Link>
-                    </button>
-                    {this.props.checkLength === 0 && item.id ? (
-                      
-                        <button
-                        className="userlist-btn"
-                        onClick={() => this.props.handleDeletePlaylist(item.id)}
-                      >
-                        <Icon icon={timesCircle} className="timesIcon" />
-                      </button>
-                    ) : (
-                      <button className="userlist-btn" disabled={true}>
-                        <Icon icon={timesCircle} className="timesIcon" />
-                      </button>
-                    )}
-                   
-                </div>
-                 
-              </div>
+              <List
+                key={idx}
+                user_id={item.id}
+                name={item.name}
+                handleDeletePlaylist={this.props.handleDeletePlaylist}
+                userList={this.state.userList}
+                checkLength={this.props.checkLength}
+              />
             );
           })}
         </div>
@@ -93,7 +66,8 @@ export class UserLists extends Component {
             className="userListContainer"
             horizontal={true}
             activationDistance={1}
-            nativeMobileScroll={true}>
+            nativeMobileScroll={true}
+          >
             {this.renderUserList()}
             <div className="newPlayListButtonContainer">
               <Button id="newPlaylistButton">
