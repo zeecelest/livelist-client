@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SpotsApiService from '../services/spots-api-service';
+import ListsApiService from "../services/lists-api-service";
 
 const PlayListContext = React.createContext({
   playlist: {},
@@ -44,12 +45,25 @@ export class PlayListProvider extends Component {
     })
   }
   
-  handleUpdateSpot = (spot) => {
+  handleUpdateSpot = spot => {
     let currentSpot = this.state.spots.spots.find( s => s.id === spot.id)
     SpotsApiService.patchSpot(spot)
     .then( data => {
       this.setState({
         spots: currentSpot
+      })
+    })
+    .catch(this.context.setError)
+  }
+
+  handleUpdateList = list => {
+    console.log('list', list)
+    let currentList = this.state.playlist.find( p => parseInt(p.id) === parseInt(list.id))
+    ListsApiService.patchLists(list)
+    .then( (data) => {
+      console.log('update - current data', data)
+      this.setState({
+        playlist: currentList
       })
     })
     .catch(this.context.setError)
@@ -64,11 +78,13 @@ export class PlayListProvider extends Component {
       setUserList: this.setUserList,
       handleAddSpot: this.handleAddSpot,
       handleUpdateSpot: this.handleUpdateSpot,
+      handleUpdateList: this.handleUpdateList,
       spotid: this.state.spotid,
       setSpotId: this.setSpotId,
       listid: this.state.listid,
       setListId: this.setListId
     };
+
     return (
       <PlayListContext.Provider value={value}>
         {this.props.children}
