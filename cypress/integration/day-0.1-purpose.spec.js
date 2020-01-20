@@ -11,10 +11,5 @@ describe(`User story: Application name and purpose`, function() {
   it('has h1 with title', () => {
     cy.visit('/');
     cy.get('header h1').should('contain', 'Social Playlist');
-    // .get('p')
-    // .should(
-    //   'have.text',
-    //   'Practice learning a language with the spaced reptition revision technique.'
-    // );
   });
 });

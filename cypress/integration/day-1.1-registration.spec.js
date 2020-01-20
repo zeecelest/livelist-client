@@ -98,15 +98,13 @@ describe(`User story: Register an account`, function() {
         cy.get('#registration-name-input').type(newUser.name);
         cy.get('#registration-username-input').type(newUser.username);
 
-        cy.get('#registration-location-state-select')
-          .click()
-          .then(cy.get('li').click());
+        cy.get('#registration-location-state-select').click();
 
-        cy.get('li').click('top');
+        cy.get('[data-value=California]').click();
 
-        cy.get('input[name="locationCity"]').type('Los Angeles', {
-          force: true
-        });
+        // cy.get('input[name="locationCity"]').type('Los Angeles', {
+        //   force: true
+        // });
 
         cy.get('#registration-password-input').type(newUser.password);
         cy.root().submit();
