@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import PropTypes from 'prop-types';
 import './ListByTags.css';
-import Fragment from 'react-dot-fragment'
+// import Fragment from 'react-dot-fragment'
 
 
 export class AutoComplete extends Component {
@@ -72,14 +72,13 @@ export class AutoComplete extends Component {
     render(){
         const {
             onChange,
-            onChange,
+            // onChange,
             onKeyDown,
             userInput,
-            state: { activeOption, filteredOptons, showOptions, userInput }
-}
-        } = this;
+            state: { activeOption, filteredOptons, showOptions }} = this;
 
         let optionList;
+
         if(showOptions && userInput) {
             if(filteredOptions.length) {
                 optionList = (
