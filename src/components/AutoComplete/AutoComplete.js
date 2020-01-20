@@ -41,7 +41,7 @@ export class AutoComplete extends Component {
             showTag: false,
             userInput: e.currentTarget.innerText
         });
-    };
+    }
 
 //Handles keyDown events, which are the same as the click event.  
     onKeyDown = (e) => {
@@ -86,7 +86,7 @@ export class AutoComplete extends Component {
                         { filteredTags.map((tagName, index) => {
                             
                             return (
-                                <li key={tagName} onClick={onClick}>
+                                <li key={tagName} onClick={this.onClick}>
                                     {tagName}
                                 </li>
                             );
