@@ -82,20 +82,19 @@
   margin-top: 5%;
   cursor: pointer;
 }
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 700px) {
   /* For desktop: */
   .userList-section {
     margin-top: 10%;
     padding: 0.4rem 0.8rem;
   }
   #newPlaylistButton {
-    width: 50%;
-    max-width: 150px;
-    padding: 0.25rem 0.5rem;
-    align-self: flex-end;
-    margin-top: 0;
-    border-radius: 25px;
-    color: white;
-    font-size: 1rem;
+    margin: 0;
   }
+  .newPlayListButtonContainer {
+    height: 60px;
+  }
+  /* .hotlistSection {
+    margin-top: 0;
+  } */
 }
