@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 // import './App.css';
 import PropTypes from 'prop-types';
-// import './ListByTags.css';
+// import ListByTags from '../ListByTags/ListByTags';
+import '../ListByTags/ListByTags.css';
 // import Fragment from 'react-dot-fragment'
 
 
