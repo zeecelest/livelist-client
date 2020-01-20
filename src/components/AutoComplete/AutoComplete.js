@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Autocomplete from './Autocomplete';
 import PropTypes from 'prop-types';
 import './ListByTags.css';
 
