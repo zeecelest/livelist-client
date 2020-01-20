@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import PlayListContext from '../../contexts/PlayListContext';
 import { Link } from 'react-router-dom';
+import TextInput from '../Form/TextInput';
 import './ListByTags.css';
 import AutoComplete from '../components/AutoComplete'
 
@@ -17,7 +18,7 @@ export class ListByTags extends Component {
 
   handleFilter = (ev) => {
     ev.preventDefault();
-    let filter = ev.target.filter.value;
+    let filter = document.getElementsByName('filter')[0].value;
     let newList = [];
     let mulFilters = filter.split(' ');
     if (mulFilters.length === 1) {
@@ -27,7 +28,7 @@ export class ListByTags extends Component {
           newList.push(x);
         }
       });
-      ev.target.filter.value = '';
+      filter = '';
     } else if (mulFilters.length > 1) {
       this.props.lists.forEach((x) => {
         let newTags = x.tags.split(' ');
@@ -36,10 +37,9 @@ export class ListByTags extends Component {
             newList.push(x);
           }
         }
-        ev.target.filter.value = '';
+        filter = '';
       });
     }
-
     this.setState({
       filteredList: [...newList],
     });
@@ -90,25 +90,23 @@ export class ListByTags extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleFilter} id="filterForm">
-          <h4 className="filterFormTitle">Browse All Lists</h4>
+      <section>
+        <form onChange={this.handleFilter} id="filterForm">
+          <h2 className="filterFormTitle">Browse All Lists</h2>
           <div className="filterButtonContainer">
-            <button type="submit" className="filterButton">
-              Filter
-            </button>
-            <AutoComplete />
-            <input
-              type="text"
-              id='tags'
-              placeholder="#saturday"
-              name="filter"
-              className="filterField"
-            ></input>
+            <TextInput
+              label="Hashtag"
+              attr={{
+                type: 'text',
+                placeholder: '#saturday',
+                name: 'filter',
+                className: 'filterField'
+              }}
+            />
           </div>
         </form>
         <div className="filteredContainer">{this.renderFilteredList()}</div>
-      </div>
+      </section>
     );
   }
 }

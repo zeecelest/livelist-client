@@ -36,6 +36,7 @@ export class UserDashboardRoute extends Component {
 
 
   handleDeletePlaylist = (playId) => {
+    console.log('i heard that delete call')
     ListsApiService.getSpotsById(playId)
       .then((data) => {
         if (data.spots.length === 0) {

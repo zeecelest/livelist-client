@@ -26,6 +26,9 @@
 .filterField {
   text-align: right;
   width: 50%;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: white;
 }
 
 .filterField::placeholder {
@@ -34,7 +37,7 @@
 
 .filterFormTitle {
   margin-top: 0;
-  margin-bottom: 5%;
+  margin-bottom: 3%;
 }
 .filterButtonContainer {
   display: flex;
@@ -52,4 +55,20 @@
   color: var(--color-darkMid);
   cursor: pointer;
   margin-top: 0;
+}
+
+@media only screen and (min-width: 700px) {
+  .filteredContainer {
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+  }
+  .filtered {
+    width: 33.3%;
+  }
+  .listItem {
+    overflow: hidden;
+  }
+  .filterButton {
+    justify-self: center;
+  }
 }
