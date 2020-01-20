@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
+// import './App.css';
 import PropTypes from 'prop-types';
-import './ListByTags.css';
+// import './ListByTags.css';
 // import Fragment from 'react-dot-fragment'
 
 
@@ -72,7 +72,7 @@ export class AutoComplete extends Component {
     render(){
         const {
             onChange,
-            // onChange,
+            onClick,
             onKeyDown,
             userInput,
             state: { activeTags, filteredTags, showTag }} = this;
@@ -103,12 +103,12 @@ export class AutoComplete extends Component {
         }
 
                             // let className;
-                            // if(index === activeOption) {
-                            //     className = 'option-active';
+                            // if(index === activeTags) {
+                            //     className = 'tag-active';
                             // }
                             // return (
-                            //     <li className={className} key={optionName} onClick={onClick}>
-                            //         {optionName}
+                            //     <li className={className} key={tagName} onClick={onClick}>
+                            //         {tagName}
                             //     </li>
         //                     );
         //                 })}
