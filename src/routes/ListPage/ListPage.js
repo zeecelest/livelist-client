@@ -66,38 +66,40 @@ export class ListPage extends Component {
   renderListName = () => {
     if (this.state.listName) {
       return (
-        <div className='listNameContainer'>
-      <h4 className="myListName">{this.state.listName}</h4>
+        <div >
+      <h4 className="myListName">{this.state.listName}
       <LikeButton 
         id={this.props.match.params.id} 
         handleLikeButton={this.handleLikeButton}
         liked={this.state.listLikes.liked_by_user} 
-        likes={this.state.listLikes.likes}/>
+        likes={this.state.listLikes.likes} />
+       </h4> 
       </div>
       );
-    } else if (this.state.listInfo) {
-      return (
-        <div className='listNameContainer'>>
-      <h4 className="myListName">{this.state.listInfo.list_name}</h4>
-      <LikeButton 
-        id={this.props.match.params.id} 
-        handleLikeButton={this.handleLikeButton}
-        liked={this.state.listLikes.liked_by_user} 
-        likes={this.state.listLikes.likes}/>
-      </div>
-      );
-    } else {
-      return (
-      <div className='listNameContainer'>>
-        {this.state.listName}
-        <LikeButton
-        id={this.props.match.params.id} 
-        handleLikeButton={this.handleLikeButton}
-        liked={this.state.listLikes.liked_by_user} 
-        likes={this.state.listLikes.likes}/>
-        </div>
-      );
-    }
+    } 
+    // else if (this.state.listInfo) {
+    //   return (
+    //     <div className='listNameContainer'>
+    //   <h4 className="myListName">{this.state.listInfo.list_name}</h4>
+    //   <LikeButton 
+    //     id={this.props.match.params.id} 
+    //     handleLikeButton={this.handleLikeButton}
+    //     liked={this.state.listLikes.liked_by_user} 
+    //     likes={this.state.listLikes.likes}/>
+    //   </div>
+    //   );
+    // } else {
+    //   return (
+    //   <div className='listNameContainer'>
+    //     <h4 className="myListName">{this.state.listName}</h4>
+    //     <LikeButton
+    //     id={this.props.match.params.id} 
+    //     handleLikeButton={this.handleLikeButton}
+    //     liked={this.state.listLikes.liked_by_user} 
+    //     likes={this.state.listLikes.likes}/>
+    //     </div>
+    //   );
+    // }
   };
 
   renderMap = () => {
