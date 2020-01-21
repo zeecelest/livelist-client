@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import PlayListContext from '../../contexts/PlayListContext';
 import { Input, Required, Label } from "../Form/Form";
 import Button from "../../components/Button/Button";
+import TextInput from '../Form/TextInput';
+import Select from '../Form/Select';
+import possibleLocations from '../Assets/possibleLocations';
+import states from '../Assets/states';
 import { Link, Redirect } from "react-router-dom";
 
 class UpdateList extends Component {
@@ -45,78 +49,6 @@ class UpdateList extends Component {
           params: {}
         }
     }
-
-    stateAbr = [
-        "AL",
-        "AK",
-        "AS",
-        "AZ",
-        "AR",
-        "CA",
-        "CO",
-        "CT",
-        "DE",
-        "DC",
-        "FM",
-        "FL",
-        "GA",
-        "GU",
-        "HI",
-        "ID",
-        "IL",
-        "IN",
-        "IA",
-        "KS",
-        "KY",
-        "LA",
-        "ME",
-        "MH",
-        "MD",
-        "MA",
-        "MI",
-        "MN",
-        "MS",
-        "MO",
-        "MT",
-        "NE",
-        "NV",
-        "NH",
-        "NJ",
-        "NM",
-        "NY",
-        "NC",
-        "ND",
-        "MP",
-        "OH",
-        "OK",
-        "OR",
-        "PW",
-        "PA",
-        "PR",
-        "RI",
-        "SC",
-        "SD",
-        "TN",
-        "TX",
-        "UT",
-        "VT",
-        "VI",
-        "VA",
-        "WA",
-        "WV",
-        "WI",
-        "WY"
-      ];
-    
-      renderOptions = () => {
-        return this.stateAbr.map(state => {
-          return (
-            <option key={state} value={state} onChange={this.handleChange}>
-              {state}
-            </option>
-          );
-        });
-      };
   
     updateName(name) {
         this.setState({ name: { value: name, touched: true } });
@@ -127,11 +59,11 @@ class UpdateList extends Component {
     }
 
     updateCity(city) {
-        this.setState({ city: { value: city, touched: true } });
+        this.setState({ city: { value: city, selected: true, touched: true } });
     }
   
     updateState(st) {
-    this.setState({ state: { value: st, touched: true } });
+    this.setState({ state: { value: st, selected: true , touched: true } });
     }
   
     updateDesc(desc) {
@@ -142,41 +74,33 @@ class UpdateList extends Component {
       this.setState({ is_public: { value: isPub, touched: true } });
     }
   
-    validateName() {
-        const n = this.state.name.value.trim();
-        if (n.length === 0) {
-          return 'Name is required';
-        } else if (n.length < 5) {
-          return 'Name must be at least 5 characters long';
-        }
-      }
+    generateStateOptions = () => {
+      return states.map((item) => item.name);
+    };
   
-    validateTags() {
-        const n = this.state.tags.value.trim();
-        if (n.length === 0) {
-          return 'Tags is required';
-        } else if (n.length < 5) {
-          return 'Tags must be at least 5 characters long';
-        }
-    }
-
-    validateCity() {
-        const n = this.state.city.value.trim();
-        if (n.length === 0) {
-          return 'City is required';
-        } else if (n.length < 3) {
-          return 'City must be at least 5 characters long';
-        }
-    }
-
-    validateState() {
-        const n = this.state.state.value.trim();
-        if (n.length !== 0) {
-          return 'State is required';
-        }
-    }
-
-    //desc req'd?
+    onSelectStateChange = (ev) => {
+      let cities = possibleLocations[ev.target.value];
+      this.setState({
+        state: {
+          selected: true,
+          touched: true,
+          value: ev.target.value
+        },
+        cities
+      });
+    };
+  
+    onSelectCityChange = (ev) => {
+      let cities = possibleLocations[ev.target.value];
+      this.setState({
+        city: {
+          selected: true,
+          touched: true,
+          value: ev.target.value
+        },
+        cities
+      });
+    };
 
     componentDidMount() {
         const lid = this.props.match.params.id;
@@ -185,7 +109,7 @@ class UpdateList extends Component {
         
         let editPlaylist = playList.find( play => parseInt(play.id) === parseInt(lid));
         
-        console.log(editPlaylist.is_public)
+        // console.log(editPlaylist.is_public)
         this.setState({
             name: { value: editPlaylist.name, touched: false },
             tags: { value: editPlaylist.tags, touched: false },
@@ -206,8 +130,7 @@ class UpdateList extends Component {
         const { name, tags, city, state, description, is_public } = this.state;
 
         let obj = {name: name.value, tags: tags.value, city: city.value, state: state.value, description: description.value, is_public: !is_public.checked, id: lid }
-
-        console.log('obj is_public', obj.is_public)
+        
         this.context.handleUpdateList(obj);
 
     }
@@ -223,87 +146,110 @@ class UpdateList extends Component {
                 <form onSubmit={this.handleSubmit} className="updateListForm">
                   <div role="alert">{error && <p>{error}</p>}</div>
                   <div>
-                    <Label htmlFor="updateList-name-input">
-                      Name
-                      <Required />
-                    </Label>
-                    <Input
-                      id="updateList-name-input"
-                      name="name"
-                      value={this.state.name.value}
-                      onChange={ ev => this.updateName(ev.target.value)}
-                      required
+                    <TextInput
+                      attr={{ 
+                        id: "updateList-name-input",
+                        name: "name",
+                        type: "text",
+                        value: this.state.name.value,
+                        onChange: (ev => this.updateName(ev.target.value)),
+                        label: "List name",
+                        required: true,
+                      }}
                     />
                   </div>
                   <div>
-                    <Label htmlFor="updateList-tags-input">
-                      Tags
-                      <Required />
-                    </Label>
-                    <Input
-                      id="updateList-tags-input"
-                      name="tags"
-                      value={this.state.tags.value}
-                      onChange={ ev => this.updateTags(ev.target.value)}
-                      required
+                    <TextInput
+                      attr={{ 
+                        id:"updateList-tags-input",
+                        name:"tags",
+                        type: "text",
+                        value: this.state.tags.value,
+                        onChange: ( ev => this.updateTags(ev.target.value)),
+                        label: "Tags",
+                        required: true,
+                      }}
                     />
                   </div>
                   <div>
-                    <Label htmlFor="updateList-city-input">
-                      city
-                      <Required />
-                    </Label>
-                    <Input
-                      id="updateList-city-input"
-                      name="city"
-                      value={this.state.city.value}
-                      onChange={ev => this.updateCity(ev.target.value)}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="registration-state-input">
-                      State
-                      <Required />
-                    </Label>
-                    {/*  */}
                     {this.state.state.touched 
-                    ? <select className="state" name="state" defaultValue={this.state.state.value} onChange={this.handleChange}>
-                    <option key="none" value={this.state.state.value} defaultValue={this.state.state.value}></option>
-                    {this.renderOptions()}
-                  </select>
-                  :
-                  <Input
+                    ? 
+                    <Select
                       id="updateList-state-input"
-                      name="state"
-                      value={this.state.state.value}
-                      onChange={ev => this.updateState(ev.target.value)}
+                      className="state" 
+                      name="state" 
+                      helperText="Choose your State"
+                      defaultValue={this.state.state.value} 
+                      onChange={this.handleChange}
+                      options = {this.generateStateOptions()}
                       required
+                    />
+                  :
+                  <TextInput
+                    attr={{
+                      id: "updateList-state-input",
+                      name: "state",
+                      type: "text",
+                      value: this.state.state.value,
+                      onChange: (ev => this.updateState(ev.target.value)),
+                      label: "Tags",
+                      required: true,
+                    }}
                     />
                   }
                   </div>
                   <div>
-                    <Label htmlFor="updateList-desc-input">
-                      Description
-                    </Label>
-                    <Input
-                      id="updateList-desc-input"
-                      name="address"
-                      value={this.state.description.value}
-                      onChange={ ev => this.updateDesc(ev.target.value)}
+                    {this.state.city.touched
+                      ?
+                      <Select
+                        id = "updateList-city-input"
+                        name = "city"
+                        helperText="Choose your City"
+                        label = "City"
+                        className="location-city"
+                        onChange={this.onSelectCityChange}
+                        type= "text"
+                        options={this.state.cities}
+                        required
+                      />
+                      :
+                       <TextInput
+                        attr={{
+                          id: "updateList-city-input",
+                          name: "city",
+                          type: "text",
+                          value: this.state.city.value,
+                          onChange: (ev => this.updateCity(ev.target.value)),
+                          label: "City",
+                          required: true,
+                        }}
+                     />
+                    }
+                   
+                  </div>
+                  <div>
+                    <TextInput
+                      attr={{ 
+                        id: "updateList-desc-input",
+                        name: "address",
+                        type: "text",
+                        value: this.state.description.value,
+                        onChange: (ev => this.updateDesc(ev.target.value)),
+                        label: "Description",
+                    }}
                     />
                   </div>
                   <div>
-                    <Label htmlFor="updateList-isPublic-checkbox">
-                        Make this list private?
-                    </Label>
-                    <Input
-                       type="checkbox"
-                       name="is_public"
-                       id="updateList-isPublic-checkbox"
-                       style={{transform: 'scale(1.5)'}}
-                       value = {this.state.is_public}
-                       onChange={ ev => this.updateIsPublic(ev.target.value)}
+                    <TextInput
+                      attr={{ 
+                        id: "updateList-isPublic-checkbox",
+                        type: "checkbox",
+                        name: "is_public",
+                        style: ({transform: 'scale(1.5)' , textAlign: 'center' }),
+                        value : this.state.is_public,
+                        onChange: (ev => this.updateIsPublic(ev.target.value)),
+                        label: "Make this list private?"
+                      }}
                     />
                   </div>
                   <footer className="signupBtnLink">
@@ -315,5 +261,4 @@ class UpdateList extends Component {
     }
 }
           
-
 export default UpdateList;

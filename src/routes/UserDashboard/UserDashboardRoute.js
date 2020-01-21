@@ -134,6 +134,7 @@ export class UserDashboardRoute extends Component {
   };
 
   render() {
+    // console.log('playlist', this.context.playlist);
     return <div>{this.renderWithLoading()}</div>;
   }
 }
