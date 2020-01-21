@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
 // import './App.css';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 // import ListByTags from '../ListByTags/ListByTags';
 import '../ListByTags/ListByTags.css';
 // import Fragment from 'react-dot-fragment'
 
 export class AutoComplete extends Component {
-  static propTypes = {
-    tags: PropTypes.instanceOf(Array)
-  };
+    constructor(props) {
+        super(props);
+        this.state = {
+            activeTags: 0,
+            filteredTags: [],
+            showTag: false,
+            userInput: ''
 
-  state = {
-    activeTags: 0,
-    filteredTags: [],
-    showTag: false,
-    userInput: ''
-  };
+        }
+    }
+//   static propTypes = {
+//     tags: PropTypes.instanceOf(Array)
+//   };
+
+//   state = {
+  
+//   };
 
   onChange = e => {
     const { tags } = this.props;
