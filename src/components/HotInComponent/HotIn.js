@@ -50,12 +50,10 @@ state = {
   };
 
 componentDidMount(){
-  console.log('These are all the props =>',this.props)
   let cityOptions = this.props.allLists.map(list =>{
     return list.city
   })
   let uniq = [...new Set(cityOptions)];
-  console.log('this is the unique cityOptions =>', uniq)
   this.setState({
     list: this.mergeSort(this.props.allLists),
     cities: uniq
@@ -77,17 +75,15 @@ handleToggleLike = () =>{
 handleLikeButton = ev => {
   ev.preventDefault();
   let id = ev.target.id;
-  console.log('id in handleLikeButton',typeof id, id)
   ListsApiService.toggleLike(id)
     .then(like => {
-      console.log('response from server on the toggle',like)
       return this.setState({
         state: !this.state.updated
       });
     })
     .catch(() => console.log("error"));
-    
 };
+
 onSelectChange= (ev)=>{
   ev.preventDefault();
   let filteredList = this.state.list.filter(list => list.city == ev.target.value)

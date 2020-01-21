@@ -22,3 +22,9 @@
   margin-bottom: 0;
   width: 100px;
 }
+.listNameContainer{
+  max-height: 10vh;
+}
+.newSpotButton{
+  margin:5%;
+}
