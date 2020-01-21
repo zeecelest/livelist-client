@@ -95,7 +95,7 @@ export class ListByTags extends Component {
         <form onChange={this.handleFilter} id="filterForm">
           <h2 className="filterFormTitle">Browse All Lists</h2>
           <div className="filterButtonContainer">
-          <AutoComplete > 
+          <AutoComplete tags={tags.props.value} >
             <TextInput
               label="Hashtag"
               attr={{
