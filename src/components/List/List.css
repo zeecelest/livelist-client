@@ -1,23 +1,23 @@
-.list-name{
+.list-name {
   color: var(--color-body);
   align-self: center;
   width: auto;
 }
-.listItem{
+.listItem {
   background-image: linear-gradient(white, var(--color-midColor));
-    text-decoration: none;
-    min-width: 250px;
-    background-color:white;
-    margin-right: 5%;
-    height: 100px;
-    padding: .5rem 1rem;
-    border-radius: 5px;
-    display: flex;
-    border: 1px solid grey;
-    justify-content: center;
-    align-items: center;
-    overflow: scroll;
+  text-decoration: none;
+  min-width: 250px;
+  background-color: white;
+  margin-right: 5%;
+  height: 100px;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  display: flex;
+  border: 1px solid grey;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
 }
-.listItem:hover{
+.listItem:hover {
   box-shadow: 0px 0px 20px rgb(189, 189, 189);
 }
