@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 // import ListByTags from '../ListByTags/ListByTags';
 import '../ListByTags/ListByTags.css';
 // import Fragment from 'react-dot-fragment'
+import List from '../List/List';
 
 export class AutoComplete extends Component {
     constructor(props) {
@@ -25,21 +26,44 @@ export class AutoComplete extends Component {
   
 //   };
 
-  onChange = e => {
-    const { tags } = this.props;
-    const userInput = e.currentTarget.value;
 
-    const filteredTags = tags.filter(
-      (tags) => tags.toLowerCase().indexOf(userInput.toLowerCase()) > -1
-    );
+  onChange = e => {
+    const { tags, lists } = this.props;
+    const userInput = e.currentTarget.value;
+    const filteredTags = [];
+    let onlyTags = [];
+    for(let i = 0; i < lists.length; i++){
+      if(lists[i].tags.includes(userInput)){
+        filteredTags.push(lists[i])
+        console.log('found a match!!!!')
+
+      }
+      onlyTags.push(lists[i].tags);
+    }
+    // let breakUserInput = userInput.split('')
+    // if(filteredTags.includes(breakUserInput)){
+      
+    //   console.log('found a match')
+    // }
+    // tags.filter(
+    //   (tags) => tags.toLowerCase().indexOf(userInput.toLowerCase()) > -1
+    // );
+    console.log('filteredTags', filteredTags)
 
     this.setState({
-      activeTags: 0,
-      filteredTags,
-      showTag: true,
-      userInput: ''
+      filteredTags: [...filteredTags]
     });
   };
+
+  renderFilteredTags = () =>{
+    if(this.state.filteredTags > 0){
+      return this.state.filterTags.map(list => {
+        return <List 
+                  name={list.name}
+        />
+      })
+    }
+  }
 
   // onClick = (e) => {
   //     this.setState({
@@ -51,30 +75,30 @@ export class AutoComplete extends Component {
   // }
 
   //Handles keyDown events, which are the same as the click event.
-  onKeyDown = e => {
-    const { activeTags, filteredTags } = this.state;
-    //Return is the 13th key, select the value and it enters into the input field
-    if (e.keyCode === 13) {
-      this.setState({
-        activeTags: 0,
-        showSuggestions: false,
-        userInput: filteredTags[activeTags]
-      });
-      //The up arrow is key number 38, which will select the upper option. Won't go above first.
-    } else if (e.keyCode === 38) {
-      if (activeTags === 0) {
-        return;
-      }
-      //The down arrow is key number 40, which will select the lower option. Won't go above last.
-      this.setState({ activeTags: activeTags - 1 });
-    } else if (e.keyCode === 40) {
-      if (activeTags - 1 === filteredTags.length) {
-        return;
-      }
+  // onKeyDown = e => {
+  //   const { activeTags, filteredTags } = this.state;
+  //   //Return is the 13th key, select the value and it enters into the input field
+  //   if (e.keyCode === 13) {
+  //     this.setState({
+  //       activeTags: 0,
+  //       showSuggestions: false,
+  //       userInput: filteredTags[activeTags]
+  //     });
+  //     //The up arrow is key number 38, which will select the upper option. Won't go above first.
+  //   } else if (e.keyCode === 38) {
+  //     if (activeTags === 0) {
+  //       return;
+  //     }
+  //     //The down arrow is key number 40, which will select the lower option. Won't go above last.
+  //     this.setState({ activeTags: activeTags - 1 });
+  //   } else if (e.keyCode === 40) {
+  //     if (activeTags - 1 === filteredTags.length) {
+  //       return;
+  //     }
 
-      this.setState({ activeTags: activeTags + 1 });
-    }
-  };
+  //     this.setState({ activeTags: activeTags + 1 });
+  //   }
+  // };
 
   render() {
     const {
@@ -107,7 +131,7 @@ export class AutoComplete extends Component {
           </div>
         );
       }
-    }
+  }
 
     // let className;
     // if(index === activeTags) {
@@ -126,6 +150,7 @@ export class AutoComplete extends Component {
     return (
       <React.Fragment>
         <div className="filterByTag">
+          
           <input
             type="text"
             className="filterBox"
@@ -134,9 +159,11 @@ export class AutoComplete extends Component {
             value={userInput}
           />
           <input type="submit" value="" className="filter-btn" />
-          {tagList}
+          {this.renderFilteredTags()}
+          {/* {tagList} */}
         </div>
       </React.Fragment>
+
     );
   }
 }

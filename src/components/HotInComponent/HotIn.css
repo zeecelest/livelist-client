@@ -1,7 +1,9 @@
+
+
 .display-hotIn {
   display: flex;
   flex-direction: row;
-  overflow: auto;
+  overflow: scroll;
   white-space: nowrap;
   padding: 1.5rem 0;
 }
@@ -21,6 +23,7 @@
   max-width: 90vw;
   flex-direction: column;
   padding: 0.5rem 1rem;
+  overflow: auto;
 }
 .hot {
   display: flex;

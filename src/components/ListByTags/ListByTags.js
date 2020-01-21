@@ -19,7 +19,7 @@ export class ListByTags extends Component {
 
   handleFilter = (ev) => {
     ev.preventDefault();
-    let filter = document.getElementsByName('filter')[0].value;
+    let filter = ev.target.value;
     let newList = [];
     let mulFilters = filter.split(' ');
     if (mulFilters.length === 1) {
@@ -65,11 +65,34 @@ export class ListByTags extends Component {
             <Link to={`/list/${list.id}`}>
               <h4 className="filteredListName">{list.name}</h4>
             </Link>
-            <p>{list.tags}</p>
+            <p className="filteredListTag">{list.tags}</p>
           </div>
         );
       });
     }
+  };
+  onChange = e => {
+    const { tags, lists } = this.props;
+    const userInput = e.target.value.toLowerCase();
+    const filteredTags = [];
+    let onlyTags = [];
+    for(let i = 0; i < lists.length; i++){
+      if(lists[i].tags.includes(userInput)){
+        filteredTags.push(lists[i])
+      }
+      onlyTags.push(lists[i].tags);
+    }
+    // let breakUserInput = userInput.split('')
+    // if(filteredTags.includes(breakUserInput)){
+      
+    //   console.log('found a match')
+    // }
+    // tags.filter(
+    //   (tags) => tags.toLowerCase().indexOf(userInput.toLowerCase()) > -1
+    // );
+    this.setState({
+      filteredList: [...filteredTags]
+    });
   };
 
   // filterInput() {
@@ -92,10 +115,13 @@ export class ListByTags extends Component {
   render() {
     return (
       <section>
-        <form onChange={this.handleFilter} id="filterForm">
+        <form onChange={this.onChange} id="filterForm">
           <h2 className="filterFormTitle">Browse All Lists</h2>
           <div className="filterButtonContainer">
-          <AutoComplete tags={tags.props.value} >
+          {/* <AutoComplete 
+            tags={this.state.filter} 
+            lists={this.props.lists}
+            > */}
             <TextInput
               label="Hashtag"
               attr={{
@@ -105,7 +131,7 @@ export class ListByTags extends Component {
                 className: 'filterField'
               }}
             />
-          </AutoComplete>
+         {/* </div> </AutoComplete> */}
           </div>
         </form>
         <div className="filteredContainer">{this.renderFilteredList()}</div>
