@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Input, Required, Label} from '../Form/Form';
+import { Label } from '../Form/Form';
+import { Link, Redirect } from "react-router-dom";
 import Button from '../Button/Button';
 import SpotsApiService from '../../services/spots-api-service';
 import PlayListContext from '../../contexts/PlayListContext';
@@ -22,6 +23,7 @@ class NewSpotForm extends Component {
     stateCity: { value: null, selected: false },
     stateLocation: '',
     cities: [],
+    redirectToReferrer: false,
   };
 
   generateStateOptions = () => {
@@ -48,19 +50,18 @@ class NewSpotForm extends Component {
     });
   };
 
+  componentDidMount() {
+    let lid = this.props.location.props.list_id;
+    this.context.setListId(lid)
+  }
+
   handleSubmit = ev => {
     ev.preventDefault();
-    console.log('handle submit', ev.target)
+
     let name = document.getElementsByName('name')[0];
     let address = document.getElementsByName('address')[0];
     let city =  this.state.cityLocation.value;
-    let state = this.state.stateLocation.value;
-
-    // const {name, tags, address, city, state} = ev.target;
-    // if (state.value === '') {
-    //   return this.setState({error: 'Please select a state.'});
-    // }
-    // console.log('posting' + name.value);
+    let state = this.state.stateLocation.value
 
     SpotsApiService.postSpots({
       name: name.value,
@@ -75,11 +76,13 @@ class NewSpotForm extends Component {
       .then(spot => {
         this.context.setSpotId(spot.id)
         this.context.setSpots(spot)
+  
+        this.props.onSpotCreation();
+
         name.value = '';
         address.value = '';
         city.value = '';
         state.value = '';
-        this.props.onSpotCreation();
       })
       .catch(res => {
         this.setState({error: res.error});
@@ -91,9 +94,9 @@ class NewSpotForm extends Component {
     return (
       <form onSubmit={this.handleSubmit} className="newSpotForm">
         <div role="alert">{error && <p>{error}</p>}</div>
-        <Label htmlFor="newSpot-name-input">
-            Adding new spot
-        </Label>
+        <div>
+          <Label> Adding new spot</Label>
+        </div>
         <div>
           <TextInput
             attr={{
@@ -101,35 +104,17 @@ class NewSpotForm extends Component {
               name: "name",
               type: 'text',
               label: "Spot name",
-              // value: {this.state.value},
-              // onChange={this.handleChange},
               required: true,
             }}
             
           />
         </div>
-        {/*<div>
-          <TextInput
-            // ref={this.firstInput}
-            label="tags"
-            attr={{
-              id: "newSpot-tags-input",
-              name: "tags",
-              // value={this.state.value}
-              // onChange={this.handleChange}
-              placeholder: "#datenight #hotnewspots",
-              required: true
-            }}
-          />
-        </div> */}
         <div>
           <TextInput
             attr={{
               id: "newSpot-address-input",
               name: "address",
               label: "Address",
-              // value={this.state.value}
-              // onChange={this.handleChange}
               required: true,
             }}
           />
@@ -144,6 +129,7 @@ class NewSpotForm extends Component {
             value=""
             id="newSpot-location-state-select"
             options={this.generateStateOptions()}
+            required
           />
         </div>
         <div>
@@ -152,18 +138,17 @@ class NewSpotForm extends Component {
               name = "city"
               helperText="Choose your City"
               label = "City"
-              
               className="location-city"
-              // value={this.state.value}
-              // onChange={this.handleChange}
               onChange={this.onSelectCityChange}
               disabled={!this.state.stateLocation.selected}
               type= "text"
               options={this.state.cities}
+              required
           />
       </div>
         <footer className="signupBtnLink">
-          <Button type="submit">Submit</Button> <br />{' '}
+          <Button><Link to={`/list/${this.context.listid}`}>Cancel</Link></Button>
+          <Button type="submit">Save</Button> <br />{' '}
         </footer>
       </form>
     );
