@@ -7,7 +7,7 @@ import './ListByTags.css';
 
 export class AutoComplete extends Component {
     static propTypes = {
-        options: PropTypes.instanceOf(Array).isRequired;
+        options: PropTypes.instanceOf(Array).isRequired
     };
 
     state = {
@@ -75,9 +75,7 @@ export class AutoComplete extends Component {
             onChange,
             onKeyDown,
             userInput,
-            state: { activeOption, filteredOptons, showOptions, userInput }
-        }
-    } = this;
+            state: { activeOption, filteredOptons, showOptions, userInput }} = this;
 
     let optionList;
         if(showOptions && userInput) {

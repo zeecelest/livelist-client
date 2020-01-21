@@ -10,12 +10,14 @@ import "./listPage.css";
 import ScrollContainer from "react-indiana-drag-scroll";
 import loadingAnimation from "../../components/Assets/loadingAnimation.gif";
 
+
 export class ListPage extends Component {
   static contextType = PlayListContext;
   state = {
     spots: [],
     listInfo: [],
     userLists:[],
+    listName: '',
     loading: false
   };
 
@@ -36,8 +38,10 @@ export class ListPage extends Component {
   renderSpot = () => {
     let usersListsIds = [];
     if(this.state.userLists.length > 0){
-      this.state.userLists.map(lists => {
-        usersListsIds.push(lists.list_id)
+      this.state.userLists.map( lists => {
+          return usersListsIds.push(lists.list_id)
+          
+          // console.log('length 1 => lists', lists.length, lists.list_id, lists.users_id)
       })
       return this.state.spots.map(spot => (
         <div id={spot.name}>
@@ -61,11 +65,21 @@ export class ListPage extends Component {
   };
 
   renderListName = () => {
-    if (this.state.listInfo) {
+
+    // if (this.state.listInfo) {
+    //   return <h4 className="myListName">{this.state.listInfo.list_name}</h4>;
+    // } else {
+    //     return <div>{this.state.listName}</div>;
+    // }
+
+    if(this.state.listName){
+      return <h4 className="myListName">{this.state.listName}</h4>;
+    } else if (this.state.listInfo) {
       return <h4 className="myListName">{this.state.listInfo.list_name}</h4>;
     } else {
-      return <div> </div>;
+        return <div>{this.state.listName}</div>;
     }
+    
   };
 
   renderMap = () => {
@@ -75,6 +89,14 @@ export class ListPage extends Component {
 
   componentDidMount() {
     let id = this.props.match.params.id;
+    let plContext = this.context.playlist;
+
+     const listname = plContext.find(pl => pl.id === parseInt(id))
+     if(listname) {
+      this.setState({
+        listName: listname.name
+      })
+     }
 
     //TODO:Once Api call is set turn this back on
     this.setState({
@@ -83,10 +105,15 @@ export class ListPage extends Component {
     ListsApiService
       .getUsersLists()
       .then(list =>{
-
-          // //context to hold the playlist - note: we can use this if we move the edit?
-          // this.context.setPlaylist(list)
         
+          // console.log('get userLists', list.list_id)
+          // if(list && list.list_id !== undefined) {
+          //   //context for userid
+          //   // this.context.setUserId(list[0].users_id)
+          //   const a  = list.find(l => l.id === parseInt(this.props.match.params.id))
+          //   this.context.setListId(a.list_id)       
+          // }
+         
         this.setState({
           userLists: list
         })
@@ -111,6 +138,26 @@ export class ListPage extends Component {
       .catch(this.context.setError);
   }
 
+  renderNewSpotButton = () => {
+    if(this.state.listName){
+      return  (
+        <Button>
+            <Link
+                to={{
+                  pathname: "/newSpot",
+                  props: {
+                      list_id: this.props.match.params.id,
+                      sid: this.props.sid
+                    }
+                  }}
+              >
+              New Spot
+              </Link>
+      </Button>
+      );
+    }
+  }
+
   renderForLoading = () => {
     if (this.state.loading) {
       return (
@@ -126,24 +173,14 @@ export class ListPage extends Component {
     } else {
       return (
         <div>
+        
           {this.renderMap()}
           {this.renderListName()}
+          {this.renderNewSpotButton()}
+
           <div className="spotContainer">
             {this.renderSpot(this.state.spots)}
           </div>
-          <Button>
-            <Link
-              to={{
-                pathname: "/newSpot",
-                props: {
-                  list_id: this.props.match.params.id,
-                  sid: this.props.sid
-                }
-              }}
-            >
-              New Spot
-            </Link>
-          </Button>
         </div>
       );
     }

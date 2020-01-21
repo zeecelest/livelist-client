@@ -59,7 +59,9 @@ export class List extends Component {
     else if (this.props.liked) {
       return (
         <div id={this.props.id} className={this.props.className}>
-          <h5 className="list-name">{this.props.name}</h5>
+        <Link to={`/list/${this.props.id}`}>
+           <h5 className="list-name">{this.props.name}</h5>
+        </Link>
           <LikeButton
             id={this.props.id}
             likes={this.props.likes}
@@ -71,7 +73,9 @@ export class List extends Component {
     } else {
       return (
         <div id={this.props.id} className={`listItem ${this.props.addClass}`}>
-          <h5 className="list-name">{this.props.name}</h5>
+        <Link to={`/list/${this.props.id}`}>
+           <h5 className="list-name">{this.props.name}</h5>
+        </Link>
         </div>
       );
     }

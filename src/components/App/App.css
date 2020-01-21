@@ -5,6 +5,7 @@
   --color-body:#21201f;
   --color-newButton:#4caf50;
   --color-darkMid:#817C7C;
+  --gradient-background: linear-gradient(white, var(--color-midColor))
 }
 *{
   box-sizing: border-box;
