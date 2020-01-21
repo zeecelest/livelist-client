@@ -47,6 +47,7 @@ state = {
   };
 
 componentDidMount(){
+  console.log('These are all the props =>',this.props)
   this.setState({
     list: this.mergeSort(this.props.allLists)
   })
