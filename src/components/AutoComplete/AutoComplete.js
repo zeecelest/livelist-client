@@ -7,7 +7,7 @@ import '../ListByTags/ListByTags.css';
 
 export class AutoComplete extends Component {
   static propTypes = {
-    tags: PropTypes.instanceOf(Array).isRequired
+    tags: PropTypes.instanceOf(Array)
   };
 
   state = {
