@@ -8,8 +8,9 @@
 
 .hotListTitle {
   color: var(--color-highlight);
-  align-self: flex-start;
+  align-self: flex-end;
   margin-top: 0;
+  margin-right: 3%;
   text-align: center;
 }
 .hotListSection {
@@ -22,6 +23,9 @@
   flex-direction: column;
   padding: 0.5rem 1rem;
 }
+#hotInSelect{
+  background-color: white;
+}
 .hot {
   display: flex;
   flex-direction: column;
@@ -29,4 +33,9 @@
   justify-content: center;
   width: 3rem;
   min-width: 250px;
+}
+.hotInSelectContainer{
+  display: flex;
+  justify-content: flex-start;
+  
 }
