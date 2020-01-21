@@ -2,16 +2,21 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  align-self: flex-end;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-self: flex-start;
+  padding-bottom: 50%;
 }
 .notLikedIcon{
   width: 30px;
   height: auto;
 }
 .likedIcon{
-  float: right;
   width: 30px;
   height: auto;
-  background-color: rgba(0, 0, 0, 0.733);
+}
+.likes{
+  color: var(--color-body);
+  font-size: 1.25rem;
+  margin: 0;
 }
