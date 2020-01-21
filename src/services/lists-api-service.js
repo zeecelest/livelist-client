@@ -98,7 +98,6 @@ const ListsApiService = {
             )
     },
     patchLists(list){
-      console.log('api', list)
         return fetch(`${config.API_ENDPOINT}/lists/${list.id}`,{
             method: 'PATCH',
             headers: {
