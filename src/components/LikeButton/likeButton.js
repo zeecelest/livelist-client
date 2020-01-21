@@ -48,7 +48,7 @@ export class LikeButton extends Component {
               className={`likedIcon`}
               alt="icon white"
             ></img>
-          <p>{this.state.likes}</p>
+          <p className='likes'>{this.state.likes}</p>
         </div>
       );
     } else if (this.state.liked == "0") {
@@ -64,7 +64,7 @@ export class LikeButton extends Component {
               className="notLikedIcon"
               alt="icon grey"
             ></img>
-          <p>{this.state.likes}</p>
+          <p className='likes'>{this.state.likes}</p>
         </div>
       );
     }
