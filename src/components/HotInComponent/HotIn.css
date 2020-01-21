@@ -27,4 +27,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 3rem;
+  min-width: 250px;
 }
