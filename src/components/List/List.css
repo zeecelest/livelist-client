@@ -15,7 +15,6 @@
     border: 1px solid grey;
     justify-content: center;
     align-items: center;
-    
 }
 .listItem:hover{
   box-shadow: 0px 0px 20px rgb(189, 189, 189);
