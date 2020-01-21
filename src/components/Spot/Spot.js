@@ -29,8 +29,10 @@ export class Spot extends Component {
         if(lists === parseInt(this.props.lid)) { 
           return (
             <div className ='spot-buttons'>
-                <Button onClick={ () => this.props.handleDeleteSpot(this.props.sid)}>Delete</Button>
-                <Button>
+                <Button 
+                  id='deleteSpotButton'
+                  onClick={ () => this.props.handleDeleteSpot(this.props.sid)}>Delete</Button>
+                <Button id='editSpotButton'>
                 <Link
                     to= {`/updateSpot/${this.props.sid}`}
                   >

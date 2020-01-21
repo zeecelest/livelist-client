@@ -10,6 +10,7 @@ const PlayListContext = React.createContext({
   setSpots: () => {},
   spotid: 0,
   listid: 0,
+  usersid: 0,
 });
 
 export default PlayListContext;
@@ -39,6 +40,10 @@ export class PlayListProvider extends Component {
     this.setState({ listid: id})
   }
 
+  setUserId = id => {
+    this.setState({ userid: id})
+  }
+
   handleAddSpot = spot => {
     this.setState({
       spots: [...this.state.spots, spot]
@@ -57,11 +62,10 @@ export class PlayListProvider extends Component {
   }
 
   handleUpdateList = list => {
-    console.log('list', list)
     let currentList = this.state.playlist.find( p => parseInt(p.id) === parseInt(list.id))
     ListsApiService.patchLists(list)
     .then( (data) => {
-      console.log('update - current data', data)
+      // console.log('update - current data', data)
       this.setState({
         playlist: currentList
       })
@@ -82,7 +86,9 @@ export class PlayListProvider extends Component {
       spotid: this.state.spotid,
       setSpotId: this.setSpotId,
       listid: this.state.listid,
-      setListId: this.setListId
+      setListId: this.setListId,
+      userid: this.state.userid,
+      setUserId: this.setUserId
     };
 
     return (

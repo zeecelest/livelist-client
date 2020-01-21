@@ -5,9 +5,9 @@ import PlayListContext from "../../contexts/PlayListContext";
 import { Link } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import ScrollContainer from "react-indiana-drag-scroll";
-import { Icon } from "@iconify/react";
-import timesCircle from "@iconify/icons-fa-regular/times-circle";
-import editIcon from "@iconify/icons-fa-regular/edit";
+// import { Icon } from "@iconify/react";
+// import timesCircle from "@iconify/icons-fa-regular/times-circle";
+// import editIcon from "@iconify/icons-fa-regular/edit";
 import List from "../List/List";
 
 import "./userLists.css";
