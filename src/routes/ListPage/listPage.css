@@ -10,6 +10,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top:50vh;
+  margin-left: 50vw;
 }
 .loadingAnimation {
   width: 75px;
