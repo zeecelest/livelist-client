@@ -66,7 +66,7 @@ export class ListPage extends Component {
   renderListName = () => {
     if (this.state.listName) {
       return (
-        <div >
+        <div className='listPageMain'>
       <h4 className="myListName">{this.state.listName}
       <LikeButton 
         id={this.props.match.params.id} 
