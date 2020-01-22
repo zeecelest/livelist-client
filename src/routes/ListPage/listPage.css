@@ -3,7 +3,7 @@
   font-size: 2rem;
   margin-bottom: 5%;
   margin-top:0;
-  border: 1px solid green;
+  margin-bottom: 0;
 }
 
 .loadingContainer {
@@ -17,6 +17,11 @@
 }
 .loadingText {
   color: white;
+}
+.listPageMain{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 }
 
 #map{

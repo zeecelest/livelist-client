@@ -2,6 +2,7 @@
   color: var(--color-body);
   align-self: center;
   width: auto;
+  margin-top: 0;
 }
 .listItem {
   background-image: linear-gradient(white, var(--color-midColor));

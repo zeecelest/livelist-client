@@ -33,6 +33,8 @@
   justify-content: center;
   width: 3rem;
   min-width: 250px;
+  height: auto;
+  padding: 1rem;
 }
 .hotInSelectContainer{
   display: flex;
