@@ -1,6 +1,7 @@
 .brand {
+  margin: 0 0 0 0;
   text-transform: uppercase;
-  color: white;  
+  color: white;
   font-family: 'Seymour One';
   font-size: .5rem;
 }
