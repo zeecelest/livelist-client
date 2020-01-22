@@ -1,15 +1,9 @@
 .Button {
-  font-size: 1.5rem;
-  margin: 2%;
-  margin-bottom: 10%;
-  margin-top: 15%;
   transition-duration: 0.3s;
   cursor: pointer;
   color: var(--color-background);
   background-color: Transparent;
-  padding: 0.6rem;
   border: 2px solid white;
-  border-radius: 0;
 }
 
 .Button:hover {
