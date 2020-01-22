@@ -38,9 +38,9 @@ class Header extends Component {
   render() {
     return (
       <header className="headerContainer">
-        <h1>
+        <h1 className="brand">
           <Link to="/" className="titleLink">
-            Social Playlist
+            Live List
           </Link>
         </h1>
         <nav>
