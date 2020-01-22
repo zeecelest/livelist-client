@@ -5,7 +5,6 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
   align-self: flex-start;
-  padding-bottom: 50%;
 }
 .notLikedIcon{
   width: 30px;

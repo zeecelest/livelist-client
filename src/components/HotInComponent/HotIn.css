@@ -1,15 +1,17 @@
 .display-hotIn {
   display: flex;
   flex-direction: row;
-  overflow: auto;
   white-space: nowrap;
   padding: 1.5rem 0;
 }
 
 .hotListTitle {
-  color: var(--color-highlight);
+  background: var(--purp-pink);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   align-self: flex-start;
   margin-top: 0;
+  margin-right: 3%;
   text-align: center;
 }
 .hotListSection {
@@ -21,6 +23,10 @@
   max-width: 90vw;
   flex-direction: column;
   padding: 0.5rem 1rem;
+  overflow: auto;
+}
+#hotInSelect{
+  background-color: white;
 }
 .hot {
   display: flex;
@@ -29,4 +35,11 @@
   justify-content: center;
   width: 3rem;
   min-width: 250px;
+  height: auto;
+  padding: 1rem;
+}
+.hotInSelectContainer{
+  display: flex;
+  justify-content: flex-start;
+  
 }

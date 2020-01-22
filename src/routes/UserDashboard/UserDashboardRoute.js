@@ -18,7 +18,8 @@ export class UserDashboardRoute extends Component {
     spots: [],
     loading: false,
     checkLength: 0,
-    likedChange: false
+    likedChange: false,
+    userCity:''
   };
 
   static defaultProps = {
@@ -67,10 +68,9 @@ export class UserDashboardRoute extends Component {
     });
     ListApiService.getUsersLists()
       .then((data) => {
-
         //this context setPlaylist will pass it to playlist
         this.context.setPlaylist(data)
-
+        console.log('this is the data from the getUserListApi call =>', data)
         this.setState({
           userList: data
         });
@@ -126,7 +126,6 @@ export class UserDashboardRoute extends Component {
               allLists={this.state.lists}
             />
             <ListByTags lists={this.state.lists} />
-
           </PlayListContext.Provider>
         </div>
       );

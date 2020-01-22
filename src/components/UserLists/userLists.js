@@ -59,26 +59,22 @@ export class UserLists extends Component {
 
   render() {
     return (
-      <>
         <section className="userList-section">
           <h2 className="myList-title">My Lists</h2>
           <ScrollContainer
             className="userListContainer"
-            horizontal={true}
-            activationDistance={1}
             nativeMobileScroll={true}
           >
             {this.renderUserList()}
-            <div className="newPlayListButtonContainer">
+          </ScrollContainer>
+                      <div className="newPlayListButtonContainer">
               <Button id="newPlaylistButton">
                 <Link to="/newList" className="newPlaylistButtonText">
                   New Playlist
                 </Link>
               </Button>
             </div>
-          </ScrollContainer>
         </section>
-      </>
     );
   }
 }

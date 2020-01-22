@@ -1,23 +1,31 @@
-.list-name {
-  color: var(--color-body);
+.list-name, .filteredListName, .userListTitle, .list-name {
+  color: var(--white-1);
   align-self: center;
   width: auto;
+  margin-top: 0;
 }
+
+.listItem:hover .list-name, .listItem:hover .filteredListName, .listIten:hover .userListTitle{
+  background: var(--purp-pink);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .listItem {
-  background-image: linear-gradient(white, var(--color-midColor));
+  background-color: var(--grey-1);
   text-decoration: none;
   min-width: 250px;
-  background-color: white;
   margin-right: 5%;
   height: 100px;
   padding: 0.5rem 1rem;
-  border-radius: 5px;
+  border: 2px solid;
+  border-image-source: var(--purp-pink);
+  border-image-slice: 1;
   display: flex;
-  border: 1px solid grey;
   justify-content: center;
   align-items: center;
   overflow: scroll;
 }
 .listItem:hover {
-  box-shadow: 0px 0px 20px rgb(189, 189, 189);
+  box-shadow: 0px 0px 20px var(--pink);
 }
