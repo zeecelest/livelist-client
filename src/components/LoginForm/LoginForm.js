@@ -50,7 +50,8 @@ class LoginForm extends Component {
               id: 'login-username-input',
               name: 'username',
               required: true,
-              type: 'text'
+              type: 'text',
+              autoComplete: 'username'
             }}
           />
         </div>
@@ -62,7 +63,8 @@ class LoginForm extends Component {
               id: 'login-password-input',
               name: 'password',
               required: true,
-              type: 'password'
+              type: 'password',
+              autoComplete: 'current-password'
             }}
           />
         </div>

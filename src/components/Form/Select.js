@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MultilineTextFields(props) {
-  const classes = useStyles();
+  const classes = useStyles(); // bottle neck here was supposed to reduce complexity, but in turn had the opposite effect. These form components could use design rework
   let {
     id,
     label,
@@ -22,10 +22,11 @@ export default function MultilineTextFields(props) {
     options,
     onChange,
     disabled,
-    name
+    name,
+    value
   } = props;
   return (
-    <div className={classes.root} noValidate autoComplete="off">
+    <div className={classes.root}>
       <TextField
         id={id}
         onChange={onChange}
@@ -34,6 +35,7 @@ export default function MultilineTextFields(props) {
         select
         label={label}
         name={name}
+        value={value}
         helperText={helperText}
         required
         variant="outlined">

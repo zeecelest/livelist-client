@@ -23,7 +23,6 @@ class UpdateList extends Component {
         value: '',
         touched: false
       },
-
       city: {
         value: '',
         touched: false
@@ -40,6 +39,7 @@ class UpdateList extends Component {
         value: false,
         touched: false
       },
+      cities: [],
       redirectToReferrer: false,
       error: null,
       id: ''
@@ -61,11 +61,11 @@ class UpdateList extends Component {
   }
 
   updateCity(city) {
-    this.setState({ city: { value: city, selected: true, touched: true } });
+    this.setState({ city: { value: city, touched: true } });
   }
 
   updateState(st) {
-    this.setState({ state: { value: st, selected: true, touched: true } });
+    this.setState({ state: { value: st, touched: true } });
   }
 
   updateDesc(desc) {
@@ -86,19 +86,6 @@ class UpdateList extends Component {
     let cities = possibleLocations[ev.target.value];
     this.setState({
       state: {
-        selected: true,
-        touched: true,
-        value: ev.target.value
-      },
-      cities
-    });
-  };
-
-  onSelectCityChange = (ev) => {
-    let cities = possibleLocations[ev.target.value];
-    this.setState({
-      city: {
-        selected: true,
         touched: true,
         value: ev.target.value
       },
@@ -106,50 +93,48 @@ class UpdateList extends Component {
     });
   };
 
+  onSelectCityChange = (ev) => {
+    this.setState({
+      city: {
+        touched: true,
+        value: ev.target.value
+      }
+    });
+  };
+
   componentDidMount() {
-    const lid = this.props.match.params.id;
-    this.context.setListId(lid);
+    const list_id = this.props.match.params.id;
+    this.context.setListId(list_id);
     const playList = this.context.playlist;
-
     let editPlaylist = playList.find(
-      (play) => parseInt(play.id) === parseInt(lid)
+      (play) => parseInt(play.id) === parseInt(list_id)
     );
-
-    // console.log(editPlaylist.is_public)
+    console.log(editPlaylist);
     this.setState({
       name: { value: editPlaylist.name, touched: false },
       tags: { value: editPlaylist.tags, touched: false },
       city: { value: editPlaylist.city, touched: false },
       state: { value: editPlaylist.state, touched: false },
       description: { value: editPlaylist.description, touched: false },
-      is_public: {
-        value: editPlaylist.is_public
-          ? editPlaylist.is_public
-          : editPlaylist.is_public.checked,
-        touched: false
-      }
+      is_public: { value: editPlaylist.is_public, touched: false },
+      cities: possibleLocations[editPlaylist.state]
     });
   }
 
   handleSubmit = (ev) => {
     ev.preventDefault();
-
-    const lid = parseInt(this.props.match.params.id);
-
+    const list_id = parseInt(this.props.match.params.id);
     this.setState({ redirectToReferrer: true });
-
     const { name, tags, city, state, description, is_public } = this.state;
-
     let obj = {
       name: name.value,
       tags: tags.value,
       city: city.value,
       state: state.value,
       description: description.value,
-      is_public: !is_public.checked,
-      id: lid
+      is_public: is_public.value,
+      id: list_id
     };
-
     this.context.handleUpdateList(obj);
   };
 
@@ -166,7 +151,6 @@ class UpdateList extends Component {
               attr={{
                 id: 'updateList-name-input',
                 name: 'name',
-                type: 'text',
                 value: this.state.name.value,
                 onChange: (ev) => this.updateName(ev.target.value),
                 label: 'List name',
@@ -179,7 +163,6 @@ class UpdateList extends Component {
               attr={{
                 id: 'updateList-tags-input',
                 name: 'tags',
-                type: 'text',
                 value: this.state.tags.value,
                 onChange: (ev) => this.updateTags(ev.target.value),
                 label: 'Tags',
@@ -188,64 +171,36 @@ class UpdateList extends Component {
             />
           </div>
           <div>
-            {this.state.state.touched ? (
-              <Select
-                id="updateList-state-input"
-                className="state"
-                name="state"
-                helperText="Choose your State"
-                defaultValue={this.state.state.value}
-                onChange={this.handleChange}
-                options={this.generateStateOptions()}
-                required
-              />
-            ) : (
-              <TextInput
-                attr={{
-                  id: 'updateList-state-input',
-                  name: 'state',
-                  type: 'text',
-                  value: this.state.state.value,
-                  onChange: (ev) => this.updateState(ev.target.value),
-                  label: 'Tags',
-                  required: true
-                }}
-              />
-            )}
+            <Select
+              id="updateList-state-input"
+              className="state"
+              name="state"
+              label="State"
+              value={this.state.state.value}
+              helperText="Choose your State"
+              onChange={this.onSelectStateChange}
+              options={this.generateStateOptions()}
+              required
+            />
           </div>
           <div>
-            {this.state.city.touched ? (
-              <Select
-                id="updateList-city-input"
-                name="city"
-                helperText="Choose your City"
-                label="City"
-                className="location-city"
-                onChange={this.onSelectCityChange}
-                type="text"
-                options={this.state.cities}
-                required
-              />
-            ) : (
-              <TextInput
-                attr={{
-                  id: 'updateList-city-input',
-                  name: 'city',
-                  type: 'text',
-                  value: this.state.city.value,
-                  onChange: (ev) => this.updateCity(ev.target.value),
-                  label: 'City',
-                  required: true
-                }}
-              />
-            )}
+            <Select
+              id="updateList-city-input"
+              name="city"
+              helperText="Choose your City"
+              value={this.state.city.value}
+              label="City"
+              className="location-city"
+              onChange={this.onSelectCityChange}
+              options={this.state.cities}
+              required
+            />
           </div>
           <div>
             <TextInput
               attr={{
                 id: 'updateList-desc-input',
                 name: 'address',
-                type: 'text',
                 value: this.state.description.value,
                 onChange: (ev) => this.updateDesc(ev.target.value),
                 label: 'Description'

@@ -20,17 +20,17 @@ class NewPlaylistForm extends Component {
   };
   state = {
     error: null,
-    // name: "",
+    name: '',
     cities: [],
-    state: { value: null, touched: false },
-    // tags: " ",
+    city: '',
+    state: { value: '', touched: false },
+    tags: '',
+    description: '',
     is_public: false
   };
 
   onSelectStateChange = (ev) => {
-    console.log(possibleLocations);
     let cities = possibleLocations[ev.target.value];
-    console.log(cities);
     this.setState({
       state: {
         touched: true,
@@ -39,6 +39,16 @@ class NewPlaylistForm extends Component {
       cities: cities.sort()
     });
   };
+  updateDesc(desc) {
+    this.setState({ description: desc });
+  }
+
+  onSelectCityChange = (ev) => {
+    this.setState({
+      city: ev.target.value
+    });
+  };
+
   generateStateOptions = () => {
     return states.map((item) => item.name);
   };
@@ -52,23 +62,24 @@ class NewPlaylistForm extends Component {
     let name = document.getElementsByName('name')[0].value;
     let city = document.getElementsByName('city')[0].value;
     let state = document.getElementsByName('state')[0].value;
-    let is_public = document.getElementsByName('is_public')[0].checked;
+    let is_public = document.getElementsByName('is_public')[0].value;
     let tags = document.getElementsByName('tags')[0].value;
-    console.log(is_public);
-
-    // ListsApiService.postLists({
-    //   name: name,
-    //   city: city,
-    //   state: state,
-    //   tags: tags,
-    //   is_public
-    // })
-    //   .then((playlist) => {
-    //     this.props.onPlaylistCreation();
-    //   })
-    //   .catch((res) => {
-    //     this.setState({ error: res.error });
-    //   });
+    let description = this.state.description;
+    console.log(description);
+    ListsApiService.postLists({
+      name: name,
+      city: city,
+      state: state,
+      tags: tags,
+      is_public,
+      description
+    })
+      .then(() => {
+        this.props.onPlaylistCreation();
+      })
+      .catch((res) => {
+        this.setState({ error: res.error });
+      });
   };
 
   render() {
@@ -82,37 +93,27 @@ class NewPlaylistForm extends Component {
             <Required />
           </Label>
           <TextInput
-            attr={{
-              id: 'newPlaylist-name-input',
-
-              name: 'name',
-              required: true,
-              type: 'text',
-              label: 'Name'
-              //value: this.state.value,
-              // onChange: this.handleChange
-            }}
+            attr={{ id: 'newPlaylist-name-input', name: 'name', label: 'Name' }}
           />
         </div>
         <div className="stateContainer">
           <Select
             id="newPlaylist-state-input"
-            //ref={this.firstInput}
             label="State"
             name="state"
+            value={this.state.state.value}
             onChange={this.onSelectStateChange}
-            options={this.generateStateOptions()}
-            //value={this.state.value}
-          ></Select>
+            options={this.generateStateOptions()}></Select>
         </div>
         <div>
           <Select
             id="newPlaylist-city-input"
             name="city"
             label="City"
+            value={this.state.city}
             className="location-city"
+            onChange={this.onSelectCityChange}
             disabled={!this.state.state.touched}
-            type="text"
             options={this.state.cities}
             required
           />
@@ -121,13 +122,10 @@ class NewPlaylistForm extends Component {
           <TextInput
             attr={{
               id: 'newPlaylist-tags-input',
-              //ref: this.firstInput,
               name: 'tags',
               required: true,
               type: 'text',
               label: 'Tags'
-              //value: this.state.value,
-              //onChange: this.handleChange
             }}
           />
         </div>
@@ -137,15 +135,19 @@ class NewPlaylistForm extends Component {
             variant="outlined"
             label="Description"
             multiline={true}
+            onChange={(ev) => this.updateDesc(ev.target.value)}
             name="description"
           />
         </div>
         <div>
-          <label>Make your list private ?</label>
+          <label>
+            <span>Make your list private ?</span>
+          </label>
           <SwitchComp
             id="newPlayList-isPublic-checkbox"
             checked={this.state.is_public}
             value={!this.state.is_public}
+            name="is_public"
             onChange={(e) => this.handlePrivSwitch(e)}
           />
         </div>
