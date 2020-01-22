@@ -24,7 +24,12 @@
 }
 
 body {
-  background-image: linear-gradient(60deg, var(--grey-3) 0%, var(--grey-2) 50%, var(--grey-3) 100%);
+  background-image: url('/background.png');
+ /* background-color: linear-gradient(60deg, var(--grey-3) 0%, var(--grey-2) 50%, var(--grey-3) 100%); */
+  background-color: var(--grey-3);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center top;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
