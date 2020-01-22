@@ -15,7 +15,6 @@
 .display-user {
   display: flex;
   flex-direction: row;
-  overflow: auto;
   white-space: nowrap;
   padding: 1.5rem 0;
 }

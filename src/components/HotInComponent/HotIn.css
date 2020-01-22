@@ -1,9 +1,6 @@
-
-
 .display-hotIn {
   display: flex;
   flex-direction: row;
-  overflow: scroll;
   white-space: nowrap;
   padding: 1.5rem 0;
 }
