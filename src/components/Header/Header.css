@@ -1,11 +1,16 @@
 .brand {
   text-transform: uppercase;
-  background: var(--purp-pink);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: white;  
   font-family: 'Seymour One';
   font-size: .5rem;
 }
+
+.brand:hover {
+ background: var(--purp-pink);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+}
+
 .titleLink{
     text-decoration: none;
     color: var(--color-background);
