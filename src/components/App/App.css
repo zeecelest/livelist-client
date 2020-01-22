@@ -1,11 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Cantarell:700i|Seymour+One&display=swap');
 :root{
   --color-background: #EBEBEB;
-  --color-midColor: #D2D9D9;
-  --color-highlight:#1A3BEB;
+  --color-midColor: var(--grey-2);
+  --color-highlight: linear-gradient(to right, var(--purp), var(--pink));
   --color-body:#21201f;
   --color-newButton:#4caf50;
   --color-darkMid:#817C7C;
-  --gradient-background: linear-gradient(white, var(--color-midColor))
+  --gradient-background: linear-gradient(to right, white, var(--color-midColor));
+  --purp-pink: linear-gradient(to right, var(--purp), var(--pink));
+  --purp: #901573;
+  --pink: #d91a68;
+  --white-1: #d1d1d1;
+  --grey-1: #525252;
+  --grey-2: #2a2b2e;
+  --grey-3: #202124;
 }
 *{
   box-sizing: border-box;
@@ -16,7 +24,12 @@
 }
 
 body {
-  background-color: var(--color-midColor);
+  background-image: url('/background.png');
+ /* background-color: linear-gradient(60deg, var(--grey-3) 0%, var(--grey-2) 50%, var(--grey-3) 100%); */
+  background-color: var(--grey-3);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center top;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
