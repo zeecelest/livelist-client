@@ -59,7 +59,6 @@ export class UserLists extends Component {
 
   render() {
     return (
-      <>
         <section className="userList-section">
           <h2 className="myList-title">My Lists</h2>
           <ScrollContainer
@@ -76,7 +75,6 @@ export class UserLists extends Component {
               </Button>
             </div>
         </section>
-      </>
     );
   }
 }
