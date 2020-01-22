@@ -18,9 +18,11 @@
     "react": "^16.12.0",
     "react-device-detect": "^1.11.14",
     "react-dom": "^16.12.0",
+    "react-dot-fragment": "^0.2.9",
     "react-indiana-drag-scroll": "^1.5.3",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.3.0"
+    "react-scripts": "3.3.0",
+    "render-fragment": "^0.1.1"
   },
   "scripts": {
     "start": "react-scripts start",

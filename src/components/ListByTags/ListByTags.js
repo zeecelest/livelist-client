@@ -5,18 +5,21 @@ import PlayListContext from '../../contexts/PlayListContext';
 import { Link } from 'react-router-dom';
 import TextInput from '../Form/TextInput';
 import './ListByTags.css';
+import AutoComplete from '../AutoComplete/AutoComplete'
+
 
 export class ListByTags extends Component {
   static contextType = PlayListContext;
   state = {
     lists: [],
     filter: '',
-    filteredList: []
+    filteredList: [],
+    input: ''
   };
 
   handleFilter = (ev) => {
     ev.preventDefault();
-    let filter = document.getElementsByName('filter')[0].value;
+    let filter = ev.target.value;
     let newList = [];
     let mulFilters = filter.split(' ');
     if (mulFilters.length === 1) {
@@ -39,12 +42,12 @@ export class ListByTags extends Component {
       });
     }
     this.setState({
-      filteredList: [...newList]
+      filteredList: [...newList],
     });
   };
 
   renderFilteredList = () => {
-    if (this.state.filteredList.length == 0) {
+    if (this.state.filteredList.length === 0) {
       return this.props.lists.map((list) => {
         return (
           <div key={Math.random()} className="listItem filtered">
@@ -62,19 +65,63 @@ export class ListByTags extends Component {
             <Link to={`/list/${list.id}`}>
               <h4 className="filteredListName">{list.name}</h4>
             </Link>
-            <p>{list.tags}</p>
+            <p className="filteredListTag">{list.tags}</p>
           </div>
         );
       });
     }
   };
+  onChange = e => {
+    const { tags, lists } = this.props;
+    const userInput = e.target.value.toLowerCase();
+    const filteredTags = [];
+    let onlyTags = [];
+    for(let i = 0; i < lists.length; i++){
+      if(lists[i].tags.includes(userInput)){
+        filteredTags.push(lists[i])
+      }
+      onlyTags.push(lists[i].tags);
+    }
+    // let breakUserInput = userInput.split('')
+    // if(filteredTags.includes(breakUserInput)){
+      
+    //   console.log('found a match')
+    // }
+    // tags.filter(
+    //   (tags) => tags.toLowerCase().indexOf(userInput.toLowerCase()) > -1
+    // );
+    this.setState({
+      filteredList: [...filteredTags]
+    });
+  };
+
+  // filterInput() {
+  //   let input, filter, txtValue;
+  //   input = document.getElementById('tags');
+  //   filter = input.value.toUpperCase();
+
+  //   for(i = 0; i < tags.length; i++) {
+  //     a = tags[i].getElebmentsByTagName('a') [0];
+  //     txtValue = a.textContent || a.innerText;
+  //     if(txtValue.toUpperCase().indextOf(filter) > -1) {
+  //       tags[i].style.display = '';
+  //     } else {
+  //       tags[i].style.display = 'none';
+  //     }
+  //   }
+  // }
+  
 
   render() {
     return (
       <section>
-        <form onChange={this.handleFilter} id="filterForm">
+        <form onChange={this.onChange} id="filterForm">
           <h2 className="filterFormTitle">Browse All Lists</h2>
           <div className="filterButtonContainer">
+          {/* <AutoComplete 
+            tags={this.state.filter} 
+            lists={this.props.lists}
+            > */}
             <TextInput
               label="Hashtag"
               attr={{
@@ -84,6 +131,7 @@ export class ListByTags extends Component {
                 className: 'filterField'
               }}
             />
+         {/* </div> </AutoComplete> */}
           </div>
         </form>
         <div className="filteredContainer">{this.renderFilteredList()}</div>

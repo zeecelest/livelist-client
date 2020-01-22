@@ -3,6 +3,7 @@
   font-size: 2rem;
   margin-bottom: 5%;
   margin-top:0;
+  border: 1px solid green;
 }
 
 .loadingContainer {
@@ -21,4 +22,13 @@
 #map{
   margin-bottom: 0;
   width: 100px;
+}
+.listNameContainer{
+  max-height: 10vh;
+  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+}
+.newSpotButton{
+  margin:5%;
 }
