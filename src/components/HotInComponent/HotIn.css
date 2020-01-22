@@ -7,7 +7,9 @@
 }
 
 .hotListTitle {
-  color: var(--color-highlight);
+  background: var(--purp-pink);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   align-self: flex-start;
   margin-top: 0;
   text-align: center;

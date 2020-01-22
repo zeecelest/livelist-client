@@ -1,3 +1,11 @@
+.brand {
+  text-transform: uppercase;
+  background: var(--purp-pink);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Seymour One';
+  font-size: .5rem;
+}
 .titleLink{
     text-decoration: none;
     color: var(--color-background);
@@ -5,10 +13,13 @@
     font-size: 1.5rem;
 }
 .logoutLink{
-    color: var(--color-background);
+    color: var(--pink);
 }
 .headerContainer{
-    background-color: var(--color-highlight);
+    background-color: var(--grey-3);
+    border-bottom: 2px solid;
+    border-image-source: var(--purp-pink);
+    border-image-slice: 1;
     width:100%;
     position: absolute;
     top: 0;
