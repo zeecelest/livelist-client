@@ -157,9 +157,10 @@ onSelectChange= (ev)=>{
         <ScrollContainer
           className="hotListContainer"
           horizontal={true}
-          activationDistance={1}
-          nativeMobileScroll={true}
-        >
+          vertical={false}
+          hideScrollbars={true}
+          activationDistance={50}
+          nativeMobileScroll={true}>
           {this.renderHotLists()}
         </ScrollContainer>
       </section>
