@@ -37,8 +37,9 @@ export class ListPage extends Component {
 
   renderSpot = () => {
     let usersListsIds = [];
-    if (this.state.userLists.length > 0) {
-      this.state.userLists.map(lists => {
+    console.log('im the spots you are looking for =>', this.state)
+    if (this.state.spots.length > 0) {
+      this.state.spots.map(lists => {
         return usersListsIds.push(lists.list_id);
 
         // console.log('length 1 => lists', lists.length, lists.list_id, lists.users_id)
