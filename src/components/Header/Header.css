@@ -34,4 +34,5 @@
     justify-content: space-around;
     align-items: center;
     align-content: flex-start;
+    opacity: .9;
 }
