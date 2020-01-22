@@ -97,18 +97,9 @@ describe(`User story: Register an account`, function() {
       cy.get('main form').within(($form) => {
         cy.get('#registration-name-input').type(newUser.name);
         cy.get('#registration-username-input').type(newUser.username);
-
         cy.get('#registration-location-state-select')
           .click()
           .find('[data-value="California"]');
-        // cy.get('input[name="locationState"]').type('California', {
-        //   force: true
-        // });
-
-        // cy.get('input[name="locationCity"]').type('Los Angeles', {
-        //   force: true
-        // });
-
         cy.get('#registration-password-input').type(newUser.password);
         cy.root().submit();
 

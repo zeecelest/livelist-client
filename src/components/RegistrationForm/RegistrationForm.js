@@ -31,7 +31,7 @@ class RegistrationForm extends Component {
         selected: true,
         value: ev.target.value
       },
-      cities
+      cities: cities.sort()
     });
   };
 

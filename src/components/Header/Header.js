@@ -27,12 +27,13 @@ class Header extends Component {
   renderLoginLink() {
     return (
       <nav className="signUp-login">
-        <Link to='/login'>Login</Link>
-        {' '}
-        <Link className="signUp-login" to='/register'>Sign up</Link>
+        <Link to="/login">Login</Link>{' '}
+        <Link className="signUp-login" to="/register">
+          Sign up
+        </Link>
       </nav>
-    )
-  };
+    );
+  }
 
   render() {
     return (
@@ -43,11 +44,9 @@ class Header extends Component {
           </Link>
         </h1>
         <nav>
-          {TokenService.hasAuthToken() ? (
-            this.renderLogoutLink()
-          ) : (
-            <Link to="/login">Login</Link>
-          )}
+          {TokenService.hasAuthToken()
+            ? this.renderLogoutLink()
+            : this.renderLoginLink()}
         </nav>
       </header>
     );
