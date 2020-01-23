@@ -30,11 +30,6 @@
   align-items: center;
   justify-content: center;
 }
-.loginTitle {
-  margin-top: 0;
-  margin-bottom: 10%;
-  color: var(--color-highlight);
-}
 .signUpFormTitle {
   background: var(--purp-pink);
   font-family: 'Cantarell';

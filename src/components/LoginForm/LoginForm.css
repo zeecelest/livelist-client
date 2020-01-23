@@ -17,9 +17,13 @@ div[role='alert'] p {
   background-color: var(--color-background);
 }
 .loginTitle {
-  margin-top: 0;
-  margin-bottom: 10%;
-  color: var(--color-highlight);
+  font-family: 'Cantarell';
+  text-transform: uppercase;
+  font-size: 2rem;
+  background: var(--purp-pink);
+  margin: 0 0 0 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .loginForm {
@@ -34,10 +38,6 @@ div[role='alert'] p {
 #login-password-input {
   border-radius: 5px;
   background-color: var(--color-background);
-}
-.loginTitle {
-  margin-top: 0;
-  color: var(--color-highlight);
 }
 /* IF YOU WANT TO EDIT THE INPUTS WIDTH => THERE IS A CLASS THAT SETS THE WIDTH IN THE TextInput.js FILE */
 @media (min-width: 500px) {
