@@ -110,7 +110,7 @@ class Map extends React.Component {
   render() {
     return (
       <div
-        style={{ height: "30vh", width: "100vw", margin: "0 0 10vh 0" }}
+        style={{ height: "40vh", width: "100vw", margin: "10vh 0 10vh 0" }}
         className="map"
       >
         <GoogleMapReact

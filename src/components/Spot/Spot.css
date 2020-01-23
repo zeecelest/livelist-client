@@ -9,7 +9,6 @@
     border: 2px solid;
     border-image-source: var(--purp-pink);
     border-image-slice: 1;
-    width: 50vw;
     min-width: 300px;
     max-width: 500px;
     line-height: 0.25rem;
