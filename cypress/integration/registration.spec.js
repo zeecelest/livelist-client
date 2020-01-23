@@ -67,7 +67,7 @@ describe(`User story: Register an account`, function() {
     });
   });
 
-  context.skip(`Given invalid information`, () => {
+  context(`Given invalid information`, () => {
     const serverError = 'Some error from the server';
 
     beforeEach(() => {
@@ -110,7 +110,7 @@ describe(`User story: Register an account`, function() {
     });
   });
 
-  context.skip(`Given valid information`, () => {
+  context(`Given valid information`, () => {
     beforeEach(() => {
       cy.server()
         .route({
