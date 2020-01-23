@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import NewPlaylistForm from '../../components/NewPlaylistForm/NewPlaylistForm';
+import { ThemeProvider as MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
 
 class RegistrationRoute extends Component {
   static defaultProps = {
@@ -14,11 +16,19 @@ class RegistrationRoute extends Component {
     history.push('/dashboard');
   };
 
+ theme = createMuiTheme({
+  palette: {
+      accent1Color: '#ec407a'
+  },
+});
+
   render() {
     return (
       <section>
         <h2 className="signUpFormTitle">New Playlist</h2>
-        <NewPlaylistForm onPlaylistCreation={this.handlePlaylistCreation} />
+        <MuiThemeProvider theme={this.theme}>
+          <NewPlaylistForm onPlaylistCreation={this.handlePlaylistCreation} />
+        </MuiThemeProvider>
       </section>
     );
   }
