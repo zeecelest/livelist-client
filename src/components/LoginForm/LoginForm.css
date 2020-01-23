@@ -3,19 +3,6 @@ div[role='alert'] p {
   color: red;
 }
 
-.loginForm {
-  color: var(--color-body);
-  background-color: var(--color-midColor);
-  border-radius: 0;
-}
-#login-username-input {
-  border-radius: 5px;
-  background-color: var(--color-background);
-}
-#login-password-input {
-  border-radius: 5px;
-  background-color: var(--color-background);
-}
 .loginTitle {
   font-family: 'Cantarell';
   text-transform: uppercase;
@@ -27,18 +14,41 @@ div[role='alert'] p {
 }
 
 .loginForm {
-  color: var(--color-body);
-  background-color: var(--color-midColor);
-  border-radius: 0;
+  color: var(--grey-2);
+  background-color: var(--grey-2);
 }
-#login-username-input {
-  border-radius: 5px;
-  background-color: var(--color-background);
+
+a {
+  color: var(--white-1);
 }
+
+.reg-button {
+  padding: 2%;
+  margin: 0 2%;
+}
+
+.log-button {
+  font-size: 1.2rem;
+  padding: 2%;
+  margin: 0 2%;
+}
+
+.log-button:hover,
+.reg-button:hover {
+ background: var(--purp-pink);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+
+}
+
+#login-username-input,
 #login-password-input {
-  border-radius: 5px;
-  background-color: var(--color-background);
+    border: 2px solid;
+    border-image-source: var(--purp-pink);
+    border-image-slice: 1;
+    background-color: var(--grey-1);
 }
+
 /* IF YOU WANT TO EDIT THE INPUTS WIDTH => THERE IS A CLASS THAT SETS THE WIDTH IN THE TextInput.js FILE */
 @media (min-width: 500px) {
   .loginForm button {
