@@ -77,9 +77,8 @@ class UpdateList extends Component {
     error: null,
     id: ''
   };
-  
 
- defaultProps = {
+  defaultProps = {
     match: {
       params: {}
     }
@@ -112,11 +111,11 @@ class UpdateList extends Component {
   }
 
   generateStateOptions = () => {
-    let namesOnly = []
-    for (let i = 0; i<States.length;i++){
+    let namesOnly = [];
+    for (let i = 0; i < States.length; i++) {
       namesOnly.push(States[i].name);
     }
-    return namesOnly
+    return namesOnly;
     // return States.map((item) => item.name);
   };
 
@@ -147,28 +146,28 @@ class UpdateList extends Component {
   componentDidMount() {
     const list_id = this.props.match.params.id;
     this.context.setListId(list_id);
-    console.log('props in the update component =>', this.props)
-    console.log('state in the update =>', this.state)
-    console.log('context in the update =>', this.context)
     let listToEdit = null;
-    for(let i = 0; i < this.state.lists.length; i++){
-      if (this.state.lists[i].id == list_id){
+    for (let i = 0; i < this.state.lists.length; i++) {
+      if (this.state.lists[i].id == list_id) {
         listToEdit = this.state.lists[i];
-        var {name, tags, city, state, description, is_public} = {...this.state}
+        var { name, tags, city, state, description, is_public, cities } = {
+          ...this.state
+        };
         name.value = this.state.lists[i].name;
         tags.value = this.state.lists[i].tags;
         city.value = this.state.lists[i].city;
         state.value = this.state.lists[i].state;
         description.value = this.state.lists[i].description;
         is_public.value = this.state.lists[i].is_public;
-        this.setState({name, tags})
+        cities = possibleLocations[state.value];
+        this.setState({ name, tags, cities });
       }
     }
-    console.log('this is the list To Edit =>',listToEdit)
+
     // this.setState({
-    
+
     // })
-    
+
     //const playList = this.context.playlist;
     // let editPlaylist = playList.find(
     //   (play) => parseInt(play.id) === parseInt(list_id)
@@ -190,7 +189,7 @@ class UpdateList extends Component {
     const list_id = parseInt(this.props.match.params.id);
     this.setState({ redirectToReferrer: true });
     //const { name, tags, city, state, description, is_public } = this.state;
-    console.log('handleSubmit what it got is =>', this.state)
+    console.log('handleSubmit what it got is =>', this.state);
     let obj = {
       name: this.state.name.value,
       tags: this.state.tags.value,
@@ -200,9 +199,8 @@ class UpdateList extends Component {
       is_public: `${this.state.is_public.value}`,
       id: list_id
     };
-    console.log('this is the object to be submitted to the patch',obj)
-    ListsApiService.patchLists(obj)
-      .catch(this.context.setError);
+    console.log('this is the object to be submitted to the patch', obj);
+    ListsApiService.patchLists(obj).catch(this.context.setError);
   };
 
   render() {
@@ -211,87 +209,90 @@ class UpdateList extends Component {
       return <Redirect to="/" />;
     } else
       return (
-        <form onSubmit={this.handleSubmit} className="updateListForm">
-          <div role="alert">{error && <p>{error}</p>}</div>
-          <div>
-            <TextInput
-              attr={{
-                id: 'updateList-name-input',
-                name: 'name',
-                value: this.state.name.value,
-                onChange: (ev) => this.updateName(ev.target.value),
-                label: 'List name',
-                required: true
-              }}
-            />
-          </div>
-          <div>
-            <TextInput
-              attr={{
-                id: 'updateList-tags-input',
-                name: 'tags',
-                value: this.state.tags.value,
-                onChange: (ev) => this.updateTags(ev.target.value),
-                label: 'Tags',
-                required: true
-              }}
-            />
-          </div>
-          <div>
-            <Select
-              id="updateList-state-input"
-              className="state"
-              name="state"
-              label="State"
-              value={this.state.state.value}
-              helperText="Choose your State"
-              onChange={this.onSelectStateChange}
-              options={this.generateStateOptions()}
-              required
-            />
-          </div>
-          <div>
-            <Select
-              id="updateList-city-input"
-              name="city"
-              helperText="Choose your City"
-              value={this.state.city.value}
-              label="City"
-              className="location-city"
-              onChange={this.onSelectCityChange}
-              options={this.state.cities}
-              required
-            />
-          </div>
-          <div>
-            <TextInput
-              attr={{
-                id: 'updateList-desc-input',
-                name: 'address',
-                value: this.state.description.value,
-                onChange: (ev) => this.updateDesc(ev.target.value),
-                label: 'Description'
-              }}
-            />
-          </div>
-          <div>
-            <Label>
-              <span>Make Your List Private ?</span>
-            </Label>
-            <SwitchComp
-              id="updateList-isPublic-checkbox"
-              checked={!this.state.is_public.value}
-              value={this.state.is_public.value}
-              onChange={(e) => this.updateIsPublic(e)}
-            />
-          </div>
-          <footer className="signupBtnLink">
-            <Button>
-              <Link to="/dashboard">Cancel</Link>
-            </Button>
-            <Button type="submit">Save</Button> <br />{' '}
-          </footer>
-        </form>
+        <>
+          <h2 className="editPlaylistTitle">Edit Playlist</h2>
+          <form onSubmit={this.handleSubmit} className="updateListForm">
+            <div role="alert">{error && <p>{error}</p>}</div>
+            <div>
+              <TextInput
+                attr={{
+                  id: 'updateList-name-input',
+                  name: 'name',
+                  value: this.state.name.value,
+                  onChange: (ev) => this.updateName(ev.target.value),
+                  label: 'List name',
+                  required: true
+                }}
+              />
+            </div>
+            <div>
+              <TextInput
+                attr={{
+                  id: 'updateList-tags-input',
+                  name: 'tags',
+                  value: this.state.tags.value,
+                  onChange: (ev) => this.updateTags(ev.target.value),
+                  label: 'Tags',
+                  required: true
+                }}
+              />
+            </div>
+            <div>
+              <Select
+                id="updateList-state-input"
+                className="state"
+                name="state"
+                label="State"
+                value={this.state.state.value}
+                helperText="Choose your State"
+                onChange={this.onSelectStateChange}
+                options={this.generateStateOptions()}
+                required
+              />
+            </div>
+            <div>
+              <Select
+                id="updateList-city-input"
+                name="city"
+                helperText="Choose your City"
+                value={this.state.city.value}
+                label="City"
+                className="location-city"
+                onChange={this.onSelectCityChange}
+                options={this.state.cities}
+                required
+              />
+            </div>
+            <div>
+              <TextInput
+                attr={{
+                  id: 'updateList-desc-input',
+                  name: 'address',
+                  value: this.state.description.value,
+                  onChange: (ev) => this.updateDesc(ev.target.value),
+                  label: 'Description'
+                }}
+              />
+            </div>
+            <div>
+              <Label>
+                <span>Make Your List Private ?</span>
+              </Label>
+              <SwitchComp
+                id="updateList-isPublic-checkbox"
+                checked={!this.state.is_public.value}
+                value={this.state.is_public.value}
+                onChange={(e) => this.updateIsPublic(e)}
+              />
+            </div>
+            <footer className="signupBtnLink">
+              <Button>
+                <Link to="/dashboard">Cancel</Link>
+              </Button>
+              <Button type="submit">Save</Button> <br />{' '}
+            </footer>
+          </form>
+        </>
       );
   }
 }

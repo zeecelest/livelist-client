@@ -8,9 +8,8 @@
   width: 50vw;
   min-width: 300px;
   max-width: 400px;
-  margin-bottom: 30%;
+  margin-bottom: 50vh;
 }
-
 #root > div > main > section > form > div:nth-child(6) > div {
   /*Copied selector from inspector element, this is  */
   border-radius: 5px;
@@ -19,14 +18,17 @@
 #newPlaylist-name-input,
 #newPlaylist-city-input,
 #newPlaylist-state-input,
-#newPlaylist-tags-input {
+#newPlaylist-tags-input,
+#newPlaylist-desc-text {
   color: white;
   border-radius: 5px;
   background-color: var(--color-midColor);
 }
-#newPlaylist-name-input-label, #newPlaylist-city-input-label,
+#newPlaylist-name-input-label,
+#newPlaylist-city-input-label,
 #newPlaylist-state-input-label,
-#newPlaylist-tags-input-label, #newPlaylist-desc-text{
+#newPlaylist-tags-input-label,
+#newPlaylist-desc-text-label {
   color: white;
 }
 #newPlaylist-desc-text {
@@ -47,7 +49,6 @@
 }
 .signUpFormTitle {
   color: white;
-  font-size: 2.5rem;
   margin-top: 5%;
   margin-bottom: 5%;
 }
