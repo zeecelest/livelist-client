@@ -55,16 +55,24 @@
 }
 
 #newPlaylistButton {
-  width: 50%;
-  max-width: 150px;
   padding: 0.25rem 0.5rem;
+  /*
   align-self: flex-end;
   margin-top: 5%;
-  border-radius: 25px;
+  border-radius: 25px; */
   color: var(--white-1);
   font-size: 1rem;
-  margin-right: 5%;
+  margin: 0 5% 0 0;
 }
+
+#newPlaylistButton:hover,
+#newPlaylistButton:active {
+  background: var(--purp-pink);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
 .newPlayListButtonContainer {
   display: flex;
   justify-content: flex-end;
