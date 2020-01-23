@@ -44,6 +44,10 @@ a{
   text-decoration: none;
 }
 
+input {
+  background-color: red;
+}
+
 /* Transition to larger screen */
 @media only screen and (min-width: 700px) {
   body{
