@@ -18,6 +18,7 @@
 .loadingAnimation {
   width: 75px;
   height: auto;
+  margin: 50vh 50vw 50vh 50vw;
 }
 .loadingText {
   color: white;
@@ -29,10 +30,7 @@
   margin-bottom: 5%;
 }
 
-#map{
-  margin-bottom: 0;
-  width: 100px;
-}
+
 .listNameContainer{
   max-height: 10vh;
   display: flex;
