@@ -3,7 +3,7 @@
 }
 
 .mapButton {
-  margin: 5px 3px;
+  margin: 5px 3px 0 3px;
   transition-duration: 0.3s;
   cursor: pointer;
   color: var(--color-background);

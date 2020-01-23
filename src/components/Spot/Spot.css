@@ -11,7 +11,6 @@
     border-image-slice: 1;
     min-width: 300px;
     max-width: 500px;
-    line-height: 0.25rem;
     opacity: .85;
   }
   .spotContainer {
@@ -38,16 +37,18 @@
     -webkit-text-fill-color: transparent;
     padding: 2%;
     margin: 2% 0;
+    line-height: 1.2rem;
   }
 
   .spotInfo{
-    margin: 2% 0;
+    margin: 0 0 0 10px;
     padding: 2%;
     color: var(--white-1);
-    font-size: 1.5rem;
+    font-size: 1.1rem;
+    line-height: .4rem;
   }
   .spotTags{
-    margin: 2% 0;
+    margin: 10px 0 10px 20px;
     color: var(--white-1);
     font-size: 1.2rem;
 }
