@@ -10,12 +10,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top:50vh;
-  margin-left: 50vw;
+  margin-top: auto;
+  margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 .loadingAnimation {
   width: 75px;
   height: auto;
+  margin: 50vh 50vw 50vh 50vw;
 }
 .loadingText {
   color: white;
@@ -24,15 +27,12 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
+  margin-bottom: 5%;
 }
 
-#map{
-  margin-bottom: 0;
-  width: 100px;
-}
+
 .listNameContainer{
   max-height: 10vh;
-  border: 2px solid red;
   display: flex;
   flex-direction: column;
 }

@@ -6,47 +6,80 @@ import Button from '../../components/Button/Button';
 import TextInput from '../Form/TextInput';
 import Select from '../Form/Select';
 import possibleLocations from '../Assets/possibleLocations';
-import states from '../Assets/states';
+import States from '../Assets/states';
 import { Link, Redirect } from 'react-router-dom';
 import './UpdateList.css';
+import ListsApiService from '../../services/lists-api-service';
 
 class UpdateList extends Component {
   static contextType = PlayListContext;
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: {
-        value: '',
-        touched: false
-      },
-      tags: {
-        value: '',
-        touched: false
-      },
-      city: {
-        value: '',
-        touched: false
-      },
-      state: {
-        value: '',
-        touched: false
-      },
-      description: {
-        value: '',
-        touched: false
-      },
-      is_public: {
-        value: false,
-        touched: false
-      },
-      cities: [],
-      redirectToReferrer: false,
-      error: null,
-      id: ''
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     name: {
+  //       value: '',
+  //       touched: false
+  //     },
+  //     tags: {
+  //       value: '',
+  //       touched: false
+  //     },
+  //     city: {
+  //       value: '',
+  //       touched: false
+  //     },
+  //     state: {
+  //       value: '',
+  //       touched: false
+  //     },
+  //     description: {
+  //       value: '',
+  //       touched: false
+  //     },
+  //     is_public: {
+  //       value: false,
+  //       touched: false
+  //     },
+  //     cities: [],
+  //     redirectToReferrer: false,
+  //     error: null,
+  //     id: ''
+  //   };
+  // }
+  state = {
+    lists: this.context.playlist,
+    name: {
+      value: '',
+      touched: false
+    },
+    tags: {
+      value: '',
+      touched: false
+    },
+    city: {
+      value: '',
+      touched: false
+    },
+    state: {
+      value: '',
+      touched: false
+    },
+    description: {
+      value: '',
+      touched: false
+    },
+    is_public: {
+      value: false,
+      touched: false
+    },
+    cities: [],
+    redirectToReferrer: false,
+    error: null,
+    id: ''
+  };
+  
 
-  static defaultProps = {
+ defaultProps = {
     match: {
       params: {}
     }
@@ -79,7 +112,12 @@ class UpdateList extends Component {
   }
 
   generateStateOptions = () => {
-    return states.map((item) => item.name);
+    let namesOnly = []
+    for (let i = 0; i<States.length;i++){
+      namesOnly.push(States[i].name);
+    }
+    return namesOnly
+    // return States.map((item) => item.name);
   };
 
   onSelectStateChange = (ev) => {
@@ -102,40 +140,69 @@ class UpdateList extends Component {
     });
   };
 
+  // var someProperty = {...this.state.someProperty}
+  // someProperty.flag = true;
+  // this.setState({someProperty})
+
   componentDidMount() {
     const list_id = this.props.match.params.id;
     this.context.setListId(list_id);
-    const playList = this.context.playlist;
-    let editPlaylist = playList.find(
-      (play) => parseInt(play.id) === parseInt(list_id)
-    );
-    console.log(editPlaylist);
-    this.setState({
-      name: { value: editPlaylist.name, touched: false },
-      tags: { value: editPlaylist.tags, touched: false },
-      city: { value: editPlaylist.city, touched: false },
-      state: { value: editPlaylist.state, touched: false },
-      description: { value: editPlaylist.description, touched: false },
-      is_public: { value: editPlaylist.is_public, touched: false },
-      cities: possibleLocations[editPlaylist.state]
-    });
+    console.log('props in the update component =>', this.props)
+    console.log('state in the update =>', this.state)
+    console.log('context in the update =>', this.context)
+    let listToEdit = null;
+    for(let i = 0; i < this.state.lists.length; i++){
+      if (this.state.lists[i].id == list_id){
+        listToEdit = this.state.lists[i];
+        var {name, tags, city, state, description, is_public} = {...this.state}
+        name.value = this.state.lists[i].name;
+        tags.value = this.state.lists[i].tags;
+        city.value = this.state.lists[i].city;
+        state.value = this.state.lists[i].state;
+        description.value = this.state.lists[i].description;
+        is_public.value = this.state.lists[i].is_public;
+        this.setState({name, tags})
+      }
+    }
+    console.log('this is the list To Edit =>',listToEdit)
+    // this.setState({
+    
+    // })
+    
+    //const playList = this.context.playlist;
+    // let editPlaylist = playList.find(
+    //   (play) => parseInt(play.id) === parseInt(list_id)
+    // );
+    // console.log(editPlaylist);
+    // this.setState({
+    //   name: { value: editPlaylist.name, touched: false },
+    //   tags: { value: editPlaylist.tags, touched: false },
+    //   city: { value: editPlaylist.city, touched: false },
+    //   state: { value: editPlaylist.state, touched: false },
+    //   description: { value: editPlaylist.description, touched: false },
+    //   is_public: { value: editPlaylist.is_public, touched: false },
+    //   cities: possibleLocations[editPlaylist.state]
+    // });
   }
 
   handleSubmit = (ev) => {
     ev.preventDefault();
     const list_id = parseInt(this.props.match.params.id);
     this.setState({ redirectToReferrer: true });
-    const { name, tags, city, state, description, is_public } = this.state;
+    //const { name, tags, city, state, description, is_public } = this.state;
+    console.log('handleSubmit what it got is =>', this.state)
     let obj = {
-      name: name.value,
-      tags: tags.value,
-      city: city.value,
-      state: state.value,
-      description: description.value,
-      is_public: is_public.value,
+      name: this.state.name.value,
+      tags: this.state.tags.value,
+      city: this.state.city.value,
+      state: this.state.state.value,
+      description: this.state.description.value,
+      is_public: `${this.state.is_public.value}`,
       id: list_id
     };
-    this.context.handleUpdateList(obj);
+    console.log('this is the object to be submitted to the patch',obj)
+    ListsApiService.patchLists(obj)
+      .catch(this.context.setError);
   };
 
   render() {

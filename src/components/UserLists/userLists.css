@@ -2,7 +2,7 @@
   overflow: scroll;
 }
 .userList-section {
-  margin-top: 20%;
+  margin-top: 5%;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -63,6 +63,7 @@
   border-radius: 25px;
   color: var(--white-1);
   font-size: 1rem;
+  margin-right: 5%;
 }
 .newPlayListButtonContainer {
   display: flex;
@@ -153,11 +154,11 @@
 @media only screen and (min-width: 500px) {
   /* For desktop: */
   .userList-section {
-    margin-top: 10%;
+    margin-top: 5%;
     padding: 0.4rem 0.8rem;
   }
   #newPlaylistButton {
-    margin: 0;
+    margin: 3%;
   }
   .newPlayListButtonContainer {
     height: 60px;
