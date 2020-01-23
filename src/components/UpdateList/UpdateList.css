@@ -2,3 +2,6 @@ label span {
   color: darkslategrey;
   font-size: 1rem;
 }
+#updateList-name-input, #updateList-city-input, #updateList-state-input, #updateList-desc-input, #updateList-isPublic-input,#updateList-tags-input{
+  color: white;
+}  
