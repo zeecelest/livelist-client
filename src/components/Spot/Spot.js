@@ -26,7 +26,9 @@ export class Spot extends Component {
   renderUserListId = () => {
     if(this.props.usersListIds.length > 0){
       return this.props.usersListIds.map(lists => {
-        if(lists === parseInt(this.props.lid)) { 
+        console.log('UserList ids to compare =>',this.props.usersListIds)
+        console.log('the list Id of what list we are in', lists)
+        if(lists == parseInt(this.props.lid)) { 
           return (
             <div className ='spot-buttons'>
                 <Button 
