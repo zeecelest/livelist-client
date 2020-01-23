@@ -3,8 +3,8 @@
 It is a collaboration between [Daniel Lee Bright](https://github.com/Brahyt), [Glaiza Wagner](https://github.com/glaizawagner), [Wesley Jacobs](https://github.com/wjacobs71086), [Julio Hernandez](https://github.com/hernandez-crypto), and [Lazandrea Celestine](https://github.com/zeecelest)
 
 - [Live app](https://social-playlist.netlify.com)
-- [Client-Repo](https://github.com/thinkful-ei-heron/SocialPlaylist-Client)
-- [Server-Repo](https://github.com/thinkful-ei-heron/SocialPlaylist-server)
+- [Client-repo](https://github.com/thinkful-ei-heron/SocialPlaylist-Client)
+- [Server-repo](https://github.com/thinkful-ei-heron/SocialPlaylist-server)
 - [Heroku-endpoint](https://still-fortress-90057.herokuapp.com)
 - [Heroku-git](https://git.heroku.com/still-fortress-90057.git)
 
@@ -15,13 +15,13 @@ It is a collaboration between [Daniel Lee Bright](https://github.com/Brahyt), [G
 
 ## Technologies
 
-&ensp;Client Side:<br>
-- &ensp;HTML5 | CSS3 | React  |  Javascript  |  Cypress   |  JWT-Decode  |  APIs (GoogleMap and Restaurants)</br>
-- &ensp;Deployed in Netlify
+&ensp;<strong>Client Side:</strong><br>
+- HTML5 | CSS3 | React  |  Javascript  |  Cypress   |  JWT-Decode  |  APIs (GoogleMap and Restaurants)</br>
+- Deployed in Netlify
 
-&ensp;Server Side:<br>
-- &ensp;Node | Express | PostgreSQL | GeoCode | Bcryptjs | JWT | Morgan | Chai | Supertest</br>
-- &ensp;Deployed in Heroku 
+&ensp;<strong>Server Side:</strong><br>
+- Node | Express | PostgreSQL | GeoCode | Bcryptjs | JWT | Morgan | Chai | Supertest</br>
+- Deployed in Heroku 
 
 ## Summary
 Social Playlist helps users find new places that other users visited and liked in a specific area. 
