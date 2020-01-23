@@ -2,19 +2,18 @@
     color: var(--color-highlight);
   }
   .spotItem {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-    background-image: var(--gradient-background);
-    border-radius: 25px;
+    text-align: left;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: var(--grey-1);
+    border: 2px solid;
+    border-image-source: var(--purp-pink);
+    border-image-slice: 1;
     width: 50vw;
     min-width: 300px;
     max-width: 500px;
-    margin-bottom: 10%;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 1rem 2rem;
     line-height: 0.25rem;
+    opacity: .85;
   }
   .spotContainer {
     display: flex;
@@ -29,12 +28,29 @@
     margin-right: 5%;
     margin-top: -10%;
   }
+
+  .spotName {
+    display: block;
+    font-family: 'Cantarell';
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    background: var(--purp-pink);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 2%;
+    margin: 2% 0;
+  }
+
   .spotInfo{
-      color: var(--color-body);
-      font-size: 1.5rem;
+    margin: 2% 0;
+    padding: 2%;
+    color: var(--white-1);
+    font-size: 1.5rem;
   }
   .spotTags{
-    color: var(--color-highlight);
+    margin: 2% 0;
+    color: var(--white-1);
+    font-size: 1.2rem;
 }
 .spotDelete{
     margin:0;
