@@ -34,11 +34,13 @@
 }
 
 .filterFormTitle {
+  font-family: 'Cantarell';
+  text-transform: uppercase;
+  font-size: 1.8rem;
   background: var(--purp-pink);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-top: 0;
-  margin-bottom: 3%;
+  margin: 0 0 3% 0;
 }
 .filterButtonContainer {
   display: flex;

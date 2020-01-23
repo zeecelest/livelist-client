@@ -25,7 +25,9 @@
   justify-content: center;
   align-items: center;
   overflow: scroll;
+  opacity: .85;
 }
 .listItem:hover {
   box-shadow: 0px 0px 20px var(--pink);
+  opacity: 1;
 }

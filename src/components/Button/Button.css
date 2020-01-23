@@ -1,17 +1,15 @@
 .Button {
-  font-size: 1.5rem;
-  margin: 2%;
-  margin-bottom: 10%;
-  margin-top: 15%;
   transition-duration: 0.3s;
   cursor: pointer;
   color: var(--color-background);
-  background-color: var(--color-darkMid);
-  padding: 0.6rem;
-  border-radius: .5rem;
+  background-color: Transparent;
+  border: 2px solid white;
 }
 
 .Button:hover {
-  background-color: var(--color-highlight);
+  font-color: var(--color-background);
+  border: 2px solid;
+  border-image-source: var(--purp-pink);
+  border-image-slice: 1;
   color: white;
 }
