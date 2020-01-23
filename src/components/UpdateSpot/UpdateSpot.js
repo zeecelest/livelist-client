@@ -28,7 +28,6 @@ class UpdateSpot extends Component {
             },
             city: {
               value: '',
-              selected: false,
               touched: false
             },
             redirectToReferrer: false,
@@ -53,11 +52,11 @@ class UpdateSpot extends Component {
     }
 
     updateState(st) {
-      this.setState({ state: { value: st, selected: true, touched: true } });
+      this.setState({ state: { value: st, touched: true } });
     }
 
     updateCity(city) {
-      this.setState({ city: { value: city, selected: true, touched: true } });
+      this.setState({ city: { value: city,  touched: true } });
     }
 
     generateStateOptions = () => {
@@ -68,23 +67,19 @@ class UpdateSpot extends Component {
       let cities = possibleLocations[ev.target.value];
       this.setState({
         state: {
-          selected: true,
           touched: true,
           value: ev.target.value
         },
-        cities
+        cities: cities.sort()
       });
     };
   
     onSelectCityChange = (ev) => {
-      let cities = possibleLocations[ev.target.value];
       this.setState({
         city: {
-          selected: true,
           touched: true,
           value: ev.target.value
-        },
-        cities
+        }
       });
     };
 
@@ -97,8 +92,9 @@ class UpdateSpot extends Component {
       this.setState({
         name: { value: editSpot.name, touched: false },
         address: { value: editSpot.address, touched: false },
-        city: { value: editSpot.city, touched: false , selected: false},
-        state: { value: editSpot.state, touched: false, selected: false },
+        city: { value: editSpot.city, touched: false },
+        state: { value: editSpot.state, touched: false },
+        cities: possibleLocations[editSpot.state],
         list_id: parseInt(lid)
       });
 
@@ -156,61 +152,30 @@ render() {
           />
         </div>
         <div>
-        {this.state.state.touched 
-          ? 
           <Select
             id = "updateSpot-state-input"
-            label="State"
             className="state" 
-            helperText="Choose your State"
             name="state" 
-            defaultValue={this.state.state.value} 
+            label="State"
+            helperText="Choose your State"
+            value = {this.state.state.value}
             onChange={this.onSelectStateChange}
             options = {this.generateStateOptions()}
             required
           />
-         :
-        <TextInput
-            attr={{ 
-              id: "updateSpot-state-input",
-              name: "state",
-              value: this.state.state.value,
-              label: "State",
-              type: "text",
-              required: true,
-              onChange: (ev => this.updateState(ev.target.value)),
-            }}
-          />
-        }
         </div>
         <div>
-          {this.state.city.touched
-            ?  
-              <Select
-                id = "updateSpot-city-input"
-                name = "city"
-                helperText="Choose your City"
-                label = "City"
-                className="location-city"
-                onChange={this.onSelectCityChange}
-                type= "text"
-                options={this.state.cities}
-                required
-              />
-            :
-            <TextInput
-                attr={{ 
-                id:"updateSpot-city-input",
-                className: "location-state",
-                name: "city",
-                value: this.state.city.value,
-                label: "City",
-                type: "text",
-                onChange: (ev => this.updateCity(ev.target.value)),
-                required: true
-                }}
-              />
-          }
+            <Select
+              id = "updateSpot-city-input"
+              className="location-city"
+              name = "city"
+              helperText="Choose your City"
+              label = "City"
+              value = {this.state.city.value}
+              onChange={this.onSelectCityChange}
+              options={this.state.cities}
+              required
+            />
         </div>
         <footer className="signupBtnLink">
           <Button><Link to={`/list/${this.context.listid}`}>Cancel</Link></Button>
