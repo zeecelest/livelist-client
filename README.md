@@ -1,12 +1,12 @@
-## Project Name: Social-Playlist
+## Social-Playlist Client
 
-It is a collaboration betwen [Daniel Lee Bright](https://github.com/Brahyt), [Glaiza Wagner](https://github.com/glaizawagner), [Wesley Jacobs](https://github.com/wjacobs71086), [Julio Hernandez](https://github.com/hernandez-crypto), and [Lazandrea Celestine](https://github.com/zeecelest)
+It is a collaboration between [Daniel Lee Bright](https://github.com/Brahyt), [Glaiza Wagner](https://github.com/glaizawagner), [Wesley Jacobs](https://github.com/wjacobs71086), [Julio Hernandez](https://github.com/hernandez-crypto), and [Lazandrea Celestine](https://github.com/zeecelest)
 
 - [Live app](https://social-playlist.netlify.com)
-- [Heroku-endpoint](https://still-fortress-90057.herokuapp.com)
-- [Heroku-git](https://git.heroku.com/still-fortress-90057.git)
 - [Client-Repo](https://github.com/thinkful-ei-heron/SocialPlaylist-Client)
 - [Server-Repo](https://github.com/thinkful-ei-heron/SocialPlaylist-server)
+- [Heroku-endpoint](https://still-fortress-90057.herokuapp.com)
+- [Heroku-git](https://git.heroku.com/still-fortress-90057.git)
 
 ## Account login for demo
 
