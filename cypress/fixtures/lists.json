@@ -1,0 +1,38 @@
+[
+  {
+    "likes": "1",
+    "liked_by_user": "1",
+    "on_fire": "1",
+    "id": 1,
+    "name": "Date night",
+    "tags": "#datenight",
+    "city": "Los Angeles",
+    "state": "CA",
+    "is_public": true,
+    "description": null
+  },
+  {
+    "likes": "0",
+    "liked_by_user": "0",
+    "on_fire": "0",
+    "id": 2,
+    "name": "Trendy resturants in gas lamp",
+    "tags": "#costs #hip #drinks #gaslamp",
+    "city": "San Diego",
+    "state": "CA",
+    "is_public": true,
+    "description": null
+  },
+  {
+    "likes": "0",
+    "liked_by_user": "0",
+    "on_fire": "0",
+    "id": 3,
+    "name": "My secret list",
+    "tags": "#private",
+    "city": "San Diego",
+    "state": "CA",
+    "is_public": false,
+    "description": null
+  }
+]

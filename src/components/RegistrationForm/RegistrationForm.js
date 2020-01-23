@@ -15,8 +15,8 @@ class RegistrationForm extends Component {
 
   state = {
     error: null,
-    stateLocation: { value: null, selected: false },
-    stateCity: '',
+    state: { value: '', selected: false },
+    city: '',
     cities: []
   };
 
@@ -27,32 +27,27 @@ class RegistrationForm extends Component {
   onSelectStateChange = (ev) => {
     let cities = possibleLocations[ev.target.value];
     this.setState({
-      stateLocation: {
+      state: {
         selected: true,
         value: ev.target.value
       },
-      cities
+      cities: cities.sort()
     });
   };
 
   onSelectCityChange = (ev) => {
     this.setState({
-      cityLocation: {
-        selected: true,
-        value: ev.target.value
-      }
+      city: ev.target.value
     });
   };
 
   handleSubmit = (ev) => {
     ev.preventDefault();
-    console.log(ev.target);
     let name = document.getElementsByName('name')[0];
     let username = document.getElementsByName('username')[0];
     let password = document.getElementsByName('password')[0];
-    let city = this.state.cityLocation.value;
-    let state = this.state.stateLocation.value;
-
+    let city = this.state.city;
+    let state = this.state.state.value;
     AuthApiService.postUser({
       name: name.value,
       username: username.value,
@@ -64,10 +59,6 @@ class RegistrationForm extends Component {
         name.value = '';
         username.value = '';
         password.value = '';
-        this.setState({
-          city: { selected: false, value: '' },
-          state: { selected: false, value: '' }
-        });
         this.props.onRegistrationSuccess();
       })
       .catch((res) => {
@@ -76,7 +67,6 @@ class RegistrationForm extends Component {
   };
 
   render() {
-    console.log(this.state);
     const { error } = this.state;
     return (
       <form onSubmit={this.handleSubmit} className="registerForm">
@@ -99,7 +89,8 @@ class RegistrationForm extends Component {
               id: 'registration-username-input',
               name: 'username',
               required: true,
-              type: 'text'
+              type: 'text',
+              autoComplete: 'username'
             }}
           />
         </div>
@@ -110,7 +101,7 @@ class RegistrationForm extends Component {
             className="location-state"
             name="locationState"
             onChange={this.onSelectStateChange}
-            value=""
+            value={this.state.state.value}
             id="registration-location-state-select"
             options={this.generateStateOptions()}
           />
@@ -122,8 +113,9 @@ class RegistrationForm extends Component {
             id="registration-location-city-input"
             className="location-city"
             name="locationCity"
+            value={this.state.city}
             onChange={this.onSelectCityChange}
-            disabled={!this.state.stateLocation.selected}
+            disabled={!this.state.state.selected}
             type="text"
             options={this.state.cities}
           />
@@ -135,7 +127,8 @@ class RegistrationForm extends Component {
               id: 'registration-password-input',
               name: 'password',
               required: true,
-              type: 'password'
+              type: 'password',
+              autoComplete: 'current-password'
             }}
           />
         </div>

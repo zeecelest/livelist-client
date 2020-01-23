@@ -1,5 +1,9 @@
 [
   {
+    "name": "Choose A State",
+    "abbreviation": ""
+  },
+  {
     "name": "Alabama",
     "abbreviation": "AL"
   },
@@ -30,10 +34,6 @@
   {
     "name": "Delaware",
     "abbreviation": "DE"
-  },
-  {
-    "name": "District Of Columbia",
-    "abbreviation": "DC"
   },
   {
     "name": "Florida",
@@ -154,10 +154,6 @@
   {
     "name": "Pennsylvania",
     "abbreviation": "PA"
-  },
-  {
-    "name": "Puerto Rico",
-    "abbreviation": "PR"
   },
   {
     "name": "Rhode Island",

@@ -8,27 +8,27 @@ export class LikeButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      liked: "",
-      likes: ""
+      liked: null,
+      likes: null
     };
   }
 
   componentDidMount() {
     this.setState({
-      liked: this.props.liked,
-      likes: this.props.likes
+      liked: parseInt(this.props.liked),
+      likes: parseInt(this.props.likes)
     });
   }
 
   clickLike = () => {
-    if (this.state.liked == "1") {
+    if (this.state.liked === 1) {
       this.setState({
-        liked: "0",
+        liked: 0,
         likes: this.state.likes - 1
       });
-    } else if (this.state.liked == "0") {
+    } else if (this.state.liked === 0) {
       this.setState({
-        liked: "1",
+        liked: 1,
         likes: this.state.likes + 1
       });
     }

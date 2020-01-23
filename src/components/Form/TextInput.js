@@ -16,7 +16,7 @@ export default function BasicTextField(props) {
   const classes = useStyles();
   let { label, attr } = props;
   return (
-    <div className={classes.root} noValidate autoComplete="on">
+    <div className={classes.root}>
       <TextField
         id="outlined-basic"
         label={label}

@@ -71,7 +71,7 @@ describe(`User story: Login`, function() {
     });
   });
 
-  context.skip(`Given invalid credentials`, () => {
+  context(`Given invalid credentials`, () => {
     beforeEach(() => {
       cy.server()
         .route({
@@ -97,7 +97,6 @@ describe(`User story: Login`, function() {
         cy.get('#login-username-input').type(newUser.username);
         cy.get('#login-password-input').type(newUser.password);
         cy.root().submit({ uncaught: 'exception' });
-        console.log('I got here');
         cy.wait('@loginRequest')
           .get('[role=alert]')
           .should('include.text', 'Incorrect username or password');
@@ -107,7 +106,7 @@ describe(`User story: Login`, function() {
     });
   });
 
-  context.skip(`Given valid credentials`, () => {
+  context(`Given valid credentials`, () => {
     const loginToken = helpers.makeLoginToken();
 
     beforeEach(() => {
@@ -145,7 +144,7 @@ describe(`User story: Login`, function() {
       }).as('languageRequest');
     });
 
-    it(`stores token in localStorage and redirects to /`, () => {
+    it(`stores token in localStorage and redirects to /dashboard`, () => {
       const loginUser = {
         username: 'username',
         password: 'password'
@@ -171,7 +170,7 @@ describe(`User story: Login`, function() {
     });
 
     it(`presents the logout button`, () => {
-      cy.login().visit('/');
+      cy.login().visit('/dashboard');
 
       cy.get('header').within(($header) => {
         cy.get('nav a')
@@ -215,17 +214,17 @@ describe(`User story: Login`, function() {
       });
     });
 
-    it(`refreshes tokens loaded from localStorage`, () => {
+    it.skip(`refreshes tokens loaded from localStorage`, () => {
       cy.login()
         .clock()
-        .visit('/');
+        .visit('/dashboard');
       cy.tick(20000).wait('@refreshRequest');
       cy.tick(20000).wait('@refreshRequest');
     });
 
     it(`doesn't redirect on page load when valid token in localStorage`, () => {
       cy.login()
-        .visit('/')
+        .visit('/dashboard')
         .url()
         .should('not.contain', `/register`)
         .and('not.contain', `/login`);

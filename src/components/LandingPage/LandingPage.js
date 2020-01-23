@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import "./LandingPage.css";
-import LoginForm from "../../components/LoginForm/LoginForm";
+import React, { Component } from 'react';
+import './LandingPage.css';
+import LoginForm from '../../components/LoginForm/LoginForm';
 import exampleImg from '../Assets/iconBackground.png';
 import Button from '../Button/Button';
-import config from '../../config'
+import config from '../../config';
 
 class LandingPage extends Component {
   constructor() {
@@ -14,16 +14,18 @@ class LandingPage extends Component {
   }
 
   componentWillMount() {
-    window.addEventListener("resize", this.handleWindowSizeChange);
+    window.addEventListener('resize', this.handleWindowSizeChange);
   }
 
   // make sure to remove the listener
   // when the component is not mounted anymore
   componentWillUnmount() {
-    window.removeEventListener("resize", this.handleWindowSizeChange);
+    window.removeEventListener('resize', this.handleWindowSizeChange);
   }
-  componentDidMount(){
-    fetch(`${config.API_ENDPOINT}`).then(x => x.json()).then(res => console.log(res))
+  componentDidMount() {
+    fetch(`${config.API_ENDPOINT}`)
+      .then((x) => x.json())
+      .then((res) => console.log(res));
   }
   handleWindowSizeChange = () => {
     this.setState({ width: window.innerWidth });
@@ -54,10 +56,10 @@ class LandingPage extends Component {
       <>
         <div className="examplesContainer">
           <div className="ex01">
-        <img src={exampleImg} alt='example background'  className='img01'/>
+            <img src={exampleImg} alt="example background" className="img01" />
           </div>
           <div className="ex02">
-          <img src={exampleImg} alt='example background'  className='img02'/>
+            <img src={exampleImg} alt="example background" className="img02" />
           </div>
         </div>
         <section className="descContainer">
