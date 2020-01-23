@@ -45,6 +45,7 @@ export class UserLists extends Component {
                 key={idx}
                 user_id={item.id}
                 name={item.name}
+                listInfo={item}
                 handleDeletePlaylist={this.props.handleDeletePlaylist}
                 userList={this.state.userList}
                 checkLength={this.props.checkLength}
