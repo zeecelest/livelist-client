@@ -43,3 +43,10 @@ body {
 a{
   text-decoration: none;
 }
+
+/* Transition to larger screen */
+@media only screen and (min-width: 700px) {
+  body{
+    background-image: url('/background.png');
+  }
+}

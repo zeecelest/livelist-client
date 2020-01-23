@@ -36,8 +36,19 @@
   color: var(--color-highlight);
 }
 .signUpFormTitle {
-  color: var(--color-highlight);
-  font-size: 2.5rem;
-  margin-top: 25%;
-  margin-bottom: 5%;
+  background: var(--purp-pink);
+  font-family: 'Cantarell';
+  text-transform: uppercase;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0 2vh 0 2vh;
+  font-size: 2rem;
+  margin: 2vh 0 0 0;
+}
+.Label {
+  color: var(--white-1);
+  font-family: 'Cantarell';
+  text-transform: uppercase;
+  font-size: 1rem;
+  margin: 0;
 }

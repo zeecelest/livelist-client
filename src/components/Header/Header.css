@@ -6,7 +6,7 @@
   font-size: .5rem;
 }
 
-.brand:hover {
+.brand:hover, .brand:active {
  background: var(--purp-pink);
  -webkit-background-clip: text;
  -webkit-text-fill-color: transparent;
