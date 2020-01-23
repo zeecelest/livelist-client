@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Cantarell:700i|Seymour+One&display=swap');
-:root{
-  --color-background: #EBEBEB;
+:root {
+  --color-background: #ebebeb;
   --color-midColor: var(--grey-2);
   --color-highlight: linear-gradient(to right, var(--purp), var(--pink));
-  --color-body:#21201f;
-  --color-newButton:#4caf50;
-  --color-darkMid:#817C7C;
-  --gradient-background: linear-gradient(to right, white, var(--color-midColor));
+  --color-body: #21201f;
+  --color-newButton: #4caf50;
+  --color-darkMid: #817c7c;
+  --gradient-background: linear-gradient(
+    to right,
+    white,
+    var(--color-midColor)
+  );
   --purp-pink: linear-gradient(to right, var(--purp), var(--pink));
   --purp: #ec01bc;
   --pink: #d91a68;
@@ -15,18 +19,18 @@
   --grey-2: #2a2b2e;
   --grey-3: #202124;
 }
-*{
+* {
   box-sizing: border-box;
 }
 
 .App {
-  top:0;
+  top: 0;
   text-align: center;
 }
 
 body {
   background-image: url('/background.png');
- /* background-color: linear-gradient(60deg, var(--grey-3) 0%, var(--grey-2) 50%, var(--grey-3) 100%); */
+  /* background-color: linear-gradient(60deg, var(--grey-3) 0%, var(--grey-2) 50%, var(--grey-3) 100%); */
   background-color: var(--grey-3);
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -41,6 +45,7 @@ body {
   padding-left: 5%;
   padding-right: 5%;
 }
-a{
+
+a {
   text-decoration: none;
 }
