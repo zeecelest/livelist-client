@@ -244,7 +244,6 @@ class UpdateList extends Component {
                 name="state"
                 label="State"
                 value={this.state.state.value}
-                helperText="Choose your State"
                 onChange={this.onSelectStateChange}
                 options={this.generateStateOptions()}
                 required
@@ -254,7 +253,6 @@ class UpdateList extends Component {
               <Select
                 id="updateList-city-input"
                 name="city"
-                helperText="Choose your City"
                 value={this.state.city.value}
                 label="City"
                 className="location-city"

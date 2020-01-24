@@ -19,7 +19,7 @@
   align-items: center;
   border-radius: 0px;
   color: white !important;
-  background-color: rgba(128, 128, 128, 0.9);
+  background-color: var(--grey-2);
 }
 
 .state-container {

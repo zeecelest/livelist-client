@@ -1,6 +1,6 @@
 .newPlaylistForm {
   color: white;
-  background-color: rgba(128, 128, 128, 0.404);
+  background-color: var(--grey-2);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
