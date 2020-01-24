@@ -54,3 +54,7 @@ a {
     background-image: url('/background.png');
   }
 }
+
+.Mui-focused {
+  border-color: var(--pink) !important;
+}

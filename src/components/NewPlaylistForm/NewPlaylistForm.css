@@ -9,12 +9,13 @@
   min-width: 300px;
   max-width: 400px;
 }
+
 #root > div > main > section > form > div:nth-child(6) > div {
   /*Copied selector from inspector element, this is  */
   border-radius: 5px;
-  background-color: var(--color-midColor);
+  /* background-color: var(--color-midColor);
+} */
 }
-
 
 #newPlaylist-name-input,
 #newPlaylist-city-input,
@@ -60,6 +61,6 @@
   font-size: 1rem;
   margin: 0;
 }
-.privateListText{
+.privateListText {
   color: white;
 }
