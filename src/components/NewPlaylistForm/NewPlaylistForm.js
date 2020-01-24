@@ -88,10 +88,8 @@ class NewPlaylistForm extends Component {
       <form onSubmit={this.handleSubmit} className="newPlaylistForm">
         <div role="alert">{error && <p>{error}</p>}</div>
         <div>
-          <Label htmlFor="newPlaylist-name-input">
-            Name your playlist
-            <Required />
-          </Label>
+
+       
           <TextInput
             attr={{ id: 'newPlaylist-name-input', name: 'name', label: 'Name' }}
           />
@@ -141,7 +139,7 @@ class NewPlaylistForm extends Component {
         </div>
         <div>
           <label>
-            <span>Make your list private ?</span>
+            <span className='privateListText'>Make your list private ?</span>
           </label>
           <SwitchComp
             id="newPlayList-isPublic-checkbox"
