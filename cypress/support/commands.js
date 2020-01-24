@@ -5,9 +5,8 @@ Cypress.Commands.add('login', (options = {}) => {
     .window()
     .then((win) => {
       win.localStorage.setItem(
-        Cypress.env('TOKEN_KEY'),
+        ['social-playlist-auth-token'],
         helpers.makeLoginToken()
       );
-      console.log('logged in');
     });
 });

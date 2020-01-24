@@ -1,7 +1,44 @@
 label span {
-  color: darkslategrey;
+  color: white;
   font-size: 1rem;
 }
-#updateList-name-input, #updateList-city-input, #updateList-state-input, #updateList-desc-input, #updateList-isPublic-input,#updateList-tags-input{
+#updateList-name-input,
+#updateList-city-input,
+#updateList-state-input,
+#updateList-desc-input,
+#updateList-isPublic-input,
+#updateList-tags-input {
   color: white;
-}  
+  border-radius: 5px;
+  background-color: var(--color-midColor);
+}
+
+#updateList-name-input-label,
+#updateList-city-input-label,
+#updateList-state-input-label,
+#updateList-tags-input-label,
+#updateList-desc-input-label {
+  color: white;
+}
+#updatePlaylist-desc-text {
+  height: 5rem;
+  text-align: left;
+  text-overflow: none;
+}
+.updateListForm {
+  color: white;
+  background-color: rgba(128, 128, 128, 0.404);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50vw;
+  min-width: 300px;
+  max-width: 400px;
+  margin-bottom: 50vh;
+}
+.editPlaylistTitle {
+  color: white;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}

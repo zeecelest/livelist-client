@@ -88,10 +88,10 @@ class NewPlaylistForm extends Component {
       <form onSubmit={this.handleSubmit} className="newPlaylistForm">
         <div role="alert">{error && <p>{error}</p>}</div>
         <div>
-          <Label htmlFor="newPlaylist-name-input">
+          {/* <Label htmlFor="newPlaylist-name-input">
             Name your playlist
             <Required />
-          </Label>
+          </Label> */}
           <TextInput
             attr={{ id: 'newPlaylist-name-input', name: 'name', label: 'Name' }}
           />

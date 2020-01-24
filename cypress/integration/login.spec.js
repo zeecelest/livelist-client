@@ -146,8 +146,8 @@ describe(`User story: Login`, function() {
 
     it(`stores token in localStorage and redirects to /dashboard`, () => {
       const loginUser = {
-        username: 'username',
-        password: 'password'
+        username: 'admin',
+        password: 'pass'
       };
       cy.visit('/login');
 
@@ -159,13 +159,12 @@ describe(`User story: Login`, function() {
         cy.wait('@loginRequest')
           .window()
           .then((win) => {
-            const tokenInStorage = win.localStorage.getItem(
-              Cypress.env('TOKEN_KEY')
-            );
+            const tokenInStorage =
+              win.localStorage['social-playlist-auth-token'];
             expect(tokenInStorage).to.eql(loginToken);
           });
 
-        cy.url().should('eq', `${Cypress.config().baseUrl}/`);
+        cy.url().should('eq', `${Cypress.config().baseUrl}/dashboard`);
       });
     });
 
@@ -175,18 +174,16 @@ describe(`User story: Login`, function() {
       cy.get('header').within(($header) => {
         cy.get('nav a')
           .should('have.length', 1)
-          .and('include.text', 'Login')
-          .and('have.attr', 'href', '/login');
+          .and('include.text', 'Logout')
+          .and('have.attr', 'href', '/');
 
         cy.get('nav a')
           .click()
           .url()
-          .should('eq', `${Cypress.config().baseUrl}/login`);
+          .should('eq', `${Cypress.config().baseUrl}/`);
 
         cy.window().then((win) => {
-          const tokenInStorage = win.localStorage.getItem(
-            Cypress.env('TOKEN_KEY')
-          );
+          const tokenInStorage = win.localStorage['social-playlist-auth-token'];
           expect(tokenInStorage).to.not.exist;
         });
       });
@@ -209,8 +206,8 @@ describe(`User story: Login`, function() {
 
         cy.wait('@loginRequest');
 
-        cy.tick(20000).wait('@refreshRequest');
-        cy.tick(20000).wait('@refreshRequest');
+        cy.tick(30000).wait('@refreshRequest');
+        cy.tick(30000).wait('@refreshRequest');
       });
     });
 
@@ -218,8 +215,8 @@ describe(`User story: Login`, function() {
       cy.login()
         .clock()
         .visit('/dashboard');
-      cy.tick(20000).wait('@refreshRequest');
-      cy.tick(20000).wait('@refreshRequest');
+      cy.tick(30000).wait('@refreshRequest');
+      cy.tick(30000).wait('@refreshRequest');
     });
 
     it(`doesn't redirect on page load when valid token in localStorage`, () => {
