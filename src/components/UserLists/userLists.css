@@ -110,7 +110,7 @@
 
 .userlist-btn .timesIcon:hover {
   font-weight: 900;
-  color: blue;
+  color: var(--pink);
   cursor: pointer;
 }
 

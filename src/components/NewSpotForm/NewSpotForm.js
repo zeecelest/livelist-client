@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Label } from '../Form/Form';
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect } from 'react-router-dom';
 import Button from '../Button/Button';
 import SpotsApiService from '../../services/spots-api-service';
 import PlayListContext from '../../contexts/PlayListContext';
@@ -8,12 +8,13 @@ import TextInput from '../Form/TextInput';
 import Select from '../Form/Select';
 import possibleLocations from '../Assets/possibleLocations';
 import states from '../Assets/states';
+import './NewSpotForm.css';
 
 class NewSpotForm extends Component {
   static contextType = PlayListContext;
 
   static defaultProps = {
-    onSpotCreation: () => {},
+    onSpotCreation: () => {}
   };
 
   state = {
@@ -23,7 +24,7 @@ class NewSpotForm extends Component {
     stateCity: { value: null, selected: false },
     stateLocation: '',
     cities: [],
-    redirectToReferrer: false,
+    redirectToReferrer: false
   };
 
   generateStateOptions = () => {
@@ -52,16 +53,16 @@ class NewSpotForm extends Component {
 
   componentDidMount() {
     let lid = this.props.location.props.list_id;
-    this.context.setListId(lid)
+    this.context.setListId(lid);
   }
 
-  handleSubmit = ev => {
+  handleSubmit = (ev) => {
     ev.preventDefault();
 
     let name = document.getElementsByName('name')[0];
     let address = document.getElementsByName('address')[0];
-    let city =  this.state.cityLocation.value;
-    let state = this.state.stateLocation.value
+    let city = this.state.cityLocation.value;
+    let state = this.state.stateLocation.value;
 
     SpotsApiService.postSpots({
       name: name.value,
@@ -71,12 +72,14 @@ class NewSpotForm extends Component {
         .join('_')
         .trim(),
       state: state,
-      list_id: this.props.location.props ? this.props.location.props.list_id : ''
+      list_id: this.props.location.props
+        ? this.props.location.props.list_id
+        : ''
     })
-      .then(spot => {
-        this.context.setSpotId(spot.id)
-        this.context.setSpots(spot)
-  
+      .then((spot) => {
+        this.context.setSpotId(spot.id);
+        this.context.setSpots(spot);
+
         this.props.onSpotCreation();
 
         name.value = '';
@@ -84,13 +87,13 @@ class NewSpotForm extends Component {
         city.value = '';
         state.value = '';
       })
-      .catch(res => {
-        this.setState({error: res.error});
+      .catch((res) => {
+        this.setState({ error: res.error });
       });
   };
 
   render() {
-    const {error} = this.state;
+    const { error } = this.state;
     return (
       <form onSubmit={this.handleSubmit} className="newSpotForm">
         <div role="alert">{error && <p>{error}</p>}</div>
@@ -100,27 +103,26 @@ class NewSpotForm extends Component {
         <div>
           <TextInput
             attr={{
-              id: "newSpot-name-input",
-              name: "name",
+              id: 'newSpot-name-input',
+              name: 'name',
               type: 'text',
-              label: "Spot name",
-              required: true,
+              label: 'Spot name',
+              required: true
             }}
-            
           />
         </div>
         <div>
           <TextInput
             attr={{
-              id: "newSpot-address-input",
-              name: "address",
-              label: "Address",
-              required: true,
+              id: 'newSpot-address-input',
+              name: 'address',
+              label: 'Address',
+              required: true
             }}
           />
         </div>
         <div>
-           <Select
+          <Select
             label="State"
             helperText="Choose your State"
             className="location-state"
@@ -134,20 +136,22 @@ class NewSpotForm extends Component {
         </div>
         <div>
           <Select
-              id = "newSpot-city-input"
-              name = "city"
-              helperText="Choose your City"
-              label = "City"
-              className="location-city"
-              onChange={this.onSelectCityChange}
-              disabled={!this.state.stateLocation.selected}
-              type= "text"
-              options={this.state.cities}
-              required
+            id="newSpot-location-city-select"
+            name="city"
+            helperText="Choose your City"
+            label="City"
+            className="location-city"
+            onChange={this.onSelectCityChange}
+            disabled={!this.state.stateLocation.selected}
+            type="text"
+            options={this.state.cities}
+            required
           />
-      </div>
+        </div>
         <footer className="signupBtnLink">
-          <Button><Link to={`/list/${this.context.listid}`}>Cancel</Link></Button>
+          <Button>
+            <Link to={`/list/${this.context.listid}`}>Cancel</Link>
+          </Button>
           <Button type="submit">Save</Button> <br />{' '}
         </footer>
       </form>
