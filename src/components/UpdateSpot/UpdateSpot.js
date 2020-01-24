@@ -91,15 +91,15 @@ class UpdateSpot extends Component {
     let editSpot = spot.find(
       (s) => parseInt(s.id) === parseInt(this.context.spotid)
     );
-
-    console.log(possibleLocations[editSpot.city], editSpot.state);
+    console.log(editSpot);
+    console.log(editSpot.city, editSpot.state);
 
     this.setState({
       name: { value: editSpot.name, touched: false },
       address: { value: editSpot.address, touched: false },
-      city: { value: editSpot.state, touched: false },
-      state: { value: editSpot.city, touched: false },
-      cities: possibleLocations[editSpot.city],
+      city: { value: editSpot.city, touched: false },
+      state: { value: editSpot.state, touched: false },
+      cities: possibleLocations[editSpot.state],
       list_id: parseInt(lid)
     });
   }
@@ -181,7 +181,7 @@ class UpdateSpot extends Component {
               label="City"
               value={this.state.city.value}
               onChange={this.onSelectCityChange}
-              options={this.state.cities}
+              options={this.state.cities === undefined ? [] : this.state.cities}
               required
             />
           </div>

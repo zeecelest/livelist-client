@@ -21,7 +21,8 @@ class NewSpotForm extends Component {
     error: null,
     name: '',
     address: '',
-    stateCity: { value: null, selected: false },
+    state: { value: null, selected: false },
+    city: { value: null, selected: false },
     stateLocation: '',
     cities: [],
     redirectToReferrer: false
@@ -34,17 +35,17 @@ class NewSpotForm extends Component {
   onSelectStateChange = (ev) => {
     let cities = possibleLocations[ev.target.value];
     this.setState({
-      stateLocation: {
+      state: {
         selected: true,
         value: ev.target.value
       },
-      cities
+      cities: cities.sort()
     });
   };
 
   onSelectCityChange = (ev) => {
     this.setState({
-      cityLocation: {
+      city: {
         selected: true,
         value: ev.target.value
       }
@@ -61,8 +62,8 @@ class NewSpotForm extends Component {
 
     let name = document.getElementsByName('name')[0];
     let address = document.getElementsByName('address')[0];
-    let city = this.state.cityLocation.value;
-    let state = this.state.stateLocation.value;
+    let city = this.state.city.value;
+    let state = this.state.state.value;
 
     SpotsApiService.postSpots({
       name: name.value,
@@ -97,9 +98,7 @@ class NewSpotForm extends Component {
     return (
       <form onSubmit={this.handleSubmit} className="newSpotForm">
         <div role="alert">{error && <p>{error}</p>}</div>
-        <div>
-          <Label> Adding new spot</Label>
-        </div>
+
         <div>
           <TextInput
             attr={{
@@ -127,7 +126,7 @@ class NewSpotForm extends Component {
             className="location-state"
             name="locationState"
             onChange={this.onSelectStateChange}
-            value=""
+            value={this.state.state.value}
             id="newSpot-location-state-select"
             options={this.generateStateOptions()}
             required
@@ -140,7 +139,7 @@ class NewSpotForm extends Component {
             label="City"
             className="location-city"
             onChange={this.onSelectCityChange}
-            disabled={!this.state.stateLocation.selected}
+            disabled={!this.state.state.selected}
             type="text"
             options={this.state.cities}
             required
