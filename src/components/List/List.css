@@ -5,7 +5,13 @@
   margin-top: 0;
 }
 
-.listItem:hover .list-name, .listItem:hover .filteredListName, .listIten:hover .userListTitle{
+.listItem:active .list-name, .listItem:active .filteredListName, .listItem:active .userListTitle{
+  background: var(--purp-pink);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.listItem:hover .list-name, .listItem:hover .filteredListName, .listItem:hover .userListTitle{
   background: var(--purp-pink);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -27,7 +33,7 @@
   overflow: scroll;
   opacity: .85;
 }
-.listItem:hover {
+.listItem:hover, .listItem:active {
   box-shadow: 0px 0px 20px var(--pink);
   opacity: 1;
 }

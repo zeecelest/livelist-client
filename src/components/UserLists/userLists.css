@@ -55,20 +55,27 @@
 }
 
 #newPlaylistButton {
-  width: 50%;
-  max-width: 150px;
   padding: 0.25rem 0.5rem;
   align-self: flex-end;
   margin-top: 5%;
-  border-radius: 25px;
   color: var(--white-1);
   font-size: 1rem;
-  margin-right: 5%;
+  margin: 0 5% 0 0;
 }
+
+#newPlayListButton:hover,
+#newPlayListButton:active {
+  background: var(--purp-pink);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
 .newPlayListButtonContainer {
   display: flex;
   justify-content: flex-end;
 }
+
 .listItemName {
   color: #4267b2;
 }
@@ -79,9 +86,6 @@
   margin-top: 5%; */
   margin: 0;
   padding-right: 1rem;
-}
-.userListTitle::visited {
-  color: var(--color-body);
 }
 
 .btn-list {
@@ -133,37 +137,14 @@
   visibility: visible;
 }
 
-/* 20em = 320px to 37.5em = 600px */
-@media only screen and (min-width: 20em) and (max-width: 37.5em) {
-  .userlist-btn {
-    visibility: visible;
-    font-size: 1rem;
-  }
-}
-/* padding: 0.5rem;
-  background-color: var(--color-midColor);
-  color: var(--color-darkMid);
-  border: 1px solid var(--color-darkMid);
-  border-radius: 15px;
-  margin-top: 5%;
-  cursor: pointer;
-}
-@media only screen and (min-width: 700px) {
-  cursor: pointer; */
-/* } */
+
 @media only screen and (min-width: 500px) {
-  /* For desktop: */
   .userList-section {
     margin-top: 5%;
     padding: 0.4rem 0.8rem;
   }
+
   #newPlaylistButton {
-    margin: 3%;
+    display: block;
   }
-  .newPlayListButtonContainer {
-    height: 60px;
-  }
-  /* .hotlistSection {
-    margin-top: 0;
-  } */
 }

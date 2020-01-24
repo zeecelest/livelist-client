@@ -107,10 +107,97 @@ class Map extends React.Component {
 
   }
 
+  mapOptions = () => {
+    return {
+      fullscreenControl: false,
+      styles: [
+            {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+            {elementType: 'labels.text.stroke', stylers: [{color: '#2a3b2e'}]},
+            {elementType: 'labels.text.fill', stylers: [{color: '#d1d1d1'}]},
+            {
+              featureType: 'administrative.locality',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d1d1d1'}]
+            },
+            {
+              featureType: 'poi',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d91a6a'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'geometry',
+              stylers: [{color: '#263c3f'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#6b9a76'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry',
+              stylers: [{color: '#38414e'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#212a37'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d1d1d1'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry',
+              stylers: [{color: '#4f546a'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#d91a6a'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d1d1d1'}]
+            },
+            {
+              featureType: 'transit',
+              elementType: 'geometry',
+              stylers: [{color: '#2f3948'}]
+            },
+            {
+              featureType: 'transit.station',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d1d1d1'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'geometry',
+              stylers: [{color: '#17263c'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d1d1d1'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.stroke',
+              stylers: [{color: '#d1d1d1'}]
+            }
+          ]
+
+    }
+  }
+
   render() {
     return (
       <div
-        style={{ height: "30vh", width: "100vw", margin: "0 0 10vh 0" }}
+        style={{ height: "40vh", width: "100vw", margin: "30px 0 10vh 0" }}
         className="map"
       >
         <GoogleMapReact
@@ -120,6 +207,8 @@ class Map extends React.Component {
           onChange={x => this.handleMapDrag(x)}
           yesIWantToUseGoogleMapApiInternals
           onGoogleApiLoaded={({map, maps}) => this.handleApiLoaded(map, maps)}
+          options={this.mapOptions}
+          fullscreenControl='false'
         >
           <MyLocation
             lat={this.state.myLocation.lat}

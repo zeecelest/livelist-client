@@ -1,9 +1,22 @@
 .map {
-  height: "20vh";
-  width: "0%";
-  margin: "10vh auto";
+  box-shadow: 0px 2px 1px var(--pink);
 }
-.mapButton{
-  color: var(--color-body);
-  margin: 1rem;
+
+.mapButton {
+  margin: 5px 3px 0 3px;
+  transition-duration: 0.3s;
+  cursor: pointer;
+  color: var(--color-background);
+  background-color: Transparent;
+  border: 2px solid white;
+}
+
+.mapButton:hover, .mapButton:active {
+  font-color: var(--color-background);
+  border: 2px solid;
+  border-image-source: var(--purp-pink);
+  border-image-slice: 1;
+  background: var(--purp-pink);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

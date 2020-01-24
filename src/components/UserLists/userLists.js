@@ -71,7 +71,7 @@ export class UserLists extends Component {
                       <div className="newPlayListButtonContainer">
               <Button id="newPlaylistButton">
                 <Link to="/newList" className="newPlaylistButtonText">
-                  New Playlist
+                  New List
                 </Link>
               </Button>
             </div>

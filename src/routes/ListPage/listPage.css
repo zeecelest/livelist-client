@@ -1,8 +1,13 @@
 .myListName {
-  color: white;
+  font-family: 'Cantarell';
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  background: var(--purp-pink);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: 2rem;
   margin-bottom: 5%;
-  margin-top:0;
+  margin-top: 0;
   margin-bottom: 0;
 }
 
@@ -23,19 +28,24 @@
 .loadingText {
   color: white;
 }
-.listPageMain{
+.listPageMain {
   display: flex;
   justify-content: center;
   flex-direction: row;
   margin-bottom: 5%;
 }
 
-
-.listNameContainer{
+.listNameContainer {
   max-height: 10vh;
   display: flex;
   flex-direction: column;
 }
-.newSpotButton{
-  margin:5%;
+.newSpotButton {
+  margin: 0;
+}
+
+.newSpotButton:hover {
+  background: var(--purp-pink);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

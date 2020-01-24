@@ -54,14 +54,7 @@ class LandingPage extends Component {
   render() {
     return (
       <>
-        <div className="examplesContainer">
-          <div className="ex01">
-            <img src={exampleImg} alt="example background" className="img01" />
-          </div>
-          <div className="ex02">
-            <img src={exampleImg} alt="example background" className="img02" />
-          </div>
-        </div>
+
         <section className="descContainer">
           <p className="descBody">
             Social Playlist solves the problem of not knowing what to do when

@@ -6,7 +6,7 @@
   border: 2px solid white;
 }
 
-.Button:hover {
+.Button:hover, .Button:active {
   font-color: var(--color-background);
   border: 2px solid;
   border-image-source: var(--purp-pink);

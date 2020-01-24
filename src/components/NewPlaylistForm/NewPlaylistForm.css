@@ -8,13 +8,14 @@
   width: 50vw;
   min-width: 300px;
   max-width: 400px;
-  margin-bottom: 50vh;
 }
 #root > div > main > section > form > div:nth-child(6) > div {
   /*Copied selector from inspector element, this is  */
   border-radius: 5px;
   background-color: var(--color-midColor);
 }
+
+
 #newPlaylist-name-input,
 #newPlaylist-city-input,
 #newPlaylist-state-input,
@@ -42,13 +43,23 @@
   align-items: center;
   justify-content: center;
 }
-.loginTitle {
-  margin-top: 0;
-  margin-bottom: 10%;
-  color: var(--color-highlight);
-}
 .signUpFormTitle {
+  background: var(--purp-pink);
+  font-family: 'Cantarell';
+  text-transform: uppercase;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0 2vh 0 2vh;
+  font-size: 2rem;
+  margin: 2vh 0 0 0;
+}
+.Label {
+  color: var(--white-1);
+  font-family: 'Cantarell';
+  text-transform: uppercase;
+  font-size: 1rem;
+  margin: 0;
+}
+.privateListText{
   color: white;
-  margin-top: 5%;
-  margin-bottom: 5%;
 }
