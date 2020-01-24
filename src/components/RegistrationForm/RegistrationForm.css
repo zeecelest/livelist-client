@@ -1,7 +1,17 @@
+.signUpTitle {
+  font-family: 'Cantarell';
+  text-transform: uppercase;
+  font-size: 2rem;
+  background: var(--purp-pink);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .signupBtnLink a {
   font-size: 1.2rem;
   color: red;
 }
+
 .registerForm {
   display: flex;
   flex-direction: column;
@@ -9,6 +19,7 @@
   align-items: center;
   border-radius: 0px;
 }
+
 .state-container {
   display: flex;
   flex-direction: row;
@@ -16,19 +27,41 @@
   justify-content: center;
   align-items: center;
 }
+
 .signUpTitle {
   color: var(--color-highlight);
   margin-top: 25%;
   margin-bottom: 0;
 }
+
 #registration-password-input,
 #registration-location-state-select,
 #registration-location-city-input,
 #registration-username-input,
 #registration-name-input {
-  background-color: var(--color-background);
+  margin: 5px 0 0 0;
+  background-color: var(--grey-1);
+  border: 2px solid;
+  border-image-source: var(--purp-pink);
+  border-image-slice: 1;
 }
-.registerForm button,
-a {
+
+#registration-password-input-label,
+#registration-location-state-select-label,
+#registration-location-city-input-label,
+#registration-username-input-label,
+#registration-name-input-label {
+  color: var(--white-1);
+}
+
+.registerForm button{
   font-size: 20px;
+  color: white;
+}
+
+.registerForm button:hover{
+  font-size: 20px;
+  background: var(--purp-pink);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

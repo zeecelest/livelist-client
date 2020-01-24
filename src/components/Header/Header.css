@@ -22,19 +22,20 @@
     color: var(--pink);
 }
 .headerContainer{
-    background-color: var(--grey-3);
-    border-bottom: 2px solid;
-    border-image-source: var(--purp-pink);
-    border-image-slice: 1;
-    min-width: 100vw !important;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    align-content: flex-start;
-    opacity: .9;
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
+  height: 30px;
+  background-color: var(--grey-3);
+  border-bottom: 2px solid;
+  border-image-source: var(--purp-pink);
+  border-image-slice: 1;
+  min-width: 100vw !important;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  align-content: flex-start;
+  opacity: .9;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
 }
