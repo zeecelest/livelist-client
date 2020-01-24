@@ -189,7 +189,7 @@ class UpdateList extends Component {
     const list_id = parseInt(this.props.match.params.id);
     this.setState({ redirectToReferrer: true });
     //const { name, tags, city, state, description, is_public } = this.state;
-    console.log('handleSubmit what it got is =>', this.state);
+    // console.log('handleSubmit what it got is =>', this.state);
     let obj = {
       name: this.state.name.value,
       tags: this.state.tags.value,

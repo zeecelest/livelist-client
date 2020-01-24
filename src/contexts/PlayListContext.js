@@ -60,7 +60,7 @@ export class PlayListProvider extends Component {
   };
 
   handleUpdateList = (list) => {
-    console.log(list);
+    // console.log(list);
     let currentList = this.state.playlist.find(
       (p) => parseInt(p.id) === parseInt(list.id)
     );

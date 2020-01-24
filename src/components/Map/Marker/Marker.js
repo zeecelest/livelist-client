@@ -6,7 +6,7 @@ import markerImage from "../../Assets/mapMarker.png";
 export class Marker extends Component {
  input = React.createRef();
  handleClick = () => {
-  console.log('this is the input reference', this.input.current);
+  // console.log('this is the input reference', this.input.current);
   
 }
   render(){

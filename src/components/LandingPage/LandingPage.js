@@ -25,7 +25,7 @@ class LandingPage extends Component {
   componentDidMount() {
     fetch(`${config.API_ENDPOINT}`)
       .then((x) => x.json())
-      .then((res) => console.log(res));
+      .then((res) => console.log());
   }
   handleWindowSizeChange = () => {
     this.setState({ width: window.innerWidth });

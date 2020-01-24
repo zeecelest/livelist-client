@@ -65,7 +65,7 @@ class UpdateSpot extends Component {
 
   onSelectStateChange = (ev) => {
     let cities = possibleLocations[ev.target.value];
-    console.log(cities);
+    // console.log(cities);
     this.setState({
       state: {
         touched: true,
@@ -92,7 +92,7 @@ class UpdateSpot extends Component {
       (s) => parseInt(s.id) === parseInt(this.context.spotid)
     );
 
-    console.log(possibleLocations[editSpot.city], editSpot.state);
+    // console.log(possibleLocations[editSpot.city], editSpot.state);
 
     this.setState({
       name: { value: editSpot.name, touched: false },

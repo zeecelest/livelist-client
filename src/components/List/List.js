@@ -22,7 +22,7 @@ export class List extends Component {
  return (     
       <div  className="listItem users">
         <p className="userListTitle">
-          {console.log('this is the props for list item in the user List to pass to edit =>', this.props)}
+          {/* {console.log('this is the props for list item in the user List to pass to edit =>', this.props)} */}
           <Link to={`/list/${this.props.user_id}`} className="userListTitle">
             {this.props.name}
           </Link>

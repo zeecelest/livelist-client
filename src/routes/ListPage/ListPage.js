@@ -135,11 +135,11 @@ export class ListPage extends Component {
     ListsApiService.getUsersLists()
       .then(list => {
         let listName;
-        console.log('this is in the getUserLists =>', list)
+        // console.log('this is in the getUserLists =>', list)
         for (let i = 0; i < list.length; i++) {
           if (list[i].id == this.props.match.params.id) {
             listName = list[i].name;
-            console.log('this is the listName value =>', listName)
+            // console.log('this is the listName value =>', listName)
             this.setState({
               listName: listName
             })
@@ -173,7 +173,7 @@ export class ListPage extends Component {
       .then(spotsServer => {
         //passing spotsServer to setSpots context
         this.context.setSpots(spotsServer);
-        console.log("spots from server =>", spotsServer);
+        // console.log("spots from server =>", spotsServer);
         this.setState({
           spots: spotsServer.spots,
           listInfo: spotsServer
