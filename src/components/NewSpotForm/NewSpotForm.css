@@ -27,3 +27,16 @@
   color: green;
   font-size: 2.5rem;
 }
+.newSpotCancelButton{
+  font-size: 1.2rem;
+  margin: 2%;
+}
+.newSpotSaveButton{
+  font-size: 1.2rem;
+  margin: 2%;
+}
+
+.newSpotButtons{
+  display: flex;
+  justify-content: space-evenly;
+}

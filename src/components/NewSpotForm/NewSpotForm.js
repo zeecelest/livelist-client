@@ -124,7 +124,6 @@ class NewSpotForm extends Component {
         <div>
           <Select
             label="State"
-            helperText="Choose your State"
             className="location-state"
             name="locationState"
             onChange={this.onSelectStateChange}
@@ -138,7 +137,6 @@ class NewSpotForm extends Component {
           <Select
             id="newSpot-location-city-select"
             name="city"
-            helperText="Choose your City"
             label="City"
             className="location-city"
             onChange={this.onSelectCityChange}
@@ -148,11 +146,11 @@ class NewSpotForm extends Component {
             required
           />
         </div>
-        <footer className="signupBtnLink">
-          <Button>
+        <footer className="newSpotButtons">
+          <Button className='newSpotCancelButton'>
             <Link to={`/list/${this.context.listid}`}>Cancel</Link>
           </Button>
-          <Button type="submit">Save</Button> <br />{' '}
+          <Button  className='newSpotSaveButton' type="submit">Save</Button> <br />{' '}
         </footer>
       </form>
     );
