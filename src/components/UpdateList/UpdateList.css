@@ -27,6 +27,16 @@ label span {
   text-align: left;
   text-overflow: none;
 }
+#root > div > main > form > div:nth-child(6) > div > div > div {
+  background-color: var(--color-midColor);
+}
+.updatePlaylistForm > div:nth-child(5) > div {
+  /*Copied selector from inspector element, this is  */
+  border-radius: 5px;
+  background-color: var(--color-midColor);
+  /* background-color: var(--color-midColor);
+} */
+}
 
 .updateListForm {
   color: white;

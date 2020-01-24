@@ -34,21 +34,21 @@ a {
 
 .log-button:hover,
 .reg-button:hover {
- background: var(--purp-pink);
- -webkit-background-clip: text;
- -webkit-text-fill-color: transparent;
-
+  background: var(--purp-pink);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-
 
 #login-username-input,
 #login-password-input {
   margin: 5px 0;
-  color:  white;
-  border: 2px solid;
+  color: white;
+  background-color: var(--grey-1) !important;
+  /* border: 2px solid;
+  background-color: var(--grey-1) !important;
   border-image-source: var(--purp-pink);
   border-image-slice: 1;
-  background-color: var(--grey-1);
+   */
 }
 
 #login-username-input-label,
