@@ -9,6 +9,10 @@
   margin-bottom: 5%;
   margin-top: 0;
   margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .loadingContainer {
@@ -42,6 +46,8 @@
 }
 .newSpotButton {
   margin: 0;
+  margin-top: 5%;
+  font-size: 2rem;
 }
 
 .newSpotButton:hover {

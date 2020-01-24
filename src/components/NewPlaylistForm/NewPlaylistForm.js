@@ -150,7 +150,7 @@ class NewPlaylistForm extends Component {
           />
         </div>
         <footer className="signupBtnLink">
-          <Button type="submit">Submit</Button> <br />{' '}
+          <Button type="submit" className='newPlaylistSubmitButton'>Submit</Button> <br />{' '}
         </footer>
       </form>
     );

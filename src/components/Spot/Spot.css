@@ -19,11 +19,12 @@
     align-items: center;
     height: 50vh;
     overflow-y: scroll;
+    margin-top: 5%;
   }
   .spot-buttons{
+    display: flex;
+    margin-top:5%;
     width: 100%;
-    margin-right: 5%;
-    margin-top: -10%;
   }
 
   .spotName {
@@ -56,4 +57,13 @@
     margin-right: 5%;
     float: left;
     font-size: .75rem;
+}
+
+#deleteSpotButton{
+  margin: 2%;
+  font-size: 1.25rem;
+}
+#editSpotButton{
+  margin: 2%;
+  font-size: 1.25rem;
 }

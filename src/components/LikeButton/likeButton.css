@@ -12,9 +12,14 @@
 .likedIcon{
   width: 30px;
   height: auto;
+  background-image: radial-gradient(var(--grey-2), var(--grey-3));
+  border-radius: 100px;
+  border: 1px solid #41416B;
+  box-shadow: 0px 0px 5px var(--pink);
 }
 .likes{
   color: var(--color-body);
   font-size: 1.25rem;
   margin: 0;
+  margin-left: 5px;
 }
