@@ -72,9 +72,12 @@ a.can-button {
   margin: 10px 0 10px 15px;
 }
 
-.registerForm button{
+.registerForm button {
   font-size: 20px;
   color: white;
+}
+#updateList-isPublic-checkbox {
+  display: block;
 }
 
 .sav-button:hover,

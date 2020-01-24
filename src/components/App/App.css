@@ -60,3 +60,13 @@ fieldset {
   border-color: var(--pink) !important;
   color: white;
 }
+.addingNewSpot {
+  background: var(--purp-pink);
+  font-family: 'Cantarell';
+  text-transform: uppercase;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0 2vh 0 2vh;
+  font-size: 1.5rem;
+  margin: 2vh 0 0 0;
+}
