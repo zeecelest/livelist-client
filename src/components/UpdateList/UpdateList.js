@@ -269,6 +269,7 @@ class UpdateList extends Component {
                   id: 'updateList-desc-input',
                   name: 'address',
                   value: this.state.description.value,
+                  multiline: true,
                   onChange: (ev) => this.updateDesc(ev.target.value),
                   label: 'Description'
                 }}

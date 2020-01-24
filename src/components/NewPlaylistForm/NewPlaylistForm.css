@@ -10,9 +10,10 @@
   max-width: 400px;
 }
 
-#root > div > main > section > form > div:nth-child(6) > div {
+.newPlaylistForm > div:nth-child(6) > div {
   /*Copied selector from inspector element, this is  */
   border-radius: 5px;
+  background-color: var(--color-midColor);
   /* background-color: var(--color-midColor);
 } */
 }

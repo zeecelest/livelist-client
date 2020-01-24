@@ -17,12 +17,7 @@ export default function BasicTextField(props) {
   let { label, attr } = props;
   return (
     <div className={classes.root}>
-      <TextField
-        id="outlined-secondary"
-        label={label}
-        {...attr}
-        variant="outlined"
-      />
+      <TextField id="outlined" label={label} {...attr} variant="outlined" />
     </div>
   );
 }

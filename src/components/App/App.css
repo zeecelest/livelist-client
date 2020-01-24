@@ -55,6 +55,8 @@ a {
   }
 }
 
-.Mui-focused {
+fieldset {
+  border-width: 2px;
   border-color: var(--pink) !important;
+  color: white;
 }
