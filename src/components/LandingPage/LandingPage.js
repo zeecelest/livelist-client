@@ -57,13 +57,12 @@ class LandingPage extends Component {
 
         <section className="descContainer">
           <p className="descBody">
-            Social Playlist solves the problem of not knowing what to do when
-            you want to go out. Whether a night on the town with friends, date
-            night with your love, or a day with the family! See what social
-            events people enjoy in their areas. Follow users with your favorite
-            playlists. Like a playlist of the city. Create your own playlist and
-            share with your followers.
-          </p>
+            Visiting a new city and not sure what to do? <em className="duke">Live List</em> is where to go to get 
+            in the know with the <b>locals</b>.  Find out what's going on in a city by connecting 
+            with the people who know best.  Search <em className="duke">'Hot Lists'</em> for the best options for food, 
+            drinks, dancing, and more. Live List provides you with customizable lists from 
+            users who have the inside track on whats going on in their cities. </p>
+            <h2 className="kicker">Live like the locals with <em className="duke">LIVE LIST!</em></h2>
           <div>{this.renderLoginForm()}</div>
         </section>
       </>

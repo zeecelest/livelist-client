@@ -90,3 +90,13 @@
 li {
   list-style: none;
 }
+
+.kicker {
+  color: var(--white-1);
+}
+
+.duke {
+  background: var(--purp-pink);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
