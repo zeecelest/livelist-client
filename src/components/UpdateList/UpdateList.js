@@ -287,9 +287,9 @@ class UpdateList extends Component {
             </div>
             <footer className="signupBtnLink">
               <Button>
-                <Link to="/dashboard">Cancel</Link>
+                <Link className="can-button" to="/dashboard">Cancel</Link>
               </Button>
-              <Button type="submit">Save</Button> <br />{' '}
+              <Button className="sav-button" type="submit">Save</Button> <br />{' '}
             </footer>
           </form>
         </>

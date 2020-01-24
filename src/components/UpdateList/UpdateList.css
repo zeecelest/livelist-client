@@ -2,6 +2,7 @@ label span {
   color: white;
   font-size: 1rem;
 }
+
 #updateList-name-input,
 #updateList-city-input,
 #updateList-state-input,
@@ -20,11 +21,13 @@ label span {
 #updateList-desc-input-label {
   color: white;
 }
+
 #updatePlaylist-desc-text {
   height: 5rem;
   text-align: left;
   text-overflow: none;
 }
+
 .updateListForm {
   color: white;
   background-color: rgba(128, 128, 128, 0.404);
@@ -37,8 +40,39 @@ label span {
   max-width: 400px;
   margin-bottom: 50vh;
 }
+
 .editPlaylistTitle {
-  color: white;
-  margin-top: 5%;
+  font-family: 'Cantarell';
+  text-transform: uppercase;
+  background: var(--purp-pink);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 20vh;
   margin-bottom: 5%;
+}
+
+a.can-button {
+  font-size: 20px;
+  color: white;
+}
+
+.sav-button {
+  font-size: 20px;
+  color: white;
+  margin: 10px 0 10px 15px;
+}
+
+.registerForm button{
+  font-size: 20px;
+  color: white;
+}
+
+.sav-button:hover,
+.can-button:hover,
+.sav-button:active,
+.can-button:active {
+  font-size: 20px;
+  background: var(--purp-pink);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
