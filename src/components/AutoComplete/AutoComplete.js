@@ -35,7 +35,6 @@ export class AutoComplete extends Component {
     for(let i = 0; i < lists.length; i++){
       if(lists[i].tags.includes(userInput)){
         filteredTags.push(lists[i])
-        console.log('found a match!!!!')
 
       }
       onlyTags.push(lists[i].tags);
@@ -43,12 +42,10 @@ export class AutoComplete extends Component {
     // let breakUserInput = userInput.split('')
     // if(filteredTags.includes(breakUserInput)){
       
-    //   console.log('found a match')
     // }
     // tags.filter(
     //   (tags) => tags.toLowerCase().indexOf(userInput.toLowerCase()) > -1
     // );
-    console.log('filteredTags', filteredTags)
 
     this.setState({
       filteredTags: [...filteredTags]

@@ -1,0 +1,25 @@
+.updateSpotForm {
+  color: var(--color-body);
+  background-color: rgba(128, 128, 128, 0.404);
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#updateSpot-name-input,
+#updateSpot-address-input,
+#updateSpot-city-select,
+#updateSpot-state-select,
+#updateSpot-tags-input {
+  color: white;
+  border-radius: 5px;
+  background-color: var(--color-midColor);
+}
+
+#updateSpot-name-input-label,
+#updateSpot-address-input-label,
+#updateSpot-city-select-label,
+#updateSpot-state-select-label,
+#updateSpot-tags-input-label {
+  color: white;
+}

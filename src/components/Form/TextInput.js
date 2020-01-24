@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
       margin: theme.spacing(0.6),
-      width: 200,
+      width: 200
     }
   }
 }));
@@ -18,7 +18,7 @@ export default function BasicTextField(props) {
   return (
     <div className={classes.root}>
       <TextField
-        id="outlined-basic"
+        id="outlined-secondary"
         label={label}
         {...attr}
         variant="outlined"

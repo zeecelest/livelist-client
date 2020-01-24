@@ -12,7 +12,7 @@ export default class SwitchComp extends Component {
         checked={checked}
         name={name}
         value={value}
-        color="primary"
+        color="rgb(183, 51, 97)"
         size="medium"
       />
     );

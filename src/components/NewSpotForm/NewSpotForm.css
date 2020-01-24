@@ -1,26 +1,29 @@
+.newSpotForm {
+  color: var(--grey-2);
+  background-color: rgba(128, 128, 128, 0.404);
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#newSpot-name-input,
+#newSpot-address-input,
+#newSpot-location-city-select,
+#newSpot-location-state-select,
+#newSpot-tags-input {
+  color: white;
+  border-radius: 5px;
+  background-color: var(--color-midColor);
+}
 
-  .newSpotForm {
-    color: var(--color-body);
-    background-color: var(--color-background);
-    border-radius: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-  }
-  #newSpot-name-input,#newSpot-address-input, #newSpot-city-input, #newSpot-state-input, #newSpot-tags-input {
-    border-radius: 5px;
-    background-color: var(--color-midColor);
-    margin-bottom: 5%;
-  }
-  .stateContainer{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border: 2px solid green;
-    justify-content: center;
-  }
-  .signUpFormTitle{
-    color: var(--color-highlight);
-    font-size: 2.5rem;
-  }
+#newSpot-name-input-label,
+#newSpot-address-input-label,
+#newSpot-location-city-select-label,
+#newSpot-location-state-select-label,
+#newSpot-tags-input-label {
+  color: white;
+}
+.signUpFormTitle {
+  color: green;
+  font-size: 2.5rem;
+}
