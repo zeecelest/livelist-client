@@ -44,10 +44,10 @@ export class ListPage extends Component {
         });
       }
 
-      return this.state.spots.map((spot) => (
-        <div id={spot.name}>
+      return this.state.spots.map((spot, index) => (
+        <div id={spot.name} key={index}>
           <Spot
-            key={Math.random()}
+            key={index}
             name={spot.name}
             id={spot.name}
             lid={this.props.match.params.id}
@@ -228,7 +228,6 @@ export class ListPage extends Component {
           {this.renderMap()}
           {this.renderListName()}
           {this.renderNewSpotButton()}
-
           <div className="spotContainer">
             {this.renderSpot(this.state.spots)}
           </div>
