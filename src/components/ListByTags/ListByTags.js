@@ -5,8 +5,7 @@ import PlayListContext from '../../contexts/PlayListContext';
 import { Link } from 'react-router-dom';
 import TextInput from '../Form/TextInput';
 import './ListByTags.css';
-import AutoComplete from '../AutoComplete/AutoComplete'
-
+import AutoComplete from '../AutoComplete/AutoComplete';
 
 export class ListByTags extends Component {
   static contextType = PlayListContext;
@@ -19,6 +18,7 @@ export class ListByTags extends Component {
 
   handleFilter = (ev) => {
     ev.preventDefault();
+    console.log('i ran', ev.target.value);
     let filter = ev.target.value;
     let newList = [];
     let mulFilters = filter.split(' ');
@@ -42,24 +42,34 @@ export class ListByTags extends Component {
       });
     }
     this.setState({
-      filteredList: [...newList],
+      filteredList: [...newList]
+    });
+  };
+
+  componentDidMount() {
+    this.renderLists();
+  }
+
+  componentDidUpdate() {
+    this.renderFilteredList();
+  }
+
+  renderLists = () => {
+    return this.props.lists.map((list) => {
+      return (
+        <div key={Math.random()} className="listItem filtered">
+          <Link to={`/list/${list.id}`}>
+            <h4 className="filteredListName">{list.name}</h4>
+          </Link>
+          <p className="filteredListTag">{list.tags}</p>
+        </div>
+      );
     });
   };
 
   renderFilteredList = () => {
     if (this.state.filteredList.length === 0) {
-      return this.props.lists.map((list) => {
-          if(list.is_public){
-        return (
-          <div key={Math.random()} className="listItem filtered">
-            <Link to={`/list/${list.id}`}>
-              <h4 className="filteredListName">{list.name}</h4>
-            </Link>
-            <p className="filteredListTag">{list.tags}</p>
-          </div>
-        );}
-
-      });
+      return <h3>No Records Found</h3>;
     } else if (this.state.filteredList.length > 0) {
       return this.state.filteredList.map((list) => {
         return (
@@ -73,24 +83,26 @@ export class ListByTags extends Component {
       });
     }
   };
-  onChange = e => {
+
+  onChange = (e) => {
     const { tags, lists } = this.props;
     const userInput = e.target.value.toLowerCase();
     const filteredTags = [];
     let onlyTags = [];
-    for(let i = 0; i < lists.length; i++){
-      if(lists[i].tags.includes(userInput)){
-        filteredTags.push(lists[i])
+    for (let i = 0; i < lists.length; i++) {
+      if (lists[i].tags.includes(userInput)) {
+        filteredTags.push(lists[i]);
       }
       onlyTags.push(lists[i].tags);
     }
-
     this.setState({
+      filter: userInput,
       filteredList: [...filteredTags]
     });
   };
 
   render() {
+    console.log(this.state);
     return (
       <section>
         <form onChange={this.onChange} id="filterForm">
@@ -107,7 +119,11 @@ export class ListByTags extends Component {
             />
           </div>
         </form>
-        <div className="filteredContainer">{this.renderFilteredList()}</div>
+        <div className="filteredContainer">
+          {this.state.filter === ''
+            ? this.renderLists()
+            : this.renderFilteredList()}
+        </div>
       </section>
     );
   }

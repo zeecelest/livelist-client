@@ -60,6 +60,10 @@
   margin-top: 0;
 }
 
+.filteredContainer h3 {
+  color: white;
+}
+
 @media only screen and (min-width: 700px) {
   .filteredContainer {
     flex-direction: row;
