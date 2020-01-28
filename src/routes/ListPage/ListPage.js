@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import ListsApiService from "../../services/lists-api-service";
-import SpotsApiService from "../../services/spots-api-service";
-import PlayListContext from "../../contexts/PlayListContext";
-import Spot from "../../components/Spot/Spot";
-import Map from "../../components/Map/Map";
-import { Link } from "react-router-dom";
-import Button from "../../components/Button/Button";
-import "./listPage.css";
-import loadingAnimation from "../../components/Assets/loadingAnimation.gif";
-import LikeButton from "../../components/LikeButton/likeButton";
+import React, { Component } from 'react';
+import ListsApiService from '../../services/lists-api-service';
+import SpotsApiService from '../../services/spots-api-service';
+import PlayListContext from '../../contexts/PlayListContext';
+import Spot from '../../components/Spot/Spot';
+import Map from '../../components/Map/Map';
+import { Link } from 'react-router-dom';
+import Button from '../../components/Button/Button';
+import './listPage.css';
+import loadingAnimation from '../../components/Assets/loadingAnimation.gif';
+import LikeButton from '../../components/LikeButton/likeButton';
 
 export class ListPage extends Component {
   static contextType = PlayListContext;
@@ -16,15 +16,15 @@ export class ListPage extends Component {
     spots: [],
     listInfo: [],
     userLists: [],
-    listName: "",
+    listName: '',
     listLikes: [],
     loading: false
   };
 
-  handleDeleteSpot = spotId => {
+  handleDeleteSpot = (spotId) => {
     SpotsApiService.deleteSpots(spotId)
       .then(() => {
-        const newSpot = this.state.spots.filter(spot => spot.id !== spotId);
+        const newSpot = this.state.spots.filter((spot) => spot.id !== spotId);
         //added to update context
         this.context.setSpots(newSpot);
 
@@ -38,14 +38,13 @@ export class ListPage extends Component {
   renderSpot = () => {
     let usersListsIds = [];
     if (this.state.spots.length > 0) {
-      if(this.state.userLists.length > 0){
-        this.state.userLists.map(lists => {
-        return usersListsIds.push(lists.id);
-      });
+      if (this.state.userLists.length > 0) {
+        this.state.userLists.map((lists) => {
+          return usersListsIds.push(lists.id);
+        });
       }
-      
 
-      return this.state.spots.map(spot => (
+      return this.state.spots.map((spot) => (
         <div id={spot.name}>
           <Spot
             key={Math.random()}
@@ -68,37 +67,40 @@ export class ListPage extends Component {
   renderListName = () => {
     if (this.state.listName) {
       return (
-        <div className='listPageMain'>
-      <h4 className="myListName">{this.state.listName}
-      <LikeButton 
-        id={this.props.match.params.id} 
-        handleLikeButton={this.handleLikeButton}
-        liked={this.state.listLikes.liked_by_user} 
-        likes={this.state.listLikes.likes} />
-       </h4> 
-      </div>
+        <div className="listPageMain">
+          <h4 className="myListName">
+            {this.state.listName}
+            <LikeButton
+              id={this.props.match.params.id}
+              handleLikeButton={this.handleLikeButton}
+              liked={this.state.listLikes.liked_by_user}
+              likes={this.state.listLikes.likes}
+            />
+          </h4>
+        </div>
       );
-    } 
-    else if (this.state.listInfo) {
+    } else if (this.state.listInfo) {
       return (
-        <div className='listPageMain'>
-      <h4 className="myListName">{this.state.listInfo.list_name}</h4>
-      <LikeButton 
-        id={this.props.match.params.id} 
-        handleLikeButton={this.handleLikeButton}
-        liked={this.state.listLikes.liked_by_user} 
-        likes={this.state.listLikes.likes}/>
-      </div>
+        <div className="listPageMain">
+          <h4 className="myListName">{this.state.listInfo.list_name}</h4>
+          <LikeButton
+            id={this.props.match.params.id}
+            handleLikeButton={this.handleLikeButton}
+            liked={this.state.listLikes.liked_by_user}
+            likes={this.state.listLikes.likes}
+          />
+        </div>
       );
     } else {
       return (
-      <div className='listPageMain'>
-        <h4 className="myListName">{this.state.listName}</h4>
-        <LikeButton
-        id={this.props.match.params.id} 
-        handleLikeButton={this.handleLikeButton}
-        liked={this.state.listLikes.liked_by_user} 
-        likes={this.state.listLikes.likes}/>
+        <div className="listPageMain">
+          <h4 className="myListName">{this.state.listName}</h4>
+          <LikeButton
+            id={this.props.match.params.id}
+            handleLikeButton={this.handleLikeButton}
+            liked={this.state.listLikes.liked_by_user}
+            likes={this.state.listLikes.likes}
+          />
         </div>
       );
     }
@@ -108,16 +110,16 @@ export class ListPage extends Component {
     return <Map spots={this.state.spots} id="map" />;
   };
 
-  handleLikeButton = ev => {
+  handleLikeButton = (ev) => {
     ev.preventDefault();
     let id = ev.target.id;
     ListsApiService.toggleLike(id)
-      .then(like => {
+      .then((like) => {
         return this.setState({
           state: !this.state.updated
         });
       })
-      .catch(() => console.log("error"));
+      .catch(() => console.log('error'));
   };
 
   componentDidMount() {
@@ -137,32 +139,31 @@ export class ListPage extends Component {
     });
 
     ListsApiService.getUsersLists()
-      .then(list => {
+      .then((list) => {
         let listName;
         // console.log('this is in the getUserLists =>', list)
         for (let i = 0; i < list.length; i++) {
-          if (list[i].id == this.props.match.params.id) {
+          if (list[i].id === this.props.match.params.id) {
             listName = list[i].name;
             // console.log('this is the listName value =>', listName)
             this.setState({
               listName: listName
-            })
+            });
           }
         }
         this.setState({
           userLists: list
         });
-
       })
       .catch(this.context.setError);
 
     //Find the list of the id
     // set the state of Liked_by_user and likes
     ListsApiService.getLists()
-      .then(data => {
+      .then((data) => {
         let listLikeInfo = {};
         for (let i = 0; i < data.length; i++) {
-          if (data[i].id == this.props.match.params.id) {
+          if (data[i].id === this.props.match.params.id) {
             listLikeInfo.liked_by_user = data[i].liked_by_user;
             listLikeInfo.likes = data[i].likes;
           }
@@ -174,7 +175,7 @@ export class ListPage extends Component {
       .catch(this.context.setError);
 
     ListsApiService.getSpotsById(id)
-      .then(spotsServer => {
+      .then((spotsServer) => {
         //passing spotsServer to setSpots context
         this.context.setSpots(spotsServer);
         // console.log("spots from server =>", spotsServer);
@@ -194,16 +195,15 @@ export class ListPage extends Component {
   renderNewSpotButton = () => {
     if (this.state.listName) {
       return (
-        <Button className='newSpotButton'>
+        <Button className="newSpotButton">
           <Link
             to={{
-              pathname: "/newSpot",
+              pathname: '/newSpot',
               props: {
                 list_id: this.props.match.params.id,
                 sid: this.props.sid
               }
-            }}
-          >
+            }}>
             New Spot
           </Link>
         </Button>
@@ -218,8 +218,7 @@ export class ListPage extends Component {
           <img
             src={loadingAnimation}
             alt="loading"
-            className="loadingAnimation"
-          ></img>
+            className="loadingAnimation"></img>
           <h3 className="loadingText">Loading...</h3>
         </div>
       );

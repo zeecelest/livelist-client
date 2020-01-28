@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Required, Label } from '../Form/Form';
+//import { Required, Label } from '../Form/Form';
 import ListsApiService from '../../services/lists-api-service';
 import SwitchComp from '../Form/Switch';
 import possibleLocations from '../Assets/possibleLocations';
@@ -88,8 +88,6 @@ class NewPlaylistForm extends Component {
       <form onSubmit={this.handleSubmit} className="newPlaylistForm">
         <div role="alert">{error && <p>{error}</p>}</div>
         <div>
-
-       
           <TextInput
             attr={{ id: 'newPlaylist-name-input', name: 'name', label: 'Name' }}
           />
@@ -139,7 +137,7 @@ class NewPlaylistForm extends Component {
         </div>
         <div>
           <label>
-            <span className='privateListText'>Make your list private ?</span>
+            <span className="privateListText">Make your list private ?</span>
           </label>
           <SwitchComp
             id="newPlayList-isPublic-checkbox"
@@ -150,7 +148,10 @@ class NewPlaylistForm extends Component {
           />
         </div>
         <footer className="signupBtnLink">
-          <Button type="submit" className='newPlaylistSubmitButton'>Submit</Button> <br />{' '}
+          <Button type="submit" className="newPlaylistSubmitButton">
+            Submit
+          </Button>{' '}
+          <br />{' '}
         </footer>
       </form>
     );

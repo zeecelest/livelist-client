@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import notLikedIcon from "../../components/Assets/notLikeIcon.png";
-import likedIcon from "../../components/Assets/likedIcon.png";
-import "./likeButton.css";
+import notLikedIcon from '../../components/Assets/notLikeIcon.png';
+import likedIcon from '../../components/Assets/likedIcon.png';
+import './likeButton.css';
 
 export class LikeButton extends Component {
   constructor(props) {
@@ -35,36 +35,34 @@ export class LikeButton extends Component {
   };
 
   renderButtons = () => {
-    if (this.state.liked == "1") {
+    if (this.state.liked === '1') {
       return (
-        <div className='likeButtonContainer'>
-            <img
-            onClick={ev => {
+        <div className="likeButtonContainer">
+          <img
+            onClick={(ev) => {
               this.props.handleLikeButton(ev);
               this.clickLike();
             }}
-              id={this.props.id}
-              src={likedIcon}
-              className={`likedIcon`}
-              alt="icon white"
-            ></img>
-          <p className='likes'>{this.state.likes}</p>
+            id={this.props.id}
+            src={likedIcon}
+            className={`likedIcon`}
+            alt="icon white"></img>
+          <p className="likes">{this.state.likes}</p>
         </div>
       );
-    } else if (this.state.liked == "0") {
+    } else if (this.state.liked === '0') {
       return (
-        <div className='likeButtonContainer'>
-            <img
-            onClick={ev => {
+        <div className="likeButtonContainer">
+          <img
+            onClick={(ev) => {
               this.clickLike();
               this.props.handleLikeButton(ev);
             }}
-              id={this.props.id}
-              src={notLikedIcon}
-              className="notLikedIcon"
-              alt="icon grey"
-            ></img>
-          <p className='likes'>{this.state.likes}</p>
+            id={this.props.id}
+            src={notLikedIcon}
+            className="notLikedIcon"
+            alt="icon grey"></img>
+          <p className="likes">{this.state.likes}</p>
         </div>
       );
     }

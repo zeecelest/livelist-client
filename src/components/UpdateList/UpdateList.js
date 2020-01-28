@@ -148,7 +148,7 @@ class UpdateList extends Component {
     this.context.setListId(list_id);
     let listToEdit = null;
     for (let i = 0; i < this.state.lists.length; i++) {
-      if (this.state.lists[i].id == list_id) {
+      if (this.state.lists[i].id === list_id) {
         listToEdit = this.state.lists[i];
         var { name, tags, city, state, description, is_public, cities } = {
           ...this.state
@@ -160,7 +160,7 @@ class UpdateList extends Component {
         description.value = this.state.lists[i].description;
         is_public.value = this.state.lists[i].is_public;
         cities = possibleLocations[state.value];
-        this.setState({ name, tags, cities });
+        this.setState({ name, tags, cities, listToEdit });
       }
     }
 
@@ -285,9 +285,14 @@ class UpdateList extends Component {
             </div>
             <footer className="signupBtnLink">
               <Button>
-                <Link className="can-button" to="/dashboard">Cancel</Link>
+                <Link className="can-button" to="/dashboard">
+                  Cancel
+                </Link>
               </Button>
-              <Button className="sav-button" type="submit">Save</Button> <br />{' '}
+              <Button className="sav-button" type="submit">
+                Save
+              </Button>{' '}
+              <br />{' '}
             </footer>
           </form>
         </>

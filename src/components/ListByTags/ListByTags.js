@@ -102,7 +102,6 @@ export class ListByTags extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <section>
         <form onChange={this.onChange} id="filterForm">

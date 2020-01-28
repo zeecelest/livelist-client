@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Label } from '../Form/Form';
-import { Link, Redirect } from 'react-router-dom';
+//import { Label } from '../Form/Form';
+import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
 import SpotsApiService from '../../services/spots-api-service';
 import PlayListContext from '../../contexts/PlayListContext';
@@ -146,10 +146,13 @@ class NewSpotForm extends Component {
           />
         </div>
         <footer className="newSpotButtons">
-          <Button className='newSpotCancelButton'>
+          <Button className="newSpotCancelButton">
             <Link to={`/list/${this.context.listid}`}>Cancel</Link>
           </Button>
-          <Button  className='newSpotSaveButton' type="submit">Save</Button> <br />{' '}
+          <Button className="newSpotSaveButton" type="submit">
+            Save
+          </Button>{' '}
+          <br />{' '}
         </footer>
       </form>
     );
