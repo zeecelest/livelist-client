@@ -94,7 +94,7 @@ onSelectChange= (ev)=>{
 
   renderHotLists = () => {
     if (this.state.list === []) {
-      return <h2>No Lists.</h2>;
+      return <h2 className='emptyLists'>No Lists.</h2>;
     }
     if (this.state.filtered.length > 0) {
       return (

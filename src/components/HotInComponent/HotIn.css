@@ -17,7 +17,10 @@
   margin-bottom: 0;
   text-align: center;
 }
-
+.emptyLists{
+  color: white;
+  
+}
 .hotListSection {
   margin-top: 5%;
   margin-left: auto;

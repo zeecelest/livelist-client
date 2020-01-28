@@ -38,9 +38,13 @@ export class ListPage extends Component {
   renderSpot = () => {
     let usersListsIds = [];
     if (this.state.spots.length > 0) {
-      this.state.userLists.map(lists => {
+      if(this.state.userLists.length > 0){
+        this.state.userLists.map(lists => {
         return usersListsIds.push(lists.id);
       });
+      }
+      
+
       return this.state.spots.map(spot => (
         <div id={spot.name}>
           <Spot

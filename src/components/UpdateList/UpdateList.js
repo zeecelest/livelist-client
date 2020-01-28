@@ -199,7 +199,6 @@ class UpdateList extends Component {
       is_public: `${this.state.is_public.value}`,
       id: list_id
     };
-    console.log('this is the object to be submitted to the patch', obj);
     ListsApiService.patchLists(obj).catch(this.context.setError);
   };
 

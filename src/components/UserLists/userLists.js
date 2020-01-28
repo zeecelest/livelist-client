@@ -55,7 +55,7 @@ export class UserLists extends Component {
         </div>
       );
     }
-    return <h2>No Lists</h2>;
+    return <h2 className='emptyLists'>No Lists</h2>;
   }
 
   render() {
