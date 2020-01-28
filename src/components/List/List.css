@@ -30,7 +30,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: scroll;
   opacity: .85;
 }
 .listItem:hover, .listItem:active {
