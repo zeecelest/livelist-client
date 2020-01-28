@@ -30,7 +30,7 @@ export class Spot extends Component {
         // console.log('the list Id of what list we are in', lists)
         if (lists === parseInt(this.props.lid)) {
           return (
-            <div className="spot-buttons" key={index}>
+            <div className="spot-buttons" key={this.props.lid}>
               <Button
                 key={index + 1}
                 id="deleteSpotButton"
@@ -42,14 +42,17 @@ export class Spot extends Component {
               </Button>
             </div>
           );
-        } else return <></>;
+        } else return <div key={index}></div>;
       });
     }
   };
 
   render() {
     return (
-      <div className="spotItem" onClick={this.handleSpotClick}>
+      <div
+        className="spotItem"
+        onClick={this.handleSpotClick}
+        key={Math.random()}>
         <h2 className="spotName">{this.props.name}</h2>
         <p className="spotInfo">{this.props.address}</p>
         <p className="spotInfo">{this.props.city}</p>
