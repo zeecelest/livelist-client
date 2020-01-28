@@ -28,21 +28,11 @@
   -webkit-text-fill-color: transparent;
   align-self: flex-start;
 }
-/* .listItem {
-  text-decoration: none;
-  min-width: 200px;
-  background-color: white;
-  margin-right: 5%;
-  height: 100px;
-  max-width: 75vw;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  display: flex;
-  border: 1px solid grey;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-} */
+.emptyLists {
+  background: var(--purp-pink);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .userListItem {
   max-width: 100px;
 }

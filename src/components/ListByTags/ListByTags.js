@@ -69,7 +69,7 @@ export class ListByTags extends Component {
 
   renderFilteredList = () => {
     if (this.state.filteredList.length === 0) {
-      return <h3>No Records Found</h3>;
+      return <h3 class="emptyLists">No Records Found</h3>;
     } else if (this.state.filteredList.length > 0) {
       return this.state.filteredList.map((list) => {
         return (

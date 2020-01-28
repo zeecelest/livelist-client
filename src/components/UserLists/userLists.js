@@ -32,7 +32,7 @@ export class UserLists extends Component {
 
   renderUserList() {
     if (this.props.userList.length === 0) {
-      return <h2>No Lists</h2>;
+      return <h2 class="emptyLists">No Lists</h2>;
     }
     if (this.props.userList.length > 0) {
       return (
