@@ -25,18 +25,19 @@ export class Spot extends Component {
   };
   renderUserListId = () => {
     if (this.props.usersListIds.length > 0) {
-      return this.props.usersListIds.map((lists) => {
+      return this.props.usersListIds.map((lists, index) => {
         // console.log('UserList ids to compare =>',this.props.usersListIds)
         // console.log('the list Id of what list we are in', lists)
         if (lists === parseInt(this.props.lid)) {
           return (
-            <div className="spot-buttons">
+            <div className="spot-buttons" key={index}>
               <Button
+                key={index + 1}
                 id="deleteSpotButton"
                 onClick={() => this.props.handleDeleteSpot(this.props.sid)}>
                 Delete
               </Button>
-              <Button id="editSpotButton">
+              <Button id="editSpotButton" key={index + 2}>
                 <Link to={`/updateSpot/${this.props.sid}`}>Edit</Link>
               </Button>
             </div>
