@@ -65,21 +65,8 @@ export class ListPage extends Component {
   };
 
   renderListName = () => {
-    if (this.state.listName) {
-      return (
-        <div className="listPageMain">
-          <h4 className="myListName">
-            {this.state.listName}
-            <LikeButton
-              id={this.props.match.params.id}
-              handleLikeButton={this.handleLikeButton}
-              liked={this.state.listLikes.liked_by_user}
-              likes={this.state.listLikes.likes}
-            />
-          </h4>
-        </div>
-      );
-    } else if (this.state.listInfo) {
+if (this.state.listInfo) {
+  console.log('this is where i landed')
       return (
         <div className="listPageMain">
           <h4 className="myListName">{this.state.listInfo.list_name}</h4>
@@ -139,9 +126,8 @@ export class ListPage extends Component {
     });
 
     ListsApiService.getUsersLists()
-      .then((list) => {
+      .then(list => {
         let listName;
-        // console.log('this is in the getUserLists =>', list)
         for (let i = 0; i < list.length; i++) {
           if (list[i].id === this.props.match.params.id) {
             listName = list[i].name;
@@ -163,7 +149,7 @@ export class ListPage extends Component {
       .then((data) => {
         let listLikeInfo = {};
         for (let i = 0; i < data.length; i++) {
-          if (data[i].id === this.props.match.params.id) {
+          if (data[i].id == this.props.match.params.id) {
             listLikeInfo.liked_by_user = data[i].liked_by_user;
             listLikeInfo.likes = data[i].likes;
           }

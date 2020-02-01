@@ -35,7 +35,7 @@ export class LikeButton extends Component {
   };
 
   renderButtons = () => {
-    if (this.state.liked === '1') {
+    if (this.state.liked == '1') {
       return (
         <div className="likeButtonContainer">
           <img
@@ -50,7 +50,7 @@ export class LikeButton extends Component {
           <p className="likes">{this.state.likes}</p>
         </div>
       );
-    } else if (this.state.liked === '0') {
+    } else if (this.state.liked == '0') {
       return (
         <div className="likeButtonContainer">
           <img
