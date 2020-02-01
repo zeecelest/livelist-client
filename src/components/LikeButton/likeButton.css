@@ -18,7 +18,7 @@
   box-shadow: 0px 0px 5px var(--pink);
 }
 .likes{
-  color: var(--color-body);
+  color: white;
   font-size: 1.25rem;
   margin: 0;
   margin-left: 5px;
