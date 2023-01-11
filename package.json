@@ -11,7 +11,7 @@
     "@testing-library/user-event": "^7.2.1",
     "classnames": "^2.2.6",
     "google-map-react": "^1.1.5",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "jwt-decode": "^2.2.0",
     "mobile-device-detect": "^0.3.3",
     "react": "^16.12.0",
@@ -35,7 +35,7 @@
     "cypress": "^3.8.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
-    "jsonwebtoken": "^8.5.0",
+    "jsonwebtoken": "^9.0.0",
     "unfetch": "^4.1.0"
   },
   "eslintConfig": {
